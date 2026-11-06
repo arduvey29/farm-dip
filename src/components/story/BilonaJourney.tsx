@@ -7,7 +7,7 @@ import { journeyScenes } from "./JourneyScenes";
 const devanagariDigits = ["१", "२", "३", "४", "५", "६"];
 
 /**
- * Scroll-driven story of one batch, from Gauri at pasture to a sealed jar.
+ * Scroll-driven story of one batch, from pasture to a sealed jar.
  * The stage stays in place (beside the steps on wide screens, above them on phones) while the
  * day turns to night and back, the curd is churned, the makkhan melts and the jar fills.
  * The steps are plain HTML, so the content reads fully without JavaScript or motion.
@@ -18,9 +18,9 @@ export function BilonaJourney() {
       <JourneyDriver />
       <div className="wrap pt-16 lg:pt-24">
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
-          <SectionTitle id="journey-title" hindi="बिलोना विधि" title="From Gauri to your kitchen, in six steps" tone="dark" />
+          <SectionTitle id="journey-title" hindi="बिलोना विधि" title="From farm to your kitchen, in six steps" tone="dark" />
           <p className="text-lg text-maroon-100">
-            Most ghee is boiled straight from separated cream. Ours starts as whole milk and takes two days, a clay pot and a wooden churn. Scroll to follow one batch.
+            Most ghee is boiled straight from separated cream. Ours starts as whole pure buffalo milk and takes two days, an earthen pot and a wooden churn. Scroll to follow one batch.
           </p>
         </div>
       </div>
@@ -89,8 +89,8 @@ export function BilonaJourney() {
       </div>
 
       <div className="wrap flex flex-wrap gap-3 pb-16 lg:pb-24">
-        <Link href="/products/a2-gir-cow-bilona-ghee" className="inline-flex min-h-12 items-center rounded-full bg-haldi-500 px-6 font-bold text-maroon-950 hover:bg-haldi-400">
-          Shop Gir cow ghee
+        <Link href="/products/pure-desi-buffalo-ghee-1l" className="inline-flex min-h-12 items-center rounded-full bg-haldi-500 px-6 font-bold text-maroon-950 hover:bg-haldi-400">
+          Shop Pure Desi Ghee
         </Link>
         <Link href="/bilona-process" className="inline-flex min-h-12 items-center rounded-full border-2 border-haldi-400 px-6 font-semibold text-haldi-300 hover:bg-haldi-400 hover:text-maroon-950">
           See every step in detail

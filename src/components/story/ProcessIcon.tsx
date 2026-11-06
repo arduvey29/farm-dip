@@ -2,7 +2,7 @@ import type { ProcessStep } from "@/data/process";
 
 /* Line drawings for each bilona step. Stroke uses currentColor so they sit on light or dark grounds. */
 const drawings: Record<ProcessStep["icon"], React.ReactNode> = {
-  cow: (
+  pasture: (
     <>
       <path d="M12 26c0-5 4-8 10-8h12c4 0 6 2 7 5l2 6" />
       <path d="M41 29l3-1c2 0 3 1 3 3v2c0 2-2 3-4 3h-2" />

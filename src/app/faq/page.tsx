@@ -7,8 +7,8 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
 
-const title = "Ghee Questions and Answers: Bilona, A2, Delivery and Returns";
-const description = "Answers about bilona and A2 ghee, purity testing, delivery times, cash on delivery, returns and how to store ghee.";
+const title = "Ghee Questions and Answers: Pure Buffalo Ghee, Bilona, Delivery and Returns";
+const description = "Answers about pure buffalo ghee, bilona process, purity testing, delivery times, cash on delivery, returns and how to store ghee.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/faq" });
 

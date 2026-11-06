@@ -3,30 +3,30 @@ export type ProcessStep = {
   name: string;
   duration: string;
   text: string;
-  icon: "cow" | "milk" | "curd" | "churn" | "butter" | "fire" | "filter" | "jar";
+  icon: "pasture" | "milk" | "curd" | "churn" | "butter" | "fire" | "filter" | "jar";
 };
 
 /** The bilona process, in order. Also rendered as HowTo structured data. */
 export const bilonaSteps: ProcessStep[] = [
   {
     id: "graze",
-    name: "Gir cows graze on open pasture",
+    name: "Healthy buffalo herds on green pasture",
     duration: "Every day",
-    text: "Our partner farmers raise purebred Gir cows on open pasture around Talala, Gujarat, with green fodder and no growth hormones. Calves drink first.",
-    icon: "cow",
+    text: "Our partner farmers care for healthy buffaloes on open pasture with natural green fodder and no artificial growth hormones.",
+    icon: "pasture",
   },
   {
     id: "milk",
-    name: "Milk is collected at dawn and boiled",
+    name: "Pure buffalo milk is collected and boiled",
     duration: "Morning",
-    text: "Fresh A2 milk is collected in the early morning, brought to the dairy within two hours and slowly boiled in open vessels.",
+    text: "Fresh whole buffalo milk is collected in the early morning, brought to the dairy within two hours and slowly boiled in open vessels.",
     icon: "milk",
   },
   {
     id: "curd",
     name: "Milk is set into curd overnight",
     duration: "8 to 10 hours",
-    text: "The cooled milk is set with a spoon of yesterday's curd in clay pots and left overnight. This is the step cream-based ghee skips.",
+    text: "The cooled milk is set with a spoon of yesterday's curd in clay pots and left overnight. This is the step commercial cream ghee skips.",
     icon: "curd",
   },
   {
@@ -47,14 +47,14 @@ export const bilonaSteps: ProcessStep[] = [
     id: "cook",
     name: "Makkhan is slow-cooked on a wood fire",
     duration: "2 to 3 hours",
-    text: "The makkhan is cooked in small iron kadhais over a low wood fire, stirred until the milk solids turn brown and the ghee runs clear and golden.",
+    text: "The makkhan is cooked in small iron kadhais over a low wood fire, stirred until the milk solids turn brown and the ghee runs clear and aromatic.",
     icon: "fire",
   },
   {
     id: "filter",
     name: "Ghee is filtered and cooled slowly",
     duration: "12 hours",
-    text: "The ghee is strained through muslin and left to cool slowly, which is what forms its grainy, danedar texture.",
+    text: "The ghee is strained through muslin and left to cool slowly, which is what forms its rich, danedar texture.",
     icon: "filter",
   },
   {
@@ -73,18 +73,18 @@ export const journeyBeats: JourneyBeat[] = [
   {
     id: "graze",
     hindi: "चराई",
-    title: "Gir cows graze on open pasture",
-    text: "Purebred Gir cows on partner farms around Talala, Gujarat, graze on open pasture and green fodder. No growth hormones, and calves drink first.",
-    fact: "Gir cows, Gujarat",
-    factHindi: "गिर की गायें",
+    title: "Buffaloes graze on green pasture",
+    text: "Healthy buffalo herds on partner farms graze on green fodder and open pasture. No growth hormones or artificial feeds.",
+    fact: "Pure buffalo herds",
+    factHindi: "स्वस्थ भैंसें",
   },
   {
     id: "milk",
     hindi: "सुबह का दूध",
     title: "Milk is collected at dawn and boiled",
-    text: "Fresh A2 milk reaches the dairy within two hours of milking and is boiled slowly in open brass vessels.",
-    fact: "About 30 litres of milk for 1 litre of ghee",
-    factHindi: "३० लीटर दूध",
+    text: "Fresh whole buffalo milk reaches the dairy within two hours of milking and is boiled slowly in open vessels.",
+    fact: "About 14 litres of milk for 1 litre of ghee",
+    factHindi: "१४ लीटर दूध",
   },
   {
     id: "curd",
@@ -106,7 +106,7 @@ export const journeyBeats: JourneyBeat[] = [
     id: "cook",
     hindi: "धीमी आँच",
     title: "Makkhan is slow-cooked on a wood fire",
-    text: "The makkhan simmers in iron kadhais over a low wood fire, stirred until the milk solids brown and the ghee runs clear and golden.",
+    text: "The makkhan simmers in iron kadhais over a low wood fire, stirred until the milk solids brown and the ghee runs clear and fragrant.",
     fact: "2 to 3 hours on the fire",
     factHindi: "लकड़ी की आँच",
   },

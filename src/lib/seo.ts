@@ -21,7 +21,7 @@ type PageMeta = {
 };
 
 // Site-wide social card. Segments with their own opengraph-image file (products, blog posts) override it.
-const defaultOgImage = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name}: A2 bilona ghee from Gir cows` };
+const defaultOgImage = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name}: Pure Desi Ghee from buffalo milk` };
 
 /**
  * Per-page metadata with a canonical URL, en-IN alternate and Open Graph.
@@ -116,7 +116,7 @@ export function organizationLd() {
     location: {
       "@type": "Place",
       "@id": ids.farm,
-      name: `${site.name} partner farms, Gir`,
+      name: `${site.name} partner farms`,
       address: postalAddress(),
       geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
     },
@@ -127,12 +127,12 @@ export function organizationLd() {
       telephone: site.contact.phoneHref,
       email: site.contact.email,
       areaServed: "IN",
-      availableLanguage: ["English", "Hindi", "Gujarati"],
+      availableLanguage: ["English", "Hindi"],
     },
     hasMerchantReturnPolicy: returnPolicy(),
     identifier: [{ "@type": "PropertyValue", propertyID: "FSSAI", value: site.legal.fssai }],
     vatID: site.legal.gstin,
-    knowsAbout: ["Ghee", "Bilona method", "A2 milk", "Gir cattle", "Sahiwal cattle", "Dairy food safety"],
+    knowsAbout: ["Ghee", "Bilona method", "Buffalo ghee", "Pure Desi Ghee", "Traditional churning", "Dairy food safety"],
     ...(site.social.length ? { sameAs: site.social.map((s) => s.href) } : {}),
   };
 }
@@ -298,7 +298,7 @@ export function howToLd(steps: ProcessStep[]) {
     name: "How bilona ghee is made",
     description: "The traditional bilona method: milk is set into curd, churned with a wooden bilona into makkhan, and slow-cooked into ghee.",
     totalTime: "P2D",
-    supply: [{ "@type": "HowToSupply", name: "Whole A2 cow milk" }, { "@type": "HowToSupply", name: "Curd starter (jaman)" }],
+    supply: [{ "@type": "HowToSupply", name: "Whole pure buffalo milk" }, { "@type": "HowToSupply", name: "Curd starter (jaman)" }],
     tool: [{ "@type": "HowToTool", name: "Wooden bilona churner" }, { "@type": "HowToTool", name: "Iron kadhai" }, { "@type": "HowToTool", name: "Muslin cloth" }],
     step: steps.map((s, i) => ({
       "@type": "HowToStep",

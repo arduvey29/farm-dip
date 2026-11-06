@@ -2,13 +2,13 @@
 
 import { useRef } from "react";
 
-/** Invisible button over Gauri in the hero. Tapping her makes her lift her head and call out. */
+/** Interactive button in the hero. Tapping makes the farm mascot lift its head. */
 export function CowHello({ className = "" }: { className?: string }) {
   const timer = useRef<number | undefined>(undefined);
   return (
     <button
       type="button"
-      aria-label="Say hello to Gauri, our Gir cow"
+      aria-label="Farm mascot animation"
       className={`absolute cursor-pointer rounded-[40%] ${className}`}
       onClick={(e) => {
         const scene = e.currentTarget.closest("[data-cow-scene]");

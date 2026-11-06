@@ -17,7 +17,7 @@ const mukta = Mukta({ weight: ["400", "500", "600", "700"], subsets: ["latin"], 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: A2 Bilona Ghee from Gir Cows, Lab Tested`,
+    default: `${site.name} – Pure Desi Ghee | 100% Natural Buffalo Milk Ghee`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: site.locale,
     url: "/",
-    title: `${site.name}: A2 Bilona Ghee from Gir Cows`,
+    title: `${site.name} – Pure Desi Ghee`,
     description: site.description,
   },
   twitter: { card: "summary_large_image" },

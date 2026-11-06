@@ -80,7 +80,7 @@ export function SearchClient({ docs }: { docs: SearchDoc[] }) {
             </>
           ) : (
             <p className="text-lg">
-              Nothing matches “{query}”. Try a simpler word like “Gir”, “A2” or “storage”, or{" "}
+              Nothing matches “{query}”. Try a simpler word like “buffalo”, “danedar” or “storage”, or{" "}
               <Link href="/shop" className="font-semibold underline underline-offset-4">
                 browse all ghee
               </Link>

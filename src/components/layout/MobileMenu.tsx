@@ -38,12 +38,22 @@ export function MobileMenu() {
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <span className="inline-flex items-center gap-2 font-display text-xl">
+            <Link
+              href="/"
+              onClick={() => {
+                ref.current?.close();
+                if (pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="inline-flex items-center gap-2 font-display text-xl"
+              aria-label={`${site.name} home`}
+            >
               <LogoMark className="h-11 w-auto" />
               <span>
                 <span lang="hi">फ़ार्म</span> dip
               </span>
-            </span>
+            </Link>
             <button type="button" onClick={() => ref.current?.close()} className="rounded-full p-2 hover:bg-chandan" aria-label="Close menu">
               <Icon name="close" className="size-6" />
             </button>

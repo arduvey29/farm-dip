@@ -17,9 +17,10 @@ export const site = {
   // The wordmark: "farm" in Devanagari, "dip" in Latin letters.
   wordmark: "फ़ार्म dip",
   legalName: "Farm Dip Foods Pvt. Ltd.", // PLACEHOLDER
-  tagline: "A2 bilona ghee from Gir cows",
+  tagline: "Pure Desi Buffalo Ghee",
+  aim: "We make ghee the way we ate it in our childhood: pure, simple, rich and full of goodness. Our aim is to bring that same purity and health to every family’s kitchen.",
   description:
-    "Farm Dip makes A2 ghee from the milk of Gir and Sahiwal cows using the bilona method: milk is set into curd, hand-churned into makkhan and slow-cooked over a wood fire. Every batch is lab tested. Free cash on delivery across India.",
+    "Bring home the goodness of tradition with Farm Dip Pure Desi Ghee, crafted with care to bring authentic taste and rich aroma to your everyday meals. Made from pure buffalo milk for a rich, creamy texture and delicious flavour. 100% natural with no preservatives or additives. Free cash on delivery across India.",
   url: resolveSiteUrl(),
   locale: "en_IN",
   language: "en-IN",
@@ -36,7 +37,7 @@ export const site = {
   },
 
   address: {
-    street: "Survey No. 00, Gir Road", // PLACEHOLDER
+    street: "Survey No. 00, Dairy Road", // PLACEHOLDER
     locality: "Talala",
     region: "Gujarat",
     postalCode: "362150",
@@ -72,12 +73,12 @@ export const site = {
   stats: {
     partnerFarms: 120,
     labParameters: 32,
-    milkPerLitre: "28 to 30 litres",
+    milkPerLitre: "12 to 14 litres",
   },
 
   announcement: "Free cash on delivery across India. Free shipping on orders above ₹999.",
   // Seasonal greeting shown in the top bar. Set to null outside festivals.
-  festive: { hindi: "शुभ दीपावली", text: "Festive gift boxes ship within 24 hours", href: "/products/festive-gift-box" } as { hindi: string; text: string; href: string } | null,
+  festive: { hindi: "शुभ दीपावली", text: "Pure Desi Buffalo Ghee in 500 ml, 1 L & 5 L", href: "/shop" } as { hindi: string; text: string; href: string } | null,
 } as const;
 
 export type Site = typeof site;
@@ -87,10 +88,10 @@ export const mainNav = [
     label: "Shop ghee",
     href: "/shop",
     children: [
-      { label: "A2 cow ghee", href: "/collections/a2-cow-ghee", note: "Gir and Sahiwal, bilona churned" },
-      { label: "Buffalo ghee", href: "/collections/buffalo-ghee", note: "Rich, white, high-yield" },
-      { label: "Infused ghee", href: "/collections/infused-ghee", note: "Haldi and black pepper" },
-      { label: "Gift packs and savers", href: "/collections/gift-packs", note: "Festive boxes, family packs" },
+      { label: "500 ml Glass Jar", href: "/products/pure-desi-buffalo-ghee-500ml", note: "Pure buffalo ghee, ₹1,350" },
+      { label: "1 L Glass Jar", href: "/products/pure-desi-buffalo-ghee-1l", note: "Family favourite, ₹2,210" },
+      { label: "5 L Steel Dolchi", href: "/products/pure-desi-buffalo-ghee-5l", note: "Best value, ₹9,900" },
+      { label: "Buffalo Ghee", href: "/collections/buffalo-ghee", note: "Pure desi buffalo ghee" },
     ],
   },
   { label: "Bilona process", href: "/bilona-process" },
@@ -102,10 +103,10 @@ export const mainNav = [
 export const footerNav = {
   shop: [
     { label: "All ghee", href: "/shop" },
-    { label: "A2 cow ghee", href: "/collections/a2-cow-ghee" },
-    { label: "Buffalo ghee", href: "/collections/buffalo-ghee" },
-    { label: "Infused ghee", href: "/collections/infused-ghee" },
-    { label: "Gift packs", href: "/collections/gift-packs" },
+    { label: "500 ml Glass Jar (₹1,350)", href: "/products/pure-desi-buffalo-ghee-500ml" },
+    { label: "1 L Glass Jar (₹2,210)", href: "/products/pure-desi-buffalo-ghee-1l" },
+    { label: "5 L Steel Dolchi (₹9,900)", href: "/products/pure-desi-buffalo-ghee-5l" },
+    { label: "Pure Buffalo Ghee", href: "/collections/buffalo-ghee" },
   ],
   company: [
     { label: "Our farms", href: "/about" },

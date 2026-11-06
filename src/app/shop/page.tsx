@@ -10,8 +10,8 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { ProductCard } from "@/components/product/ProductCard";
 import { PriceTable } from "@/components/product/PriceTable";
 
-const title = "Shop A2 Bilona Ghee Online: Gir, Sahiwal and Buffalo";
-const description = `Buy bilona ghee online: A2 Gir and Sahiwal cow ghee, desi buffalo ghee, haldi ghee and gift boxes. Lab tested. Free shipping above ₹${site.commerce.freeShippingThreshold}, free COD.`;
+const title = "Shop Farm Dip Pure Desi Ghee: 500 ml, 1 L and 5 L";
+const description = `Bring home the goodness of tradition with Farm Dip Pure Desi Ghee. Made from pure buffalo milk: 500 ml (₹1,350), 1 L (₹2,210), and 5 L (₹9,900) steel dolchi. 100% natural, no preservatives. Free COD.`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/shop" });
 
@@ -23,8 +23,7 @@ function perLitreRange(slug: string) {
 
 export default function ShopPage() {
   const singles = products.filter((p) => p.kind === "single");
-  const gir = perLitreRange("a2-gir-cow-bilona-ghee");
-  const buffalo = perLitreRange("desi-buffalo-bilona-ghee");
+  const gheePrice = perLitreRange(products[0]?.slug ?? "pure-desi-buffalo-ghee-500ml");
   return (
     <>
       <div className="wrap pt-5">
@@ -32,9 +31,9 @@ export default function ShopPage() {
       </div>
 
       <section className="wrap pt-8 pb-16">
-        <h1 className="font-display text-5xl sm:text-6xl">All ghee</h1>
+        <h1 className="font-display text-5xl sm:text-6xl">Farm Dip – Pure Desi Ghee</h1>
         <p className="mt-4 max-w-2xl text-lg text-maroon-800">
-          Every {site.name} ghee is churned from curd by the bilona method and tested in an independent lab. Choose by milk, taste or pack size. Larger packs cost less per litre.
+          Crafted with care from pure buffalo milk to bring authentic taste and rich aroma to your everyday meals. 100% natural with no preservatives or additives. Larger packs cost less per litre.
         </p>
 
         <nav aria-label="Collections" className="mt-8">
@@ -49,9 +48,9 @@ export default function ShopPage() {
           </ul>
         </nav>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-6 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p, i) => (
-            <ProductCard key={p.slug} product={p} headingLevel={2} eager={i < 4} />
+            <ProductCard key={p.slug} product={p} headingLevel={2} eager={i < 3} />
           ))}
         </div>
       </section>
@@ -63,7 +62,7 @@ export default function ShopPage() {
               Ghee prices per litre
             </h2>
             <p className="mt-4 text-maroon-800">
-              A2 Gir cow bilona ghee costs {gir.min} to {gir.max} per litre depending on pack size. Desi buffalo ghee costs {buffalo.min} to {buffalo.max} per litre. All prices include GST.
+              Farm Dip Pure Desi Ghee costs {gheePrice.min} to {gheePrice.max} per litre depending on pack size: 500 ml (₹1,350), 1 L (₹2,210), and 5 L (₹9,900). Buying the 5 L dolchi brings the per-litre price to just ₹1,980/L. All prices include GST.
             </p>
           </div>
           <PriceTable products={singles} caption="Bilona ghee prices by pack size" />

@@ -39,6 +39,18 @@ const nextConfig: NextConfig = {
       { source: "/product/:slug", destination: "/products/:slug", permanent: true },
       { source: "/collection/:slug", destination: "/collections/:slug", permanent: true },
       { source: "/pages/about-us", destination: "/about", permanent: true },
+      { source: "/products/festive-gift-box", destination: "/shop", permanent: false },
+      { source: "/products/desi-buffalo-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee-1l", permanent: false },
+      { source: "/products/a2-gir-cow-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee-1l", permanent: false },
+      { source: "/products/a2-gir-cow-bilona-ghee-500ml", destination: "/products/pure-desi-buffalo-ghee-500ml", permanent: false },
+      { source: "/products/a2-gir-cow-bilona-ghee-1l", destination: "/products/pure-desi-buffalo-ghee-1l", permanent: false },
+      { source: "/products/a2-gir-cow-bilona-ghee-5l", destination: "/products/pure-desi-buffalo-ghee-5l", permanent: false },
+      { source: "/products/a2-sahiwal-cow-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee-1l", permanent: false },
+      { source: "/products/haldi-infused-cow-ghee", destination: "/shop", permanent: false },
+      { source: "/products/family-saver-2x1l", destination: "/products/pure-desi-buffalo-ghee-1l", permanent: false },
+      { source: "/products/ghee-tasting-duo", destination: "/shop", permanent: false },
+      { source: "/blog/a2-vs-a1-ghee", destination: "/blog/benefits-of-pure-buffalo-ghee", permanent: false },
+      { source: "/collections/a2-cow-ghee", destination: "/collections/buffalo-ghee", permanent: false },
     ];
   },
   turbopack: {

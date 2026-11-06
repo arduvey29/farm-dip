@@ -34,7 +34,7 @@ export async function Footer() {
             <span lang="hi">फ़ार्म</span> dip
           </p>
           <p className="max-w-sm text-maroon-200">
-            A2 bilona ghee from Gir and Sahiwal cows, made in small batches at our partner farms in Gujarat and tested in an independent lab.
+            Pure Desi Ghee made from pure buffalo milk, crafted with care to bring authentic taste, rich aroma and wholesome goodness to your everyday meals.
           </p>
           {/* NAP block: keep identical to Google Business Profile and structured data. */}
           <address className="space-y-2 text-sm not-italic">

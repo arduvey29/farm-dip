@@ -13,8 +13,8 @@ export const faqGroups: { id: string; title: string; items: QA[] }[] = [
         a: "Bilona ghee is ghee made from curd rather than cream. Whole milk is boiled, cooled and set into curd overnight. The curd is churned with a wooden churner called a bilona to separate makkhan (butter), and the makkhan is slow-cooked until it turns into clear, golden ghee.",
       },
       {
-        q: "What is A2 ghee, and is it better than regular ghee?",
-        a: "A2 ghee is made from the milk of cows whose milk contains only the A2 type of beta-casein protein, such as native Indian Gir and Sahiwal cows. Ghee is about 99.5% fat, so it contains only traces of protein. The A2 label mainly tells you the milk came from native breeds. We would rather you buy our ghee for its taste and method than for health claims.",
+        q: "Why choose pure desi buffalo ghee?",
+        a: "Made from pure buffalo milk, our ghee offers a rich, creamy texture and delicious flavour that makes every meal special. It is perfect for everyday cooking, aromatic tadka, and traditional recipes, with no preservatives or additives.",
       },
       {
         q: "How do you check that your ghee is pure?",
@@ -26,7 +26,7 @@ export const faqGroups: { id: string; title: string; items: QA[] }[] = [
       },
       {
         q: "Why does the colour or texture of my ghee change between orders?",
-        a: "Natural ghee changes with the season. Cows eating fresh green grass in the monsoon give more golden ghee; in summer it may be paler. Texture depends on temperature: ghee is liquid in heat, solid in cold, and grainy in between.",
+        a: "Natural ghee changes with temperature and season. Pure buffalo ghee has a naturally rich, creamy danedar texture and stays stable in warm and cool weather. All variations are normal and reflect 100% natural purity.",
       },
     ],
   },

@@ -98,8 +98,8 @@ function Diya({ className = "" }: { className?: string }) {
 }
 
 /**
- * The hero window: a jharokha arch looking out on a goshala at dawn, with Gauri the Gir cow
- * in the pasture and a jar of ghee and a diya on the sill. Tap Gauri to say hello.
+ * The hero window: a jharokha arch looking out on a traditional farm at dawn, with
+ * the pasture and a jar of pure ghee and a diya on the sill.
  */
 export function GoshalaWindow() {
   return (

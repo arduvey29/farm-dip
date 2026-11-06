@@ -7,8 +7,8 @@ import { graph, itemListLd, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 
-const title = "Learn About Ghee: A2, Bilona, Purity and Storage Guides";
-const description = "Plain-language guides to ghee: A2 vs A1, bilona vs cream method, how to test purity at home, smoke point and how to store ghee. Written by our dairy team.";
+const title = "Learn About Ghee: Buffalo Ghee, Bilona, Purity and Storage Guides";
+const description = "Plain-language guides to ghee: pure buffalo ghee benefits, bilona vs cream method, how to test purity at home, smoke point and how to store ghee. Written by our dairy team.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/blog" });
 

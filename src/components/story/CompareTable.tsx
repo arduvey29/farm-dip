@@ -3,11 +3,11 @@
  * featured snippets lift most readily, so the content is written to stand alone.
  */
 const rows: [string, string, string][] = [
-  ["Made from", "Curd from whole A2 milk", "Cream separated by machine"],
-  ["Milk per litre of ghee", "About 28 to 30 litres", "About 12 to 15 litres"],
-  ["Cows", "Purebred Gir and Sahiwal", "Often crossbred, mixed herds"],
-  ["Cooking", "Small iron kadhais on a wood fire", "Large steam-heated vats"],
-  ["Texture and aroma", "Grainy, nutty, caramel", "Smooth, mild"],
+  ["Made from", "Whole pure buffalo milk curd", "Cream separated by machine"],
+  ["Milk per litre of ghee", "About 12 to 14 litres", "Industrial cream blends"],
+  ["Milk source", "Pure buffalo milk from healthy herds", "Often mixed or processed milk"],
+  ["Cooking", "Small iron kadhais on a slow wood fire", "Large steam-heated industrial vats"],
+  ["Texture and aroma", "Danedar (grainy), nutty, rich aroma", "Smooth, mild or artificial"],
   ["Testing", "Independent lab report for every batch", "Varies by brand"],
 ];
 
@@ -15,14 +15,14 @@ export function CompareTable() {
   return (
     <div className="frame-peetal overflow-x-auto rounded-2xl bg-paper">
       <table className="table-ghee min-w-[36rem]">
-        <caption className="sr-only">Farm Dip bilona ghee compared with typical cream-method ghee</caption>
+        <caption className="sr-only">Farm Dip Pure Desi Buffalo Ghee compared with typical cream-method ghee</caption>
         <thead>
           <tr>
             <th scope="col" className="w-1/4">
               <span className="sr-only">Attribute</span>
             </th>
             <th scope="col" className="bg-chandan">
-              Farm Dip bilona ghee
+              Farm Dip Pure Desi Ghee
             </th>
             <th scope="col">Typical cream ghee</th>
           </tr>

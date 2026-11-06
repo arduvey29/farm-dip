@@ -16,7 +16,7 @@ import { ReviewSection } from "@/components/product/ReviewSection";
 import { ProductCard } from "@/components/product/ProductCard";
 
 export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return [...products.map((p) => ({ slug: p.slug })), { slug: "pure-desi-buffalo-ghee" }, { slug: "a2-gir-cow-bilona-ghee" }];
 }
 
 export async function generateMetadata({ params }: PageProps<"/products/[slug]">): Promise<Metadata> {

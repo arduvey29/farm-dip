@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${site.name}: A2 Bilona Ghee`,
+    name: `${site.name}: Pure Desi Buffalo Ghee`,
     short_name: site.name,
     description: site.description,
     start_url: "/",

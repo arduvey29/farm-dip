@@ -1,6 +1,6 @@
 export type QA = { q: string; a: string };
 
-export type CollectionSlug = "a2-cow-ghee" | "buffalo-ghee" | "infused-ghee" | "gift-packs";
+export type CollectionSlug = "buffalo-ghee" | "gift-packs" | "a2-cow-ghee";
 
 export type Variant = {
   /** URL-safe id, used as ?pack= on product pages. */

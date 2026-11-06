@@ -48,7 +48,7 @@ export function CartDrawer() {
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-start justify-center gap-4 px-6">
             <p className="font-display text-2xl">Your cart is empty</p>
-            <p className="text-maroon-700">Start with our best seller, A2 Gir cow bilona ghee, or pick a pack size from the shop.</p>
+            <p className="text-maroon-700">Start with our best seller, Farm Dip Pure Desi Ghee, or pick a pack size from the shop.</p>
             <Link href="/shop" className="rounded-full bg-haldi-500 px-6 py-3 font-semibold text-maroon-950 hover:bg-haldi-400">
               Shop ghee
             </Link>

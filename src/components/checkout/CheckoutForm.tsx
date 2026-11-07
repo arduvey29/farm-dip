@@ -47,9 +47,9 @@ function Field({ id, label, error, children, hint }: { id: string; label: string
         {label}
       </label>
       {children}
-      {hint && !error ? <p className="mt-1 text-xs text-maroon-700">{hint}</p> : null}
+      {hint && !error ? <p className="mt-1 text-xs text-kattha-700">{hint}</p> : null}
       {error ? (
-        <p id={`${id}-error`} className="mt-1 text-sm text-kumkum">
+        <p id={`${id}-error`} className="mt-1 text-sm text-rani">
           {error}
         </p>
       ) : null}
@@ -57,7 +57,7 @@ function Field({ id, label, error, children, hint }: { id: string; label: string
   );
 }
 
-const input = "min-h-12 w-full rounded-xl border border-maroon-200 bg-white px-4 aria-[invalid=true]:border-kumkum";
+const input = "min-h-12 w-full rounded-xl border border-kattha-200 bg-white px-4 aria-[invalid=true]:border-rani";
 
 /**
  * PLACEHOLDER checkout. In production: post to a server action that re-prices the cart
@@ -73,18 +73,18 @@ export function CheckoutForm() {
   if (placed) {
     return (
       <div className="max-w-xl py-6" role="status">
-        <Icon name="check" className="size-12 rounded-full bg-mehndi p-2 text-chandan" />
+        <Icon name="check" className="size-12 rounded-full bg-hara p-2 text-chandan" />
         <h2 className="mt-5 font-display text-4xl">Order placed</h2>
         <p className="mt-3 text-lg">
           Order <strong>{placed.id}</strong> for <strong>{formatPrice(placed.total)}</strong> is confirmed.{" "}
           {placed.cod ? "Keep cash or UPI ready when it arrives." : "Payment received."}
         </p>
-        <p className="mt-2 text-maroon-700">We will send tracking details by SMS and WhatsApp when your ghee ships, usually within 24 hours.</p>
+        <p className="mt-2 text-kattha-700">We will send tracking details by SMS and WhatsApp when your ghee ships, usually within 24 hours.</p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/track-order" className="inline-flex min-h-12 items-center rounded-full bg-maroon-900 px-6 font-semibold text-chandan">
+          <Link href="/track-order" className="inline-flex min-h-12 items-center rounded-full bg-lal-900 px-6 font-semibold text-chandan">
             Track your order
           </Link>
-          <Link href="/blog/how-to-store-ghee" className="inline-flex min-h-12 items-center rounded-full border-2 border-maroon-900 px-6 font-semibold">
+          <Link href="/blog/how-to-store-ghee" className="inline-flex min-h-12 items-center rounded-full border-2 border-kattha-900 px-6 font-semibold">
             How to store your ghee
           </Link>
         </div>
@@ -96,8 +96,8 @@ export function CheckoutForm() {
     return (
       <div className="max-w-lg py-6">
         <p className="font-display text-3xl">Your cart is empty</p>
-        <p className="mt-3 text-maroon-700">Add some ghee to your cart before checking out.</p>
-        <Link href="/shop" className="mt-6 inline-flex min-h-12 items-center rounded-full bg-haldi-500 px-6 font-semibold text-maroon-950">
+        <p className="mt-3 text-kattha-700">Add some ghee to your cart before checking out.</p>
+        <Link href="/shop" className="mt-6 inline-flex min-h-12 items-center rounded-full bg-haldi-500 px-6 font-semibold text-kattha-950">
           Shop ghee
         </Link>
       </div>
@@ -177,12 +177,12 @@ export function CheckoutForm() {
             {PAYMENTS.map((p) => (
               <label
                 key={p.id}
-                className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-haldi-500 ${payment === p.id ? "border-maroon-900 bg-maroon-50" : "border-line"}`}
+                className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-haldi-500 ${payment === p.id ? "border-kattha-900 bg-kattha-50" : "border-line"}`}
               >
-                <input type="radio" name="payment" value={p.id} checked={payment === p.id} onChange={() => setPayment(p.id)} className="mt-1 size-4 accent-maroon-900" />
+                <input type="radio" name="payment" value={p.id} checked={payment === p.id} onChange={() => setPayment(p.id)} className="mt-1 size-4 accent-kattha-900" />
                 <span>
                   <span className="block font-semibold">{p.label}</span>
-                  <span className="text-sm text-maroon-700">{p.note}</span>
+                  <span className="text-sm text-kattha-700">{p.note}</span>
                 </span>
               </label>
             ))}
@@ -192,18 +192,18 @@ export function CheckoutForm() {
 
       <aside className="h-fit space-y-6 rounded-3xl border border-line p-6 lg:sticky lg:top-24">
         <h2 className="text-xl font-semibold">
-          Your order <span className="text-base font-normal text-maroon-700">({totals.count} items)</span>
+          Your order <span className="text-base font-normal text-kattha-700">({totals.count} items)</span>
         </h2>
         <ul className="space-y-3">
           {lines.map((l) => (
             <li key={l.key} className="flex items-center gap-3">
               <span className="relative shrink-0">
                 <Image src={l.image} alt="" width={56} height={56} className="rounded-lg bg-chandan" />
-                <span className="absolute -top-1.5 -right-1.5 grid size-5 place-items-center rounded-full bg-maroon-900 text-xs text-chandan">{l.qty}</span>
+                <span className="absolute -top-1.5 -right-1.5 grid size-5 place-items-center rounded-full bg-lal-900 text-xs text-chandan">{l.qty}</span>
               </span>
               <span className="min-w-0 flex-1 text-sm">
                 <span className="block truncate font-semibold">{l.name}</span>
-                <span className="text-maroon-700">{l.variantLabel}</span>
+                <span className="text-kattha-700">{l.variantLabel}</span>
               </span>
               <span className="text-sm font-semibold tabular-nums">{formatPrice(l.price * l.qty)}</span>
             </li>
@@ -211,10 +211,10 @@ export function CheckoutForm() {
         </ul>
         <CouponForm />
         <OrderSummary />
-        <button type="submit" className="min-h-13 w-full rounded-full bg-haldi-500 px-6 text-lg font-semibold text-maroon-950 hover:bg-haldi-400">
+        <button type="submit" className="min-h-13 w-full rounded-full bg-haldi-500 px-6 text-lg font-semibold text-kattha-950 hover:bg-haldi-400">
           {payment === "cod" ? `Place order, pay ${formatPrice(totals.total)} on delivery` : `Pay ${formatPrice(totals.total)}`}
         </button>
-        <p className="flex items-center justify-center gap-2 text-xs text-maroon-700">
+        <p className="flex items-center justify-center gap-2 text-xs text-kattha-700">
           <Icon name="shield" className="size-4" /> Payments are encrypted and processed by our payment partner.
         </p>
       </aside>

@@ -29,7 +29,7 @@ export function Mandala({ className = "", spin = false }: { className?: string; 
         return <circle key={i} cx={200 + Math.cos(a) * 170} cy={200 + Math.sin(a) * 170} r="2.6" fill="var(--color-haldi-400)" />;
       })}
       <Ring count={8} r={14} len={36} w={14} stroke="var(--color-haldi-400)" fill="rgb(240 124 18 / 0.25)" />
-      <circle cx="200" cy="200" r="10" fill="var(--color-kumkum)" stroke="var(--color-haldi-400)" strokeWidth="2" />
+      <circle cx="200" cy="200" r="10" fill="var(--color-lal-700)" stroke="var(--color-haldi-400)" strokeWidth="2" />
     </svg>
   );
 }
@@ -40,7 +40,7 @@ export function LotusRule({ className = "", align = "left" }: { className?: stri
     <div className={`flex items-center gap-3 text-peetal ${align === "center" ? "justify-center" : ""} ${className}`} aria-hidden>
       {align === "center" ? <span className="h-px w-16 bg-current" /> : null}
       <svg viewBox="0 0 40 20" className="h-4 w-8 shrink-0" focusable="false">
-        <path d="M20 2c3 4 3 9 0 14-3-5-3-10 0-14Z" fill="var(--color-kumkum)" />
+        <path d="M20 2c3 4 3 9 0 14-3-5-3-10 0-14Z" fill="var(--color-lal-700)" />
         <path d="M20 16c-2-5-6-8-11-8 1 5 5 8 11 8Zm0 0c2-5 6-8 11-8-1 5-5 8-11 8Z" fill="var(--color-haldi-500)" />
         <path d="M20 16c-4-2-10-2-14 0 4 2 10 2 14 0Zm0 0c4-2 10-2 14 0-4 2-10 2-14 0Z" fill="currentColor" />
       </svg>
@@ -81,11 +81,11 @@ export function SectionTitle({
   return (
     <div className={align === "center" ? "text-center" : ""}>
       {hindi ? (
-        <p lang="hi" className={`font-hand text-xl sm:text-2xl ${dark ? "text-haldi-300" : "text-kumkum"}`}>
+        <p lang="hi" className={`font-hand text-xl sm:text-2xl ${dark ? "text-haldi-300" : "text-rani"}`}>
           {hindi}
         </p>
       ) : null}
-      <h2 id={id} className={`font-display leading-[1.08] text-balance ${size === "lg" ? "text-4xl sm:text-5xl" : "text-3xl sm:text-4xl"} ${dark ? "text-chandan" : "text-maroon-800"}`}>
+      <h2 id={id} className={`font-display leading-[1.08] text-balance ${size === "lg" ? "text-4xl sm:text-5xl" : "text-3xl sm:text-4xl"} ${dark ? "text-chandan" : "text-kattha-800"}`}>
         {title}
       </h2>
       <LotusRule className="mt-4" align={align} />

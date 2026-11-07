@@ -9,7 +9,7 @@ const STAGES = ["Order confirmed", "Packed", "Shipped", "Out for delivery", "Del
 export function TrackOrderForm() {
   const [stage, setStage] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const input = "min-h-12 w-full rounded-xl border border-maroon-200 bg-white px-4";
+  const input = "min-h-12 w-full rounded-xl border border-kattha-200 bg-white px-4";
 
   return (
     <div className="rounded-3xl border border-line p-6 sm:p-8">
@@ -47,11 +47,11 @@ export function TrackOrderForm() {
           <input id="t-phone" name="phone" type="tel" inputMode="numeric" maxLength={10} autoComplete="tel-national" className={input} />
         </div>
         {error ? (
-          <p role="alert" className="text-sm text-kumkum">
+          <p role="alert" className="text-sm text-rani">
             {error}
           </p>
         ) : null}
-        <button type="submit" className="min-h-12 rounded-full bg-maroon-900 px-7 font-semibold text-chandan hover:bg-maroon-800">
+        <button type="submit" className="min-h-12 rounded-full bg-lal-900 px-7 font-semibold text-chandan hover:bg-lal-800">
           Track order
         </button>
       </form>
@@ -60,11 +60,11 @@ export function TrackOrderForm() {
         <ol className="mt-8 space-y-4" aria-label="Order progress">
           {STAGES.map((s, i) => (
             <li key={s} className="flex items-center gap-3">
-              <span className={`grid size-8 place-items-center rounded-full ${i <= stage ? "bg-mehndi text-chandan" : "border-2 border-line text-maroon-500"}`}>
+              <span className={`grid size-8 place-items-center rounded-full ${i <= stage ? "bg-hara text-chandan" : "border-2 border-line text-kattha-500"}`}>
                 {i <= stage ? <Icon name="check" className="size-4" /> : i + 1}
               </span>
-              <span className={i <= stage ? "font-semibold" : "text-maroon-700"}>{s}</span>
-              {i === stage ? <span className="text-sm text-maroon-700">(current)</span> : null}
+              <span className={i <= stage ? "font-semibold" : "text-kattha-700"}>{s}</span>
+              {i === stage ? <span className="text-sm text-kattha-700">(current)</span> : null}
             </li>
           ))}
         </ol>

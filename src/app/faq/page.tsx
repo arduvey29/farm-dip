@@ -7,8 +7,8 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
 
-const title = "Ghee Questions and Answers: Bilona, A2, Delivery and Returns";
-const description = "Answers about bilona and A2 ghee, purity testing, delivery times, cash on delivery, returns and how to store ghee.";
+const title = "Ghee Questions and Answers: Buffalo Ghee, Delivery and Returns";
+const description = "Answers about Farm Dip buffalo ghee, what goes into it, delivery times, cash on delivery, returns and how to store ghee.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/faq" });
 
@@ -26,13 +26,13 @@ export default function FaqPage() {
             <ul className="space-y-2">
               {faqGroups.map((g) => (
                 <li key={g.id}>
-                  <a href={`#${g.id}`} className="font-medium text-maroon-800 underline-offset-4 hover:underline">
+                  <a href={`#${g.id}`} className="font-medium text-kattha-800 underline-offset-4 hover:underline">
                     {g.title}
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm text-maroon-700">
+            <p className="mt-8 text-sm text-kattha-700">
               Still need help?{" "}
               <Link href="/contact" className="font-semibold underline underline-offset-4">
                 Contact us

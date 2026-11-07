@@ -9,24 +9,28 @@ export const faqGroups: { id: string; title: string; items: QA[] }[] = [
     title: "About our ghee",
     items: [
       {
-        q: "What is bilona ghee?",
-        a: "Bilona ghee is ghee made from curd rather than cream. Whole milk is boiled, cooled and set into curd overnight. The curd is churned with a wooden churner called a bilona to separate makkhan (butter), and the makkhan is slow-cooked until it turns into clear, golden ghee.",
+        q: "What is Farm Dip ghee made from?",
+        a: "Pure buffalo milk, and nothing else. There are no preservatives, no additives and no colour. We make it the way we ate ghee in our childhood: pure, simple and rich.",
       },
       {
-        q: "What is A2 ghee, and is it better than regular ghee?",
-        a: "A2 ghee is made from the milk of cows whose milk contains only the A2 type of beta-casein protein, such as native Indian Gir and Sahiwal cows. Ghee is about 99.5% fat, so it contains only traces of protein. The A2 label mainly tells you the milk came from native breeds. We would rather you buy our ghee for its taste and method than for health claims.",
+        q: "Why is buffalo ghee white and not yellow?",
+        a: "Cow milk carries beta-carotene from the fodder, which makes cow ghee yellow. Buffalo milk has almost none, so pure buffalo ghee is naturally creamy white. The colour is not a sign of anything added or removed.",
       },
       {
-        q: "How do you check that your ghee is pure?",
-        a: `Every batch is tested in an independent NABL-accredited lab for ${site.stats.labParameters} parameters, including moisture, free fatty acids, butyro-refractometer reading, Reichert-Meissl value and tests for vanaspati, vegetable fat and added colour. The batch number on your jar links to its report.`,
+        q: "What is the difference between buffalo ghee and cow ghee?",
+        a: "Buffalo milk has roughly twice the fat of cow milk, so buffalo ghee is thicker, creamier and richer, and sets firm when cool. Cow ghee is yellow, lighter and often grainy. Buffalo ghee is the favourite for halwa, ladoo, mithai, parathas and frying.",
+      },
+      {
+        q: "Is Farm Dip ghee good for everyday cooking?",
+        a: "Yes. It holds up well to high heat, so it is good for tadka, rotis, parathas and frying, and for traditional recipes and sweets.",
       },
       {
         q: "Is ghee lactose-free?",
-        a: "Ghee is almost pure butterfat and contains only trace amounts of lactose and milk protein, so many people with lactose intolerance tolerate it well. It is not certified lactose-free, so if you have a milk allergy, check with your doctor first.",
+        a: "Ghee is almost pure milk fat and contains only trace amounts of lactose and milk protein, so many people with lactose intolerance tolerate it well. It is not certified lactose-free, so if you have a milk allergy, check with your doctor first.",
       },
       {
-        q: "Why does the colour or texture of my ghee change between orders?",
-        a: "Natural ghee changes with the season. Cows eating fresh green grass in the monsoon give more golden ghee; in summer it may be paler. Texture depends on temperature: ghee is liquid in heat, solid in cold, and grainy in between.",
+        q: "Why does the texture of my ghee change?",
+        a: "Ghee changes with temperature. It is soft or liquid in summer, firm in winter and often grainy in between. Buffalo ghee sets firmer than cow ghee. None of this changes its quality.",
       },
     ],
   },

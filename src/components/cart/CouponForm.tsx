@@ -45,14 +45,14 @@ export function CouponForm() {
           autoComplete="off"
           aria-invalid={Boolean(error)}
           aria-describedby={error ? "coupon-error" : undefined}
-          className="min-h-11 flex-1 rounded-full border border-maroon-200 px-4 uppercase"
+          className="min-h-11 flex-1 rounded-full border border-kattha-200 px-4 uppercase"
         />
-        <button type="submit" className="min-h-11 rounded-full bg-maroon-100 px-5 font-semibold hover:bg-maroon-200">
+        <button type="submit" className="min-h-11 rounded-full bg-kattha-100 px-5 font-semibold hover:bg-kattha-200">
           Apply
         </button>
       </div>
       {error ? (
-        <p id="coupon-error" role="alert" className="mt-2 text-sm text-kumkum">
+        <p id="coupon-error" role="alert" className="mt-2 text-sm text-rani">
           {error}
         </p>
       ) : null}

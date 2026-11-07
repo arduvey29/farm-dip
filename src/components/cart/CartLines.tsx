@@ -8,7 +8,7 @@ import { useCart } from "./CartProvider";
 
 export function QtyStepper({ value, onChange, label }: { value: number; onChange: (n: number) => void; label: string }) {
   return (
-    <div className="inline-flex items-center rounded-full border border-maroon-200" role="group" aria-label={`Quantity for ${label}`}>
+    <div className="inline-flex items-center rounded-full border border-kattha-200" role="group" aria-label={`Quantity for ${label}`}>
       <button type="button" onClick={() => onChange(value - 1)} className="rounded-full p-2 hover:bg-chandan" aria-label="Decrease quantity">
         <Icon name="minus" className="size-4" />
       </button>
@@ -37,16 +37,16 @@ export function CartLines({ compact = false }: { compact?: boolean }) {
                 <Link href={`/products/${line.slug}?pack=${line.variantId}`} className="font-semibold leading-snug hover:underline">
                   {line.name}
                 </Link>
-                <p className="text-sm text-maroon-700">{line.variantLabel}</p>
+                <p className="text-sm text-kattha-700">{line.variantLabel}</p>
               </div>
               <div className="text-right">
                 <p className="font-bold">{formatPrice(line.price * line.qty)}</p>
-                {line.mrp > line.price ? <s className="text-xs text-maroon-500">{formatPrice(line.mrp * line.qty)}</s> : null}
+                {line.mrp > line.price ? <s className="text-xs text-kattha-500">{formatPrice(line.mrp * line.qty)}</s> : null}
               </div>
             </div>
             <div className="flex items-center justify-between">
               <QtyStepper value={line.qty} onChange={(n) => setQty(line.key, n)} label={`${line.name} ${line.variantLabel}`} />
-              <button type="button" onClick={() => remove(line.key)} className="inline-flex items-center gap-1 text-sm text-maroon-700 underline-offset-4 hover:underline">
+              <button type="button" onClick={() => remove(line.key)} className="inline-flex items-center gap-1 text-sm text-kattha-700 underline-offset-4 hover:underline">
                 <Icon name="trash" className="size-4" /> Remove
               </button>
             </div>

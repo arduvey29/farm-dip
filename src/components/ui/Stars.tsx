@@ -27,7 +27,7 @@ export function RatingInline({ average, count, href }: { average: number; count:
     <span className="inline-flex items-center gap-2 text-sm">
       <Stars rating={average} />
       <span className="font-semibold">{average.toFixed(1)}</span>
-      <span className="text-maroon-700">
+      <span className="text-kattha-700">
         ({count} {count === 1 ? "review" : "reviews"})
       </span>
     </span>

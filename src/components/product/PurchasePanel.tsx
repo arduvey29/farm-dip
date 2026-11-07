@@ -74,14 +74,14 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
           <span className="text-4xl font-bold tabular-nums">{formatPrice(variant.price)}</span>
           {off > 0 ? (
             <>
-              <span className="text-maroon-700">
+              <span className="text-kattha-700">
                 MRP <s>{formatPrice(variant.mrp)}</s>
               </span>
-              <span className="rounded-full bg-kumkum-50 px-2.5 py-0.5 text-sm font-bold text-kumkum">{off}% off</span>
+              <span className="rounded-full bg-rani-50 px-2.5 py-0.5 text-sm font-bold text-rani">{off}% off</span>
             </>
           ) : null}
         </div>
-        <p className="mt-1 text-sm text-maroon-700">
+        <p className="mt-1 text-sm text-kattha-700">
           Inclusive of all taxes. {formatPrice(pricePerLitre(variant.price, variant.volumeMl))} per litre.
         </p>
       </div>
@@ -98,16 +98,16 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
                 <label
                   key={v.id}
                   className={`relative flex cursor-pointer flex-col rounded-2xl border-2 px-3.5 py-3 transition-colors has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-haldi-500 ${
-                    selected ? "border-maroon-900 bg-maroon-50" : "border-line hover:border-maroon-200"
+                    selected ? "border-kattha-900 bg-kattha-50" : "border-line hover:border-kattha-200"
                   } ${v.inStock ? "" : "opacity-50"}`}
                 >
                   <input type="radio" name="pack" value={v.id} checked={selected} onChange={() => choose(v)} disabled={!v.inStock} className="sr-only" />
-                  {v.bestValue ? <span className="absolute -top-2.5 right-3 rounded-full bg-haldi-500 px-2 text-xs font-bold text-maroon-950">Best value</span> : null}
+                  {v.bestValue ? <span className="absolute -top-2.5 right-3 rounded-full bg-haldi-500 px-2 text-xs font-bold text-kattha-950">Best value</span> : null}
                   <span className="text-lg font-bold">{v.label}</span>
-                  <span className="text-xs text-maroon-700">{v.packaging}</span>
+                  <span className="text-xs text-kattha-700">{v.packaging}</span>
                   <span className="mt-1.5 font-semibold">{formatPrice(v.price)}</span>
-                  <span className="text-xs text-maroon-700">
-                    {formatPrice(perL)}/L{saving > 0 ? <span className="font-semibold text-mehndi"> save {saving}%</span> : null}
+                  <span className="text-xs text-kattha-700">
+                    {formatPrice(perL)}/L{saving > 0 ? <span className="font-semibold text-hara"> save {saving}%</span> : null}
                   </span>
                 </label>
               );
@@ -122,7 +122,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
           type="button"
           onClick={(e) => add(line(), qty, { from: e.currentTarget })}
           disabled={!variant.inStock}
-          className="min-h-12 flex-1 rounded-full bg-haldi-500 px-6 font-semibold text-maroon-950 hover:bg-haldi-400 disabled:cursor-not-allowed disabled:opacity-50"
+          className="min-h-12 flex-1 rounded-full bg-haldi-500 px-6 font-semibold text-kattha-950 hover:bg-haldi-400 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {variant.inStock ? "Add to cart" : "Out of stock"}
         </button>
@@ -133,7 +133,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
             router.push("/checkout");
           }}
           disabled={!variant.inStock}
-          className="min-h-12 w-full rounded-full bg-maroon-900 px-6 font-semibold text-chandan hover:bg-maroon-800 disabled:opacity-50 sm:w-auto sm:flex-1"
+          className="min-h-12 w-full rounded-full bg-lal-900 px-6 font-semibold text-chandan hover:bg-lal-800 disabled:opacity-50 sm:w-auto sm:flex-1"
         >
           Buy now
         </button>
@@ -147,7 +147,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
           <Icon name="truck" className="size-5 text-haldi-700" /> Ships within {site.commerce.dispatchHours} hours
         </li>
         <li className="flex items-center gap-2">
-          <Icon name="flask" className="size-5 text-haldi-700" /> Lab report for this batch
+          <Icon name="leaf" className="size-5 text-haldi-700" /> No preservatives or additives
         </li>
         <li className="flex items-center gap-2">
           <Icon name="refresh" className="size-5 text-haldi-700" /> {site.commerce.returnWindowDays}-day quality promise
@@ -159,7 +159,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
       <PincodeCheck />
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 px-4 py-3 backdrop-blur transition-[transform,visibility] duration-300 lg:hidden ${
+        className={`fixed inset-x-0 bottom-0 z-30 border-t border-line bg-malai/95 px-4 py-3 backdrop-blur transition-[transform,visibility] duration-300 lg:hidden ${
           showSticky ? "visible translate-y-0" : "invisible translate-y-full"
         }`}
         aria-hidden={!showSticky}
@@ -168,7 +168,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold">{name}</p>
             <p className="text-sm">
-              <span className="font-bold">{formatPrice(variant.price)}</span> <span className="text-maroon-700">{variant.label}</span>
+              <span className="font-bold">{formatPrice(variant.price)}</span> <span className="text-kattha-700">{variant.label}</span>
             </p>
           </div>
           <button
@@ -176,7 +176,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
             tabIndex={showSticky ? 0 : -1}
             onClick={(e) => add(line(), qty, { from: e.currentTarget })}
             disabled={!variant.inStock}
-            className="min-h-11 rounded-full bg-haldi-500 px-5 font-semibold text-maroon-950"
+            className="min-h-11 rounded-full bg-haldi-500 px-5 font-semibold text-kattha-950"
           >
             Add to cart
           </button>

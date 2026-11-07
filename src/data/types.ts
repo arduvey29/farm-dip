@@ -1,7 +1,5 @@
 export type QA = { q: string; a: string };
 
-export type CollectionSlug = "a2-cow-ghee" | "buffalo-ghee" | "infused-ghee" | "gift-packs";
-
 export type Variant = {
   /** URL-safe id, used as ?pack= on product pages. */
   id: string;
@@ -23,7 +21,6 @@ export type Product = {
   kind: "single" | "bundle";
   /** Litres of milk that go into one litre of this ghee, shown on the product page. */
   milk?: { litresPerLitre: number; source: string };
-  collections: CollectionSlug[];
   badge?: string;
   tagline: string;
   /** One sentence. Used on cards and as the base of the meta description. */
@@ -35,7 +32,6 @@ export type Product = {
   images: { src: string; alt: string }[];
   variants: Variant[];
   defaultVariant: string;
-  contains?: string[];
   ingredients: string;
   shelfLife: string;
   storage: string;
@@ -57,18 +53,6 @@ export type Review = {
   date: string;
   verified: boolean;
   pack?: string;
-};
-
-export type Collection = {
-  slug: CollectionSlug;
-  name: string;
-  h1: string;
-  /** Answer-first intro shown above the grid. */
-  intro: string;
-  body: { heading: string; text: string }[];
-  faqs: QA[];
-  image: string;
-  seo: { title: string; description: string };
 };
 
 export type PostSection = {

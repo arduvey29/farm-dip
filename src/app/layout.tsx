@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Eczar, Kalam, Mukta } from "next/font/google";
+import { Martel, Tillana, Yatra_One } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { graph, organizationLd, websiteLd } from "@/lib/seo";
@@ -9,15 +9,16 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-// Eczar (display) and Mukta (text) are Indian-designed and cover Latin and Devanagari; Kalam is a handwritten accent.
-const eczar = Eczar({ subsets: ["latin", "devanagari"], variable: "--font-eczar", display: "swap" });
-const kalam = Kalam({ weight: ["400", "700"], subsets: ["latin", "devanagari"], variable: "--font-kalam", display: "swap" });
-const mukta = Mukta({ weight: ["400", "500", "600", "700"], subsets: ["latin"], variable: "--font-mukta", display: "swap" });
+// All three cover Latin and Devanagari. Yatra One for headings (hand-painted Indian signboard lettering),
+// Tillana for Hindi notes (brush-pen calligraphy), Martel for reading text (an Indian-designed serif).
+const yatra = Yatra_One({ weight: "400", subsets: ["latin", "devanagari"], variable: "--font-yatra", display: "swap" });
+const tillana = Tillana({ weight: ["500", "700"], subsets: ["latin", "devanagari"], variable: "--font-tillana", display: "swap" });
+const martel = Martel({ weight: ["400", "600", "700", "800"], subsets: ["latin", "devanagari"], variable: "--font-martel", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: A2 Bilona Ghee from Gir Cows, Lab Tested`,
+    default: `${site.name}: Pure Desi Buffalo Ghee, No Preservatives`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: site.locale,
     url: "/",
-    title: `${site.name}: A2 Bilona Ghee from Gir Cows`,
+    title: `${site.name}: Pure Desi Buffalo Ghee`,
     description: site.description,
   },
   twitter: { card: "summary_large_image" },
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
   },
   other: {
     // Regional hints. Ignored by Google, still read by some regional engines and directories.
-    "geo.region": "IN-GJ",
+    "geo.region": site.address.isoRegion,
     "geo.placename": `${site.address.locality}, ${site.address.region}`,
     "geo.position": `${site.geo.latitude};${site.geo.longitude}`,
     ICBM: `${site.geo.latitude}, ${site.geo.longitude}`,
@@ -58,15 +59,15 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#4a1410",
+  themeColor: "#6b100b",
   colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-IN" className={`${eczar.variable} ${kalam.variable} ${mukta.variable} h-full antialiased`}>
+    <html lang="en-IN" className={`${yatra.variable} ${tillana.variable} ${martel.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <a href="#main" className="sr-only z-50 rounded-full bg-haldi-500 px-5 py-3 font-semibold text-maroon-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+        <a href="#main" className="sr-only z-50 rounded-full bg-haldi-500 px-5 py-3 font-semibold text-kattha-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
           Skip to content
         </a>
         <CartProvider>

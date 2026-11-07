@@ -18,7 +18,7 @@ function Diya({ lit }: { lit: boolean }) {
           </g>
         </>
       ) : (
-        <path d="M24 22v-4" stroke="var(--color-maroon-500)" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 22v-4" stroke="var(--color-kattha-500)" strokeWidth="2" strokeLinecap="round" />
       )}
       <path d="M6 26c4 9 11 13 18 13s14-4 18-13c-6 2.5-12 3.5-18 3.5S12 28.5 6 26Z" fill={lit ? "var(--color-haldi-500)" : "#c7a27c"} />
       <path d="M6 26c6 2.5 12 3.5 18 3.5s12-1 18-3.5" fill="none" stroke={lit ? "var(--color-haldi-800)" : "#8f6a48"} strokeWidth="1.5" />
@@ -37,7 +37,7 @@ export function FreeShippingMeter() {
     <div>
       <p className="text-sm" aria-live="polite">
         {reached ? (
-          <span className="font-semibold text-mehndi">Every diya is lit. Your order ships free.</span>
+          <span className="font-semibold text-hara">Every diya is lit. Your order ships free.</span>
         ) : (
           <>
             Add <strong>{formatPrice(totals.toFreeShipping)}</strong> more for free shipping.

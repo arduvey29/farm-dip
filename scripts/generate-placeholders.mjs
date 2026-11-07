@@ -3,7 +3,8 @@
  * Run: npm run placeholders
  *
  * Replace each file with real photography using the same path (or update the
- * paths in src/data/*.ts). Suggested art direction: jars with a red cloth tied
+ * paths in src/data/*.ts), then bump ASSET_VERSION in src/lib/assets.ts.
+ * Suggested art direction: jars of creamy white buffalo ghee with a red cloth tied
  * over the lid, on a banana leaf or brass thali, with marigolds, shot on a warm
  * cream or rangoli background.
  */
@@ -15,26 +16,28 @@ import { badgeMarkup, badgeSvg, emblemSvg } from "../src/components/brand/badge.
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "images");
 
 const C = {
-  maroon: "#4a1410",
-  maroonMid: "#6a1b15",
-  maroonDeep: "#2a0e0a",
-  kumkum: "#b3201a",
-  kumkumDark: "#8e1712",
-  haldi: "#e8a30c",
-  haldiLight: "#f8d47a",
-  genda: "#f07c12",
+  lal: "#6b100b",
+  lalMid: "#8e1a12",
+  lalDeep: "#3f0a07",
+  cloth: "#b3261a",
+  clothDark: "#8e1a12",
+  ink: "#2f150e",
+  haldi: "#f5b301",
+  haldiLight: "#fcdb7e",
+  genda: "#f57c00",
+  rani: "#c2185b",
+  hara: "#2e7d32",
+  neel: "#1f4596",
   peetal: "#b8862b",
-  chandan: "#f8ead0",
-  paper: "#fff8ec",
+  chandan: "#fdebc8",
+  malai: "#fff8ea",
   leaf: "#3f6b1f",
   leafLight: "#6c9a35",
 };
 
+// Buffalo ghee is creamy white: it carries almost no beta-carotene.
 const palettes = {
-  gir: { light: "#f8d98a", mid: "#e8a30c", dark: "#b8790c", bg: "#fbefd6" },
-  sahiwal: { light: "#fae4a8", mid: "#efc35a", dark: "#cf9a2c", bg: "#fcf2dd" },
-  buffalo: { light: "#fffcf1", mid: "#f4ecd2", dark: "#ddd0aa", bg: "#f7eedc" },
-  haldi: { light: "#f7c25a", mid: "#e58a10", dark: "#b45f05", bg: "#fbead0" },
+  buffalo: { light: "#fffaf0", mid: "#f3e6c4", dark: "#d9c18a", bg: "#fcefd6" },
 };
 
 /** The फ़ार्म dip badge as a label, `height` tall, centred on cx. */
@@ -118,12 +121,12 @@ function rangoli(cx, cy, r, { wash = true } = {}) {
     }).join("");
   const dots = Array.from({ length: 36 }, (_, i) => {
     const a = (i / 36) * Math.PI * 2;
-    return `<circle cx="${(cx + Math.cos(a) * r).toFixed(1)}" cy="${(cy + Math.sin(a) * r).toFixed(1)}" r="5" fill="${C.kumkum}" opacity="0.35"/>`;
+    return `<circle cx="${(cx + Math.cos(a) * r).toFixed(1)}" cy="${(cy + Math.sin(a) * r).toFixed(1)}" r="5" fill="${C.cloth}" opacity="0.35"/>`;
   }).join("");
   return `
   ${wash ? `<circle cx="${cx}" cy="${cy}" r="${r * 0.92}" fill="#ffffff" opacity="0.45"/>` : ""}
   ${ring(24, r * 0.62, r * 0.26, r * 0.07, C.genda, 0.28)}
-  ${ring(12, r * 0.34, r * 0.28, r * 0.12, C.kumkum, 0.18)}
+  ${ring(12, r * 0.34, r * 0.28, r * 0.12, C.cloth, 0.18)}
   ${ring(12, r * 0.34, r * 0.18, r * 0.06, C.haldi, 0.35)}
   <circle cx="${cx}" cy="${cy}" r="${r * 0.6}" fill="none" stroke="${C.peetal}" stroke-width="3" opacity="0.5" stroke-dasharray="4 10"/>
   ${dots}`;
@@ -134,18 +137,6 @@ function kolamDots(w, h, gap = 60) {
   let out = "";
   for (let y = gap / 2; y < h; y += gap) for (let x = gap / 2; x < w; x += gap) out += `<circle cx="${x}" cy="${y}" r="2.4" fill="${C.peetal}" opacity="0.22"/>`;
   return out;
-}
-
-function kairiStrip(x, y, width, h, id) {
-  return `
-  <defs>
-    <pattern id="${id}" x="${x}" y="${y}" width="${h * 1.8}" height="${h}" patternUnits="userSpaceOnUse">
-      <rect width="${h * 1.8}" height="${h}" fill="${C.maroon}"/>
-      <path d="M${h * 0.9} ${h * 0.15} c${h * 0.3} 0 ${h * 0.45} ${h * 0.25} ${h * 0.45} ${h * 0.45} 0 ${h * 0.25} -${h * 0.2} ${h * 0.4} -${h * 0.45} ${h * 0.4} -${h * 0.1} 0 -${h * 0.15} -${h * 0.05} -${h * 0.1} -${h * 0.12} ${h * 0.12} -${h * 0.05} ${h * 0.18} -${h * 0.15} ${h * 0.12} -${h * 0.28} -${h * 0.05} -${h * 0.12} -${h * 0.2} -${h * 0.12} -${h * 0.28} -${h * 0.02} z" fill="${C.haldi}"/>
-      <circle cx="${h * 0.2}" cy="${h * 0.5}" r="${h * 0.08}" fill="${C.chandan}"/>
-    </pattern>
-  </defs>
-  <rect x="${x}" y="${y}" width="${width}" height="${h}" fill="url(#${id})"/>`;
 }
 
 /* ---------- Jar with a cloth-tied lid ---------- */
@@ -192,8 +183,8 @@ function jarGroup({ cx, baseY, scale = 1, pal, name, volume, seed, label = true 
       <stop offset="1" stop-color="${pal.dark}"/>
     </linearGradient>
     <linearGradient id="${id}c" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="${C.kumkum}"/>
-      <stop offset="1" stop-color="${C.kumkumDark}"/>
+      <stop offset="0" stop-color="${C.cloth}"/>
+      <stop offset="1" stop-color="${C.clothDark}"/>
     </linearGradient>
     <clipPath id="${id}k"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${60 * scale}"/></clipPath>
   </defs>
@@ -203,7 +194,7 @@ function jarGroup({ cx, baseY, scale = 1, pal, name, volume, seed, label = true 
     ${granules(seed, { x, y: fillTop, w, h: h - 70 * scale, count: Math.round(240 * scale), colors: [pal.light, pal.dark, "#ffffff"], rMin: 2 * scale, rMax: 6 * scale })}
     <rect x="${x + w * 0.1}" y="${y + 20 * scale}" width="${w * 0.07}" height="${h * 0.8}" rx="${12 * scale}" fill="#ffffff" opacity="0.35"/>
   </g>
-  <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${60 * scale}" fill="none" stroke="${C.maroon}" stroke-opacity="0.25" stroke-width="${4 * scale}"/>
+  <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${60 * scale}" fill="none" stroke="${C.lal}" stroke-opacity="0.25" stroke-width="${4 * scale}"/>
 
   <!-- Red cloth tied over the lid -->
   <path d="M${x + 30 * scale} ${clothTop + 30 * scale} Q ${cx} ${clothTop - 40 * scale} ${x + w - 30 * scale} ${clothTop + 30 * scale} L ${right} ${edgeY}${hemBack} Z" fill="url(#${id}c)"/>
@@ -216,7 +207,7 @@ function jarGroup({ cx, baseY, scale = 1, pal, name, volume, seed, label = true 
     label
       ? `
   ${badge(cx, y + h * 0.2, h * 0.5, `${id}b`)}
-  <rect x="${x - 2}" y="${labelY}" width="${w + 4}" height="${labelH}" fill="${C.maroon}"/>
+  <rect x="${x - 2}" y="${labelY}" width="${w + 4}" height="${labelH}" fill="${C.lal}"/>
   <path d="M${x - 2} ${labelY + 5 * scale}H${x + w + 2}M${x - 2} ${labelY + labelH - 5 * scale}H${x + w + 2}" stroke="${C.peetal}" stroke-width="${2 * scale}"/>
   <text x="${cx}" y="${labelY + labelH * 0.47}" text-anchor="middle" font-family="${SANS}" font-size="${24 * scale}" font-weight="700" fill="${C.chandan}">${esc(name)}</text>
   ${volume ? `<text x="${cx}" y="${labelY + labelH * 0.8}" text-anchor="middle" font-family="${SANS}" font-size="${18 * scale}" fill="${C.haldiLight}">${esc(volume)}</text>` : ""}`
@@ -245,9 +236,9 @@ function dolchiGroup({ cx, baseY, scale = 1, name, volume, seed }) {
   <path d="M${cx - topW / 2} ${y} L${cx + topW / 2} ${y} L${cx + botW / 2} ${baseY} L${cx - botW / 2} ${baseY} Z" fill="url(#${id}s)"/>
   <ellipse cx="${cx}" cy="${y}" rx="${topW / 2 + 8 * scale}" ry="${30 * scale}" fill="#b9bec6"/>
   <ellipse cx="${cx}" cy="${y - 6 * scale}" rx="${topW / 2 - 10 * scale}" ry="${22 * scale}" fill="#dfe3e8"/>
-  <path d="M${cx + topW / 2 - 30 * scale} ${y - 10 * scale} l ${30 * scale} ${50 * scale} l ${-24 * scale} ${10 * scale} z" fill="${C.kumkum}"/>
+  <path d="M${cx + topW / 2 - 30 * scale} ${y - 10 * scale} l ${30 * scale} ${50 * scale} l ${-24 * scale} ${10 * scale} z" fill="${C.cloth}"/>
   ${badge(cx, y + 90 * scale, 260 * scale, `${id}b`)}
-  <rect x="${cx - 150 * scale}" y="${y + 368 * scale}" width="${300 * scale}" height="${76 * scale}" rx="${8 * scale}" fill="${C.maroon}"/>
+  <rect x="${cx - 150 * scale}" y="${y + 368 * scale}" width="${300 * scale}" height="${76 * scale}" rx="${8 * scale}" fill="${C.lal}"/>
   <text x="${cx}" y="${y + 400 * scale}" text-anchor="middle" font-family="${SANS}" font-size="${20 * scale}" font-weight="700" fill="${C.chandan}">${esc(name)}</text>
   ${volume ? `<text x="${cx}" y="${y + 428 * scale}" text-anchor="middle" font-family="${SANS}" font-size="${16 * scale}" fill="${C.haldiLight}">${esc(volume)}</text>` : ""}`;
 }
@@ -291,107 +282,46 @@ function textureArt(pal, seed) {
 </svg>`;
 }
 
-/* ---------- Products ---------- */
-const products = [
-  { slug: "a2-gir-cow-bilona-ghee", name: "A2 Gir Cow Ghee", pal: "gir", sizes: ["250 ml", "500 ml", "1 L", "2.5 L", "5 L"], dolchi: true },
-  { slug: "a2-sahiwal-cow-bilona-ghee", name: "A2 Sahiwal Cow Ghee", pal: "sahiwal", sizes: ["500 ml", "1 L"] },
-  { slug: "desi-buffalo-bilona-ghee", name: "Desi Buffalo Ghee", pal: "buffalo", sizes: ["500 ml", "1 L", "2.5 L"], dolchi: true },
-  { slug: "haldi-infused-cow-ghee", name: "Haldi A2 Cow Ghee", pal: "haldi", sizes: ["250 ml", "500 ml"] },
-];
+/* ---------- The product: pure desi buffalo ghee in 500 ml, 1 L and 5 L ---------- */
+// Earlier catalogue folders and art that no longer exist on the site.
+for (const old of [
+  "products/a2-gir-cow-bilona-ghee",
+  "products/a2-sahiwal-cow-bilona-ghee",
+  "products/desi-buffalo-bilona-ghee",
+  "products/haldi-infused-cow-ghee",
+  "products/family-saver-2x1l",
+  "products/ghee-tasting-duo",
+  "products/festive-gift-box",
+  "hero",
+  "farm",
+  "blog",
+])
+  rmSync(join(root, old), { recursive: true, force: true });
 
-for (const p of products) {
-  const pal = palettes[p.pal];
-  const seed = hash(p.slug);
-  write(`products/${p.slug}/jar.svg`, scene(jarGroup({ cx: 600, baseY: 1000, scale: 1.18, pal, name: p.name, volume: "Bilona churned", seed }), pal.bg, seed));
-  write(`products/${p.slug}/texture.svg`, textureArt(pal, seed + 1));
-  if (p.dolchi) {
-    write(`products/${p.slug}/dolchi.svg`, scene(dolchiGroup({ cx: 600, baseY: 1000, scale: 1.2, name: p.name, volume: "Food-grade steel", seed: seed + 2 }), pal.bg, seed + 2));
-  }
-  const scales = { "250 ml": 0.42, "500 ml": 0.52, "1 L": 0.62, "2.5 L": 0.7, "5 L": 0.8 };
-  const n = p.sizes.length;
-  const gap = 1100 / n;
-  let lineup = "";
-  p.sizes.forEach((size, i) => {
-    const cx = 50 + gap * i + gap / 2;
-    const s = scales[size] * (n > 3 ? 0.85 : 1.1);
-    const isDolchi = size.endsWith(" L") && parseFloat(size) >= 2.5;
-    lineup += isDolchi
-      ? dolchiGroup({ cx, baseY: 930, scale: s, name: p.name, volume: size, seed: seed + 10 + i })
-      : jarGroup({ cx, baseY: 930, scale: s, pal, name: p.name, volume: size, seed: seed + 10 + i });
-    lineup += `<text x="${cx}" y="1010" text-anchor="middle" font-family="${SANS}" font-size="34" font-weight="700" fill="${C.maroon}">${size}</text>`;
-  });
-  write(`products/${p.slug}/sizes.svg`, scene(lineup, pal.bg, seed + 3, { leaf: false }));
-}
-
-/* ---------- Bundles ---------- */
 {
-  const pal = palettes.gir;
-  const s = hash("family");
-  write(
-    "products/family-saver-2x1l/bundle.svg",
-    scene(
-      jarGroup({ cx: 400, baseY: 1000, scale: 0.9, pal, name: "A2 Gir Cow Ghee", volume: "1 L", seed: s }) +
-        jarGroup({ cx: 800, baseY: 1000, scale: 0.9, pal, name: "A2 Gir Cow Ghee", volume: "1 L", seed: s + 1 }),
-      pal.bg,
-      s,
-    ),
-  );
+  const slug = "pure-desi-buffalo-ghee";
+  const name = "Pure Desi Buffalo Ghee";
+  const pal = palettes.buffalo;
+  const seed = hash(slug);
+  write(`products/${slug}/jar.svg`, scene(jarGroup({ cx: 600, baseY: 1000, scale: 1.18, pal, name, volume: "500 ml", seed }), pal.bg, seed));
+  write(`products/${slug}/jar-1l.svg`, scene(jarGroup({ cx: 600, baseY: 1000, scale: 1.3, pal, name, volume: "1 litre", seed: seed + 4 }), pal.bg, seed + 4));
+  write(`products/${slug}/dolchi.svg`, scene(dolchiGroup({ cx: 600, baseY: 1000, scale: 1.2, name, volume: "5 litres", seed: seed + 2 }), pal.bg, seed + 2));
+  write(`products/${slug}/texture.svg`, textureArt(pal, seed + 1));
+  const lineup = [
+    ["500 ml", 280, 0.62, false],
+    ["1 L", 600, 0.76, false],
+    ["5 L", 940, 0.8, true],
+  ]
+    .map(
+      ([size, cx, s, isDolchi], i) =>
+        (isDolchi
+          ? dolchiGroup({ cx, baseY: 930, scale: s, name, volume: size, seed: seed + 10 + i })
+          : jarGroup({ cx, baseY: 930, scale: s, pal, name, volume: size, seed: seed + 10 + i })) +
+        `<text x="${cx}" y="1010" text-anchor="middle" font-family="${SANS}" font-size="38" font-weight="700" fill="${C.ink}">${size}</text>`,
+    )
+    .join("");
+  write(`products/${slug}/sizes.svg`, scene(lineup, pal.bg, seed + 3, { leaf: false }));
 }
-{
-  const s = hash("duo");
-  const carton = `
-  <rect x="170" y="600" width="860" height="440" rx="18" fill="${C.maroon}"/>
-  <rect x="190" y="620" width="820" height="400" fill="none" stroke="${C.peetal}" stroke-width="4"/>
-  <g>${kairiStrip(170, 600, 860, 34, "duoK")}</g>
-  ${badge(600, 652, 184, "duoB")}
-  <text x="600" y="918" text-anchor="middle" font-family="${DEV}" font-size="60" font-weight="700" fill="${C.haldi}">स्वाद जोड़ी</text>
-  <text x="600" y="984" text-anchor="middle" font-family="${SERIF}" font-size="38" fill="${C.chandan}">Tasting Duo</text>`;
-  write(
-    "products/ghee-tasting-duo/bundle.svg",
-    scene(
-      jarGroup({ cx: 420, baseY: 840, scale: 0.72, pal: palettes.gir, name: "Gir Cow Ghee", volume: "250 ml", seed: s }) +
-        jarGroup({ cx: 780, baseY: 840, scale: 0.72, pal: palettes.sahiwal, name: "Sahiwal Cow Ghee", volume: "250 ml", seed: s + 1 }) +
-        carton,
-      palettes.sahiwal.bg,
-      s,
-      { leaf: false },
-    ),
-  );
-}
-{
-  const s = hash("gift");
-  const box = `
-  <defs>
-    <pattern id="giftP" width="70" height="70" patternUnits="userSpaceOnUse">
-      <rect width="70" height="70" fill="${C.maroon}"/>
-      <path d="M35 8 L62 35 L35 62 L8 35 Z" fill="none" stroke="${C.peetal}" stroke-width="3"/>
-      <circle cx="35" cy="35" r="7" fill="${C.haldi}"/>
-      <circle cx="0" cy="0" r="5" fill="${C.kumkum}"/><circle cx="70" cy="70" r="5" fill="${C.kumkum}"/>
-    </pattern>
-  </defs>
-  <rect x="150" y="640" width="900" height="400" rx="14" fill="url(#giftP)"/>
-  <rect x="150" y="640" width="900" height="70" fill="${C.maroonDeep}"/>
-  <rect x="560" y="640" width="80" height="400" fill="${C.kumkum}"/>
-  <rect x="560" y="640" width="80" height="400" fill="none" stroke="${C.haldi}" stroke-width="4"/>
-  ${badge(330, 740, 230, "giftB")}
-  <rect x="680" y="760" width="300" height="180" rx="8" fill="${C.paper}" transform="rotate(-6 830 850)"/>
-  <text x="830" y="840" text-anchor="middle" font-family="${DEV}" font-size="44" font-weight="700" fill="${C.kumkum}" transform="rotate(-6 830 850)">शुभ दीपावली</text>
-  <g transform="rotate(20 300 560)"><rect x="280" y="300" width="36" height="380" rx="18" fill="#7a4a24"/><ellipse cx="298" cy="300" rx="62" ry="80" fill="#7a4a24"/></g>`;
-  write(
-    "products/festive-gift-box/bundle.svg",
-    scene(jarGroup({ cx: 600, baseY: 740, scale: 0.82, pal: palettes.gir, name: "A2 Gir Cow Ghee", volume: "500 ml", seed: s }) + box, palettes.gir.bg, s, { leaf: false }),
-  );
-}
-
-/* ---------- Hero jar (transparent, on a banana leaf) ---------- */
-write(
-  "hero/hero-jar.svg",
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" width="900" height="1000">
-  ${bananaLeaf(450, 930, 860, 120)}
-  ${jarGroup({ cx: 450, baseY: 930, scale: 1.3, pal: palettes.gir, name: "A2 Gir Cow Ghee", volume: "Bilona churned", seed: hash("hero") })}
-  ${marigold(120, 940, 48)}${marigold(790, 925, 54)}${marigold(720, 975, 36)}
-</svg>`,
-);
 
 /* ---------- Patterns ---------- */
 rmSync(join(root, "pattern", "ajrakh-band.svg"), { force: true });
@@ -417,18 +347,19 @@ rmSync(join(root, "pattern", "ajrakh-band.svg"), { force: true });
   );
 }
 
-// Kairi (paisley) block-print band.
+// Phulkari band: a bagh diamond in haldi and rani on red, with green diamonds between. Repeats horizontally.
+rmSync(join(root, "pattern", "kairi-band.svg"), { force: true });
 write(
-  "pattern/kairi-band.svg",
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 26" width="52" height="26">
-  <rect width="52" height="26" fill="${C.maroon}"/>
-  <path d="M0 2.5 H52 M0 23.5 H52" stroke="${C.peetal}" stroke-width="1.2"/>
-  <path d="M20 22.5C15.2 22.5 12.5 19.2 13 15.6 13.5 11.8 16.8 9.6 19.3 8.3 21.8 7 23 5.3 22.6 4 25 5.7 26.7 9 26.7 12.8 26.7 18.4 23.8 22.5 20 22.5Z" fill="${C.haldi}"/>
-  <path d="M20 19.8C17.6 19.8 16.2 18.1 16.5 16.2 16.8 14.2 18.6 13 20 12.3" fill="none" stroke="${C.maroon}" stroke-width="1.1"/>
-  <circle cx="21.6" cy="16.4" r="1.3" fill="${C.kumkum}"/>
-  <circle cx="42" cy="13" r="2.2" fill="${C.kumkum}"/>
-  <circle cx="42" cy="13" r="0.9" fill="${C.chandan}"/>
-  <circle cx="6" cy="13" r="1.3" fill="${C.chandan}"/>
+  "pattern/phulkari-band.svg",
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 28" width="56" height="28">
+  <rect width="56" height="28" fill="${C.lal}"/>
+  <path d="M0 2.5H56M0 25.5H56" stroke="${C.peetal}" stroke-width="1.2"/>
+  <path d="M28 5 37 14 28 23 19 14Z" fill="${C.haldi}"/>
+  <path d="M28 9 33 14 28 19 23 14Z" fill="${C.rani}"/>
+  <circle cx="28" cy="14" r="1.6" fill="${C.haldiLight}"/>
+  <path d="M0 9 5 14 0 19ZM56 9 51 14 56 19Z" fill="${C.hara}"/>
+  <path d="M8 14h6M42 14h6" stroke="${C.genda}" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="1.6 2.4"/>
+  <g fill="${C.chandan}"><circle cx="11" cy="7" r="1"/><circle cx="11" cy="21" r="1"/><circle cx="45" cy="7" r="1"/><circle cx="45" cy="21" r="1"/></g>
 </svg>`,
 );
 
@@ -447,8 +378,7 @@ write("brand/farm-dip-emblem.svg", emblemSvg("fe"));
 
 /* ---------- Blog covers ---------- */
 const posts = [
-  { slug: "a2-vs-a1-ghee", title: "A2 vs A1 ghee: what the difference actually is", tag: "Buying guide", hindi: "ए2 बनाम ए1" },
-  { slug: "bilona-vs-cream-ghee", title: "Bilona ghee vs cream ghee", tag: "Process", hindi: "बिलोना विधि" },
+  { slug: "buffalo-ghee-vs-cow-ghee", title: "Buffalo ghee vs cow ghee", tag: "Buying guide", hindi: "भैंस का घी या गाय का" },
   { slug: "how-to-check-ghee-purity", title: "How to check ghee purity at home", tag: "Purity", hindi: "शुद्धता की जाँच" },
   { slug: "ghee-smoke-point-cooking", title: "Ghee smoke point and cooking", tag: "Cooking", hindi: "तड़का और घी" },
   { slug: "how-to-store-ghee", title: "How to store ghee", tag: "Storage", hindi: "घी कैसे रखें" },
@@ -474,7 +404,7 @@ for (const p of posts) {
   write(
     `blog/${p.slug}.svg`,
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <rect width="1200" height="630" fill="${C.maroon}"/>
+  <rect width="1200" height="630" fill="${C.lal}"/>
   <rect x="24" y="24" width="1152" height="582" fill="none" stroke="${C.peetal}" stroke-width="3"/>
   <rect x="34" y="34" width="1132" height="562" fill="none" stroke="${C.peetal}" stroke-width="1.2"/>
   <g opacity="0.95">${rangoli(960, 330, 230, { wash: false })}</g>
@@ -488,10 +418,8 @@ for (const p of posts) {
 
 /* ---------- Story scenes: placeholder with art-direction caption ---------- */
 const scenes = [
-  { file: "farm/gir-cows-pasture.svg", caption: "Photo needed: Gir cows grazing at dawn, Talala", sky: "#f9d38a", land: "#7f9a52" },
-  { file: "farm/bilona-churning.svg", caption: "Photo needed: hands churning curd with a wooden bilona", sky: "#f3c98a", land: "#8a5a2b" },
-  { file: "farm/wood-fire-kadhai.svg", caption: "Photo needed: makkhan simmering in an iron kadhai", sky: "#f2a85a", land: "#3b2a1a" },
-  { file: "farm/lab-testing.svg", caption: "Photo needed: ghee sample being tested in the lab", sky: "#f8ead0", land: "#e3c3ae" },
+  { file: "farm/buffaloes-at-the-farm.svg", caption: "Photo needed: our buffaloes at the farm", sky: "#f9d38a", land: "#7f9a52" },
+  { file: "farm/makkhan-churning.svg", caption: "Photo needed: makkhan churned with a wooden madhani", sky: "#f3c98a", land: "#8a5a2b" },
 ];
 for (const s of scenes) {
   write(
@@ -502,7 +430,7 @@ for (const s of scenes) {
   <path d="M0 640 Q 400 520 800 620 T 1600 580 V1000 H0 Z" fill="${s.land}" opacity="0.75"/>
   <path d="M0 760 Q 500 660 1000 760 T 1600 720 V1000 H0 Z" fill="${s.land}"/>
   ${marigold(160, 160, 50)}${marigold(260, 120, 34)}
-  <rect x="60" y="880" width="${Math.min(1480, s.caption.length * 21 + 60)}" height="70" rx="35" fill="${C.maroon}" opacity="0.9"/>
+  <rect x="60" y="880" width="${Math.min(1480, s.caption.length * 21 + 60)}" height="70" rx="35" fill="${C.lal}" opacity="0.9"/>
   <text x="90" y="926" font-family="${SANS}" font-size="32" fill="${C.chandan}">${esc(s.caption)}</text>
 </svg>`,
   );

@@ -21,7 +21,7 @@ type PageMeta = {
 };
 
 // Site-wide social card. Segments with their own opengraph-image file (products, blog posts) override it.
-const defaultOgImage = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name}: A2 bilona ghee from Gir cows` };
+const defaultOgImage = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name}: pure desi buffalo ghee` };
 
 /**
  * Per-page metadata with a canonical URL, en-IN alternate and Open Graph.
@@ -116,7 +116,7 @@ export function organizationLd() {
     location: {
       "@type": "Place",
       "@id": ids.farm,
-      name: `${site.name} partner farms, Gir`,
+      name: `${site.name} farm`,
       address: postalAddress(),
       geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
     },
@@ -127,12 +127,12 @@ export function organizationLd() {
       telephone: site.contact.phoneHref,
       email: site.contact.email,
       areaServed: "IN",
-      availableLanguage: ["English", "Hindi", "Gujarati"],
+      availableLanguage: ["English", "Hindi"],
     },
     hasMerchantReturnPolicy: returnPolicy(),
     identifier: [{ "@type": "PropertyValue", propertyID: "FSSAI", value: site.legal.fssai }],
     vatID: site.legal.gstin,
-    knowsAbout: ["Ghee", "Bilona method", "A2 milk", "Gir cattle", "Sahiwal cattle", "Dairy food safety"],
+    knowsAbout: ["Ghee", "Desi ghee", "Buffalo ghee", "Buffalo milk", "Traditional ghee making"],
     ...(site.social.length ? { sameAs: site.social.map((s) => s.href) } : {}),
   };
 }
@@ -295,17 +295,16 @@ export function articleLd(post: Post) {
 export function howToLd(steps: ProcessStep[]) {
   return {
     "@type": "HowTo",
-    name: "How bilona ghee is made",
-    description: "The traditional bilona method: milk is set into curd, churned with a wooden bilona into makkhan, and slow-cooked into ghee.",
-    totalTime: "P2D",
-    supply: [{ "@type": "HowToSupply", name: "Whole A2 cow milk" }, { "@type": "HowToSupply", name: "Curd starter (jaman)" }],
-    tool: [{ "@type": "HowToTool", name: "Wooden bilona churner" }, { "@type": "HowToTool", name: "Iron kadhai" }, { "@type": "HowToTool", name: "Muslin cloth" }],
+    name: `How ${site.name} buffalo ghee is made`,
+    description: "Traditional desi ghee from buffalo milk: the malai is set into dahi, churned into makkhan and slow-cooked into ghee, with nothing added.",
+    supply: [{ "@type": "HowToSupply", name: "Fresh buffalo milk" }, { "@type": "HowToSupply", name: "Dahi starter (jaman)" }],
+    tool: [{ "@type": "HowToTool", name: "Clay matka" }, { "@type": "HowToTool", name: "Wooden madhani" }, { "@type": "HowToTool", name: "Iron kadhai" }, { "@type": "HowToTool", name: "Muslin cloth" }],
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,
       name: s.name,
       text: s.text,
-      url: absoluteUrl(`/bilona-process#${s.id}`),
+      url: absoluteUrl(`/how-its-made#${s.id}`),
     })),
   };
 }

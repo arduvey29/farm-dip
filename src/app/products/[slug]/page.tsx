@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getProduct, getProducts, gheeNutrition, products } from "@/data/products";
-import { getCollection } from "@/data/collections";
 import { getRatingSummary, getReviews } from "@/data/reviews";
 import { faqLd, graph, pageMetadata, productLd } from "@/lib/seo";
+import { site } from "@/lib/site";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Faq } from "@/components/ui/Faq";
 import { Icon } from "@/components/ui/Icon";
@@ -33,7 +33,6 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
 
   const reviews = getReviews(product.slug);
   const rating = getRatingSummary(product.slug);
-  const collection = getCollection(product.collections[0]);
   const related = getProducts(product.related);
 
   return (
@@ -42,7 +41,6 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         <Breadcrumbs
           items={[
             { name: "Shop", path: "/shop" },
-            ...(collection ? [{ name: collection.name, path: `/collections/${collection.slug}` }] : []),
             { name: product.name, path: `/products/${product.slug}` },
           ]}
         />
@@ -54,13 +52,13 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </div>
 
         <div>
-          {product.badge ? <p className="mb-3 inline-block bg-kumkum py-1 pr-5 pl-3 text-xs font-bold text-chandan [clip-path:polygon(0_0,100%_0,calc(100%-8px)_50%,100%_100%,0_100%)]">{product.badge}</p> : null}
+          {product.badge ? <p className="mb-3 inline-block bg-rani py-1 pr-5 pl-3 text-xs font-bold text-chandan [clip-path:polygon(0_0,100%_0,calc(100%-8px)_50%,100%_100%,0_100%)]">{product.badge}</p> : null}
           <h1 className="font-display text-4xl leading-[1.05] sm:text-5xl">{product.name}</h1>
-          <p className="mt-2 text-lg text-maroon-800">{product.tagline}</p>
+          <p className="mt-2 text-lg text-kattha-800">{product.tagline}</p>
           <div className="mt-3">
             <RatingInline average={rating.average} count={rating.count} href="#reviews" />
           </div>
-          <p className="mt-5 max-w-prose text-maroon-800">{product.summary}</p>
+          <p className="mt-5 max-w-prose text-kattha-800">{product.summary}</p>
           <div className="mt-7">
             <PurchasePanel slug={product.slug} name={product.name} variants={product.variants} defaultVariant={product.defaultVariant} milk={product.milk} />
           </div>
@@ -77,7 +75,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               {product.facts.map((f) => (
                 <div key={f.label} className="grid gap-1 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-6">
                   <dt className="font-semibold">{f.label}</dt>
-                  <dd className="text-maroon-800">{f.value}</dd>
+                  <dd className="text-kattha-800">{f.value}</dd>
                 </div>
               ))}
             </dl>
@@ -87,24 +85,11 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             <ul className="mt-6 space-y-3">
               {product.highlights.map((h) => (
                 <li key={h} className="flex gap-3">
-                  <Icon name="check" className="mt-1 size-5 shrink-0 text-mehndi" />
+                  <Icon name="check" className="mt-1 size-5 shrink-0 text-hara" />
                   <span>{h}</span>
                 </li>
               ))}
             </ul>
-            {product.contains ? (
-              <p className="mt-6 text-sm text-maroon-800">
-                Contains:{" "}
-                {getProducts(product.contains).map((p, i, all) => (
-                  <span key={p.slug}>
-                    <Link href={`/products/${p.slug}`} className="font-semibold underline underline-offset-4">
-                      {p.name}
-                    </Link>
-                    {i < all.length - 1 ? ", " : ""}
-                  </span>
-                ))}
-              </p>
-            ) : null}
           </div>
         </div>
       </section>
@@ -132,7 +117,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         <aside className="space-y-8">
           <div className="rounded-3xl border border-line p-6">
             <h2 className="text-xl font-semibold">Nutrition per 100 g</h2>
-            <p className="text-sm text-maroon-700">Typical values for pure ghee</p>
+            <p className="text-sm text-kattha-700">Typical values for pure ghee</p>
             <table className="table-ghee mt-4">
               <caption className="sr-only">Nutrition information per 100 grams</caption>
               <tbody>
@@ -147,11 +132,20 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               </tbody>
             </table>
           </div>
-          <Link href="/lab-reports" className="flex gap-4 rounded-3xl bg-maroon-900 p-6 text-chandan hover:bg-maroon-800">
-            <Icon name="flask" className="size-8 shrink-0 text-haldi-400" />
+          <figure className="frame-peetal rounded-3xl bg-lal-900 p-6 text-chandan">
+            <p lang="hi" className="font-hand text-xl text-haldi-300">
+              हमारा उद्देश्य
+            </p>
+            <blockquote className="mt-2 text-lal-100">
+              <p>{site.aim}</p>
+            </blockquote>
+            <figcaption className="mt-3 text-sm text-lal-200">The {site.name} family</figcaption>
+          </figure>
+          <Link href="/how-its-made" className="flex gap-4 rounded-3xl border border-line p-6 hover:bg-chandan">
+            <Icon name="leaf" className="size-8 shrink-0 text-hara" />
             <span>
-              <span className="block text-lg font-semibold">See this batch&apos;s lab report</span>
-              <span className="text-maroon-100">Enter the batch number from your jar to read its full report.</span>
+              <span className="block text-lg font-semibold">See how it is made</span>
+              <span className="text-kattha-700">From buffalo milk to malai, makkhan and ghee, with nothing added.</span>
             </span>
           </Link>
         </aside>
@@ -174,7 +168,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       </section>
 
       {related.length ? (
-        <section className="border-t border-line bg-maroon-50 py-16" aria-labelledby="related">
+        <section className="border-t border-line bg-kattha-50 py-16" aria-labelledby="related">
           <div className="wrap">
             <h2 id="related" className="font-display text-3xl sm:text-4xl">
               You may also like

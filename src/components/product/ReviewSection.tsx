@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/Icon";
 
 export function ReviewSection({ reviews, summary }: { reviews: Review[]; summary: { average: number; count: number; distribution: { stars: number; count: number }[] } }) {
   if (!summary.count) {
-    return <p className="text-maroon-700">No reviews yet. Bought this ghee? Your review helps other families choose.</p>;
+    return <p className="text-kattha-700">No reviews yet. Bought this ghee? Your review helps other families choose.</p>;
   }
   return (
     <div className="grid gap-10 lg:grid-cols-[18rem_1fr]">
@@ -14,7 +14,7 @@ export function ReviewSection({ reviews, summary }: { reviews: Review[]; summary
         <div className="mt-2">
           <Stars rating={summary.average} className="size-5" />
         </div>
-        <p className="mt-1 text-sm text-maroon-700">
+        <p className="mt-1 text-sm text-kattha-700">
           Based on {summary.count} verified {summary.count === 1 ? "review" : "reviews"}
         </p>
         <dl className="mt-5 space-y-1.5">
@@ -25,7 +25,7 @@ export function ReviewSection({ reviews, summary }: { reviews: Review[]; summary
                 <span className="h-2 flex-1 overflow-hidden rounded-full bg-haldi-100">
                   <span className="block h-full rounded-full bg-haldi-500" style={{ width: `${(d.count / summary.count) * 100}%` }} />
                 </span>
-                <span className="w-6 text-right tabular-nums text-maroon-700">{d.count}</span>
+                <span className="w-6 text-right tabular-nums text-kattha-700">{d.count}</span>
               </dd>
             </div>
           ))}
@@ -41,13 +41,13 @@ export function ReviewSection({ reviews, summary }: { reviews: Review[]; summary
                 <h3 className="font-semibold">{r.title}</h3>
               </div>
               <p className="mt-2 max-w-[68ch]">{r.body}</p>
-              <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-maroon-700">
-                <span className="font-semibold text-maroon-900">{r.author}</span>
+              <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-kattha-700">
+                <span className="font-semibold text-kattha-900">{r.author}</span>
                 <span>{r.city}</span>
                 <time dateTime={r.date}>{formatDate(r.date)}</time>
                 {r.pack ? <span>Bought {r.pack}</span> : null}
                 {r.verified ? (
-                  <span className="inline-flex items-center gap-1 text-mehndi">
+                  <span className="inline-flex items-center gap-1 text-hara">
                     <Icon name="check" className="size-4" /> Verified buyer
                   </span>
                 ) : null}

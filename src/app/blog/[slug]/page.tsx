@@ -56,11 +56,11 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           <header className="max-w-[68ch]">
             <p className="text-sm font-semibold text-haldi-800">{post.category}</p>
             <h1 className="mt-2 font-display text-4xl leading-[1.05] sm:text-5xl">{post.title}</h1>
-            <p className="mt-4 text-xl text-maroon-800">{post.description}</p>
-            <p className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-maroon-700">
+            <p className="mt-4 text-xl text-kattha-800">{post.description}</p>
+            <p className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-kattha-700">
               <span>
                 By{" "}
-                <Link href="/about" className="font-semibold text-maroon-900 underline underline-offset-4">
+                <Link href="/about" className="font-semibold text-kattha-900 underline underline-offset-4">
                   {site.name} dairy team
                 </Link>
               </span>
@@ -181,13 +181,13 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
               <ol className="mt-3 space-y-2 border-l-2 border-line text-sm">
                 {post.sections.map((s) => (
                   <li key={s.id}>
-                    <a href={`#${s.id}`} className="-ml-0.5 block border-l-2 border-transparent pl-3 text-maroon-700 hover:border-maroon-900 hover:text-maroon-900">
+                    <a href={`#${s.id}`} className="-ml-0.5 block border-l-2 border-transparent pl-3 text-kattha-700 hover:border-kattha-900 hover:text-kattha-900">
                       {s.heading}
                     </a>
                   </li>
                 ))}
                 <li>
-                  <a href="#post-faq" className="-ml-0.5 block border-l-2 border-transparent pl-3 text-maroon-700 hover:border-maroon-900 hover:text-maroon-900">
+                  <a href="#post-faq" className="-ml-0.5 block border-l-2 border-transparent pl-3 text-kattha-700 hover:border-kattha-900 hover:text-kattha-900">
                     Questions
                   </a>
                 </li>
@@ -197,7 +197,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
               <Link href={`/products/${products[0].slug}`} className="block rounded-2xl bg-chandan p-5 hover:bg-haldi-100">
                 <Image src={products[0].images[0].src} alt="" width={240} height={240} className="w-full rounded-xl" />
                 <p className="mt-3 font-semibold">{products[0].name}</p>
-                <p className="text-sm text-maroon-700">{products[0].tagline}</p>
+                <p className="text-sm text-kattha-700">{products[0].tagline}</p>
               </Link>
             ) : null}
           </nav>
@@ -225,7 +225,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
         </h2>
         <ul className="mt-6 grid gap-6 md:grid-cols-3">
           {more.map((p) => (
-            <li key={p.slug} className="border-t-2 border-maroon-900 pt-4">
+            <li key={p.slug} className="border-t-2 border-kattha-900 pt-4">
               <p className="text-sm text-haldi-800">{p.category}</p>
               <Link href={`/blog/${p.slug}`} className="mt-1 block text-lg leading-snug font-semibold hover:underline">
                 {p.title}

@@ -46,7 +46,7 @@ export function SearchClient({ docs }: { docs: SearchDoc[] }) {
         <label htmlFor="q" className="sr-only">
           Search ghee, guides and questions
         </label>
-        <Icon name="search" className="pointer-events-none absolute top-1/2 left-5 size-6 -translate-y-1/2 text-maroon-500" />
+        <Icon name="search" className="pointer-events-none absolute top-1/2 left-5 size-6 -translate-y-1/2 text-kattha-500" />
         <input
           id="q"
           name="q"
@@ -55,7 +55,7 @@ export function SearchClient({ docs }: { docs: SearchDoc[] }) {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Try “buffalo ghee” or “smoke point”"
           autoFocus
-          className="min-h-14 w-full rounded-full border-2 border-maroon-200 pr-5 pl-14 text-lg focus:border-maroon-900"
+          className="min-h-14 w-full rounded-full border-2 border-kattha-200 pr-5 pl-14 text-lg focus:border-kattha-900"
         />
       </form>
 
@@ -63,7 +63,7 @@ export function SearchClient({ docs }: { docs: SearchDoc[] }) {
         {query.trim().length > 1 ? (
           results.length ? (
             <>
-              <p className="text-sm text-maroon-700">
+              <p className="text-sm text-kattha-700">
                 {results.length} {results.length === 1 ? "result" : "results"} for “{query}”
               </p>
               <ul className="mt-4 divide-y divide-line border-y border-line">
@@ -72,7 +72,7 @@ export function SearchClient({ docs }: { docs: SearchDoc[] }) {
                     <Link href={r.href} className="block py-5 hover:bg-chandan sm:px-3">
                       <span className="text-xs font-semibold text-haldi-800">{r.type}</span>
                       <span className="mt-0.5 block text-lg font-semibold">{r.title}</span>
-                      <span className="mt-1 line-clamp-2 block text-maroon-700">{r.text}</span>
+                      <span className="mt-1 line-clamp-2 block text-kattha-700">{r.text}</span>
                     </Link>
                   </li>
                 ))}
@@ -80,7 +80,7 @@ export function SearchClient({ docs }: { docs: SearchDoc[] }) {
             </>
           ) : (
             <p className="text-lg">
-              Nothing matches “{query}”. Try a simpler word like “Gir”, “A2” or “storage”, or{" "}
+              Nothing matches “{query}”. Try a simpler word like “buffalo”, “5 L” or “storage”, or{" "}
               <Link href="/shop" className="font-semibold underline underline-offset-4">
                 browse all ghee
               </Link>

@@ -17,10 +17,10 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
     <Link href="/" className="inline-flex items-center gap-2.5" aria-label={`${site.name} home`}>
       <LogoMark className="h-14 w-auto shrink-0 lg:h-16" />
       <span className="flex flex-col leading-none">
-        <span className={`font-display text-[1.7rem] leading-none font-bold whitespace-nowrap ${light ? "text-chandan" : "text-maroon-800"}`}>
+        <span className={`font-display text-[1.7rem] leading-none font-bold whitespace-nowrap ${light ? "text-chandan" : "text-kattha-800"}`}>
           <span lang="hi">फ़ार्म</span> dip
         </span>
-        <span className={`mt-1 text-[0.8rem] leading-none font-semibold ${light ? "text-haldi-300" : "text-kumkum"}`}>A2 bilona ghee</span>
+        <span className={`mt-1 text-[0.8rem] leading-none font-semibold ${light ? "text-haldi-300" : "text-rani"}`}>Pure desi ghee</span>
       </span>
     </Link>
   );

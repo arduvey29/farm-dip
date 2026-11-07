@@ -7,8 +7,8 @@ import { graph, itemListLd, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 
-const title = "Learn About Ghee: A2, Bilona, Purity and Storage Guides";
-const description = "Plain-language guides to ghee: A2 vs A1, bilona vs cream method, how to test purity at home, smoke point and how to store ghee. Written by our dairy team.";
+const title = "Learn About Ghee: Buffalo Ghee, Purity, Cooking and Storage Guides";
+const description = "Plain-language guides to ghee: buffalo ghee vs cow ghee, how to test purity at home, smoke point and cooking, and how to store ghee.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/blog" });
 
@@ -21,7 +21,7 @@ export default function BlogIndex() {
       </div>
       <section className="wrap pt-8 pb-20">
         <h1 className="font-display text-5xl sm:text-6xl">Know your ghee</h1>
-        <p className="mt-4 max-w-2xl text-lg text-maroon-800">Straight answers about how ghee is made, what labels mean and how to tell good ghee from bad. No health claims we cannot back up.</p>
+        <p className="mt-4 max-w-2xl text-lg text-kattha-800">Straight answers about how ghee is made, what labels mean and how to tell good ghee from bad. No health claims we cannot back up.</p>
 
         <article className="group mt-12 grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <Link href={`/blog/${lead.slug}`} tabIndex={-1} aria-hidden>
@@ -34,8 +34,8 @@ export default function BlogIndex() {
                 {lead.title}
               </Link>
             </h2>
-            <p className="mt-3 text-lg text-maroon-800">{lead.description}</p>
-            <p className="mt-3 text-sm text-maroon-700">
+            <p className="mt-3 text-lg text-kattha-800">{lead.description}</p>
+            <p className="mt-3 text-sm text-kattha-700">
               {lead.readingMinutes} min read. Updated <time dateTime={lead.dateModified}>{formatDate(lead.dateModified)}</time>
             </p>
           </div>
@@ -54,7 +54,7 @@ export default function BlogIndex() {
                     {post.title}
                   </Link>
                 </h2>
-                <p className="mt-2 line-clamp-3 text-maroon-700">{post.description}</p>
+                <p className="mt-2 line-clamp-3 text-kattha-700">{post.description}</p>
               </article>
             </li>
           ))}

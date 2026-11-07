@@ -9,14 +9,14 @@ export function Breadcrumbs({ items, className = "" }: { items: Crumb[]; classNa
   const trail = [{ name: "Home", path: "/" }, ...items];
   return (
     <>
-      <nav aria-label="Breadcrumb" className={`text-sm text-maroon-700 ${className}`}>
+      <nav aria-label="Breadcrumb" className={`text-sm text-kattha-700 ${className}`}>
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
           {trail.map((item, i) => {
             const last = i === trail.length - 1;
             return (
               <li key={item.path} className="flex items-center gap-2">
                 {last ? (
-                  <span aria-current="page" className="text-maroon-900">
+                  <span aria-current="page" className="text-kattha-900">
                     {item.name}
                   </span>
                 ) : (

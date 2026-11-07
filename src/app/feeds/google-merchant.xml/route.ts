@@ -31,7 +31,7 @@ export function GET() {
       <g:mpn>${v.sku}</g:mpn>
       <g:size>${esc(v.label)}</g:size>
       <g:google_product_category>Food, Beverages &amp; Tobacco &gt; Food Items &gt; Dairy Products &gt; Butter &amp; Margarine</g:google_product_category>
-      <g:product_type>${esc(`Ghee > ${p.collections[0].replace(/-/g, " ")}`)}</g:product_type>
+      <g:product_type>Ghee &gt; Buffalo ghee</g:product_type>
       <g:shipping>
         <g:country>IN</g:country>
         <g:price>${freeShip ? 0 : site.commerce.shippingFee}.00 INR</g:price>

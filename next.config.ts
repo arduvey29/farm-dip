@@ -35,9 +35,15 @@ const nextConfig: NextConfig = {
   async redirects() {
     // Common URL shapes shoppers and old links use; keeps link equity on one canonical URL.
     return [
+      // Pages from the earlier multi-product catalogue.
+      { source: "/bilona-process", destination: "/how-its-made", permanent: true },
+      { source: "/collections/:slug", destination: "/shop", permanent: true },
+      { source: "/lab-reports", destination: "/how-its-made", permanent: true },
+      { source: "/products/a2-gir-cow-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee", permanent: true },
+      { source: "/products/desi-buffalo-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee", permanent: true },
       { source: "/shop/:slug", destination: "/products/:slug", permanent: true },
       { source: "/product/:slug", destination: "/products/:slug", permanent: true },
-      { source: "/collection/:slug", destination: "/collections/:slug", permanent: true },
+      { source: "/collection/:slug", destination: "/shop", permanent: true },
       { source: "/pages/about-us", destination: "/about", permanent: true },
     ];
   },

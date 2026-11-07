@@ -43,7 +43,7 @@ export default function SearchPage() {
   return (
     <section className="wrap py-10 lg:py-14">
       <h1 className="mb-8 font-display text-5xl">Search</h1>
-      <Suspense fallback={<div className="min-h-14 max-w-2xl rounded-full border-2 border-maroon-200" />}>
+      <Suspense fallback={<div className="min-h-14 max-w-2xl rounded-full border-2 border-kattha-200" />}>
         <SearchClient docs={docs} />
       </Suspense>
     </section>

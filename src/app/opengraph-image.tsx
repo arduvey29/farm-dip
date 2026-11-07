@@ -1,14 +1,14 @@
 import { ogContentType, ogSize, renderOg } from "@/lib/og";
 import { site } from "@/lib/site";
 
-export const alt = `${site.name}: A2 bilona ghee from Gir cows`;
+export const alt = `${site.name}: pure desi buffalo ghee`;
 export const size = ogSize;
 export const contentType = ogContentType;
 
 export default async function Image() {
   return renderOg({
-    kicker: "A2 bilona ghee",
-    title: "Churned from curd, slow-cooked on a wood fire",
-    footer: "Lab report for every batch. Free cash on delivery across India.",
+    kicker: "Pure desi ghee from buffalo milk",
+    title: "Made the way we ate it as children",
+    footer: "No preservatives or additives. Free cash on delivery across India.",
   });
 }

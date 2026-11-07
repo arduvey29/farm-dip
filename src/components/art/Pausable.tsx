@@ -1,19 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { pauseWhenHidden } from "@/lib/motion";
 
-/** Wraps animated art and pauses its CSS animations while it is off screen, to save battery. */
+/** Wraps animated art and pauses its CSS animations while it is off screen. */
 export function Pausable({ children, ...props }: React.ComponentProps<"div">) {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([entry]) => el.toggleAttribute("data-paused", !entry.isIntersecting), { rootMargin: "120px" });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  useEffect(() => (ref.current ? pauseWhenHidden(ref.current) : undefined), []);
   return (
-    <div ref={ref} {...props}>
+    <div ref={ref} data-pausable="" {...props}>
       {children}
     </div>
   );

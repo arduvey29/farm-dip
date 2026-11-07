@@ -32,7 +32,7 @@ export function ProductGallery({ images, name }: { images: { src: string; alt: s
                 onClick={() => setActive(i)}
                 aria-label={`Show image ${i + 1}: ${img.alt}`}
                 aria-current={i === active}
-                className={`block overflow-hidden rounded-xl border-2 bg-chandan ${i === active ? "border-maroon-900" : "border-transparent hover:border-maroon-200"}`}
+                className={`block overflow-hidden rounded-xl border-2 bg-chandan ${i === active ? "border-kattha-900" : "border-transparent hover:border-kattha-200"}`}
               >
                 <Image src={img.src} alt="" width={80} height={80} className="size-16 object-cover md:size-[4.5rem]" />
               </button>

@@ -1,13 +1,12 @@
 import { products } from "@/data/products";
 import { posts } from "@/data/posts";
 import { faqGroups } from "@/data/faqs";
-import { bilonaSteps } from "@/data/process";
-import { labParameters } from "@/data/lab";
+import { processSteps } from "@/data/process";
 import { site } from "@/lib/site";
 import { absoluteUrl } from "@/lib/seo";
 import { formatPrice, pricePerLitre } from "@/lib/format";
 
-/** Complete text of the catalogue, process, lab standards, FAQs and guides as Markdown for AI assistants. */
+/** Complete text of the catalogue, process, FAQs and guides as Markdown for AI assistants. */
 export function GET() {
   const productText = products
     .map(
@@ -55,13 +54,11 @@ Sources: ${p.sources.map((s) => `${s.label} (${s.href})`).join("; ")}`,
 ## Products
 ${productText}
 
-## How bilona ghee is made
-${bilonaSteps.map((s, i) => `${i + 1}. ${s.name} (${s.duration}). ${s.text}`).join("\n")}
+## Our aim
+${site.aim}
 
-## Lab tests on every batch
-| Test | What it checks | FSSAI limit |
-| --- | --- | --- |
-${labParameters.map((l) => `| ${l.name} | ${l.what} | ${l.limit} |`).join("\n")}
+## How our ghee is made
+${processSteps.map((s, i) => `${i + 1}. ${s.name}. ${s.text}`).join("\n")}
 
 ## Questions and answers
 ${faqGroups.map((g) => `### ${g.title}\n${g.items.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n\n")}`).join("\n\n")}

@@ -1,9 +1,9 @@
 /*
-  The six scenes of the bilona journey, painted in the same folk style as Gauri.
+  The six scenes of the ghee journey, painted in the same folk style as Rani the buffalo.
   Each scene sits on the shared sky (.journey-sky) and only loops while it is the active step.
   Scroll-tied parts read --sp, the progress through the current step, set by JourneyDriver.
 */
-import { GirCow } from "@/components/art/GirCow";
+import { Buffalo } from "@/components/art/Buffalo";
 import { GheeJar } from "@/components/art/GheeJar";
 
 const box = { viewBox: "0 0 400 400", preserveAspectRatio: "xMidYMax slice", className: "absolute inset-0 size-full", "aria-hidden": true, focusable: "false" } as const;
@@ -30,28 +30,38 @@ function Lota({ transform }: { transform: string }) {
   );
 }
 
-export function GrazeScene() {
+/** Rani wallows in the village johad (pond) with her egret, as buffaloes love to do. */
+export function PondScene() {
   return (
     <>
       <svg {...box}>
-        <circle cx="318" cy="86" r="26" fill="#fff4cf" stroke="#f8d47a" strokeWidth="3" />
-        <path d="M0 250C80 226 160 240 240 228C300 220 360 232 400 226V400H0Z" fill="#a3b356" />
+        <circle cx="318" cy="86" r="26" fill="#fff4cf" stroke="#fcdb7e" strokeWidth="3" />
+        <path d="M0 236C80 222 160 232 240 222C300 216 360 226 400 220V400H0Z" fill="#a3b356" />
         <g fill="#5f7d2a">
-          <circle cx="58" cy="226" r="18" />
-          <circle cx="76" cy="232" r="12" />
-          <circle cx="352" cy="214" r="14" />
+          <circle cx="40" cy="214" r="22" />
+          <circle cx="66" cy="222" r="14" />
+          <circle cx="360" cy="206" r="18" />
+          <circle cx="336" cy="214" r="11" />
         </g>
-        <path d="M0 300C120 288 260 296 400 286V400H0Z" fill="#7d9038" />
-        <g stroke="#4f6b24" strokeWidth="1.6" strokeLinecap="round" fill="none">
-          <path d="M40 360l-3-9M45 361l1-10M330 352l-2-9M335 352l2-8M120 372l-2-8M125 372l1-9M280 376l-2-8M285 376l2-9" />
-        </g>
-        <g fill="var(--color-genda)">
-          <circle cx="44" cy="350" r="3" />
-          <circle cx="334" cy="342" r="3" />
-          <circle cx="284" cy="366" r="3" />
-        </g>
+        <path d="M0 262C90 250 300 250 400 262V400H0Z" fill="#5f8f86" />
+        <path d="M30 276C120 268 280 268 370 276" stroke="#9cc4b8" strokeWidth="2" fill="none" opacity="0.7" />
       </svg>
-      <GirCow pose="graze" className="absolute bottom-[7%] left-1/2 w-[84%] max-w-[26rem] -translate-x-1/2" />
+      <Buffalo className="absolute bottom-[4%] left-1/2 w-[80%] max-w-[26rem] -translate-x-1/2" />
+      {/* Water in front of her legs, with ripples and lotus pads. */}
+      <div className="absolute inset-x-0 bottom-0 h-[21%] bg-[linear-gradient(rgb(84_135_128/0.9),rgb(46_92_92/0.97))]">
+        <svg viewBox="0 0 400 80" preserveAspectRatio="none" className="absolute inset-0 size-full" aria-hidden focusable="false">
+          <g fill="none" stroke="#bfe0d4" strokeWidth="1.6" strokeLinecap="round">
+            <ellipse className="ripple" cx="120" cy="10" rx="40" ry="4" />
+            <ellipse className="ripple" cx="280" cy="14" rx="46" ry="4.5" style={{ animationDelay: "-1.2s" }} />
+            <ellipse className="ripple" cx="200" cy="30" rx="60" ry="5" style={{ animationDelay: "-2.1s" }} />
+          </g>
+          <g>
+            <ellipse cx="54" cy="46" rx="16" ry="5" fill="#4f7d2c" />
+            <ellipse cx="344" cy="56" rx="18" ry="5.5" fill="#4f7d2c" />
+            <path d="M344 50c-4-8 0-14 0-14s4 6 0 14Zm0 0c-6-4-10-4-12-2 3 4 8 4 12 2Zm0 0c6-4 10-4 12-2-3 4-8 4-12 2Z" fill="#f4a7c0" />
+          </g>
+        </svg>
+      </div>
     </>
   );
 }
@@ -77,10 +87,12 @@ export function MilkScene() {
       <Flame x={188} y={370} s={0.45} delay={-0.3} />
       <Flame x={212} y={370} s={0.5} delay={-0.5} />
 
-      {/* Brass pateela of milk. */}
+      {/* Brass pateela of buffalo milk, boiled slowly so the malai rises. */}
       <path d="M128 232C126 272 142 304 200 306S274 272 272 232Z" fill="url(#milk-brass)" stroke="#7a5a1c" strokeWidth="2" />
       <ellipse cx="200" cy="232" rx="72" ry="14" fill="#c99a3a" stroke="#7a5a1c" strokeWidth="2" />
-      <ellipse cx="200" cy="234" rx="62" ry="9" fill="#fffaf0" />
+      <ellipse cx="200" cy="234" rx="62" ry="9" fill="#fff3d6" />
+      {/* Thick malai wrinkles over buffalo milk. */}
+      <path d="M150 233c8-3 14 2 22-1s14 3 22 0 14 2 22-1 14 3 22 0" fill="none" stroke="#ecd9a8" strokeWidth="1.6" strokeLinecap="round" />
       <g fill="#fff" stroke="#efe3c8">
         <circle className="bubble" cx="176" cy="234" r="3" />
         <circle className="bubble" cx="214" cy="236" r="2.5" style={{ animationDelay: "-0.6s" }} />
@@ -136,7 +148,7 @@ export function CurdScene() {
       <path d="M134 284H266" stroke="#f8ead0" strokeWidth="1.4" strokeDasharray="2 5" strokeLinecap="round" opacity="0.7" />
       {/* Muslin tied over the mouth while the curd sets. */}
       <path d="M166 198C170 178 230 178 234 198L238 208C214 214 186 214 162 208Z" fill="#f3ead6" stroke="#cbbd9c" strokeWidth="1.2" />
-      <path d="M164 203C188 208 212 208 236 203" stroke="var(--color-kumkum)" strokeWidth="2.4" fill="none" />
+      <path d="M164 203C188 208 212 208 236 203" stroke="var(--color-lal-700)" strokeWidth="2.4" fill="none" />
 
       <g transform="translate(84 330)">
         <Flame x={0} y={-8} s={0.42} />
@@ -265,7 +277,7 @@ export function JarScene() {
       <rect x="0" y="312" width="400" height="8" fill="#a8703a" />
       <path d="M0 340H400M0 366H400" stroke="#76491f" strokeWidth="1.4" />
 
-      {/* Golden ghee poured through muslin, then the lid is tied on and the batch is stamped. */}
+      {/* Ghee strained through muslin into the jar, then the lid is tied on and it is stamped pure. */}
       <g className="pour-scroll">
         <path d="M237 83Q226 120 200 200" fill="none" stroke="var(--color-haldi-500)" strokeWidth="6" strokeLinecap="round" />
         <path className="milk-flow" d="M237 83Q226 120 200 200" fill="none" stroke="#fff3c4" strokeWidth="2" strokeDasharray="4 10" strokeLinecap="round" />
@@ -275,17 +287,17 @@ export function JarScene() {
       <GheeJar id="journey-jar" fill="scroll" x={140} y={160} width={120} height={163} />
 
       <g className="stamp-scroll">
-        <circle cx="306" cy="262" r="32" fill="#fff8ec" stroke="var(--color-kumkum)" strokeWidth="2.5" strokeDasharray="5 3" />
-        <circle cx="306" cy="262" r="26" fill="none" stroke="var(--color-kumkum)" strokeWidth="1.2" />
-        <text x="306" y="259" textAnchor="middle" fontFamily="var(--font-display)" fontWeight="700" fontSize="12" fill="var(--color-kumkum)">
-          LAB
+        <circle cx="306" cy="262" r="32" fill="#fff8ec" stroke="var(--color-lal-700)" strokeWidth="2.5" strokeDasharray="5 3" />
+        <circle cx="306" cy="262" r="26" fill="none" stroke="var(--color-lal-700)" strokeWidth="1.2" />
+        <text x="306" y="259" textAnchor="middle" fontFamily="var(--font-display)" fontSize="13" fill="var(--color-lal-700)">
+          100%
         </text>
-        <text x="306" y="273" textAnchor="middle" fontFamily="var(--font-display)" fontWeight="700" fontSize="10" fill="var(--color-kumkum)">
-          TESTED
+        <text x="306" y="276" textAnchor="middle" fontFamily="var(--font-display)" fontSize="14" fill="var(--color-lal-700)" lang="hi">
+          शुद्ध
         </text>
       </g>
     </svg>
   );
 }
 
-export const journeyScenes = [GrazeScene, MilkScene, CurdScene, ChurnScene, CookScene, JarScene];
+export const journeyScenes = [PondScene, MilkScene, CurdScene, ChurnScene, CookScene, JarScene];

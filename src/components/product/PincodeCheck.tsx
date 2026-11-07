@@ -12,7 +12,7 @@ const STORAGE_KEY = "farmdip-pincode";
 function estimateDays(pin: string): [number, number] {
   const p2 = Number(pin.slice(0, 2));
   const p3 = Number(pin.slice(0, 3));
-  if (p2 >= 36 && p2 <= 39) return [1, 3]; // Gujarat, close to the farm
+  if ((p2 >= 11 && p2 <= 16) || p3 === 201) return [1, 3]; // Delhi, Haryana, Punjab, NCR: close to the farm (PLACEHOLDER: match your real dispatch point)
   if ([110, 400, 411, 560, 600, 700, 500, 380].includes(p3)) return [2, 4]; // metros
   if (p2 >= 78 && p2 <= 79) return [6, 9]; // North East
   if (p2 >= 18 && p2 <= 19) return [5, 8]; // Jammu and Kashmir, Ladakh
@@ -71,7 +71,7 @@ export function PincodeCheck() {
           <label htmlFor="pincode" className="mb-1.5 block text-sm font-semibold">
             Check delivery date
           </label>
-          <Icon name="pin" className="pointer-events-none absolute bottom-3 left-3.5 size-5 text-maroon-500" />
+          <Icon name="pin" className="pointer-events-none absolute bottom-3 left-3.5 size-5 text-kattha-500" />
           <input
             id="pincode"
             inputMode="numeric"
@@ -80,15 +80,15 @@ export function PincodeCheck() {
             placeholder="6-digit pincode"
             value={pin}
             onChange={(e) => setPin(e.target.value.replace(/\D/g, ""))}
-            className="min-h-11 w-full rounded-full border border-maroon-200 pr-3 pl-10"
+            className="min-h-11 w-full rounded-full border border-kattha-200 pr-3 pl-10"
           />
         </div>
-        <button type="submit" className="min-h-11 rounded-full bg-maroon-100 px-5 font-semibold hover:bg-maroon-200">
+        <button type="submit" className="min-h-11 rounded-full bg-kattha-100 px-5 font-semibold hover:bg-kattha-200">
           Check
         </button>
       </form>
       {result ? (
-        <p role="status" className={`mt-3 flex gap-2 text-sm ${result.ok ? "text-mehndi" : "text-kumkum"}`}>
+        <p role="status" className={`mt-3 flex gap-2 text-sm ${result.ok ? "text-hara" : "text-rani"}`}>
           <Icon name={result.ok ? "truck" : "close"} className="mt-0.5 size-4 shrink-0" />
           {result.text}
         </p>

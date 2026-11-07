@@ -38,7 +38,7 @@ export function CartDrawer() {
       <div className="flex h-full flex-col">
         <div className="flex items-center justify-between border-b border-line px-5 py-4">
           <h2 id="cart-title" className="font-display text-2xl">
-            Your cart {totals.count ? <span className="font-sans text-base text-maroon-700">({totals.count})</span> : null}
+            Your cart {totals.count ? <span className="font-sans text-base text-kattha-700">({totals.count})</span> : null}
           </h2>
           <button type="button" onClick={close} className="rounded-full p-2 hover:bg-chandan" aria-label="Close cart">
             <Icon name="close" className="size-6" />
@@ -48,8 +48,8 @@ export function CartDrawer() {
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-start justify-center gap-4 px-6">
             <p className="font-display text-2xl">Your cart is empty</p>
-            <p className="text-maroon-700">Start with our best seller, A2 Gir cow bilona ghee, or pick a pack size from the shop.</p>
-            <Link href="/shop" className="rounded-full bg-haldi-500 px-6 py-3 font-semibold text-maroon-950 hover:bg-haldi-400">
+            <p className="text-kattha-700">Pick a pack of pure buffalo ghee: 500 ml, 1 litre or the 5 litre pack.</p>
+            <Link href="/shop" className="rounded-full bg-haldi-500 px-6 py-3 font-semibold text-kattha-950 hover:bg-haldi-400">
               Shop ghee
             </Link>
           </div>
@@ -62,13 +62,13 @@ export function CartDrawer() {
               <CartLines compact />
             </div>
             <div className="space-y-3 border-t border-line px-5 py-4">
-              {totals.savings > 0 ? <p className="text-sm font-semibold text-mehndi">You save {formatPrice(totals.savings)} on MRP</p> : null}
+              {totals.savings > 0 ? <p className="text-sm font-semibold text-hara">You save {formatPrice(totals.savings)} on MRP</p> : null}
               <div className="flex items-baseline justify-between">
-                <span className="text-maroon-700">Subtotal</span>
+                <span className="text-kattha-700">Subtotal</span>
                 <span className="text-xl font-bold">{formatPrice(totals.subtotal - totals.discount)}</span>
               </div>
-              <p className="text-xs text-maroon-700">Shipping and coupons are calculated at checkout. Free cash on delivery.</p>
-              <Link href="/checkout" className="block rounded-full bg-maroon-900 px-6 py-3.5 text-center font-semibold text-chandan hover:bg-maroon-800">
+              <p className="text-xs text-kattha-700">Shipping and coupons are calculated at checkout. Free cash on delivery.</p>
+              <Link href="/checkout" className="block rounded-full bg-lal-900 px-6 py-3.5 text-center font-semibold text-chandan hover:bg-lal-800">
                 Checkout
               </Link>
               <Link href="/cart" className="block text-center text-sm font-medium underline underline-offset-4">

@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = getProduct(slug);
-  if (!product) return renderOg({ kicker: "Farm Dip", title: "A2 bilona ghee", footer: "Free cash on delivery across India" });
+  if (!product) return renderOg({ kicker: "Farm Dip", title: "Pure desi buffalo ghee", footer: "Free cash on delivery across India" });
   const sizes = product.variants.map((v) => v.label).join(", ");
   return renderOg({
     kicker: product.tagline,

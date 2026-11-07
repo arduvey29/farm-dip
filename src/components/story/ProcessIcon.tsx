@@ -1,6 +1,6 @@
 import type { ProcessStep } from "@/data/process";
 
-/* Line drawings for each bilona step. Stroke uses currentColor so they sit on light or dark grounds. */
+/* Line drawings for each step of making ghee. Stroke uses currentColor so they sit on light or dark grounds. */
 const drawings: Record<ProcessStep["icon"], React.ReactNode> = {
   cow: (
     <>

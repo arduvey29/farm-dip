@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
-import { collections } from "@/data/collections";
 import { posts } from "@/data/posts";
 import { policies } from "@/data/policies";
 import { absoluteUrl } from "@/lib/seo";
@@ -14,9 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), lastModified: catalogueUpdated, changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/shop"), lastModified: catalogueUpdated, changeFrequency: "weekly", priority: 0.9 },
-    { url: absoluteUrl("/bilona-process"), lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.7 },
-    { url: absoluteUrl("/lab-reports"), lastModified: catalogueUpdated, changeFrequency: "weekly", priority: 0.7 },
-    { url: absoluteUrl("/about"), lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.6 },
+    { url: absoluteUrl("/how-its-made"), lastModified: "2026-11-07", changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/about"), lastModified: "2026-11-07", changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl("/blog"), lastModified: blogUpdated, changeFrequency: "weekly", priority: 0.7 },
     { url: absoluteUrl("/faq"), lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl("/contact"), lastModified: "2026-10-01", changeFrequency: "yearly", priority: 0.4 },
@@ -25,12 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticPages,
-    ...collections.map((c) => ({
-      url: absoluteUrl(`/collections/${c.slug}`),
-      lastModified: catalogueUpdated,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    })),
     ...products.map((p) => ({
       url: absoluteUrl(`/products/${p.slug}`),
       lastModified: p.updatedAt,

@@ -1,45 +1,58 @@
 @import "tailwindcss";
 
 /*
-  A traditional Indian palette, the colours of a puja thali and a wedding card:
-  maroon (katha) for ink and festive grounds, haldi gold for ghee and calls to action,
-  kumkum red for offers and accents, genda (marigold) orange for flowers,
-  peetal (brass) for ornament and rules, mehndi green for trust marks,
-  chandan (sandalwood) cream for tinted surfaces on handmade paper.
+  Phulkari palette: the colours of a Punjabi-Haryanvi village at festival time.
+  lal (sindoori red) for festive grounds, like a bridal odhni or a bandhani dupatta;
+  kattha (catechu brown) for ink; haldi yellow for ghee and the main buttons;
+  rani pink for offers, ribbons and add-to-cart, the way phulkari thread shines on red;
+  genda (marigold) orange, hara (parrot green) and neel (indigo) as embroidery accents;
+  peetal (brass) for ornament and rules; chandan and malai (cream) for light surfaces.
+  These are plain CSS custom properties, so a Shopify theme can read the same values.
 */
 @theme {
-  --color-maroon-950: #2a0e0a;
-  --color-maroon-900: #4a1410;
-  --color-maroon-800: #6a1b15;
-  --color-maroon-700: #84281d;
-  --color-maroon-500: #a0614c;
-  --color-maroon-200: #e3c3ae;
-  --color-maroon-100: #f3e1d2;
-  --color-maroon-50: #faf0e6;
+  --color-lal-950: #3f0a07;
+  --color-lal-900: #6b100b;
+  --color-lal-800: #8e1a12;
+  --color-lal-700: #b3261a;
+  --color-lal-200: #f4c4b6;
+  --color-lal-100: #fde2d6;
+  --color-lal-50: #fff1ea;
 
-  --color-haldi-800: #6b4300;
-  --color-haldi-700: #8c5a00;
-  --color-haldi-600: #c47f00;
-  --color-haldi-500: #e8a30c;
-  --color-haldi-400: #f2bc3d;
-  --color-haldi-300: #f8d47a;
-  --color-haldi-100: #fdefc6;
+  --color-kattha-950: #1e0d08;
+  --color-kattha-900: #2f150e;
+  --color-kattha-800: #4a2216;
+  --color-kattha-700: #6b3624;
+  --color-kattha-500: #9a6a52;
+  --color-kattha-200: #e2c9b2;
+  --color-kattha-100: #f2e3d2;
+  --color-kattha-50: #fbf2e6;
 
-  --color-kumkum: #b3201a;
-  --color-kumkum-700: #8e1712;
-  --color-kumkum-50: #fbe6e2;
-  --color-genda: #f07c12;
-  --color-mehndi: #4c6b22;
-  --color-mehndi-100: #e7eed3;
+  --color-haldi-800: #6e4b00;
+  --color-haldi-700: #9c6a00;
+  --color-haldi-600: #d39200;
+  --color-haldi-500: #f5b301;
+  --color-haldi-400: #f9c63d;
+  --color-haldi-300: #fcdb7e;
+  --color-haldi-100: #fff0c4;
+
+  --color-rani: #c2185b;
+  --color-rani-700: #990f45;
+  --color-rani-50: #fde6ef;
+  --color-genda: #f57c00;
+  --color-hara: #2e7d32;
+  --color-hara-100: #e2f0dc;
+  --color-neel: #1f4596;
   --color-peetal: #b8862b;
   --color-peetal-300: #dcc084;
-  --color-chandan: #f8ead0;
-  --color-paper: #fff8ec;
-  --color-line: #e9d6b0;
+  --color-chandan: #fdebc8;
+  --color-malai: #fff8ea;
+  --color-line: #ecd4a8;
 
-  --font-display: var(--font-eczar), "Iowan Old Style", Georgia, serif;
-  --font-hand: var(--font-kalam), "Segoe Print", cursive;
-  --font-sans: var(--font-mukta), ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  /* Yatra One: lettering of hand-painted Indian shop and truck signs. Tillana: brush-pen
+     Devanagari calligraphy for Hindi notes. Martel: an Indian-designed serif for reading text. */
+  --font-display: var(--font-yatra), "Rozha One", Georgia, serif;
+  --font-hand: var(--font-tillana), "Kalam", cursive;
+  --font-sans: var(--font-martel), Georgia, "Nirmala UI", serif;
 
   --radius-jar: 1.25rem;
 
@@ -74,14 +87,14 @@ html {
   scroll-padding-top: 6rem;
 }
 
-/* Handmade-paper ground: cream with a faint fibre texture. */
+/* Handmade-paper ground: malai cream with a faint fibre texture. */
 body {
-  background-color: var(--color-paper);
+  background-color: var(--color-malai);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.3 0 0 0 0 0.12 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  color: var(--color-maroon-900);
+  color: var(--color-kattha-900);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
-  line-height: 1.6;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
@@ -93,7 +106,7 @@ body {
 
 ::selection {
   background: var(--color-haldi-300);
-  color: var(--color-maroon-950);
+  color: var(--color-kattha-950);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -108,9 +121,11 @@ body {
 }
 
 @layer base {
+  /* Yatra One has a single weight; never let the browser fake a bold. */
   .font-display {
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: 0;
   }
   h1.font-display,
   h2.font-display {
@@ -145,7 +160,7 @@ body {
     max-width: 100vw;
     padding: 0;
     border: 0;
-    background: var(--color-paper);
+    background: var(--color-malai);
     color: inherit;
   }
   dialog.drawer::backdrop {
@@ -186,12 +201,13 @@ body {
     pointer-events: none;
   }
 
-  /* Kairi (paisley) block-print border, marking the move between shopping and story. */
-  .kairi-band {
-    height: 26px;
-    background-color: var(--color-maroon-900);
-    background-image: url("/images/pattern/kairi-band.svg");
-    background-size: auto 26px;
+  /* Phulkari border: diamond embroidery in rani, haldi, hara and neel on red, the way Punjabi and
+     Haryanvi odhnis are stitched. Marks the move between shopping and story. */
+  .phulkari-band {
+    height: 28px;
+    background-color: var(--color-lal-900);
+    background-image: url("/images/pattern/phulkari-band.svg");
+    background-size: auto 28px;
     background-repeat: repeat-x;
   }
 
@@ -212,7 +228,7 @@ body {
   .stamp {
     border: 2px dashed currentColor;
     box-shadow:
-      0 0 0 3px var(--color-paper),
+      0 0 0 3px var(--color-malai),
       0 0 0 5px currentColor;
   }
 
@@ -224,8 +240,9 @@ body {
   }
   .prose-ghee h2 {
     font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--color-maroon-800);
+    font-weight: 400;
+    font-synthesis: none;
+    color: var(--color-kattha-800);
     font-size: 1.875rem;
     line-height: 1.15;
     margin-top: 2.75rem;
@@ -249,7 +266,7 @@ body {
   .prose-ghee ul > li {
     position: relative;
   }
-  /* Small lotus-bud bullet in kumkum. */
+  /* Small lotus-bud bullet in red. */
   .prose-ghee ul > li::before {
     content: "";
     position: absolute;
@@ -257,7 +274,7 @@ body {
     top: 0.62em;
     width: 0.5rem;
     height: 0.5rem;
-    background: var(--color-kumkum);
+    background: var(--color-lal-700);
     transform: rotate(45deg);
     border-radius: 0 50% 0 50%;
   }
@@ -266,14 +283,14 @@ body {
     padding-left: 1.5rem;
   }
   .prose-ghee ol > li::marker {
-    color: var(--color-kumkum);
+    color: var(--color-lal-700);
     font-weight: 700;
   }
   .prose-ghee li + li {
     margin-top: 0.35rem;
   }
   .prose-ghee a {
-    color: var(--color-kumkum);
+    color: var(--color-lal-700);
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-color: var(--color-peetal);
@@ -312,7 +329,7 @@ body {
   }
 }
 
-/* ---------- Living art: Gauri the Gir cow, the goshala window, the bilona journey ---------- */
+/* ---------- Living art: Rani the buffalo, the village window, the ghee journey ---------- */
 
 /* Sky colours for the journey stage. Registered so the gradient can fade between times of day. */
 @property --sky-a {
@@ -333,35 +350,41 @@ body {
     animation-play-state: paused !important;
   }
 
-  /* Gauri. Transform origins are set inline on each part, in SVG user units. */
-  .cow-tail {
-    animation: cow-tail 3.6s ease-in-out infinite;
+  /* Rani. Transform origins are set inline on each part, in SVG user units. */
+  .buf-tail {
+    animation: buf-tail 3.6s ease-in-out infinite;
   }
-  .cow-ear {
-    animation: cow-ear 7s ease-in-out infinite;
+  .buf-ear {
+    animation: buf-ear 7s ease-in-out infinite;
   }
-  .cow-lid {
+  .buf-lid {
     transform-box: fill-box;
     transform-origin: 50% 0;
     transform: scaleY(0);
-    animation: cow-blink 5.5s infinite;
+    animation: buf-blink 5.5s infinite;
   }
-  .cow-head {
-    animation: cow-chew 1.2s ease-in-out infinite;
+  .buf-head {
+    animation: buf-chew 1.2s ease-in-out infinite;
   }
-  .cow-bell {
-    animation: cow-bell 2.4s ease-in-out infinite;
+  .buf-bell {
+    animation: buf-bell 2.4s ease-in-out infinite;
   }
-  .cow-graze {
-    animation: cow-graze 11s ease-in-out infinite;
+  .buf-graze {
+    animation: buf-graze 11s ease-in-out infinite;
   }
-  [data-moo] .cow-head {
-    animation: cow-moo 1.6s ease-out;
+  .buf-bird {
+    animation: buf-bird 6.5s ease-in-out infinite;
   }
-  [data-moo] .cow-ear {
-    animation: cow-ear 1.6s ease-out;
+  [data-hello] .buf-bird {
+    animation: buf-bird-startle 1.6s ease-out;
   }
-  @keyframes cow-tail {
+  [data-hello] .buf-head {
+    animation: buf-hello 1.6s ease-out;
+  }
+  [data-hello] .buf-ear {
+    animation: buf-ear 1.6s ease-out;
+  }
+  @keyframes buf-tail {
     0%,
     100% {
       transform: rotate(-3deg);
@@ -376,7 +399,7 @@ body {
       transform: rotate(7deg);
     }
   }
-  @keyframes cow-ear {
+  @keyframes buf-ear {
     0%,
     78%,
     100% {
@@ -395,7 +418,7 @@ body {
       transform: rotate(0);
     }
   }
-  @keyframes cow-blink {
+  @keyframes buf-blink {
     0%,
     93%,
     100% {
@@ -405,7 +428,7 @@ body {
       transform: scaleY(1);
     }
   }
-  @keyframes cow-chew {
+  @keyframes buf-chew {
     0%,
     100% {
       transform: rotate(0);
@@ -414,7 +437,7 @@ body {
       transform: rotate(1.8deg);
     }
   }
-  @keyframes cow-bell {
+  @keyframes buf-bell {
     0%,
     100% {
       transform: rotate(-9deg);
@@ -423,7 +446,7 @@ body {
       transform: rotate(9deg);
     }
   }
-  @keyframes cow-graze {
+  @keyframes buf-graze {
     0%,
     8%,
     100% {
@@ -442,7 +465,40 @@ body {
       transform: rotate(0);
     }
   }
-  @keyframes cow-moo {
+  @keyframes buf-bird {
+    0%,
+    70%,
+    100% {
+      transform: translateY(0);
+    }
+    74% {
+      transform: translateY(-9px);
+    }
+    78% {
+      transform: translateY(0);
+    }
+    84% {
+      transform: translateY(-5px) translateX(-3px);
+    }
+    88% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes buf-bird-startle {
+    0% {
+      transform: none;
+    }
+    25% {
+      transform: translateY(-26px) rotate(-8deg);
+    }
+    70% {
+      transform: translateY(-14px);
+    }
+    100% {
+      transform: none;
+    }
+  }
+  @keyframes buf-hello {
     0% {
       transform: rotate(0);
     }
@@ -456,6 +512,11 @@ body {
   }
 
   /* Small loops shared by the scenes. */
+  .ripple {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ripple 3.2s ease-out infinite;
+  }
   .flicker {
     transform-box: fill-box;
     transform-origin: 50% 100%;
@@ -507,6 +568,19 @@ body {
     transform-box: fill-box;
     transform-origin: 0 50%;
     animation: flag 1.4s ease-in-out infinite alternate;
+  }
+  @keyframes ripple {
+    0% {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+    30% {
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
   }
   @keyframes turn {
     to {
@@ -617,20 +691,20 @@ body {
     }
   }
 
-  /* Hero: Gauri says hello when tapped. */
-  .moo-bubble {
+  /* Hero: Rani says "राम राम" when tapped. */
+  .hello-bubble {
     opacity: 0;
     transform: translateY(6px) scale(0.8);
     transition:
       opacity 0.2s ease,
       transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1);
   }
-  [data-moo] .moo-bubble {
+  [data-hello] .hello-bubble {
     opacity: 1;
     transform: none;
   }
 
-  /* Bilona journey. JourneyDriver sets data-step, data-active and the scroll variables
+  /* Ghee journey. driveJourney() in lib/motion sets data-step, data-active and the scroll variables
      --sp (progress through the current step) and --jp (progress through the whole journey). */
   .journey-sky {
     background: linear-gradient(var(--sky-a), var(--sky-b));
@@ -691,7 +765,7 @@ body {
   .bead[data-active],
   .bead[data-done] {
     background-color: var(--color-haldi-500);
-    color: var(--color-maroon-950);
+    color: var(--color-kattha-950);
   }
   .bead[data-active] {
     transform: scale(1.12);
@@ -718,7 +792,7 @@ body {
     transform: translateY(calc((1 - var(--on)) * -16px));
   }
   .ghee-melt {
-    fill: color-mix(in srgb, #e8a30c calc(var(--sp, 0) * 100%), #fff6dc);
+    fill: color-mix(in srgb, #efd27e calc(var(--sp, 0) * 100%), #fff6dc);
   }
   .makkhan-melt {
     transform-box: fill-box;

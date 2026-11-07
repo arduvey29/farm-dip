@@ -31,7 +31,7 @@ export function PriceTable({ products, caption }: { products: Product[]; caption
                   <Link href={`/products/${p.slug}?pack=${v.id}`} className="underline-offset-4 hover:underline">
                     {v.label}
                   </Link>{" "}
-                  <span className="text-sm text-maroon-700">{v.packaging}</span>
+                  <span className="text-sm text-kattha-700">{v.packaging}</span>
                 </td>
                 <td className="font-semibold tabular-nums">{formatPrice(v.price)}</td>
                 <td className="tabular-nums">{formatPrice(pricePerLitre(v.price, v.volumeMl))}</td>

@@ -17,14 +17,16 @@ export const site = {
   // The wordmark: "farm" in Devanagari, "dip" in Latin letters.
   wordmark: "फ़ार्म dip",
   legalName: "Farm Dip Foods Pvt. Ltd.", // PLACEHOLDER
-  tagline: "A2 bilona ghee from Gir cows",
+  tagline: "Pure desi ghee from buffalo milk",
   description:
-    "Farm Dip makes A2 ghee from the milk of Gir and Sahiwal cows using the bilona method: milk is set into curd, hand-churned into makkhan and slow-cooked over a wood fire. Every batch is lab tested. Free cash on delivery across India.",
+    "Farm Dip makes pure desi ghee from buffalo milk: rich, creamy and full of aroma, with no preservatives or additives. Made the way we ate it in our childhood. Free cash on delivery across India.",
+  // In the brand's own words. Shown on the home and about pages.
+  aim: "We make ghee the way we ate it in our childhood: pure, simple, rich and full of goodness. Our aim is to bring that same purity and health to every family's kitchen.",
   url: resolveSiteUrl(),
   locale: "en_IN",
   language: "en-IN",
   currency: "INR",
-  foundingYear: 2019, // PLACEHOLDER
+  foundingYear: 2024, // PLACEHOLDER
 
   contact: {
     phone: "+91 90000 00000", // PLACEHOLDER
@@ -35,16 +37,18 @@ export const site = {
     hoursSpec: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "19:00" },
   },
 
+  // PLACEHOLDER: replace the whole address and the coordinates with your real ones.
   address: {
-    street: "Survey No. 00, Gir Road", // PLACEHOLDER
-    locality: "Talala",
-    region: "Gujarat",
-    postalCode: "362150",
+    street: "Village Road", // PLACEHOLDER
+    locality: "Rohtak", // PLACEHOLDER
+    region: "Haryana", // PLACEHOLDER
+    isoRegion: "IN-HR", // PLACEHOLDER: ISO 3166-2 code of the state
+    postalCode: "124001", // PLACEHOLDER
     country: "IN",
     countryName: "India",
   },
-  // Farm location, used for Place/GeoCoordinates structured data.
-  geo: { latitude: 21.0458, longitude: 70.5357 },
+  // Farm location, used for Place/GeoCoordinates structured data. PLACEHOLDER.
+  geo: { latitude: 28.8955, longitude: 76.6066 },
 
   legal: {
     fssai: "10000000000000", // PLACEHOLDER: 14-digit FSSAI licence number (mandatory on Indian food e-commerce)
@@ -68,49 +72,36 @@ export const site = {
     ],
   },
 
-  // PLACEHOLDER figures. Only publish numbers you can substantiate.
+  // PLACEHOLDER: litres of buffalo milk per litre of ghee. Confirm from your own production records.
   stats: {
-    partnerFarms: 120,
-    labParameters: 32,
-    milkPerLitre: "28 to 30 litres",
+    milkPerLitre: "about 18 litres",
   },
 
   announcement: "Free cash on delivery across India. Free shipping on orders above ₹999.",
   // Seasonal greeting shown in the top bar. Set to null outside festivals.
-  festive: { hindi: "शुभ दीपावली", text: "Festive gift boxes ship within 24 hours", href: "/products/festive-gift-box" } as { hindi: string; text: string; href: string } | null,
+  festive: { hindi: "शुभ दीपावली", text: "Pure desi ghee for your festive kitchen", href: "/products/pure-desi-buffalo-ghee?pack=5-l" } as { hindi: string; text: string; href: string } | null,
 } as const;
 
 export type Site = typeof site;
 
 export const mainNav = [
-  {
-    label: "Shop ghee",
-    href: "/shop",
-    children: [
-      { label: "A2 cow ghee", href: "/collections/a2-cow-ghee", note: "Gir and Sahiwal, bilona churned" },
-      { label: "Buffalo ghee", href: "/collections/buffalo-ghee", note: "Rich, white, high-yield" },
-      { label: "Infused ghee", href: "/collections/infused-ghee", note: "Haldi and black pepper" },
-      { label: "Gift packs and savers", href: "/collections/gift-packs", note: "Festive boxes, family packs" },
-    ],
-  },
-  { label: "Bilona process", href: "/bilona-process" },
-  { label: "Lab reports", href: "/lab-reports" },
+  { label: "Shop ghee", href: "/shop" },
+  { label: "How it's made", href: "/how-its-made" },
+  { label: "Our story", href: "/about" },
   { label: "Learn", href: "/blog" },
-  { label: "Our farms", href: "/about" },
-] as const;
+  { label: "Questions", href: "/faq" },
+] as { label: string; href: string; children?: { label: string; href: string; note: string }[] }[];
 
 export const footerNav = {
   shop: [
-    { label: "All ghee", href: "/shop" },
-    { label: "A2 cow ghee", href: "/collections/a2-cow-ghee" },
-    { label: "Buffalo ghee", href: "/collections/buffalo-ghee" },
-    { label: "Infused ghee", href: "/collections/infused-ghee" },
-    { label: "Gift packs", href: "/collections/gift-packs" },
+    { label: "All sizes", href: "/shop" },
+    { label: "500 ml jar", href: "/products/pure-desi-buffalo-ghee?pack=500-ml" },
+    { label: "1 litre jar", href: "/products/pure-desi-buffalo-ghee?pack=1-l" },
+    { label: "5 litre pack", href: "/products/pure-desi-buffalo-ghee?pack=5-l" },
   ],
   company: [
-    { label: "Our farms", href: "/about" },
-    { label: "Bilona process", href: "/bilona-process" },
-    { label: "Lab reports", href: "/lab-reports" },
+    { label: "Our story", href: "/about" },
+    { label: "How it's made", href: "/how-its-made" },
     { label: "Learn about ghee", href: "/blog" },
     { label: "Contact us", href: "/contact" },
   ],

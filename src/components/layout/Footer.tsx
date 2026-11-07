@@ -14,17 +14,17 @@ export async function Footer() {
   const year = await currentYear();
   const { address, contact, legal } = site;
   return (
-    <footer className="relative mt-auto overflow-hidden bg-maroon-900 text-maroon-100">
-      <div className="kairi-band" aria-hidden />
+    <footer className="relative mt-auto overflow-hidden bg-lal-900 text-lal-100">
+      <div className="phulkari-band" aria-hidden />
       <Mandala className="pointer-events-none absolute -top-40 -right-40 size-[34rem] opacity-15" />
 
-      <div className="wrap relative flex flex-col items-center gap-6 border-b border-maroon-800 py-12 text-center sm:flex-row sm:justify-center sm:gap-10 sm:text-left">
+      <div className="wrap relative flex flex-col items-center gap-6 border-b border-lal-800 py-12 text-center sm:flex-row sm:justify-center sm:gap-10 sm:text-left">
         <LogoMark className="h-40 w-auto shrink-0" />
         <div>
           <p lang="sa" className="font-display text-4xl text-haldi-400 sm:text-5xl">
             आयुर्वै घृतम्
           </p>
-          <p className="mt-2 max-w-md text-maroon-200">“Ghee, truly, is life.” An old Sanskrit saying, and the reason we make it slowly.</p>
+          <p className="mt-2 max-w-md text-lal-200">“Ghee, truly, is life.” An old Sanskrit saying, and the reason we make it slowly.</p>
         </div>
       </div>
 
@@ -33,8 +33,8 @@ export async function Footer() {
           <p className="font-display text-3xl text-chandan">
             <span lang="hi">फ़ार्म</span> dip
           </p>
-          <p className="max-w-sm text-maroon-200">
-            A2 bilona ghee from Gir and Sahiwal cows, made in small batches at our partner farms in Gujarat and tested in an independent lab.
+          <p className="max-w-sm text-lal-200">
+            Pure desi ghee from buffalo milk, made the way we ate it as children. No preservatives, no additives. Rich, creamy and full of aroma.
           </p>
           {/* NAP block: keep identical to Google Business Profile and structured data. */}
           <address className="space-y-2 text-sm not-italic">
@@ -70,18 +70,18 @@ export async function Footer() {
         <FooterColumn title="Help" links={footerNav.help} />
       </div>
 
-      <div className="relative border-t border-maroon-800">
+      <div className="relative border-t border-lal-800">
         <div className="wrap grid gap-6 py-10 md:grid-cols-[1fr_1.2fr] md:items-center">
           <div>
             <h2 className="font-display text-2xl text-chandan">Ghee notes, once a month</h2>
-            <p className="mt-1 text-maroon-200">New batches, festive offers and recipes. No spam; unsubscribe any time.</p>
+            <p className="mt-1 text-lal-200">New batches, festive offers and recipes. No spam; unsubscribe any time.</p>
           </div>
           <NewsletterForm tone="dark" />
         </div>
       </div>
 
-      <div className="relative border-t border-maroon-800 bg-maroon-950">
-        <div className="wrap flex flex-col gap-3 py-6 text-xs text-maroon-200 md:flex-row md:items-center md:justify-between">
+      <div className="relative border-t border-lal-800 bg-lal-950">
+        <div className="wrap flex flex-col gap-3 py-6 text-xs text-lal-200 md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {site.legalName}. FSSAI Lic. No. {legal.fssai}. GSTIN {legal.gstin}.
           </p>

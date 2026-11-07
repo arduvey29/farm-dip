@@ -14,7 +14,7 @@ export function ContactForm() {
     );
   }
 
-  const input = "min-h-12 w-full rounded-xl border border-maroon-200 bg-white px-4";
+  const input = "min-h-12 w-full rounded-xl border border-kattha-200 bg-white px-4";
   return (
     <form
       className="space-y-4"
@@ -54,7 +54,7 @@ export function ContactForm() {
         </label>
         <textarea id="c-message" name="message" required rows={5} className={`${input} py-3`} />
       </div>
-      <button type="submit" className="min-h-12 rounded-full bg-maroon-900 px-7 font-semibold text-chandan hover:bg-maroon-800">
+      <button type="submit" className="min-h-12 rounded-full bg-lal-900 px-7 font-semibold text-chandan hover:bg-lal-800">
         Send message
       </button>
     </form>

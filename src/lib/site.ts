@@ -72,9 +72,9 @@ export const site = {
     ],
   },
 
-  // PLACEHOLDER: litres of buffalo milk per litre of ghee. Confirm from your own production records.
+  // Litres of buffalo milk per litre of ghee, from the team's product update.
   stats: {
-    milkPerLitre: "about 18 litres",
+    milkPerLitre: "about 12 to 14 litres",
   },
 
   announcement: "Free cash on delivery across India. Free shipping on orders above ₹999.",

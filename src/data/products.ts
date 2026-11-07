@@ -11,11 +11,12 @@ import { asset } from "@/lib/assets";
 const SLUG = "pure-desi-buffalo-ghee";
 const img = (name: string) => asset(`/images/products/${SLUG}/${name}.svg`);
 
+// MRPs, SKUs and packaging from the team's product update (syAnasali, 2026-11-07).
+// The MRP shown struck through must match the MRP printed on the pack (Legal Metrology rules).
 const variants: Variant[] = [
-  // MRP equals price until the brand confirms printed MRPs; no strikethrough discounts are shown.
-  { id: "500-ml", label: "500 ml", volumeMl: 500, price: 1350, mrp: 1350, sku: "FD-BUF-500", packaging: "Glass jar", inStock: true, image: img("jar") }, // PLACEHOLDER: SKU, packaging
-  { id: "1-l", label: "1 L", volumeMl: 1000, price: 2210, mrp: 2210, sku: "FD-BUF-1000", packaging: "Glass jar", inStock: true, image: img("jar-1l") }, // PLACEHOLDER: SKU, packaging
-  { id: "5-l", label: "5 L", volumeMl: 5000, price: 9900, mrp: 9900, sku: "FD-BUF-5000", packaging: "Steel dolchi", inStock: true, image: img("dolchi"), bestValue: true }, // PLACEHOLDER: SKU, packaging
+  { id: "500-ml", label: "500 ml", volumeMl: 500, price: 1350, mrp: 1699, sku: "FD-BUF-500", packaging: "Glass jar", inStock: true, image: img("jar") },
+  { id: "1-l", label: "1 L", volumeMl: 1000, price: 2210, mrp: 2799, sku: "FD-BUF-1000", packaging: "Glass jar", inStock: true, image: img("jar-1l") },
+  { id: "5-l", label: "5 L", volumeMl: 5000, price: 9900, mrp: 12499, sku: "FD-BUF-5000", packaging: "Steel dolchi", inStock: true, image: img("dolchi"), bestValue: true },
 ];
 
 export const products: Product[] = [
@@ -24,8 +25,8 @@ export const products: Product[] = [
     name: "Pure Desi Buffalo Ghee",
     shortName: "buffalo ghee",
     kind: "single",
-    // PLACEHOLDER: litres of buffalo milk per litre of ghee. Confirm from your production records.
-    milk: { litresPerLitre: 18, source: "buffalo milk" },
+    // About 12 to 14 litres of buffalo milk per litre of ghee, from the team's product update.
+    milk: { litresPerLitre: 14, source: "buffalo milk" },
     badge: "100% natural",
     tagline: "Made from pure buffalo milk, the way we ate it as children",
     summary: "Rich, creamy desi ghee made from pure buffalo milk. 100% natural, with no preservatives or additives.",
@@ -45,10 +46,13 @@ export const products: Product[] = [
       { label: "Milk", value: "Pure buffalo milk" },
       { label: "Ingredients", value: "Ghee from buffalo milk. Nothing added." },
       { label: "Preservatives and additives", value: "None" },
-      { label: "Texture", value: "Rich and creamy. Sets firm in cool weather" },
-      { label: "Colour and aroma", value: "Creamy white with a rich, sweet aroma" },
-      { label: "Shelf life", value: "12 months from packing" }, // PLACEHOLDER: confirm
-      { label: "Packed in", value: "Glass jars for 500 ml and 1 L, steel dolchi for 5 L" }, // PLACEHOLDER: confirm
+      { label: "Milk per litre of ghee", value: "About 12 to 14 litres" },
+      { label: "Texture", value: "Rich, creamy and danedar. Sets firm in cool weather" },
+      { label: "Colour", value: "Creamy white" },
+      { label: "Flavour and aroma", value: "Authentic traditional taste, rich aroma" },
+      { label: "Vitamins", value: "Naturally carries the fat-soluble vitamins A, D, E and K" },
+      { label: "Shelf life", value: "12 months from packing" },
+      { label: "Packed in", value: "Airtight food-grade glass jars (500 ml, 1 L); food-grade stainless steel dolchi with airtight seal (5 L)" },
     ],
     images: [
       { src: img("jar"), alt: "Jar of Farm Dip pure desi buffalo ghee with a red cloth tied over the lid, on a banana leaf" },
@@ -59,10 +63,21 @@ export const products: Product[] = [
     variants,
     defaultVariant: "1-l",
     ingredients: "Ghee made from pure buffalo milk. No preservatives, no additives, no colour.",
-    shelfLife: "12 months from the date of packing", // PLACEHOLDER: confirm
+    shelfLife: "12 months from the date of packing",
     storage: "Store in a cool, dry place away from direct sunlight. Always use a clean, dry spoon. No refrigeration needed.",
-    uses: ["Tadka and everyday cooking", "On hot rotis, parathas and dal", "Halwa, ladoo and mithai", "Puris, pakode and deep frying", "Diyas and pooja"],
+    uses: [
+      "Everyday cooking and traditional recipes",
+      "Aromatic tadka for dal, sambar and curries",
+      "On piping hot rotis, parathas and naan",
+      "Festive sweets: halwa, ladoo and mithai",
+      "Deep frying and sautéing, thanks to its high smoke point",
+      "Diyas and pooja",
+    ],
     faqs: [
+      {
+        q: "What makes Farm Dip Pure Desi Buffalo Ghee special?",
+        a: "Made from pure buffalo milk, it has a rich, creamy texture, authentic taste and delicious flavour that makes every meal special. It is 100% natural with no preservatives or additives.",
+      },
       {
         q: "Why is buffalo ghee white?",
         a: "Buffalo milk carries very little beta-carotene, the pigment that makes cow ghee yellow. So pure buffalo ghee is naturally creamy white. The colour is not a sign of anything added or removed.",
@@ -77,7 +92,7 @@ export const products: Product[] = [
       },
       {
         q: "Which pack size should I buy?",
-        a: "The 5 L pack works out to ₹1,980 per litre, the 1 L jar to ₹2,210 and the 500 ml jar to ₹2,700. A family that cooks with ghee every day usually goes for 1 L or 5 L. Ghee keeps well for months if you always use a dry spoon.",
+        a: "The 500 ml jar (₹1,350) suits small families or a first try. The 1 L jar (₹2,210) is the most popular monthly staple. For joint families, the 5 L steel dolchi (₹9,900) costs the least per litre, at ₹1,980.",
       },
       {
         q: "Is buffalo ghee good for everyday cooking?",
@@ -95,17 +110,17 @@ export const products: Product[] = [
   },
 ];
 
-/** Typical values per 100 g for pure ghee. PLACEHOLDER: replace with values from your own lab report. */
+/** Typical values per 100 g for pure buffalo ghee, from the team's product update. Confirm against your own lab report. */
 export const gheeNutrition = [
-  { label: "Energy", value: "897 kcal" },
-  { label: "Total fat", value: "99.7 g" },
-  { label: "Saturated fat", value: "61.9 g" },
-  { label: "Monounsaturated fat", value: "28.7 g" },
-  { label: "Polyunsaturated fat", value: "3.7 g" },
+  { label: "Energy", value: "900 kcal" },
+  { label: "Total fat", value: "99.8 g" },
+  { label: "Saturated fat", value: "68.0 g" },
+  { label: "Monounsaturated fat", value: "27.5 g" },
+  { label: "Polyunsaturated fat", value: "3.2 g" },
   { label: "Trans fat (added)", value: "0 g" },
   { label: "Cholesterol", value: "256 mg" },
   { label: "Carbohydrate", value: "0 g" },
-  { label: "Protein", value: "0.3 g" },
+  { label: "Protein", value: "0 g" },
 ];
 
 /** The store sells one ghee. Pages that link to "the product" use this. */

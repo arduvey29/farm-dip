@@ -24,11 +24,13 @@ Other scripts:
 
 One ghee in three sizes, at the brand's prices:
 
-| Pack | Price | Per litre |
-| --- | --- | --- |
-| 500 ml | ₹1,350 | ₹2,700 |
-| 1 L | ₹2,210 | ₹2,210 |
-| 5 L | ₹9,900 | ₹1,980 |
+| Pack | Price | MRP | Per litre | Packed in |
+| --- | --- | --- | --- | --- |
+| 500 ml | ₹1,350 | ₹1,699 | ₹2,700 | Airtight glass jar |
+| 1 L | ₹2,210 | ₹2,799 | ₹2,210 | Airtight glass jar |
+| 5 L | ₹9,900 | ₹12,499 | ₹1,980 | Stainless steel dolchi |
+
+About 12 to 14 litres of buffalo milk go into each litre of ghee. Shelf life is 12 months from packing.
 
 All product copy comes from the brand's own description: pure and 100% natural, rich in vitamins, no preservatives or additives, for everyday cooking and traditional recipes. The aim statement is in `site.aim`.
 
@@ -141,8 +143,7 @@ A desi look with painted folk art that moves, in the colours of a Punjabi-Haryan
 
 Confirm with the brand (marked `PLACEHOLDER`):
 - [ ] The six steps in `src/data/process.ts`. They describe the traditional home method (malai, dahi, makkhan, slow cooking). Make sure they match the real process.
-- [ ] Litres of buffalo milk per litre of ghee (`milk` in `src/data/products.ts`, `site.stats.milkPerLitre`)
-- [ ] SKUs, packaging (jar or tin for each size), shelf life, and MRPs, if they differ from the selling price
+- [ ] MRPs (₹1,699, ₹2,799, ₹12,499) match the MRP printed on each pack, since they are shown struck through
 - [ ] "Rich in vitamins": FSSAI's labelling and claims rules apply to nutrient claims, so back it with your own lab values in `gheeNutrition`
 - [ ] Legal name, address, coordinates, phone, WhatsApp and email in `src/lib/site.ts`
 - [ ] FSSAI licence number, GSTIN and grievance officer (legally required for Indian food e-commerce)

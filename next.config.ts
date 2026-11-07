@@ -41,6 +41,13 @@ const nextConfig: NextConfig = {
       { source: "/lab-reports", destination: "/how-its-made", permanent: true },
       { source: "/products/a2-gir-cow-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee", permanent: true },
       { source: "/products/desi-buffalo-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee", permanent: true },
+      // Per-size product pages and guides from the team's earlier update.
+      { source: "/products/pure-desi-buffalo-ghee-500ml", destination: "/products/pure-desi-buffalo-ghee?pack=500-ml", permanent: true },
+      { source: "/products/pure-desi-buffalo-ghee-1l", destination: "/products/pure-desi-buffalo-ghee?pack=1-l", permanent: true },
+      { source: "/products/pure-desi-buffalo-ghee-5l", destination: "/products/pure-desi-buffalo-ghee?pack=5-l", permanent: true },
+      { source: "/products/:slug(a2-sahiwal-cow-bilona-ghee|haldi-infused-cow-ghee|family-saver-2x1l|ghee-tasting-duo|festive-gift-box)", destination: "/shop", permanent: true },
+      { source: "/blog/a2-vs-a1-ghee", destination: "/blog/buffalo-ghee-vs-cow-ghee", permanent: true },
+      { source: "/blog/bilona-vs-cream-ghee", destination: "/how-its-made", permanent: true },
       { source: "/shop/:slug", destination: "/products/:slug", permanent: true },
       { source: "/product/:slug", destination: "/products/:slug", permanent: true },
       { source: "/collection/:slug", destination: "/shop", permanent: true },

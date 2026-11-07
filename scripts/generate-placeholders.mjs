@@ -379,6 +379,7 @@ write("brand/farm-dip-emblem.svg", emblemSvg("fe"));
 /* ---------- Blog covers ---------- */
 const posts = [
   { slug: "buffalo-ghee-vs-cow-ghee", title: "Buffalo ghee vs cow ghee", tag: "Buying guide", hindi: "भैंस का घी या गाय का" },
+  { slug: "benefits-of-pure-buffalo-ghee", title: "Pure buffalo ghee: taste, texture, nutrition", tag: "Buying guide", hindi: "भैंस के घी के गुण" },
   { slug: "how-to-check-ghee-purity", title: "How to check ghee purity at home", tag: "Purity", hindi: "शुद्धता की जाँच" },
   { slug: "ghee-smoke-point-cooking", title: "Ghee smoke point and cooking", tag: "Cooking", hindi: "तड़का और घी" },
   { slug: "how-to-store-ghee", title: "How to store ghee", tag: "Storage", hindi: "घी कैसे रखें" },

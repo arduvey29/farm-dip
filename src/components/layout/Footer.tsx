@@ -2,7 +2,6 @@ import Link from "next/link";
 import { footerNav, site } from "@/lib/site";
 import { LogoMark } from "./Logo";
 import { Icon } from "@/components/ui/Icon";
-import { NewsletterForm } from "@/components/forms/NewsletterForm";
 import { Mandala } from "@/components/ui/Ornament";
 
 async function currentYear() {
@@ -68,16 +67,6 @@ export async function Footer() {
         <FooterColumn title="Shop" links={footerNav.shop} />
         <FooterColumn title={site.name} links={footerNav.company} />
         <FooterColumn title="Help" links={footerNav.help} />
-      </div>
-
-      <div className="relative border-t border-lal-800">
-        <div className="wrap grid gap-6 py-10 md:grid-cols-[1fr_1.2fr] md:items-center">
-          <div>
-            <h2 className="font-display text-2xl text-chandan">Ghee notes, once a month</h2>
-            <p className="mt-1 text-lal-200">New batches, festive offers and recipes. No spam; unsubscribe any time.</p>
-          </div>
-          <NewsletterForm tone="dark" />
-        </div>
       </div>
 
       <div className="relative border-t border-lal-800 bg-lal-950">

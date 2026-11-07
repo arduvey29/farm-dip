@@ -9,7 +9,6 @@ import { useCart } from "@/components/cart/CartProvider";
 import { QtyStepper } from "@/components/cart/CartLines";
 import { Icon } from "@/components/ui/Icon";
 import { MilkMath } from "./MilkMath";
-import { PincodeCheck } from "./PincodeCheck";
 import { VARIANT_EVENT } from "./ProductGallery";
 
 type Props = {
@@ -155,8 +154,6 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
       </ul>
 
       {milk ? <MilkMath volumeMl={variant.volumeMl} label={variant.label} {...milk} /> : null}
-
-      <PincodeCheck />
 
       <div
         className={`fixed inset-x-0 bottom-0 z-30 border-t border-line bg-malai/95 px-4 py-3 backdrop-blur transition-[transform,visibility] duration-300 lg:hidden ${

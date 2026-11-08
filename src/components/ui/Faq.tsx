@@ -13,11 +13,11 @@ export function Faq({ items, headingLevel = 3, name = "faq" }: { items: readonly
         <details key={item.q} name={name} className="group">
           <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
             <H className="text-lg leading-snug font-semibold">{item.q}</H>
-            <span className="mt-1 shrink-0 rounded-full border border-kattha-200 p-1 transition-transform group-open:rotate-45">
+            <span className="mt-1 shrink-0 rounded-full border border-ink-200 p-1 transition-transform group-open:rotate-45">
               <Icon name="plus" className="size-4" />
             </span>
           </summary>
-          <p className="max-w-[68ch] pb-6 text-kattha-800">{item.a}</p>
+          <p className="max-w-[68ch] pb-6 text-ink-800">{item.a}</p>
         </details>
       ))}
     </div>

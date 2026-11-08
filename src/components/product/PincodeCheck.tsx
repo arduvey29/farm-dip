@@ -71,7 +71,7 @@ export function PincodeCheck() {
           <label htmlFor="pincode" className="mb-1.5 block text-sm font-semibold">
             Check delivery date
           </label>
-          <Icon name="pin" className="pointer-events-none absolute bottom-3 left-3.5 size-5 text-kattha-500" />
+          <Icon name="pin" className="pointer-events-none absolute bottom-3 left-3.5 size-5 text-ink-500" />
           <input
             id="pincode"
             inputMode="numeric"
@@ -80,15 +80,15 @@ export function PincodeCheck() {
             placeholder="6-digit pincode"
             value={pin}
             onChange={(e) => setPin(e.target.value.replace(/\D/g, ""))}
-            className="min-h-11 w-full rounded-full border border-kattha-200 pr-3 pl-10"
+            className="min-h-11 w-full rounded-full border border-ink-200 pr-3 pl-10"
           />
         </div>
-        <button type="submit" className="min-h-11 rounded-full bg-kattha-100 px-5 font-semibold hover:bg-kattha-200">
+        <button type="submit" className="min-h-11 rounded-full bg-ink-100 px-5 font-semibold hover:bg-ink-200">
           Check
         </button>
       </form>
       {result ? (
-        <p role="status" className={`mt-3 flex gap-2 text-sm ${result.ok ? "text-hara" : "text-rani"}`}>
+        <p role="status" className={`mt-3 flex gap-2 text-sm ${result.ok ? "text-pasture-600" : "text-spice"}`}>
           <Icon name={result.ok ? "truck" : "close"} className="mt-0.5 size-4 shrink-0" />
           {result.text}
         </p>

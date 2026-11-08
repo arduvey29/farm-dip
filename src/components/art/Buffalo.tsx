@@ -22,7 +22,7 @@ function Leg({ d, back = false, x }: { d: string; back?: boolean; x: number }) {
       <path d={d} fill={back ? far : coat} {...line} />
       <path d={`M${x - 1} 260h20l1.5 8h-23Z`} fill={hoof} />
       <path d={`M${x + 9} 260v8`} stroke="#3a3034" strokeWidth="1" />
-      <rect x={x} y={250} width="18" height="4" rx="2" fill="var(--color-haldi-500)" stroke={ink} strokeWidth="0.8" />
+      <rect x={x} y={250} width="18" height="4" rx="2" fill="var(--color-ghee-500)" stroke={ink} strokeWidth="0.8" />
     </g>
   );
 }
@@ -30,8 +30,8 @@ function Leg({ d, back = false, x }: { d: string; back?: boolean; x: number }) {
 function Marigold({ x, y, tone }: { x: number; y: number; tone: string }) {
   return (
     <g>
-      <circle cx={x} cy={y} r="4.4" fill={tone} stroke="var(--color-haldi-800)" strokeWidth="0.8" />
-      <circle cx={x} cy={y} r="1.9" fill="var(--color-haldi-300)" />
+      <circle cx={x} cy={y} r="4.4" fill={tone} stroke="var(--color-ghee-800)" strokeWidth="0.8" />
+      <circle cx={x} cy={y} r="1.9" fill="var(--color-ghee-300)" />
     </g>
   );
 }
@@ -75,22 +75,22 @@ export function Buffalo({ pose = "stand", bird = true, className = "" }: { pose?
       <path d="M150 100C190 95 250 94 296 98" fill="none" stroke={sheen} strokeWidth="3" strokeLinecap="round" opacity="0.8" />
 
       {/* Gond-style decoration: a dotted line along the back, dashes along the belly, a flower and a spiral. */}
-      <g fill="var(--color-haldi-400)">
+      <g fill="var(--color-ghee-400)">
         {Array.from({ length: 14 }, (_, i) => (
           <circle key={i} cx={164 + i * 11} cy={106 + (i > 10 ? (i - 10) * 1.5 : 0)} r="1.7" />
         ))}
       </g>
       <path d="M176 204C210 209 250 209 286 203" fill="none" stroke="#efe6da" strokeWidth="1.8" strokeDasharray="5 5" strokeLinecap="round" />
       <g>
-        <circle cx="166" cy="148" r="15" fill="none" stroke="var(--color-haldi-400)" strokeWidth="1.8" />
-        <circle cx="166" cy="148" r="5" fill="var(--color-rani)" />
+        <circle cx="166" cy="148" r="15" fill="none" stroke="var(--color-ghee-400)" strokeWidth="1.8" />
+        <circle cx="166" cy="148" r="5" fill="var(--color-spice)" />
         {Array.from({ length: 8 }, (_, i) => {
           const a = (i / 8) * Math.PI * 2;
           return <circle key={i} cx={166 + Math.cos(a) * 10} cy={148 + Math.sin(a) * 10} r="2" fill="#efe6da" />;
         })}
       </g>
-      <path d="M306 140c0-6 8-8 11-3 4 6-3 13-10 11-9-2-10-14-3-20 9-7 22-1 22 11" fill="none" stroke="var(--color-haldi-400)" strokeWidth="1.8" strokeLinecap="round" />
-      <g fill="var(--color-rani)">
+      <path d="M306 140c0-6 8-8 11-3 4 6-3 13-10 11-9-2-10-14-3-20 9-7 22-1 22 11" fill="none" stroke="var(--color-ghee-400)" strokeWidth="1.8" strokeLinecap="round" />
+      <g fill="var(--color-spice)">
         <circle cx="300" cy="172" r="2.6" />
         <circle cx="309" cy="180" r="2.6" />
         <circle cx="291" cy="180" r="2.6" />
@@ -129,7 +129,7 @@ export function Buffalo({ pose = "stand", bird = true, className = "" }: { pose?
           <path d="M79 119l9-3.5" stroke={ink} strokeWidth="2.2" strokeLinecap="round" />
           <path d="M56 112C63 106 72 106 80 111" fill="none" stroke={sheen} strokeWidth="1.6" strokeLinecap="round" />
           <path className="buf-lid" d="M56 120C60 112 71 112 80 119L71 125H61Z" fill={coat} />
-          <path d="M66 100c2 3 2 7 0 10-2-3-2-7 0-10Z" fill="var(--color-lal-700)" />
+          <path d="M66 100c2 3 2 7 0 10-2-3-2-7 0-10Z" fill="var(--color-spice)" />
 
           {/* Small horizontal ear under the horn. */}
           <g className="buf-ear" style={{ transformOrigin: "95px 123px" }}>
@@ -140,20 +140,20 @@ export function Buffalo({ pose = "stand", bird = true, className = "" }: { pose?
           {/* Near horn: dark with painted festival bands, and a woollen phundna at its base. */}
           <path d={HORN} fill="none" stroke={ink} strokeWidth="11" strokeLinecap="round" />
           <path d={HORN} fill="none" stroke={hornColour} strokeWidth="8.4" strokeLinecap="round" />
-          <path d={HORN} fill="none" stroke="var(--color-haldi-500)" strokeWidth="8.4" strokeDasharray="3 13" strokeDashoffset="-6" />
-          <path d={HORN} fill="none" stroke="var(--color-rani)" strokeWidth="8.4" strokeDasharray="3 13" strokeDashoffset="-14" />
+          <path d={HORN} fill="none" stroke="var(--color-ghee-500)" strokeWidth="8.4" strokeDasharray="3 13" strokeDashoffset="-6" />
+          <path d={HORN} fill="none" stroke="var(--color-spice)" strokeWidth="8.4" strokeDasharray="3 13" strokeDashoffset="-14" />
           <path d={HORN} fill="none" stroke="#6b5d63" strokeWidth="2" strokeLinecap="round" strokeDasharray="40 200" strokeDashoffset="-4" />
           <g>
-            <path d="M92 104c-2 6-2 12 0 16M96 104c0 6 1 11 3 14" stroke="var(--color-rani)" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-            <circle cx="90" cy="102" r="4.2" fill="var(--color-rani)" />
-            <circle cx="96" cy="100" r="3.6" fill="var(--color-haldi-500)" />
-            <circle cx="93" cy="96" r="3" fill="var(--color-hara)" />
+            <path d="M92 104c-2 6-2 12 0 16M96 104c0 6 1 11 3 14" stroke="var(--color-spice)" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+            <circle cx="90" cy="102" r="4.2" fill="var(--color-spice)" />
+            <circle cx="96" cy="100" r="3.6" fill="var(--color-ghee-500)" />
+            <circle cx="93" cy="96" r="3" fill="var(--color-pasture-600)" />
           </g>
         </g>
 
         {/* Marigold garland with a strand of kauri shells. */}
         {garland.map(([x, y], i) => (
-          <Marigold key={`m${i}`} x={x} y={y} tone={i % 2 ? "var(--color-haldi-500)" : "var(--color-genda)"} />
+          <Marigold key={`m${i}`} x={x} y={y} tone={i % 2 ? "var(--color-ghee-500)" : "var(--color-marigold)"} />
         ))}
         {kauri.map(([x, y], i) => (
           <g key={`k${i}`}>
@@ -163,10 +163,10 @@ export function Buffalo({ pose = "stand", bird = true, className = "" }: { pose?
         ))}
 
         {/* Brass bell on a red cord. */}
-        <path d="M126 124C116 140 104 150 94 156" fill="none" stroke="var(--color-lal-700)" strokeWidth="2.4" />
+        <path d="M126 124C116 140 104 150 94 156" fill="none" stroke="var(--color-spice)" strokeWidth="2.4" />
         <g className="buf-bell" style={{ transformOrigin: "94px 156px" }}>
           <path d="M94 156v4" stroke={ink} strokeWidth="1.6" />
-          <path d="M86 175c0-9 3.5-15 8-15s8 6 8 15Z" fill="var(--color-haldi-500)" stroke={ink} strokeWidth="1.4" />
+          <path d="M86 175c0-9 3.5-15 8-15s8 6 8 15Z" fill="var(--color-ghee-500)" stroke={ink} strokeWidth="1.4" />
           <circle cx="94" cy="177" r="2.4" fill={ink} />
         </g>
       </g>
@@ -186,7 +186,7 @@ export function Buffalo({ pose = "stand", bird = true, className = "" }: { pose?
           <path d="M252 77l8 3-8 1.5Z" fill="#fff" stroke="#cfc6b8" strokeWidth="0.6" />
           <path d="M233 73C226 69 226 61 230 57" fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="round" />
           <circle cx="229.5" cy="56" r="4.6" fill="#fff" stroke="#cfc6b8" strokeWidth="0.6" />
-          <path d="M226 55.4l-9 1.8 9 1.6Z" fill="var(--color-haldi-500)" />
+          <path d="M226 55.4l-9 1.8 9 1.6Z" fill="var(--color-ghee-500)" />
           <circle cx="228.6" cy="55" r="0.95" fill="#1a1a1a" />
         </g>
       ) : null}

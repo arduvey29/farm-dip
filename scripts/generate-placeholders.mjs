@@ -4,9 +4,9 @@
  *
  * Replace each file with real photography using the same path (or update the
  * paths in src/data/*.ts), then bump ASSET_VERSION in src/lib/assets.ts.
- * Suggested art direction: jars of creamy white buffalo ghee with a red cloth tied
- * over the lid, on a banana leaf or brass thali, with marigolds, shot on a warm
- * cream or rangoli background.
+ * Suggested art direction: jars of creamy white buffalo ghee with a green cloth tied
+ * over the lid, shot simply on a warm cream or oat background in soft daylight,
+ * with a brass spoon or a bowl of molten ghee nearby.
  */
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -15,29 +15,30 @@ import { badgeMarkup, badgeSvg, emblemSvg } from "../src/components/brand/badge.
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "images");
 
+// The site palette (see src/app/globals.css). Keys kept from the first theme so the drawings below read the same.
 const C = {
-  lal: "#6b100b",
-  lalMid: "#8e1a12",
-  lalDeep: "#3f0a07",
-  cloth: "#b3261a",
-  clothDark: "#8e1a12",
-  ink: "#2f150e",
-  haldi: "#f5b301",
-  haldiLight: "#fcdb7e",
-  genda: "#f57c00",
-  rani: "#c2185b",
-  hara: "#2e7d32",
-  neel: "#1f4596",
-  peetal: "#b8862b",
-  chandan: "#fdebc8",
-  malai: "#fff8ea",
+  lal: "#133020", // pasture-900: dark grounds
+  lalMid: "#245437", // pasture-700
+  lalDeep: "#0d2216", // pasture-950
+  cloth: "#245437", // the green cloth tied over each jar
+  clothDark: "#1b402a",
+  ink: "#231b1e",
+  haldi: "#f5bf47", // ghee-400
+  haldiLight: "#fad57f",
+  genda: "#ef7e14",
+  rani: "#c43a1c", // spice
+  hara: "#2f6a45",
+  neel: "#245437",
+  peetal: "#b88a2e", // brass
+  chandan: "#f7ecd3", // oat
+  malai: "#fff8e8", // cream
   leaf: "#3f6b1f",
   leafLight: "#6c9a35",
 };
 
 // Buffalo ghee is creamy white: it carries almost no beta-carotene.
 const palettes = {
-  buffalo: { light: "#fffaf0", mid: "#f3e6c4", dark: "#d9c18a", bg: "#fcefd6" },
+  buffalo: { light: "#fffaf0", mid: "#f3e6c4", dark: "#d9c18a", bg: "#f7ecd3" },
 };
 
 /** The फ़ार्म dip badge as a label, `height` tall, centred on cx. */

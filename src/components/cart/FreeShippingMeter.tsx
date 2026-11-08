@@ -13,15 +13,15 @@ function Diya({ lit }: { lit: boolean }) {
         <>
           <circle cx="24" cy="18" r="14" fill="#f8d47a" opacity="0.35" />
           <g className="flicker">
-            <path d="M24 6c4 6 5 10 2.5 14-1.3 2-3.7 2-5 0C19 16 20 12 24 6Z" fill="var(--color-genda)" />
-            <path d="M24 11c2 3.5 2.4 6 1 8-.6.9-1.4.9-2 0-1.4-2-1-4.5 1-8Z" fill="var(--color-haldi-300)" />
+            <path d="M24 6c4 6 5 10 2.5 14-1.3 2-3.7 2-5 0C19 16 20 12 24 6Z" fill="var(--color-marigold)" />
+            <path d="M24 11c2 3.5 2.4 6 1 8-.6.9-1.4.9-2 0-1.4-2-1-4.5 1-8Z" fill="var(--color-ghee-300)" />
           </g>
         </>
       ) : (
-        <path d="M24 22v-4" stroke="var(--color-kattha-500)" strokeWidth="2" strokeLinecap="round" />
+        <path d="M24 22v-4" stroke="var(--color-ink-500)" strokeWidth="2" strokeLinecap="round" />
       )}
-      <path d="M6 26c4 9 11 13 18 13s14-4 18-13c-6 2.5-12 3.5-18 3.5S12 28.5 6 26Z" fill={lit ? "var(--color-haldi-500)" : "#c7a27c"} />
-      <path d="M6 26c6 2.5 12 3.5 18 3.5s12-1 18-3.5" fill="none" stroke={lit ? "var(--color-haldi-800)" : "#8f6a48"} strokeWidth="1.5" />
+      <path d="M6 26c4 9 11 13 18 13s14-4 18-13c-6 2.5-12 3.5-18 3.5S12 28.5 6 26Z" fill={lit ? "var(--color-ghee-500)" : "#c7a27c"} />
+      <path d="M6 26c6 2.5 12 3.5 18 3.5s12-1 18-3.5" fill="none" stroke={lit ? "var(--color-ghee-800)" : "#8f6a48"} strokeWidth="1.5" />
     </svg>
   );
 }
@@ -37,7 +37,7 @@ export function FreeShippingMeter() {
     <div>
       <p className="text-sm" aria-live="polite">
         {reached ? (
-          <span className="font-semibold text-hara">Every diya is lit. Your order ships free.</span>
+          <span className="font-semibold text-pasture-600">Every diya is lit. Your order ships free.</span>
         ) : (
           <>
             Add <strong>{formatPrice(totals.toFreeShipping)}</strong> more for free shipping.

@@ -1,76 +1,73 @@
 /*
-  How Farm Dip ghee is made, in six steps. One list drives the animated journey on the home page,
-  the process page, its HowTo structured data and llms-full.txt.
-
-  PLACEHOLDER: this describes the traditional home method for buffalo-milk ghee
-  (malai, dahi, makkhan, slow cooking). Confirm each step matches your own process before launch.
+  How Farm Dip ghee is made, in the brand's own eight steps (from the Farm Dip team, 2026-11-08).
+  One list drives the animated journey on the home page, the process page, its HowTo structured
+  data and llms-full.txt.
 */
 
 export type ProcessStep = {
   id: string;
-  /** Short Hindi name, shown in handwriting above the step. */
-  hindi: string;
   name: string;
   text: string;
-  /** The one fact that matters at this step, shown on the paper tag in the journey. */
+  /** The one fact that matters at this step, shown as a chip on the journey stage. */
   fact: string;
-  factHindi: string;
-  icon: "cow" | "milk" | "curd" | "churn" | "butter" | "fire" | "filter" | "jar";
+  icon: "cow" | "milk" | "curd" | "churn" | "butter" | "wash" | "fire" | "filter";
 };
 
 export const processSteps: ProcessStep[] = [
   {
     id: "milk",
-    hindi: "भैंस का दूध",
-    name: "It starts with pure buffalo milk",
-    text: "Whole, fresh buffalo milk. Buffalo milk is naturally thick and rich, which is what gives our ghee its creamy texture and white colour.",
-    fact: "Pure buffalo milk, nothing mixed in",
-    factHindi: "शुद्ध भैंस का दूध",
+    name: "We start with full-fat buffalo milk",
+    text: "Fresh, full-fat milk from our buffaloes. Buffalo milk is naturally thick and rich, which is what makes the ghee creamy and white.",
+    fact: "Full-fat buffalo milk",
     icon: "cow",
   },
   {
-    id: "malai",
-    hindi: "उबाल और मलाई",
-    name: "Boiled slowly, and the malai collected",
-    text: "The milk is boiled slowly in open vessels and left to cool, so a thick layer of malai forms on top. The malai is gathered day after day.",
-    fact: "Thick malai from rich milk",
-    factHindi: "गाढ़ी मलाई",
+    id: "boil",
+    name: "Heated slowly to a gentle boil",
+    text: "The milk goes into a large pan and is heated slowly to a gentle, rolling boil, stirred now and then so nothing catches at the bottom.",
+    fact: "Slow heat, stirred now and then",
     icon: "milk",
   },
   {
-    id: "dahi",
-    hindi: "दही जमाना",
-    name: "Set into dahi in clay pots",
-    text: "The malai is set with a spoon of dahi in clay matkas and left overnight, the way it has always been done at home.",
-    fact: "Left to set overnight",
-    factHindi: "पूरी रात",
+    id: "set",
+    name: "Covered and left to set",
+    text: "We cover the milk and leave it in a warm, cosy spot for 8 to 12 hours, until it sets into thick dahi.",
+    fact: "8 to 12 hours",
     icon: "curd",
   },
   {
-    id: "makkhan",
-    hindi: "मथना",
-    name: "Churned into makkhan",
-    text: "In the morning it is churned back and forth with a wooden madhani until soft white makkhan floats up and the chhaach is left behind.",
-    fact: "Churned by hand",
-    factHindi: "हाथ से मथा",
+    id: "churn",
+    name: "Churned the bilona way",
+    text: "The dahi is churned with a wooden madhani, back and forth in the bilona method, until the butter separates.",
+    fact: "Bilona method",
     icon: "churn",
   },
   {
-    id: "ghee",
-    hindi: "धीमी आँच",
-    name: "Slow-cooked into ghee",
-    text: "The makkhan is cooked slowly in an iron kadhai, stirred until the water is gone and the ghee turns clear, with that rich smell every Indian kitchen knows.",
-    fact: "Cooked slowly, never rushed",
-    factHindi: "धीमी आँच पर",
+    id: "collect",
+    name: "The butter, collected by hand",
+    text: "The fresh butter is lifted out carefully with a spoon, or gathered in muslin.",
+    fact: "With a spoon or muslin",
+    icon: "butter",
+  },
+  {
+    id: "wash",
+    name: "Washed in cold water",
+    text: "The butter goes into a bowl and is washed with cold water.",
+    fact: "Cold water wash",
+    icon: "wash",
+  },
+  {
+    id: "clarify",
+    name: "Clarified into ghee",
+    text: "The washed butter is cooked gently until it clarifies into golden ghee, with the rich aroma every Indian kitchen knows.",
+    fact: "Nothing added",
     icon: "fire",
   },
   {
-    id: "jar",
-    hindi: "छानकर भरना",
-    name: "Strained and packed, nothing added",
-    text: "The ghee is strained through muslin and packed as it is: no preservatives, no additives, no colour. Pure, simple and rich.",
-    fact: "No preservatives or additives",
-    factHindi: "100% शुद्ध",
-    icon: "jar",
+    id: "strain",
+    name: "Cooled, then strained through muslin",
+    text: "Finally the ghee cools for 10 to 15 minutes and is strained through muslin into the jar. No preservatives, no additives.",
+    fact: "Cooled for 10 to 15 minutes",
+    icon: "filter",
   },
 ];

@@ -1,64 +1,65 @@
 @import "tailwindcss";
 
 /*
-  Phulkari palette: the colours of a Punjabi-Haryanvi village at festival time.
-  lal (sindoori red) for festive grounds, like a bridal odhni or a bandhani dupatta;
-  kattha (catechu brown) for ink; haldi yellow for ghee and the main buttons;
-  rani pink for offers, ribbons and add-to-cart, the way phulkari thread shines on red;
-  genda (marigold) orange, hara (parrot green) and neel (indigo) as embroidery accents;
-  peetal (brass) for ornament and rules; chandan and malai (cream) for light surfaces.
-  These are plain CSS custom properties, so a Shopify theme can read the same values.
+  Farm Dip design tokens. Semi-modern, warm, and about one thing: ghee.
+    ghee     molten gold, the brand colour: big bands, buttons, the drips
+    pasture  deep green of the fields Rani grazes, for dark sections and the footer
+    ink      Rani's plum-black coat, for text
+    cream    the page, the colour of set buffalo ghee; oat for quiet panels; milk for cards
+    spice    chilli red, used only for offers and savings
+    brass, marigold  small accents inside the illustrations
+  Plain CSS custom properties, so the Shopify theme can read the same values (see SHOPIFY.md).
 */
 @theme {
-  --color-lal-950: #3f0a07;
-  --color-lal-900: #6b100b;
-  --color-lal-800: #8e1a12;
-  --color-lal-700: #b3261a;
-  --color-lal-200: #f4c4b6;
-  --color-lal-100: #fde2d6;
-  --color-lal-50: #fff1ea;
+  --color-ink-950: #161113;
+  --color-ink-900: #231b1e;
+  --color-ink-800: #3a2f33;
+  --color-ink-700: #5a4d52;
+  --color-ink-500: #8b7f82;
+  --color-ink-200: #ddd3cd;
+  --color-ink-100: #efe7df;
+  --color-ink-50: #f8f2ea;
 
-  --color-kattha-950: #1e0d08;
-  --color-kattha-900: #2f150e;
-  --color-kattha-800: #4a2216;
-  --color-kattha-700: #6b3624;
-  --color-kattha-500: #9a6a52;
-  --color-kattha-200: #e2c9b2;
-  --color-kattha-100: #f2e3d2;
-  --color-kattha-50: #fbf2e6;
+  --color-ghee-800: #6b4508;
+  --color-ghee-700: #93600a;
+  --color-ghee-600: #c88b12;
+  --color-ghee-500: #eba826;
+  --color-ghee-400: #f5bf47;
+  --color-ghee-300: #fad57f;
+  --color-ghee-200: #fde6ae;
+  --color-ghee-100: #fff1d0;
+  --color-ghee-50: #fff8e6;
 
-  --color-haldi-800: #6e4b00;
-  --color-haldi-700: #9c6a00;
-  --color-haldi-600: #d39200;
-  --color-haldi-500: #f5b301;
-  --color-haldi-400: #f9c63d;
-  --color-haldi-300: #fcdb7e;
-  --color-haldi-100: #fff0c4;
+  --color-pasture-950: #0d2216;
+  --color-pasture-900: #133020;
+  --color-pasture-800: #1b402a;
+  --color-pasture-700: #245437;
+  --color-pasture-600: #2f6a45;
+  --color-pasture-300: #a3c4a0;
+  --color-pasture-200: #c9ddc3;
+  --color-pasture-100: #e2ecdb;
+  --color-pasture-50: #f0f6ec;
 
-  --color-rani: #c2185b;
-  --color-rani-700: #990f45;
-  --color-rani-50: #fde6ef;
-  --color-genda: #f57c00;
-  --color-hara: #2e7d32;
-  --color-hara-100: #e2f0dc;
-  --color-neel: #1f4596;
-  --color-peetal: #b8862b;
-  --color-peetal-300: #dcc084;
-  --color-chandan: #fdebc8;
-  --color-malai: #fff8ea;
-  --color-line: #ecd4a8;
+  --color-spice: #c43a1c;
+  --color-spice-700: #9b2b12;
+  --color-spice-50: #fdebe4;
 
-  /* Yatra One: lettering of hand-painted Indian shop and truck signs. Tillana: brush-pen
-     Devanagari calligraphy for Hindi notes. Martel: an Indian-designed serif for reading text. */
-  --font-display: var(--font-yatra), "Rozha One", Georgia, serif;
-  --font-hand: var(--font-tillana), "Kalam", cursive;
-  --font-sans: var(--font-martel), Georgia, "Nirmala UI", serif;
+  --color-brass: #b88a2e;
+  --color-brass-300: #dcc084;
+  --color-marigold: #ef7e14;
+  --color-cream: #fff8e8;
+  --color-oat: #f7ecd3;
+  --color-milk: #fffdf8;
+  --color-line: #ebdcba;
 
-  --radius-jar: 1.25rem;
+  /* Author (headings) and General Sans (text), both by Indian Type Foundry on Fontshare.
+     Eczar carries the Devanagari of the फ़ार्म wordmark and the Sanskrit shlok. */
+  --font-display: var(--font-author), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-general), "Segoe UI", system-ui, sans-serif;
+  --font-deva: var(--font-eczar), "Nirmala UI", "Kohinoor Devanagari", serif;
 
   --animate-drawer-in: drawer-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-fade-in: fade-in 0.2s ease-out both;
-  --animate-mandala: spin 120s linear infinite;
 
   @keyframes drawer-in {
     from {
@@ -87,26 +88,25 @@ html {
   scroll-padding-top: 6rem;
 }
 
-/* Handmade-paper ground: malai cream with a faint fibre texture. */
 body {
-  background-color: var(--color-malai);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.3 0 0 0 0 0.12 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  color: var(--color-kattha-900);
+  background-color: var(--color-cream);
+  color: var(--color-ink-900);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
-  line-height: 1.7;
+  line-height: 1.65;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01";
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-haldi-500);
+  outline: 3px solid var(--color-ghee-500);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 ::selection {
-  background: var(--color-haldi-300);
-  color: var(--color-kattha-950);
+  background: var(--color-ghee-300);
+  color: var(--color-ink-950);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -120,16 +120,23 @@ body {
   }
 }
 
+/* "Pause motion" (see MotionToggle): stops every looping animation on the page. */
+html[data-still] *,
+html[data-still] *::before,
+html[data-still] *::after {
+  animation-play-state: paused !important;
+}
+
 @layer base {
-  /* Yatra One has a single weight; never let the browser fake a bold. */
   .font-display {
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: -0.018em;
     font-synthesis: none;
-    letter-spacing: 0;
   }
   h1.font-display,
   h2.font-display {
     color: inherit;
+    text-wrap: balance;
   }
 }
 
@@ -151,6 +158,59 @@ body {
     }
   }
 
+  /* Buttons. Primary is ink on light grounds; gold is for dark or busy grounds and the main hero action. */
+  .btn {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding-inline: 1.6rem;
+    font-weight: 600;
+    line-height: 1.1;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-ink {
+    background: var(--color-ink-900);
+    color: var(--color-cream);
+  }
+  .btn-ink:hover {
+    background: var(--color-pasture-800);
+  }
+  .btn-gold {
+    background: var(--color-ghee-400);
+    color: var(--color-ink-950);
+  }
+  .btn-gold:hover {
+    background: var(--color-ghee-300);
+  }
+  .btn-line {
+    box-shadow: inset 0 0 0 1.5px currentColor;
+  }
+  .btn-line:hover {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+  }
+
+  /* Text link with a gold underline that thickens on hover. */
+  .link {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-ghee-500);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    transition: text-decoration-thickness 0.15s ease;
+  }
+  .link:hover {
+    text-decoration-thickness: 4px;
+  }
+
   /* Native <dialog> drawers: cart (right) and mobile menu (left). */
   dialog.drawer {
     margin: 0;
@@ -160,22 +220,22 @@ body {
     max-width: 100vw;
     padding: 0;
     border: 0;
-    background: var(--color-malai);
+    background: var(--color-cream);
     color: inherit;
   }
   dialog.drawer::backdrop {
-    background: rgb(42 14 10 / 0.6);
+    background: rgb(22 17 19 / 0.55);
     animation: var(--animate-fade-in);
   }
   dialog.drawer-right {
     margin-left: auto;
-    border-left: 4px double var(--color-peetal);
+    border-left: 1px solid var(--color-line);
   }
   dialog.drawer-right[open] {
     animation: var(--animate-drawer-in);
   }
   dialog.drawer-left {
-    border-right: 4px double var(--color-peetal);
+    border-right: 1px solid var(--color-line);
   }
   dialog.drawer-left[open] {
     animation: drawer-in-left 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -189,49 +249,6 @@ body {
     }
   }
 
-  /* ---------- Ornament ---------- */
-
-  /* Toran: a door garland of mango leaves and marigolds, hung where a page welcomes you in. */
-  .toran {
-    height: 58px;
-    background-image: url("/images/pattern/toran.svg");
-    background-size: auto 58px;
-    background-repeat: repeat-x;
-    background-position: center top;
-    pointer-events: none;
-  }
-
-  /* Phulkari border: diamond embroidery in rani, haldi, hara and neel on red, the way Punjabi and
-     Haryanvi odhnis are stitched. Marks the move between shopping and story. */
-  .phulkari-band {
-    height: 28px;
-    background-color: var(--color-lal-900);
-    background-image: url("/images/pattern/phulkari-band.svg");
-    background-size: auto 28px;
-    background-repeat: repeat-x;
-  }
-
-  /* Jharokha arch. Apply to an element; nest two for a brass-edged frame. */
-  .arch {
-    -webkit-mask: url("/images/pattern/arch.svg") center / 100% 100% no-repeat;
-    mask: url("/images/pattern/arch.svg") center / 100% 100% no-repeat;
-  }
-
-  /* Double brass rule, as on a printed invitation card. */
-  .frame-peetal {
-    border: 1px solid var(--color-peetal);
-    outline: 1px solid var(--color-peetal);
-    outline-offset: -6px;
-  }
-
-  /* Rubber-stamp seal, the way Indian documents are certified. */
-  .stamp {
-    border: 2px dashed currentColor;
-    box-shadow:
-      0 0 0 3px var(--color-malai),
-      0 0 0 5px currentColor;
-  }
-
   /* ---------- Long-form copy: blog posts, policies, about ---------- */
   .prose-ghee {
     max-width: 68ch;
@@ -240,16 +257,16 @@ body {
   }
   .prose-ghee h2 {
     font-family: var(--font-display);
-    font-weight: 400;
-    font-synthesis: none;
-    color: var(--color-kattha-800);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-ink-900);
     font-size: 1.875rem;
     line-height: 1.15;
     margin-top: 2.75rem;
     margin-bottom: 0.75rem;
   }
   .prose-ghee h3 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.25rem;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
@@ -266,43 +283,44 @@ body {
   .prose-ghee ul > li {
     position: relative;
   }
-  /* Small lotus-bud bullet in red. */
+  /* A small drop of ghee as the bullet. */
   .prose-ghee ul > li::before {
     content: "";
     position: absolute;
-    left: -1.25rem;
-    top: 0.62em;
-    width: 0.5rem;
-    height: 0.5rem;
-    background: var(--color-lal-700);
+    left: -1.2rem;
+    top: 0.55em;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--color-ghee-500);
+    border-radius: 0 50% 50% 50%;
     transform: rotate(45deg);
-    border-radius: 0 50% 0 50%;
   }
   .prose-ghee ol {
     list-style: decimal;
     padding-left: 1.5rem;
   }
   .prose-ghee ol > li::marker {
-    color: var(--color-lal-700);
-    font-weight: 700;
+    color: var(--color-ghee-700);
+    font-weight: 600;
   }
   .prose-ghee li + li {
     margin-top: 0.35rem;
   }
   .prose-ghee a {
-    color: var(--color-lal-700);
+    font-weight: 600;
     text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--color-peetal);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--color-ghee-500);
   }
   .prose-ghee a:hover {
     text-decoration-color: currentColor;
   }
   .prose-ghee strong {
-    font-weight: 700;
+    font-weight: 600;
   }
 
-  /* Data tables for comparisons and lab parameters. Plain HTML tables are easy for search and AI to parse. */
+  /* Data tables for comparisons. Plain HTML tables are easy for search and AI to parse. */
   .table-ghee {
     width: 100%;
     border-collapse: collapse;
@@ -316,20 +334,21 @@ body {
   .table-ghee th,
   .table-ghee td {
     text-align: left;
-    padding: 0.75rem 0.875rem;
+    padding: 0.85rem 1rem;
     border-bottom: 1px solid var(--color-line);
     vertical-align: top;
   }
   .table-ghee thead th {
-    font-weight: 700;
-    border-bottom: 3px double var(--color-peetal);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-ink-900);
   }
   .table-ghee tbody th {
-    font-weight: 600;
+    font-weight: 500;
+    color: var(--color-ink-700);
   }
 }
 
-/* ---------- Living art: Rani the buffalo, the village window, the ghee journey ---------- */
+/* ---------- Living art: Rani the buffalo, the ghee journey, the drips and the pour ---------- */
 
 /* Sky colours for the journey stage. Registered so the gradient can fade between times of day. */
 @property --sky-a {
@@ -691,7 +710,7 @@ body {
     }
   }
 
-  /* Hero: Rani says "राम राम" when tapped. */
+  /* Hero: Rani says "Ram Ram!" when tapped. */
   .hello-bubble {
     opacity: 0;
     transform: translateY(6px) scale(0.8);
@@ -704,7 +723,8 @@ body {
     transform: none;
   }
 
-  /* Ghee journey. driveJourney() in lib/motion sets data-step, data-active and the scroll variables
+  /* ---------- Ghee journey ----------
+     driveJourney() in lib/motion sets data-step, data-active and the scroll variables
      --sp (progress through the current step) and --jp (progress through the whole journey). */
   .journey-sky {
     background: linear-gradient(var(--sky-a), var(--sky-b));
@@ -713,23 +733,31 @@ body {
       --sky-b 0.9s ease;
   }
   .journey[data-step="1"] .journey-sky {
+    --sky-a: #f3a65a;
+    --sky-b: #fde4bb;
+  }
+  .journey[data-step="2"] .journey-sky {
+    --sky-a: #150d1a;
+    --sky-b: #3d2442;
+  }
+  .journey[data-step="3"] .journey-sky {
     --sky-a: #f08c4a;
     --sky-b: #fcd69a;
   }
-  .journey[data-step="2"] .journey-sky {
-    --sky-a: #170812;
-    --sky-b: #4a1a2c;
-  }
-  .journey[data-step="3"] .journey-sky {
-    --sky-a: #f6a65a;
-    --sky-b: #fde4bb;
-  }
   .journey[data-step="4"] .journey-sky {
+    --sky-a: #f2bc3d;
+    --sky-b: #fff3d6;
+  }
+  .journey[data-step="5"] .journey-sky {
+    --sky-a: #9fcfd0;
+    --sky-b: #eaf6f1;
+  }
+  .journey[data-step="6"] .journey-sky {
     --sky-a: #2a0e0a;
     --sky-b: #7a2c12;
   }
-  .journey[data-step="5"] .journey-sky {
-    --sky-a: #f2bc3d;
+  .journey[data-step="7"] .journey-sky {
+    --sky-a: #f5c560;
     --sky-b: #fff3d6;
   }
   .scene {
@@ -745,36 +773,32 @@ body {
     opacity: 1;
     transform: none;
   }
-  .parchi {
+  /* The one number that matters at each step, as a chip on the stage. */
+  .fact {
     opacity: 0;
-    transform: rotate(-5deg) translateY(10px);
+    transform: translateY(10px);
     transition:
-      opacity 0.4s ease,
-      transform 0.5s cubic-bezier(0.3, 1.5, 0.5, 1);
+      opacity 0.35s ease,
+      transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1);
   }
-  .parchi[data-active] {
+  .fact[data-active] {
     opacity: 1;
-    transform: rotate(-5deg);
+    transform: none;
   }
   .bead {
     transition:
       background-color 0.3s ease,
       color 0.3s ease,
-      transform 0.3s ease;
+      box-shadow 0.3s ease;
   }
   .bead[data-active],
   .bead[data-done] {
-    background-color: var(--color-haldi-500);
-    color: var(--color-kattha-950);
+    background-color: var(--color-ghee-400);
+    color: var(--color-ink-950);
+    box-shadow: 0 0 0 6px rgb(245 191 71 / 0.18);
   }
-  .bead[data-active] {
-    transform: scale(1.12);
-  }
-  /* The progress line is a twisted churning rope. */
-  .rope {
-    background: repeating-linear-gradient(-55deg, var(--color-peetal) 0 4px, var(--color-haldi-700) 4px 8px);
-  }
-  .rope-fill {
+  /* Progress line: ghee running down the steps. */
+  .journey-fill {
     transform: scaleY(var(--jp, 0));
     transform-origin: top;
   }
@@ -808,6 +832,101 @@ body {
     transform-origin: center;
     opacity: var(--in);
     transform: rotate(-14deg) scale(calc(1.7 - var(--in) * 0.7));
+  }
+  /* Butter lifted out of the chhaach as the step scrolls by. */
+  .scoop-scroll {
+    transform: translateY(calc(var(--sp, 0) * -46px)) rotate(calc(var(--sp, 0) * -10deg));
+  }
+  /* Steam fades as the strained ghee cools. */
+  .cool-scroll {
+    opacity: calc(1 - var(--sp, 0));
+  }
+
+  /* ---------- Ghee drips ----------
+     Hang below a gold band. trackProgress() in lib/motion writes --p (0 to 1) as the band scrolls up,
+     so the drips lengthen and the last drop falls away. Static at a mid length without JavaScript. */
+  .drip {
+    --p: 0.45;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: 5;
+    pointer-events: none;
+    color: var(--drip, var(--color-ghee-400));
+  }
+  .drip-wave {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    display: block;
+    width: 100%;
+    height: 28px;
+  }
+  .drip-drop {
+    position: absolute;
+    top: 8px;
+    width: var(--w);
+    margin-left: calc(var(--w) / -2);
+    height: calc(var(--len) * (0.25 + 0.75 * var(--p)));
+    border-radius: 0 0 999px 999px;
+    background-color: currentColor;
+    background-image: linear-gradient(90deg, transparent 22%, rgb(255 255 255 / 0.4) 34%, transparent 50%);
+  }
+  .drip-drop::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: calc(var(--w) * -0.42);
+    width: calc(var(--w) * 1.3);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    translate: -50% 0;
+    background: inherit;
+  }
+  /* A drop that lets go and falls once the drip is long. */
+  .drip-drop[data-falls]::before {
+    --fall: max(0, calc((var(--p) - 0.72) * 3.6));
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(100% + var(--w) * 0.9);
+    width: calc(var(--w) * 0.8);
+    aspect-ratio: 3 / 4;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: currentColor;
+    translate: -50% calc(var(--fall) * 140px);
+    opacity: calc(min(1, var(--fall) * 8) * (1 - var(--fall)));
+  }
+
+  /* ---------- The pour (home page aim section) ----------
+     trackProgress() writes --p as the section crosses the screen: the pot tips, a stream of ghee
+     reaches the jar, the jar fills, and at the very end it spills over the rim. */
+  .pour {
+    --p: 1;
+  }
+  .pour-pot {
+    transform: rotate(calc(4deg + var(--p) * 34deg));
+  }
+  .pour-stream {
+    stroke-dashoffset: calc(1 - clamp(0, var(--p) * 2.4, 1));
+  }
+  .pour-fill {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    transform: scaleY(clamp(0.02, calc((var(--p) - 0.28) / 0.55), 1));
+  }
+  .pour-spill {
+    stroke-dashoffset: calc(1 - clamp(0, calc((var(--p) - 0.8) * 5), 1));
+  }
+  .pour-splash {
+    opacity: clamp(0, calc((var(--p) - 0.36) * 6), 1);
+  }
+  .pour-puddle {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scaleX(clamp(0, calc((var(--p) - 0.9) * 10), 1));
   }
 
   /* Add to cart: a drop of ghee flies to the cart. Outer element moves across, inner one arcs. */

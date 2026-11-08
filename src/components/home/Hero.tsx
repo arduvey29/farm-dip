@@ -3,73 +3,60 @@ import { mainProduct } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
-import { VillageWindow } from "./VillageWindow";
+import { MotionToggle } from "@/components/layout/MotionToggle";
+import { HeroScene } from "./HeroScene";
 
 export function Hero() {
   const smallest = mainProduct.variants[0];
   return (
-    <section className="relative overflow-hidden bg-lal-900 text-chandan">
-      {/* Toran across the doorway: the house welcomes you in. */}
-      <div className="toran absolute inset-x-0 top-0 z-10" aria-hidden />
-
-      <div className="wrap grid items-center gap-10 pt-20 pb-14 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:pt-24 lg:pb-20">
+    <section className="relative overflow-hidden" aria-labelledby="hero-title">
+      <div className="wrap grid items-center gap-8 pt-10 pb-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pt-14 lg:pb-16">
         <div>
-          <p lang="hi" className="font-display text-5xl leading-[1.2] text-haldi-400 sm:text-6xl lg:text-7xl">
-            शुद्ध देसी घी
+          <p className="inline-flex items-center gap-2 rounded-full bg-oat px-3.5 py-1.5 text-sm font-medium text-ink-800">
+            <span className="size-2 rounded-full bg-pasture-600" aria-hidden />
+            Pure desi ghee from buffalo milk
           </p>
-          <h1 className="mt-3 font-display text-3xl leading-[1.18] text-balance text-chandan sm:text-4xl lg:text-[2.6rem]">
-            Pure buffalo ghee, made the way we ate it as children
+          <h1 id="hero-title" className="mt-6 font-display text-[2.9rem] leading-[0.98] text-ink-900 sm:text-6xl lg:text-[5.4rem]">
+            Ghee the way we ate it as children.
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-lal-100">
-            Rich, creamy and full of aroma. Made from pure buffalo milk with no preservatives or additives, for everyday cooking and your family&apos;s favourite recipes.
+          <p className="mt-6 max-w-xl text-lg text-ink-700 sm:text-xl">
+            Full-fat buffalo milk, set into dahi, churned the bilona way and clarified slowly. Rich, creamy and nothing added: no preservatives, no additives.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              href={`/products/${mainProduct.slug}`}
-              className="inline-flex min-h-13 items-center rounded-full bg-haldi-500 px-7 text-lg font-bold text-kattha-950 shadow-[0_6px_0_0_var(--color-haldi-800)] hover:bg-haldi-400"
-            >
-              Shop buffalo ghee
+            <Link href={`/products/${mainProduct.slug}`} className="btn btn-ink text-lg">
+              Shop ghee
             </Link>
-            <Link href="/how-its-made" className="inline-flex min-h-13 items-center rounded-full border-2 border-haldi-400 px-6 font-semibold text-haldi-300 hover:bg-haldi-400 hover:text-kattha-950">
-              See how it is made
+            <Link href="/how-its-made" className="btn btn-line text-ink-900">
+              See how it&apos;s made
             </Link>
           </div>
 
-          <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-lal-100">
+          <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-ink-700">
             <li className="flex items-center gap-2">
-              <Icon name="leaf" className="size-5 text-haldi-400" /> No preservatives or additives
+              <Icon name="leaf" className="size-5 text-pasture-600" /> No preservatives or additives
             </li>
             <li className="flex items-center gap-2">
-              <Icon name="cash" className="size-5 text-haldi-400" /> Free cash on delivery
+              <Icon name="cash" className="size-5 text-pasture-600" /> Free cash on delivery
             </li>
             <li className="flex items-center gap-2">
-              <Icon name="truck" className="size-5 text-haldi-400" /> Ships in {site.commerce.dispatchHours} hours
+              <Icon name="truck" className="size-5 text-pasture-600" /> Ships in {site.commerce.dispatchHours} hours
             </li>
           </ul>
-          <p className="mt-5 text-sm text-lal-200">
-            From {formatPrice(smallest.price)} for {smallest.label}.
-          </p>
         </div>
 
-        {/* Jharokha window onto the village at dawn. */}
-        <div className="relative mx-auto w-full max-w-[27rem]">
-          <VillageWindow />
-
-          {/* A rubber-stamp seal, the way Indian shops mark the real thing. */}
-          <p className="stamp absolute -top-3 -right-2 z-10 grid size-28 rotate-12 place-items-center rounded-full bg-malai p-3 text-center text-rani sm:-right-8 sm:size-32">
+        <div className="relative mx-auto w-full max-w-[30rem]">
+          <HeroScene />
+          <p className="absolute top-[8%] right-0 grid size-24 place-items-center rounded-full bg-ink-900 text-center text-cream shadow-[0_14px_30px_-14px_rgb(22_17_19/0.7)] sm:size-28">
             <span className="leading-tight">
-              <span className="block font-display text-2xl">100%</span>
-              <span lang="hi" className="block font-display text-xl">
-                शुद्ध
-              </span>
-              <span className="mt-0.5 block text-[0.65rem] font-semibold">No preservatives</span>
+              <span className="block text-xs text-ghee-300">from</span>
+              <span className="block font-display text-2xl">{formatPrice(smallest.price)}</span>
+              <span className="block text-xs text-ghee-300">{smallest.label}</span>
             </span>
           </p>
+          <MotionToggle className="absolute right-1 bottom-1 bg-cream/85 px-3 py-1.5 text-ink-700 backdrop-blur" />
         </div>
       </div>
-
-      <div className="phulkari-band" aria-hidden />
     </section>
   );
 }

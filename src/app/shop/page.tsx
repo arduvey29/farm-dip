@@ -27,10 +27,7 @@ export default function ShopPage() {
       </div>
 
       <section className="wrap pt-8 pb-16">
-        <p lang="hi" className="font-hand text-2xl text-rani">
-          अपना डिब्बा चुनें
-        </p>
-        <h1 className="mt-1 font-display text-5xl sm:text-6xl">Buy buffalo ghee</h1>
+        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl">Buy buffalo ghee</h1>
         <div className="mt-5 max-w-2xl">
           <QuickAnswer label="How much does Farm Dip buffalo ghee cost?">
             {product.variants.map((v) => `${v.label} costs ${formatPrice(v.price)}`).join(", ")}. That is {cheapest} to {dearest} per litre; the bigger the pack, the less you pay per litre. All prices include taxes.
@@ -44,13 +41,13 @@ export default function ShopPage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-chandan py-16" aria-labelledby="prices">
+      <section className="border-t border-line bg-oat py-16" aria-labelledby="prices">
         <div className="wrap grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
             <h2 id="prices" className="font-display text-3xl sm:text-4xl">
               Price per litre
             </h2>
-            <p className="mt-4 text-kattha-800">
+            <p className="mt-4 text-ink-800">
               {site.name} pure buffalo ghee costs {cheapest} to {dearest} per litre depending on the pack. Free cash on delivery, and free shipping on orders above ₹{site.commerce.freeShippingThreshold}.
             </p>
           </div>

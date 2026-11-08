@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Martel, Tillana, Yatra_One } from "next/font/google";
+import { Eczar } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { graph, organizationLd, websiteLd } from "@/lib/seo";
@@ -9,11 +10,23 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-// All three cover Latin and Devanagari. Yatra One for headings (hand-painted Indian signboard lettering),
-// Tillana for Hindi notes (brush-pen calligraphy), Martel for reading text (an Indian-designed serif).
-const yatra = Yatra_One({ weight: "400", subsets: ["latin", "devanagari"], variable: "--font-yatra", display: "swap" });
-const tillana = Tillana({ weight: ["500", "700"], subsets: ["latin", "devanagari"], variable: "--font-tillana", display: "swap" });
-const martel = Martel({ weight: ["400", "600", "700", "800"], subsets: ["latin", "devanagari"], variable: "--font-martel", display: "swap" });
+// Author (headings) and General Sans (text) by Indian Type Foundry, from Fontshare. The files are
+// downloaded by scripts/fetch-fonts.mjs, because their licence allows self-hosting but not redistribution.
+const author = localFont({
+  src: [
+    { path: "../assets/fonts/fontshare/Author-Variable.woff2", weight: "200 700", style: "normal" },
+    { path: "../assets/fonts/fontshare/Author-VariableItalic.woff2", weight: "200 700", style: "italic" },
+  ],
+  variable: "--font-author",
+  display: "swap",
+});
+const general = localFont({
+  src: [{ path: "../assets/fonts/fontshare/GeneralSans-Variable.woff2", weight: "200 700", style: "normal" }],
+  variable: "--font-general",
+  display: "swap",
+});
+// Eczar only carries the Devanagari of the फ़ार्म wordmark and the Sanskrit shlok.
+const eczar = Eczar({ weight: ["600", "700"], subsets: ["devanagari", "latin"], variable: "--font-eczar", display: "swap", preload: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -59,15 +72,15 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#6b100b",
+  themeColor: "#fff8e8",
   colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-IN" className={`${yatra.variable} ${tillana.variable} ${martel.variable} h-full antialiased`}>
+    <html lang="en-IN" className={`${author.variable} ${general.variable} ${eczar.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <a href="#main" className="sr-only z-50 rounded-full bg-haldi-500 px-5 py-3 font-semibold text-kattha-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+        <a href="#main" className="sr-only z-50 rounded-full bg-ghee-500 px-5 py-3 font-semibold text-ink-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
           Skip to content
         </a>
         <CartProvider>

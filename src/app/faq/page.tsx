@@ -26,13 +26,13 @@ export default function FaqPage() {
             <ul className="space-y-2">
               {faqGroups.map((g) => (
                 <li key={g.id}>
-                  <a href={`#${g.id}`} className="font-medium text-kattha-800 underline-offset-4 hover:underline">
+                  <a href={`#${g.id}`} className="font-medium text-ink-800 underline-offset-4 hover:underline">
                     {g.title}
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm text-kattha-700">
+            <p className="mt-8 text-sm text-ink-700">
               Still need help?{" "}
               <Link href="/contact" className="font-semibold underline underline-offset-4">
                 Contact us

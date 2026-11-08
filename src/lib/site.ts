@@ -78,8 +78,6 @@ export const site = {
   },
 
   announcement: "Free cash on delivery across India. Free shipping on orders above ₹999.",
-  // Seasonal greeting shown in the top bar. Set to null outside festivals.
-  festive: { hindi: "शुभ दीपावली", text: "Pure desi ghee for your festive kitchen", href: "/products/pure-desi-buffalo-ghee?pack=5-l" } as { hindi: string; text: string; href: string } | null,
 } as const;
 
 export type Site = typeof site;

@@ -17,42 +17,34 @@ export function SizeCard({ product, variant, eager = false, headingLevel = 3 }: 
   const saving = Math.round(((highest - perLitre) / highest) * 100);
 
   return (
-    <article className="group flex flex-col">
-      <Link href={href} className="relative block" tabIndex={-1} aria-hidden>
-        {/* Jharokha arch with a brass edge. */}
-        <div className="arch bg-peetal p-[3px]">
-          <div className="arch overflow-hidden bg-chandan">
-            <Image
-              src={variant.image}
-              alt=""
-              width={600}
-              height={600}
-              loading={eager ? "eager" : "lazy"}
-              sizes="(min-width: 1024px) 380px, (min-width: 640px) 33vw, 80vw"
-              className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-          </div>
-        </div>
-        {variant.bestValue ? (
-          <span className="absolute top-[18%] -left-1 bg-rani py-1 pr-4 pl-3 text-xs font-bold text-chandan [clip-path:polygon(0_0,100%_0,calc(100%-8px)_50%,100%_100%,0_100%)]">
-            Best value
-          </span>
-        ) : null}
+    <article className="group flex flex-col rounded-[1.75rem] bg-milk p-2.5 shadow-[0_1px_0_var(--color-line),0_24px_50px_-34px_rgb(35_27_30/0.45)]">
+      <Link href={href} className="relative block overflow-hidden rounded-[1.35rem] bg-oat" tabIndex={-1} aria-hidden>
+        <Image
+          src={variant.image}
+          alt=""
+          width={600}
+          height={600}
+          loading={eager ? "eager" : "lazy"}
+          sizes="(min-width: 1024px) 380px, (min-width: 640px) 33vw, 90vw"
+          className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+        {variant.bestValue ? <span className="absolute top-3 left-3 rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold text-ghee-300">Best value</span> : null}
       </Link>
 
-      <div className="flex flex-1 flex-col gap-1 pt-4">
-        <H className="font-display text-2xl leading-snug text-kattha-800">
-          <Link href={href} className="underline-offset-4 group-hover:underline">
-            {variant.label} <span className="text-lg text-kattha-700">{variant.packaging.toLowerCase()}</span>
-          </Link>
-        </H>
-        <p className="text-sm text-kattha-700">{product.name}</p>
-        <div className="mt-auto pt-2">
+      <div className="flex flex-1 flex-col px-3 pt-5 pb-2">
+        <div className="flex items-baseline justify-between gap-3">
+          <H className="font-display text-3xl leading-none text-ink-900">
+            <Link href={href} className="underline-offset-4 group-hover:underline">
+              {variant.label}
+              <span className="sr-only"> {product.name}</span>
+            </Link>
+          </H>
+          <span className="text-sm text-ink-500">{variant.packaging}</span>
+        </div>
+        <div className="mt-auto pt-4">
           <Price price={variant.price} mrp={variant.mrp} />
-          <p className="text-xs text-kattha-700">
-            {formatPrice(perLitre)} per litre
-            {saving > 0 ? <span className="block font-semibold text-hara">Save {saving}% per litre</span> : null}
-          </p>
+          <p className="text-sm text-ink-700">{formatPrice(perLitre)} per litre</p>
+          {saving > 0 ? <p className="text-sm font-semibold text-pasture-600">Save {saving}% per litre</p> : null}
         </div>
         <QuickAddButton
           line={{

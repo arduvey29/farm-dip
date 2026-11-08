@@ -5,7 +5,9 @@
 
     [data-pausable]          pauses CSS animations inside while off screen
     .journey                 the scroll-driven ghee journey ([data-beat], [data-scene], [data-i], [data-stage])
+    [data-progress]          gets --p from 0 to 1 as it scrolls up the screen (ghee drips, the pour)
     [data-hello-button]      tapping it makes the closest [data-hello-scene] say hello
+    [data-motion-toggle]     a button that pauses or resumes all looping animation
     [data-cart-target]       where flyToCart() drops land (the header cart icon)
 */
 
@@ -77,9 +79,70 @@ export function driveJourney(root: HTMLElement): Cleanup {
   };
 }
 
+/**
+ * Writes --p on `el`, from 0 when its top edge reaches `start` (a fraction of the screen height
+ * from the top) to 1 when it reaches `end`. Drives the ghee drips and the pour. With reduced
+ * motion it holds a still value instead of tracking the scroll.
+ */
+export function trackProgress(el: HTMLElement, { start = 1, end = 0.25, still = 0.6 } = {}): Cleanup {
+  if (prefersReducedMotion()) {
+    el.style.setProperty("--p", String(still));
+    return () => {};
+  }
+  let frame = 0;
+  let visible = false;
+  const update = () => {
+    frame = 0;
+    const vh = window.innerHeight;
+    const top = el.getBoundingClientRect().top;
+    const p = Math.min(1, Math.max(0, (start * vh - top) / ((start - end) * vh)));
+    el.style.setProperty("--p", p.toFixed(3));
+  };
+  const schedule = () => {
+    if (visible && !frame) frame = requestAnimationFrame(update);
+  };
+  const io = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) schedule();
+  }, { rootMargin: "200px 0px" });
+  io.observe(el);
+  update();
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+  return () => {
+    io.disconnect();
+    cancelAnimationFrame(frame);
+    window.removeEventListener("scroll", schedule);
+    window.removeEventListener("resize", schedule);
+  };
+}
+
+const STILL_KEY = "farmdip-still";
+
+/** True when the visitor has paused motion on this device. */
+export function isMotionPaused() {
+  return document.documentElement.hasAttribute("data-still");
+}
+
+/** Pauses or resumes every looping animation (Rani, the scenes) and remembers the choice. */
+export function setMotionPaused(paused: boolean) {
+  document.documentElement.toggleAttribute("data-still", paused);
+  try {
+    if (paused) localStorage.setItem(STILL_KEY, "1");
+    else localStorage.removeItem(STILL_KEY);
+  } catch {}
+}
+
+/** Restores a saved "pause motion" choice. Call once on load. */
+export function restoreMotionChoice() {
+  try {
+    if (localStorage.getItem(STILL_KEY)) document.documentElement.setAttribute("data-still", "");
+  } catch {}
+}
+
 const helloTimers = new WeakMap<Element, number>();
 
-/** Rani lifts her head, the egret startles and "राम राम" pops up. Restarts cleanly on rapid taps. */
+/** Rani lifts her head, the egret startles and "Ram Ram!" pops up. Restarts cleanly on rapid taps. */
 export function sayHello(button: Element) {
   const scene = button.closest<HTMLElement>("[data-hello-scene]");
   if (!scene) return;
@@ -150,8 +213,25 @@ export function initMotion(scope: ParentNode = document) {
     el.setAttribute("data-motion-ready", "");
     driveJourney(el);
   });
+  scope.querySelectorAll<HTMLElement>("[data-progress]:not([data-motion-ready])").forEach((el) => {
+    el.setAttribute("data-motion-ready", "");
+    trackProgress(el, {
+      start: Number(el.dataset.progressStart ?? 1),
+      end: Number(el.dataset.progressEnd ?? 0.25),
+      still: Number(el.dataset.progressStill ?? 0.6),
+    });
+  });
   scope.querySelectorAll<HTMLElement>("[data-hello-button]:not([data-motion-ready])").forEach((el) => {
     el.setAttribute("data-motion-ready", "");
     el.addEventListener("click", () => sayHello(el));
+  });
+  restoreMotionChoice();
+  scope.querySelectorAll<HTMLElement>("[data-motion-toggle]:not([data-motion-ready])").forEach((el) => {
+    el.setAttribute("data-motion-ready", "");
+    el.setAttribute("aria-pressed", String(isMotionPaused()));
+    el.addEventListener("click", () => {
+      setMotionPaused(!isMotionPaused());
+      el.setAttribute("aria-pressed", String(isMotionPaused()));
+    });
   });
 }

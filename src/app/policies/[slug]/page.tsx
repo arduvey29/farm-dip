@@ -31,7 +31,7 @@ export default async function PolicyPage({ params }: PageProps<"/policies/[slug]
       <section className="wrap grid gap-12 pt-8 pb-20 lg:grid-cols-[1fr_16rem]">
         <article className="prose-ghee">
           <h1 className="font-display text-5xl leading-[1.05]">{policy.title}</h1>
-          <p className="text-kattha-700">
+          <p className="text-ink-700">
             Last updated <time dateTime={policy.updated}>{formatDate(policy.updated)}</time>
           </p>
           <p className="text-xl">{policy.description}</p>
@@ -49,7 +49,7 @@ export default async function PolicyPage({ params }: PageProps<"/policies/[slug]
           <ul className="mt-3 space-y-2">
             {policies.map((p) => (
               <li key={p.slug}>
-                <Link href={`/policies/${p.slug}`} aria-current={p.slug === slug ? "page" : undefined} className="text-kattha-800 underline-offset-4 hover:underline aria-[current=page]:font-semibold aria-[current=page]:text-kattha-900">
+                <Link href={`/policies/${p.slug}`} aria-current={p.slug === slug ? "page" : undefined} className="text-ink-800 underline-offset-4 hover:underline aria-[current=page]:font-semibold aria-[current=page]:text-ink-900">
                   {p.title}
                 </Link>
               </li>

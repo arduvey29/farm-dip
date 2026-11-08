@@ -8,13 +8,13 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <p role="status" className="rounded-2xl bg-chandan p-6 text-lg">
+      <p role="status" className="rounded-2xl bg-oat p-6 text-lg">
         Message sent. We reply within one working day, usually much sooner on WhatsApp.
       </p>
     );
   }
 
-  const input = "min-h-12 w-full rounded-xl border border-kattha-200 bg-white px-4";
+  const input = "min-h-12 w-full rounded-xl border border-ink-200 bg-white px-4";
   return (
     <form
       className="space-y-4"
@@ -54,7 +54,7 @@ export function ContactForm() {
         </label>
         <textarea id="c-message" name="message" required rows={5} className={`${input} py-3`} />
       </div>
-      <button type="submit" className="min-h-12 rounded-full bg-lal-900 px-7 font-semibold text-chandan hover:bg-lal-800">
+      <button type="submit" className="min-h-12 rounded-full bg-pasture-900 px-7 font-semibold text-oat hover:bg-pasture-800">
         Send message
       </button>
     </form>

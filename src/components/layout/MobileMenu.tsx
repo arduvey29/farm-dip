@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { mainNav, site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
-import { LogoMark } from "./Logo";
+import { LogoMark, Wordmark } from "./Logo";
 
 export function MobileMenu() {
   const ref = useRef<HTMLDialogElement>(null);
@@ -21,7 +21,7 @@ export function MobileMenu() {
       <button
         type="button"
         onClick={() => ref.current?.showModal()}
-        className="-ml-2 rounded-full p-2.5 hover:bg-chandan lg:hidden"
+        className="-ml-2 rounded-full p-2.5 hover:bg-oat lg:hidden"
         aria-label="Open menu"
         aria-haspopup="dialog"
       >
@@ -38,13 +38,11 @@ export function MobileMenu() {
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <span className="inline-flex items-center gap-2 font-display text-xl">
+            <span className="inline-flex items-center gap-2">
               <LogoMark className="h-11 w-auto" />
-              <span>
-                <span lang="hi">फ़ार्म</span> dip
-              </span>
+              <Wordmark className="text-2xl" />
             </span>
-            <button type="button" onClick={() => ref.current?.close()} className="rounded-full p-2 hover:bg-chandan" aria-label="Close menu">
+            <button type="button" onClick={() => ref.current?.close()} className="rounded-full p-2 hover:bg-oat" aria-label="Close menu">
               <Icon name="close" className="size-6" />
             </button>
           </div>
@@ -53,14 +51,14 @@ export function MobileMenu() {
             <ul className="space-y-1">
               {mainNav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="block rounded-xl px-3 py-3 text-lg font-semibold hover:bg-chandan">
+                  <Link href={item.href} className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat">
                     {item.label}
                   </Link>
                   {item.children ? (
-                    <ul className="mb-2 ml-3 border-l-2 border-haldi-300 pl-3">
+                    <ul className="mb-2 ml-3 border-l-2 border-ghee-300 pl-3">
                       {item.children.map((child) => (
                         <li key={child.href}>
-                          <Link href={child.href} className="block rounded-lg px-3 py-2 text-kattha-800 hover:bg-chandan">
+                          <Link href={child.href} className="block rounded-lg px-3 py-2 text-ink-800 hover:bg-oat">
                             {child.label}
                           </Link>
                         </li>
@@ -70,23 +68,23 @@ export function MobileMenu() {
                 </li>
               ))}
               <li>
-                <Link href="/search" className="block rounded-xl px-3 py-3 text-lg font-semibold hover:bg-chandan">
+                <Link href="/search" className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat">
                   Search
                 </Link>
               </li>
               <li>
-                <Link href="/track-order" className="block rounded-xl px-3 py-3 text-lg font-semibold hover:bg-chandan">
+                <Link href="/track-order" className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat">
                   Track your order
                 </Link>
               </li>
             </ul>
           </nav>
 
-          <div className="space-y-2 border-t border-line bg-chandan px-5 py-4 text-sm">
+          <div className="space-y-2 border-t border-line bg-oat px-5 py-4 text-sm">
             <a href={`https://wa.me/${site.contact.whatsapp}`} className="flex items-center gap-2 font-semibold" rel="noopener">
               <Icon name="whatsapp" /> WhatsApp {site.contact.phone}
             </a>
-            <p className="text-kattha-700">{site.contact.hours}</p>
+            <p className="text-ink-700">{site.contact.hours}</p>
           </div>
         </div>
       </dialog>

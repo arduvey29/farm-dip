@@ -32,7 +32,7 @@ export function ProductGallery({ images, name }: { images: { src: string; alt: s
                 onClick={() => setActive(i)}
                 aria-label={`Show image ${i + 1}: ${img.alt}`}
                 aria-current={i === active}
-                className={`block overflow-hidden rounded-xl border-2 bg-chandan ${i === active ? "border-kattha-900" : "border-transparent hover:border-kattha-200"}`}
+                className={`block overflow-hidden rounded-xl border-2 bg-oat ${i === active ? "border-ink-900" : "border-transparent hover:border-ink-200"}`}
               >
                 <Image src={img.src} alt="" width={80} height={80} className="size-16 object-cover md:size-[4.5rem]" />
               </button>
@@ -40,9 +40,8 @@ export function ProductGallery({ images, name }: { images: { src: string; alt: s
           ))}
         </ul>
       ) : null}
-      {/* Jharokha arch with a brass edge. */}
-      <div className="arch flex-1 bg-peetal p-1">
-        <div className="arch overflow-hidden bg-chandan">
+      <div className="flex-1">
+        <div className="overflow-hidden rounded-[2rem] bg-oat">
           <Image
             key={current.src}
             src={current.src}

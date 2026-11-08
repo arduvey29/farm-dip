@@ -9,7 +9,7 @@ export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) 
 
   if (status === "done") {
     return (
-      <p role="status" className={`rounded-2xl px-5 py-4 font-semibold ${dark ? "bg-lal-800 text-chandan" : "bg-chandan"}`}>
+      <p role="status" className={`rounded-2xl px-5 py-4 font-semibold ${dark ? "bg-pasture-800 text-oat" : "bg-oat"}`}>
         Subscribed. Look out for our next note in your inbox.
       </p>
     );
@@ -33,9 +33,9 @@ export function NewsletterForm({ tone = "light" }: { tone?: "light" | "dark" }) 
         required
         autoComplete="email"
         placeholder="you@example.com"
-        className={`min-h-12 flex-1 rounded-full border px-5 ${dark ? "border-kattha-700 bg-lal-950 text-chandan placeholder:text-kattha-500" : "border-kattha-200 bg-white"}`}
+        className={`min-h-12 flex-1 rounded-full border px-5 ${dark ? "border-ink-700 bg-pasture-950 text-oat placeholder:text-ink-500" : "border-ink-200 bg-white"}`}
       />
-      <button type="submit" className="min-h-12 rounded-full bg-haldi-500 px-6 font-semibold text-kattha-950 hover:bg-haldi-400">
+      <button type="submit" className="btn btn-gold">
         Subscribe
       </button>
     </form>

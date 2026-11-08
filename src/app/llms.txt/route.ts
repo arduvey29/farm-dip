@@ -18,7 +18,7 @@ export function GET() {
 Key facts:
 - One product: pure desi ghee made from buffalo milk, in ${products[0].variants.map((v) => v.label).join(", ")} packs.
 - 100% natural. No preservatives, no additives, no colour.
-- Made the traditional way: the malai of buffalo milk is set into dahi, churned into makkhan and slow-cooked into ghee.
+- Made the bilona way in eight steps: full-fat buffalo milk is heated slowly, set into dahi for 8 to 12 hours, churned until the butter separates, and the butter is washed in cold water, clarified into ghee, cooled and strained through muslin.
 - Our aim: ${site.aim}
 - Based in ${address.locality}, ${address.region}, India. Ships across India.
 - Free cash on delivery. Free shipping above ₹${commerce.freeShippingThreshold}, otherwise ₹${commerce.shippingFee}. Dispatch within ${commerce.dispatchHours} hours.
@@ -33,7 +33,7 @@ ${posts.map((p) => `- [${p.title}](${absoluteUrl(`/blog/${p.slug}`)}): ${p.quick
 
 ## Company
 - [Our story](${absoluteUrl("/about")}): who we are and why we make ghee the way we ate it as children.
-- [How it's made](${absoluteUrl("/how-its-made")}): the six steps from buffalo milk to a sealed jar.
+- [How it's made](${absoluteUrl("/how-its-made")}): the eight steps from buffalo milk to a strained jar.
 - [All pack sizes and prices](${absoluteUrl("/shop")})
 - [Questions and answers](${absoluteUrl("/faq")}): delivery, payment, returns, storage.
 - [Contact](${absoluteUrl("/contact")})

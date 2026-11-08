@@ -9,7 +9,7 @@ export function Stars({ rating, className = "size-4" }: { rating: number; classN
           <svg key={i} viewBox="0 0 24 24" className={className} aria-hidden focusable="false">
             <defs>
               <linearGradient id={`s${i}-${Math.round(fill * 100)}`}>
-                <stop offset={fill} stopColor="var(--color-haldi-500)" />
+                <stop offset={fill} stopColor="var(--color-ghee-500)" />
                 <stop offset={fill} stopColor="var(--color-line)" />
               </linearGradient>
             </defs>
@@ -27,7 +27,7 @@ export function RatingInline({ average, count, href }: { average: number; count:
     <span className="inline-flex items-center gap-2 text-sm">
       <Stars rating={average} />
       <span className="font-semibold">{average.toFixed(1)}</span>
-      <span className="text-kattha-700">
+      <span className="text-ink-700">
         ({count} {count === 1 ? "review" : "reviews"})
       </span>
     </span>

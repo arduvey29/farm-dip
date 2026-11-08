@@ -52,20 +52,20 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </div>
 
         <div>
-          {product.badge ? <p className="mb-3 inline-block bg-rani py-1 pr-5 pl-3 text-xs font-bold text-chandan [clip-path:polygon(0_0,100%_0,calc(100%-8px)_50%,100%_100%,0_100%)]">{product.badge}</p> : null}
+          {product.badge ? <p className="mb-3 inline-block bg-spice py-1 pr-5 pl-3 text-xs font-bold text-oat [clip-path:polygon(0_0,100%_0,calc(100%-8px)_50%,100%_100%,0_100%)]">{product.badge}</p> : null}
           <h1 className="font-display text-4xl leading-[1.05] sm:text-5xl">{product.name}</h1>
-          <p className="mt-2 text-lg text-kattha-800">{product.tagline}</p>
+          <p className="mt-2 text-lg text-ink-800">{product.tagline}</p>
           <div className="mt-3">
             <RatingInline average={rating.average} count={rating.count} href="#reviews" />
           </div>
-          <p className="mt-5 max-w-prose text-kattha-800">{product.summary}</p>
+          <p className="mt-5 max-w-prose text-ink-800">{product.summary}</p>
           <div className="mt-7">
             <PurchasePanel slug={product.slug} name={product.name} variants={product.variants} defaultVariant={product.defaultVariant} milk={product.milk} />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-line bg-chandan py-14" aria-labelledby="glance">
+      <section className="border-y border-line bg-oat py-14" aria-labelledby="glance">
         <div className="wrap grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 id="glance" className="font-display text-3xl sm:text-4xl">
@@ -75,7 +75,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               {product.facts.map((f) => (
                 <div key={f.label} className="grid gap-1 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-6">
                   <dt className="font-semibold">{f.label}</dt>
-                  <dd className="text-kattha-800">{f.value}</dd>
+                  <dd className="text-ink-800">{f.value}</dd>
                 </div>
               ))}
             </dl>
@@ -85,7 +85,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             <ul className="mt-6 space-y-3">
               {product.highlights.map((h) => (
                 <li key={h} className="flex gap-3">
-                  <Icon name="check" className="mt-1 size-5 shrink-0 text-hara" />
+                  <Icon name="check" className="mt-1 size-5 shrink-0 text-pasture-600" />
                   <span>{h}</span>
                 </li>
               ))}
@@ -117,7 +117,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         <aside className="space-y-8">
           <div className="rounded-3xl border border-line p-6">
             <h2 className="text-xl font-semibold">Nutrition per 100 g</h2>
-            <p className="text-sm text-kattha-700">Typical values for pure ghee</p>
+            <p className="text-sm text-ink-700">Typical values for pure ghee</p>
             <table className="table-ghee mt-4">
               <caption className="sr-only">Nutrition information per 100 grams</caption>
               <tbody>
@@ -132,20 +132,18 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
               </tbody>
             </table>
           </div>
-          <figure className="frame-peetal rounded-3xl bg-lal-900 p-6 text-chandan">
-            <p lang="hi" className="font-hand text-xl text-haldi-300">
-              हमारा उद्देश्य
-            </p>
-            <blockquote className="mt-2 text-lal-100">
+          <figure className="rounded-[1.75rem] bg-pasture-950 p-7 text-cream">
+            <p className="font-display text-2xl leading-snug">Pure, simple, rich and full of goodness.</p>
+            <blockquote className="mt-3 text-pasture-100">
               <p>{site.aim}</p>
             </blockquote>
-            <figcaption className="mt-3 text-sm text-lal-200">The {site.name} family</figcaption>
+            <figcaption className="mt-3 text-sm text-pasture-200">The {site.name} family</figcaption>
           </figure>
-          <Link href="/how-its-made" className="flex gap-4 rounded-3xl border border-line p-6 hover:bg-chandan">
-            <Icon name="leaf" className="size-8 shrink-0 text-hara" />
+          <Link href="/how-its-made" className="flex gap-4 rounded-[1.75rem] border border-line p-6 hover:bg-oat">
+            <Icon name="leaf" className="size-8 shrink-0 text-pasture-600" />
             <span>
               <span className="block text-lg font-semibold">See how it is made</span>
-              <span className="text-kattha-700">From buffalo milk to malai, makkhan and ghee, with nothing added.</span>
+              <span className="text-ink-700">Eight steps, from full-fat buffalo milk to a strained jar, with nothing added.</span>
             </span>
           </Link>
         </aside>
@@ -168,7 +166,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
       </section>
 
       {related.length ? (
-        <section className="border-t border-line bg-kattha-50 py-16" aria-labelledby="related">
+        <section className="border-t border-line bg-ink-50 py-16" aria-labelledby="related">
           <div className="wrap">
             <h2 id="related" className="font-display text-3xl sm:text-4xl">
               You may also like

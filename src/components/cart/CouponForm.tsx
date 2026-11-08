@@ -11,7 +11,7 @@ export function CouponForm() {
 
   if (coupon && totals.coupon) {
     return (
-      <p className="flex items-center justify-between gap-3 rounded-xl bg-haldi-100 px-4 py-3 text-sm">
+      <p className="flex items-center justify-between gap-3 rounded-xl bg-ghee-100 px-4 py-3 text-sm">
         <span className="flex items-center gap-2">
           <Icon name="tag" className="size-4" />
           <strong>{totals.coupon.code}</strong> applied: {totals.coupon.label}
@@ -45,14 +45,14 @@ export function CouponForm() {
           autoComplete="off"
           aria-invalid={Boolean(error)}
           aria-describedby={error ? "coupon-error" : undefined}
-          className="min-h-11 flex-1 rounded-full border border-kattha-200 px-4 uppercase"
+          className="min-h-11 flex-1 rounded-full border border-ink-200 px-4 uppercase"
         />
-        <button type="submit" className="min-h-11 rounded-full bg-kattha-100 px-5 font-semibold hover:bg-kattha-200">
+        <button type="submit" className="min-h-11 rounded-full bg-ink-100 px-5 font-semibold hover:bg-ink-200">
           Apply
         </button>
       </div>
       {error ? (
-        <p id="coupon-error" role="alert" className="mt-2 text-sm text-rani">
+        <p id="coupon-error" role="alert" className="mt-2 text-sm text-spice">
           {error}
         </p>
       ) : null}

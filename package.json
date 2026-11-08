@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "predev": "node scripts/fetch-fonts.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/fetch-fonts.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "pretypecheck": "node scripts/fetch-fonts.mjs",
     "typecheck": "next typegen && tsc --noEmit",
     "placeholders": "node scripts/generate-placeholders.mjs"
   },

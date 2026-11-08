@@ -14,7 +14,7 @@ const rows: [string, string, string][] = [
 
 export function CompareTable() {
   return (
-    <div className="frame-peetal overflow-x-auto rounded-2xl bg-malai">
+    <div className="overflow-x-auto rounded-[1.75rem] bg-milk p-2 shadow-[0_1px_0_var(--color-line),0_24px_50px_-34px_rgb(35_27_30/0.4)]">
       <table className="table-ghee min-w-[36rem]">
         <caption className="sr-only">Buffalo ghee compared with cow ghee</caption>
         <thead>
@@ -22,18 +22,18 @@ export function CompareTable() {
             <th scope="col" className="w-1/4">
               <span className="sr-only">Attribute</span>
             </th>
-            <th scope="col" className="bg-chandan">
+            <th scope="col" className="rounded-t-2xl bg-ghee-100">
               Buffalo ghee
             </th>
             <th scope="col">Cow ghee</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map(([label, buffalo, cow]) => (
+          {rows.map(([label, buffalo, cow], i) => (
             <tr key={label}>
               <th scope="row">{label}</th>
-              <td className="bg-chandan font-medium">{buffalo}</td>
-              <td className="text-kattha-700">{cow}</td>
+              <td className={`bg-ghee-100 font-medium ${i === rows.length - 1 ? "rounded-b-2xl" : ""}`}>{buffalo}</td>
+              <td className="text-ink-700">{cow}</td>
             </tr>
           ))}
         </tbody>

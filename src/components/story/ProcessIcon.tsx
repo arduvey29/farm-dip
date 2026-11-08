@@ -40,6 +40,14 @@ const drawings: Record<ProcessStep["icon"], React.ReactNode> = {
       <path d="M17 26c0-5 3-9 7-9s7 4 7 9" />
     </>
   ),
+  wash: (
+    <>
+      <path d="M8 26h32c0 9-7 14-16 14S8 35 8 26Z" />
+      <path d="M13 31c3 2 7 2 11 0s8-2 11 0" />
+      <path d="M19 26c0-4 2-6 5-6s5 2 5 6" />
+      <path d="M30 8c0 3-2 4-2 6a2 2 0 0 0 4 0c0-2-2-3-2-6ZM20 12c0 2-1.5 3-1.5 4.5a1.5 1.5 0 0 0 3 0c0-1.5-1.5-2.5-1.5-4.5Z" />
+    </>
+  ),
   fire: (
     <>
       <path d="M8 22h32c0 6-6 10-16 10S8 28 8 22Z" />
@@ -52,14 +60,6 @@ const drawings: Record<ProcessStep["icon"], React.ReactNode> = {
     <>
       <path d="M10 10h28l-10 14v12l-8 4V24L10 10Z" />
       <path d="M24 42v2" />
-    </>
-  ),
-  jar: (
-    <>
-      <path d="M16 6h16v6H16z" />
-      <rect x="12" y="12" width="24" height="30" rx="5" />
-      <path d="M12 22h24M12 32h24" />
-      <path d="M21 27l2 2 4-4" />
     </>
   ),
 };

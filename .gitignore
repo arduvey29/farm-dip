@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Fontshare fonts (ITF Free Font License): self-hosting is allowed, redistributing the files is not.
+# scripts/fetch-fonts.mjs downloads them at install and build time.
+/src/assets/fonts/fontshare/

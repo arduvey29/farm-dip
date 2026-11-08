@@ -9,7 +9,7 @@ export function QuickAddButton({ line, label, productName }: { line: Omit<CartLi
     <button
       type="button"
       onClick={(e) => add(line, 1, { from: e.currentTarget })}
-      className="mt-3 min-h-11 w-full rounded-full bg-rani px-4 font-semibold text-chandan hover:bg-rani-700"
+      className="btn btn-gold mt-4 min-h-12 w-full"
       aria-label={`${label}: ${productName}`}
     >
       {label}

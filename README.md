@@ -92,57 +92,40 @@ All content comes from `src/data/*.ts` and `src/lib/site.ts`. Pages, structured 
 
 ## Design
 
-A desi look with painted folk art that moves, in the colours of a Punjabi-Haryanvi village at festival time.
+Semi-modern and warm, built around one thing: ghee. Desi in its content (Rani the buffalo, the bilona method, the Sanskrit shlok), modern in its layout and type. Hindi is kept to the logo and the shlok.
 
 **Brand.** The फ़ार्म dip badge: a cream oval seal, a farmer resting under a banyan, laurel sprigs.
 - Drawn once in `src/components/brand/badge.mjs`.
 - Used on the header, footer, social cards, app icons and every product label.
 - The wordmark is outlined from Eczar Bold with HarfBuzz shaping (`wordmark.mjs`). Keep `src/assets/fonts/Eczar-Bold.ttf` for regenerating it.
 
-**Palette (phulkari).** Tokens live in `src/app/globals.css`:
-- lal (sindoori red) for festive grounds
-- kattha brown for text
-- haldi yellow for the main buttons
-- rani pink for offers and add-to-cart
-- genda orange, hara green and neel blue as embroidery accents
-- peetal brass for rules
-- chandan and malai cream for light surfaces
+**Palette.** Tokens live in `src/app/globals.css`:
+- ghee (molten gold) for the brand bands, the drips and buy buttons
+- pasture (deep green) for dark sections and the footer
+- ink (Rani's plum-black) for text and the main buttons
+- cream for the page, oat for quiet panels, milk for cards
+- spice (chilli red) only for offers and savings
 
-**Type.** All three cover Latin and Devanagari:
-- Yatra One (hand-painted Indian signboard lettering) for headings
-- Tillana (brush-pen calligraphy) for Hindi notes
-- Martel (an Indian-designed serif) for reading text
+**Type.**
+- Author (Indian Type Foundry, Fontshare) for headings
+- General Sans (Indian Type Foundry, Fontshare) for text and interface
+- Eczar only for the Devanagari of the wordmark and the shlok आयुर्वै घृतम्
 
-**Motifs.**
-- Toran across the hero
-- Jharokha arches (`.arch`)
-- Phulkari diamond borders (`.phulkari-band`)
-- Double brass rules (`.frame-peetal`)
-- A rubber-stamp "100% शुद्ध" seal
-- Devanagari numerals for the steps
-- A Hindi line above each section heading
+Author and General Sans are under the ITF Free Font License. It allows self-hosting on our own site but not redistributing the files, so they are not in git: `scripts/fetch-fonts.mjs` downloads them into `src/assets/fonts/fontshare/` before `dev`, `build` and `typecheck` (`npm run fonts` runs it by hand).
 
-**Living art.** CSS animation only. It pauses off screen and stays still for visitors who prefer reduced motion.
-- **Rani**, a buffalo in the folk manner (`src/components/art/Buffalo.tsx`):
-  - Curled horns painted in festival bands, a phundna tassel, a kauri-and-marigold garland, Gond-style patterns, a white tail switch and an egret on her back.
-  - She swishes, flicks her ears, blinks, chews and grazes.
-  - In the hero she stands in a village at dawn (sarson field, bitoda, neem, mud house). Tap her and she says "राम राम".
-- **Ghee journey** on the home page (`src/components/story/GheeJourney.tsx`), a scroll-driven story in six scenes:
-  1. Rani in the village pond.
-  2. Milk on the chulha with malai forming.
-  3. Dahi setting under the moon.
-  4. The madhani churning.
-  5. Makkhan melting on the fire.
-  6. The jar filling, getting its lid and its "100% शुद्ध" stamp.
-- **Cart:** a drop of ghee flies into the cart icon when you add a pack, and free-shipping progress is a row of diyas that light up.
+**Buttons.** `.btn` with `.btn-ink` (go somewhere), `.btn-gold` (add to cart, pay) or `.btn-line` (secondary).
+
+**Motion.** CSS animation plus a little framework-free JavaScript in `src/lib/motion.ts`. Looping art pauses off screen, stays still for visitors who prefer reduced motion, and can be paused by anyone with the "Pause animation" button (hero and footer).
+- **Ghee drips** (`components/art/GheeDrip.tsx`): molten ghee hangs off the bottom of the gold bands. The drips lengthen as you scroll and the longest let a drop fall.
+- **The pour** (`components/home/PourSection.tsx`): beside the brand's aim, a brass pateela tips as you scroll, a stream of ghee fills a jar, and at the very end it spills over the rim.
+- **Rani**, a buffalo in the folk manner (`components/art/Buffalo.tsx`), stands in front of a giant drop of ghee in the hero. She swishes, flicks her ears, blinks and chews. Tap her and she says "Ram Ram!".
+- **Ghee journey** on the home page (`components/story/GheeJourney.tsx`): a scroll-driven story in the brand's eight steps (`src/data/process.ts`), one scene each: Rani and her milk, the slow boil, setting overnight, the bilona churn, collecting the butter, the cold-water wash, clarifying, and cooling and straining into the jar. A line of ghee runs down the steps as you go.
+- **Cart:** a drop of ghee flies into the cart icon when you add a pack.
 - **Product page:** "What goes into one pack" counts the litres of buffalo milk behind the selected size.
-
-**Seasonal.** The Diwali top bar and the home-page festive card are driven by `site.festive` in `src/lib/site.ts`. Set it to `null` after the festival.
 
 ## Before launch
 
 Confirm with the brand (marked `PLACEHOLDER`):
-- [ ] The six steps in `src/data/process.ts`. They describe the traditional home method (malai, dahi, makkhan, slow cooking). Make sure they match the real process.
 - [ ] MRPs (₹1,699, ₹2,799, ₹12,499) match the MRP printed on each pack, since they are shown struck through
 - [ ] "Rich in vitamins": FSSAI's labelling and claims rules apply to nutrient claims, so back it with your own lab values in `gheeNutrition`
 - [ ] Legal name, address, coordinates, phone, WhatsApp and email in `src/lib/site.ts`

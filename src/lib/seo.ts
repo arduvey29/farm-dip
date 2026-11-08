@@ -296,9 +296,9 @@ export function howToLd(steps: ProcessStep[]) {
   return {
     "@type": "HowTo",
     name: `How ${site.name} buffalo ghee is made`,
-    description: "Traditional desi ghee from buffalo milk: the malai is set into dahi, churned into makkhan and slow-cooked into ghee, with nothing added.",
-    supply: [{ "@type": "HowToSupply", name: "Fresh buffalo milk" }, { "@type": "HowToSupply", name: "Dahi starter (jaman)" }],
-    tool: [{ "@type": "HowToTool", name: "Clay matka" }, { "@type": "HowToTool", name: "Wooden madhani" }, { "@type": "HowToTool", name: "Iron kadhai" }, { "@type": "HowToTool", name: "Muslin cloth" }],
+    description: "Desi ghee made the bilona way from full-fat buffalo milk: set into dahi, churned, washed, clarified and strained through muslin, with nothing added.",
+    supply: [{ "@type": "HowToSupply", name: "Full-fat buffalo milk" }, { "@type": "HowToSupply", name: "Cold water" }],
+    tool: [{ "@type": "HowToTool", name: "Large saucepan" }, { "@type": "HowToTool", name: "Wooden madhani (bilona churn)" }, { "@type": "HowToTool", name: "Spoon" }, { "@type": "HowToTool", name: "Muslin cloth" }],
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,

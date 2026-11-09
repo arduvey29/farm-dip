@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { sortedPosts } from "@/data/posts";
-import { formatDate } from "@/lib/format";
 import { graph, itemListLd, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -36,7 +35,7 @@ export default function BlogIndex() {
             </h2>
             <p className="mt-3 text-lg text-ink-800">{lead.description}</p>
             <p className="mt-3 text-sm text-ink-700">
-              {lead.readingMinutes} min read. Updated <time dateTime={lead.dateModified}>{formatDate(lead.dateModified)}</time>
+              {lead.readingMinutes} min read
             </p>
           </div>
         </article>

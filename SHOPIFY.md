@@ -15,7 +15,7 @@ You can drop these prototype parts. Shopify does them natively.
 | Prototype | Shopify |
 | --- | --- |
 | `src/lib/cart.ts`, cart page and drawer state | Cart object and the AJAX Cart API (`/cart/add.js`, `/cart.js`) |
-| `/checkout`, payments, COD | Shopify Checkout. Turn on cash on delivery in Settings > Payments. |
+| `/checkout`, payments, COD | Shopify Checkout. In Settings > Checkout, choose the three-page layout (contact, delivery and payment, then the thank-you page) to match the prototype, and let customers check out with a phone number. Turn on cash on delivery in Settings > Payments. |
 | Coupons (`site.commerce.coupons`) | Discounts |
 | `/track-order` | Customer accounts and order status page |
 | `/policies/*` | Settings > Policies (`shop.policies` in Liquid) |
@@ -32,7 +32,7 @@ You can drop these prototype parts. Shopify does them natively.
 | `src/lib/motion.ts` | `assets/farm-dip-motion.js` | Compile it once with `npx tsc src/lib/motion.ts --target es2020 --module es2020 --outDir dist`. Load it with `<script type="module">`, then call `initMotion()`. It wires everything up by data attributes. |
 | `public/images/brand/farm-dip-badge.svg` | `assets/farm-dip-badge.svg` | Use it in the header, footer and favicon. Product photos carry the badge on the real label. |
 | `components/art/GheeDrip.tsx` | `snippets/ghee-drip.liquid` | Paste the markup. Keep `class="drip"` and `data-progress` so `initMotion()` drives it. |
-| `components/home/Hero.tsx` + `HeroScene.tsx` | `sections/hero.liquid` | Make the pill line, the heading, the text and both buttons into section settings. Include a `data-motion-toggle` button. |
+| `components/home/Hero.tsx` + `HeroScene.tsx` | `sections/hero.liquid` | Make the pill line, the heading, the text and both buttons into section settings. |
 | `components/home/PourSection.tsx` | `sections/aim-pour.liquid` | The aim and the shlok become settings. Keep `class="pour"` and `data-progress` (with `data-progress-start="0.95"`, `data-progress-end="0.2"`, `data-progress-still="0.78"`). |
 | `components/art/Buffalo.tsx` | `snippets/buffalo.liquid` | Paste the rendered SVG. Classes `buf-*` animate via CSS. Keep `data-hello-scene` on the wrapper and `data-hello-button` on the tap target. |
 | `components/art/GheeJar.tsx` | `snippets/ghee-jar.liquid` | Same as the buffalo: static SVG. |
@@ -42,6 +42,7 @@ You can drop these prototype parts. Shopify does them natively.
 | `components/product/MilkMath.tsx` | Block in `main-product.liquid` | Litres per litre comes from the product metafield `custom.milk_litres_per_litre`. Re-run the count when the variant changes. |
 | `components/cart/FreeShippingMeter.tsx` | `snippets/diya-meter.liquid` | Light `floor(cart.total_price / threshold * 5)` diyas. Put the threshold in a theme setting. |
 | `components/story/CompareTable.tsx` | `sections/compare-table.liquid` | One block per row. |
+| `components/ui/TestReport.tsx` | `snippets/test-report.liquid` | Upload the QR image to the theme assets and put the report link in a theme setting. Render it in the footer and as the last tile of the size grid. |
 | `components/layout/Header.tsx`, `Footer.tsx` | `sections/header.liquid`, `sections/footer.liquid` | Build the menus from Online Store > Navigation. The top bar becomes an announcement-bar block. |
 | `app/how-its-made`, `app/about` | `templates/page.how-its-made.json`, `templates/page.about.json` | Build both from the sections above. |
 | `app/blog/*` | Blog and articles | `src/data/posts.ts` becomes articles. Put the quick answer in the excerpt and the FAQs in metaobjects. |
@@ -82,5 +83,4 @@ You can drop these prototype parts. Shopify does them natively.
   - `data-i="N"` on everything that should switch with step N
 - `data-progress` on the ghee drips and the pour. It writes `--p` (0 to 1) as the element scrolls up the screen; optional `data-progress-start`, `data-progress-end` and `data-progress-still`.
 - `data-hello-scene` and `data-hello-button` for Rani's hello.
-- `data-motion-toggle` on a button that pauses or resumes all looping animation.
 - `data-cart-target` on the header cart icon, where the flying ghee drop lands.

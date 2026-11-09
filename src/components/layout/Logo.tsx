@@ -4,20 +4,16 @@ import { asset } from "@/lib/assets";
 import { site } from "@/lib/site";
 
 /**
- * The फ़ार्म dip badge: a farmer resting under a banyan beside his fields, in a cream oval seal.
+ * The Farm Dip badge: a farmer resting under a banyan beside his fields, in a cream oval seal.
  * Drawn in src/components/brand/badge.mjs and written to /public/images/brand by `npm run placeholders`.
  */
 export function LogoMark({ className = "h-14 w-auto" }: { className?: string }) {
   return <Image src={asset("/images/brand/farm-dip-badge.svg")} alt="" width={400} height={460} className={className} />;
 }
 
-/** The wordmark in type: "farm" in Devanagari, "dip" in Latin, both in Eczar like the badge. */
+/** The wordmark in type: "Farm Dip" in Eczar Bold, like the badge. */
 export function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`font-deva font-bold whitespace-nowrap ${className}`}>
-      <span lang="hi">फ़ार्म</span> dip
-    </span>
-  );
+  return <span className={`font-deva font-bold whitespace-nowrap ${className}`}>Farm Dip</span>;
 }
 
 export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {

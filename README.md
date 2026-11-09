@@ -1,10 +1,10 @@
-# फ़ार्म dip (Farm Dip): pure desi buffalo ghee
+# Farm Dip: pure desi buffalo ghee
 
 A search-first storefront for Farm Dip Pure Desi Ghee, made from buffalo milk. Built with Next.js 16 (App Router, Cache Components), React 19, TypeScript and Tailwind CSS 4.
 
 This site is the design and content prototype. It is planned to become a Shopify theme; see [SHOPIFY.md](SHOPIFY.md) for how each part maps to Liquid.
 
-The brand is फ़ार्म dip: "farm" in Devanagari, "dip" in Latin letters. Product images are generated placeholders. Every value marked `PLACEHOLDER` in the code must be confirmed or replaced before launch (see the checklist below).
+The brand is Farm Dip, always written in English. Product images are generated placeholders. Every value marked `PLACEHOLDER` in the code must be confirmed or replaced before launch (see the checklist below).
 
 ## Quick start
 
@@ -92,12 +92,12 @@ All content comes from `src/data/*.ts` and `src/lib/site.ts`. Pages, structured 
 
 ## Design
 
-Semi-modern and warm, built around one thing: ghee. Desi in its content (Rani the buffalo, the bilona method, the Sanskrit shlok), modern in its layout and type. Hindi is kept to the logo and the shlok.
+Semi-modern and warm, built around one thing: ghee. Desi in its content (Rani the buffalo, the bilona method, the Sanskrit shlok), modern in its layout and type. The only Devanagari on the site is the Sanskrit shlok beside the pour.
 
-**Brand.** The फ़ार्म dip badge: a cream oval seal, a farmer resting under a banyan, laurel sprigs.
+**Brand.** The Farm Dip badge: a cream oval seal, a farmer resting under a banyan, laurel sprigs.
 - Drawn once in `src/components/brand/badge.mjs`.
 - Used on the header, footer, social cards, app icons and every product label.
-- The wordmark is outlined from Eczar Bold with HarfBuzz shaping (`wordmark.mjs`). Keep `src/assets/fonts/Eczar-Bold.ttf` for regenerating it.
+- "Farm" and "Dip" on the badge are outlined from Eczar Bold (`wordmark.mjs`). Keep `src/assets/fonts/Eczar-Bold.ttf` for regenerating them.
 
 **Palette.** Tokens live in `src/app/globals.css`:
 - ghee (molten gold) for the brand bands, the drips and buy buttons
@@ -109,18 +109,22 @@ Semi-modern and warm, built around one thing: ghee. Desi in its content (Rani th
 **Type.**
 - Author (Indian Type Foundry, Fontshare) for headings
 - General Sans (Indian Type Foundry, Fontshare) for text and interface
-- Eczar only for the Devanagari of the wordmark and the shlok आयुर्वै घृतम्
+- Eczar for the "Farm Dip" wordmark (matching the badge) and the shlok आयुर्वै घृतम्
 
 Author and General Sans are under the ITF Free Font License. It allows self-hosting on our own site but not redistributing the files, so they are not in git: `scripts/fetch-fonts.mjs` downloads them into `src/assets/fonts/fontshare/` before `dev`, `build` and `typecheck` (`npm run fonts` runs it by hand).
 
 **Buttons.** `.btn` with `.btn-ink` (go somewhere), `.btn-gold` (add to cart, pay) or `.btn-line` (secondary).
 
-**Motion.** CSS animation plus a little framework-free JavaScript in `src/lib/motion.ts`. Looping art pauses off screen, stays still for visitors who prefer reduced motion, and can be paused by anyone with the "Pause animation" button (hero and footer).
+**Motion.** CSS animation plus a little framework-free JavaScript in `src/lib/motion.ts`. Looping art pauses off screen and stays still for visitors who prefer reduced motion.
 - **Ghee drips** (`components/art/GheeDrip.tsx`): molten ghee hangs off the bottom of the gold bands. The drips lengthen as you scroll and the longest let a drop fall.
 - **The pour** (`components/home/PourSection.tsx`): beside the brand's aim, a brass pateela tips as you scroll, a stream of ghee fills a jar, and at the very end it spills over the rim.
 - **Rani**, a buffalo in the folk manner (`components/art/Buffalo.tsx`), stands in front of a giant drop of ghee in the hero. She swishes, flicks her ears, blinks and chews. Tap her and she says "Ram Ram!".
-- **Ghee journey** on the home page (`components/story/GheeJourney.tsx`): a scroll-driven story in the brand's eight steps (`src/data/process.ts`), one scene each: Rani and her milk, the slow boil, setting overnight, the bilona churn, collecting the butter, the cold-water wash, clarifying, and cooling and straining into the jar. A line of ghee runs down the steps as you go.
+- **Ghee journey** on the home page and the how-it's-made page (`components/story/GheeJourney.tsx`): a scroll-driven story in the brand's eight steps (`src/data/process.ts`), one scene each: Rani and her milk, the slow boil, setting overnight, the bilona churn, collecting the butter, the cold-water wash, clarifying, and cooling and straining into the jar. A line of ghee runs down the steps as you go.
 - **Cart:** a drop of ghee flies into the cart icon when you add a pack.
+
+**Test report.** `components/ui/TestReport.tsx` shows the QR code for the ghee's test report (a PDF on Google Drive, set in `site.testReport`). It sits in the footer and as the fourth tile of the pack-size grid.
+
+**Checkout.** Three steps, like Shopify's three-page checkout: phone, delivery address, then review and pay, followed by a receipt.
 - **Product page:** "What goes into one pack" counts the litres of buffalo milk behind the selected size.
 
 ## Before launch

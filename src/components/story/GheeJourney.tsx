@@ -14,20 +14,32 @@ const num = (i: number) => String(i + 1).padStart(2, "0");
  * reads fully without JavaScript or motion. Driven by driveJourney() in lib/motion, which a Shopify
  * section can reuse as is.
  */
-export function GheeJourney() {
+export function GheeJourney({
+  id = "journey-title",
+  title = "From Rani to your kitchen, in eight steps.",
+  onProcessPage = false,
+  topSpace = "pt-16 lg:pt-24",
+}: {
+  id?: string;
+  title?: string;
+  /** On the how-it's-made page itself, drop the link back to it. */
+  onProcessPage?: boolean;
+  /** Top padding; more when a band of dripping ghee sits just above. */
+  topSpace?: string;
+}) {
   return (
-    <section className="journey relative bg-pasture-950 text-cream" data-step="0" aria-labelledby="journey-title">
+    <section className="journey relative bg-pasture-950 text-cream" data-step="0" aria-labelledby={id}>
       <JourneyDriver />
-      <div className="wrap pt-20 lg:pt-28">
-        <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
-          <SectionTitle id="journey-title" title="From Rani to your kitchen, in eight steps." tone="dark" />
-          <p className="max-w-xl text-lg text-pasture-100">
+      <div className={`wrap ${topSpace}`}>
+        <div className="grid gap-4 lg:grid-cols-2 lg:items-end lg:gap-6">
+          <SectionTitle id={id} title={title} tone="dark" />
+          <p className="max-w-xl text-pasture-100 sm:text-lg">
             Full-fat buffalo milk, a slow flame, a night to set, a wooden madhani and a muslin cloth. No shortcuts. Scroll to follow one batch.
           </p>
         </div>
       </div>
 
-      <div className="wrap grid pb-20 lg:grid-cols-[1fr_minmax(0,27rem)] lg:gap-x-16 lg:pb-28">
+      <div className="wrap grid pb-12 lg:grid-cols-[1fr_minmax(0,27rem)] lg:gap-x-16 lg:pt-14 lg:pb-20">
         <div
           data-stage
           className="sticky top-16 z-10 -mx-4 bg-pasture-950 px-4 pt-6 pb-4 sm:-mx-6 sm:px-6 lg:top-[calc(50vh-min(18rem,36vh))] lg:order-2 lg:mx-0 lg:self-start lg:bg-transparent lg:p-0"
@@ -60,7 +72,7 @@ export function GheeJourney() {
           <span className="absolute top-0 bottom-0 left-[1.4rem] w-[3px] rounded-full bg-pasture-800" aria-hidden />
           <span className="journey-fill absolute top-0 bottom-0 left-[1.4rem] w-[3px] rounded-full bg-ghee-400" aria-hidden />
           {processSteps.map((step, i) => (
-            <li key={step.id} data-beat className="relative min-h-[58svh] pt-6 pl-16 lg:min-h-[66vh] lg:pt-0">
+            <li key={step.id} data-beat className="relative min-h-[40svh] pt-6 pl-16 lg:min-h-[52vh] lg:pt-0">
               {/* Each step's text stays pinned below (phones) or beside (wide screens) the stage until the next one pushes it on. */}
               <div className="sticky top-[calc(4rem+3.25rem+42svh)] lg:top-[calc(50vh-6rem)]">
                 <span
@@ -75,20 +87,22 @@ export function GheeJourney() {
                   <span className="sr-only">Step {i + 1}: </span>
                   {step.name}
                 </h3>
-                <p className="mt-3 max-w-md text-lg text-pasture-100">{step.text}</p>
+                <p className="mt-2 max-w-md text-pasture-100 sm:mt-3 sm:text-lg">{step.text}</p>
               </div>
             </li>
           ))}
         </ol>
       </div>
 
-      <div className="wrap flex flex-wrap items-center gap-3 pb-20 lg:pb-28">
+      <div className="wrap flex flex-wrap items-center gap-3 pb-16 lg:pb-24">
         <Link href={`/products/${mainProduct.slug}`} className="btn btn-gold text-lg">
           Shop ghee
         </Link>
-        <Link href="/how-its-made" className="btn btn-line text-cream">
-          The process in detail
-        </Link>
+        {onProcessPage ? null : (
+          <Link href="/how-its-made" className="btn btn-line text-cream">
+            The process in detail
+          </Link>
+        )}
         <span className="ml-2 inline-flex items-center gap-2 text-sm text-pasture-200">
           <GheeDropMark className="h-4 w-3.5 text-ghee-400" />
           No preservatives, no additives, ever

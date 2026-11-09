@@ -41,7 +41,7 @@ const palettes = {
   buffalo: { light: "#fffaf0", mid: "#f3e6c4", dark: "#d9c18a", bg: "#f7ecd3" },
 };
 
-/** The फ़ार्म dip badge as a label, `height` tall, centred on cx. */
+/** The Farm Dip badge as a label, `height` tall, centred on cx. */
 function badge(cx, top, height, id) {
   const s = height / 460;
   return `<g transform="translate(${(cx - 200 * s).toFixed(1)} ${top.toFixed(1)}) scale(${s.toFixed(4)})">${badgeMarkup(id)}</g>`;
@@ -70,7 +70,6 @@ function hash(str) {
 }
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const DEV = "'Nirmala UI', 'Kohinoor Devanagari', 'Noto Sans Devanagari', serif";
 const SERIF = "Georgia, 'Times New Roman', serif";
 const SANS = "'Segoe UI', Arial, sans-serif";
 
@@ -372,18 +371,18 @@ write(
 </svg>`,
 );
 
-/* ---------- Brand: फ़ार्म dip badge and round emblem ---------- */
+/* ---------- Brand: Farm Dip badge and round emblem ---------- */
 for (const old of ["logo.svg", "farm-deep-badge.svg", "farm-deep-emblem.svg", "farm-deep-logo.png"]) rmSync(join(root, "brand", old), { force: true });
 write("brand/farm-dip-badge.svg", badgeSvg("fd"));
 write("brand/farm-dip-emblem.svg", emblemSvg("fe"));
 
 /* ---------- Blog covers ---------- */
 const posts = [
-  { slug: "buffalo-ghee-vs-cow-ghee", title: "Buffalo ghee vs cow ghee", tag: "Buying guide", hindi: "भैंस का घी या गाय का" },
-  { slug: "benefits-of-pure-buffalo-ghee", title: "Pure buffalo ghee: taste, texture, nutrition", tag: "Buying guide", hindi: "भैंस के घी के गुण" },
-  { slug: "how-to-check-ghee-purity", title: "How to check ghee purity at home", tag: "Purity", hindi: "शुद्धता की जाँच" },
-  { slug: "ghee-smoke-point-cooking", title: "Ghee smoke point and cooking", tag: "Cooking", hindi: "तड़का और घी" },
-  { slug: "how-to-store-ghee", title: "How to store ghee", tag: "Storage", hindi: "घी कैसे रखें" },
+  { slug: "buffalo-ghee-vs-cow-ghee", title: "Buffalo ghee vs cow ghee", tag: "Buying guide" },
+  { slug: "benefits-of-pure-buffalo-ghee", title: "Pure buffalo ghee: taste, texture, nutrition", tag: "Buying guide" },
+  { slug: "how-to-check-ghee-purity", title: "How to check ghee purity at home", tag: "Purity" },
+  { slug: "ghee-smoke-point-cooking", title: "Ghee smoke point and cooking", tag: "Cooking" },
+  { slug: "how-to-store-ghee", title: "How to store ghee", tag: "Storage" },
 ];
 
 function wrap(text, max) {
@@ -402,7 +401,7 @@ function wrap(text, max) {
 
 for (const p of posts) {
   const lines = wrap(p.title, 22);
-  const text = lines.map((l, i) => `<text x="90" y="${300 + i * 72}" font-family="${SERIF}" font-size="62" font-weight="700" fill="${C.chandan}">${esc(l)}</text>`).join("");
+  const text = lines.map((l, i) => `<text x="90" y="${232 + i * 72}" font-family="${SERIF}" font-size="62" font-weight="700" fill="${C.chandan}">${esc(l)}</text>`).join("");
   write(
     `blog/${p.slug}.svg`,
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
@@ -412,7 +411,6 @@ for (const p of posts) {
   <g opacity="0.95">${rangoli(960, 330, 230, { wash: false })}</g>
   ${badge(960, 200, 260, `cover${hash(p.slug)}`)}
   <text x="90" y="140" font-family="${SANS}" font-size="28" font-weight="600" fill="${C.haldi}">${esc(p.tag)}</text>
-  <text x="90" y="215" font-family="${DEV}" font-size="54" font-weight="700" fill="${C.haldi}">${p.hindi}</text>
   ${text}
 </svg>`,
   );

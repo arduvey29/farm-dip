@@ -7,7 +7,6 @@
     .journey                 the scroll-driven ghee journey ([data-beat], [data-scene], [data-i], [data-stage])
     [data-progress]          gets --p from 0 to 1 as it scrolls up the screen (ghee drips, the pour)
     [data-hello-button]      tapping it makes the closest [data-hello-scene] say hello
-    [data-motion-toggle]     a button that pauses or resumes all looping animation
     [data-cart-target]       where flyToCart() drops land (the header cart icon)
 */
 
@@ -117,29 +116,6 @@ export function trackProgress(el: HTMLElement, { start = 1, end = 0.25, still = 
   };
 }
 
-const STILL_KEY = "farmdip-still";
-
-/** True when the visitor has paused motion on this device. */
-export function isMotionPaused() {
-  return document.documentElement.hasAttribute("data-still");
-}
-
-/** Pauses or resumes every looping animation (Rani, the scenes) and remembers the choice. */
-export function setMotionPaused(paused: boolean) {
-  document.documentElement.toggleAttribute("data-still", paused);
-  try {
-    if (paused) localStorage.setItem(STILL_KEY, "1");
-    else localStorage.removeItem(STILL_KEY);
-  } catch {}
-}
-
-/** Restores a saved "pause motion" choice. Call once on load. */
-export function restoreMotionChoice() {
-  try {
-    if (localStorage.getItem(STILL_KEY)) document.documentElement.setAttribute("data-still", "");
-  } catch {}
-}
-
 const helloTimers = new WeakMap<Element, number>();
 
 /** Rani lifts her head, the egret startles and "Ram Ram!" pops up. Restarts cleanly on rapid taps. */
@@ -224,14 +200,5 @@ export function initMotion(scope: ParentNode = document) {
   scope.querySelectorAll<HTMLElement>("[data-hello-button]:not([data-motion-ready])").forEach((el) => {
     el.setAttribute("data-motion-ready", "");
     el.addEventListener("click", () => sayHello(el));
-  });
-  restoreMotionChoice();
-  scope.querySelectorAll<HTMLElement>("[data-motion-toggle]:not([data-motion-ready])").forEach((el) => {
-    el.setAttribute("data-motion-ready", "");
-    el.setAttribute("aria-pressed", String(isMotionPaused()));
-    el.addEventListener("click", () => {
-      setMotionPaused(!isMotionPaused());
-      el.setAttribute("aria-pressed", String(isMotionPaused()));
-    });
   });
 }

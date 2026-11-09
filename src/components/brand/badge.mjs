@@ -1,12 +1,12 @@
 /*
-  फ़ार्म dip brand badge: a cream oval seal with a green double rule, the Hindi word on top,
-  "dip" below, laurel sprigs at the sides, and a woodcut-style scene in the middle: a farmer
+  Farm Dip brand badge: a cream oval seal with a green double rule, "Farm" on top,
+  "Dip" below, laurel sprigs at the sides, and a woodcut-style scene in the middle: a farmer
   resting under a banyan tree beside his fields at dusk.
 
   Plain SVG strings, used by scripts/generate-placeholders.mjs to write the brand files and
   product labels in /public/images. Pass a unique id per instance.
 */
-import { dipLatin, farmHindi } from "./wordmark.mjs";
+import { dipLatin, farmLatin } from "./wordmark.mjs";
 
 export const BRAND_COLORS = { cream: "#f3e5c4", creamEdge: "#e4cfa2", green: "#2c3b22", maroon: "#74201a" };
 
@@ -206,8 +206,8 @@ export function badgeMarkup(id = "fd") {
   </g>
   ${sprig(46, false)}
   ${sprig(354, true)}
-  ${word(farmHindi, 200, 106, 0.074)}
-  ${word(dipLatin, 200, 420, 0.076)}
+  ${word(farmLatin, 200, 104, 0.062)}
+  ${word(dipLatin, 200, 414, 0.064)}
   ${emblem(id)}`;
 }
 

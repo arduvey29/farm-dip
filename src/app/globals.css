@@ -53,7 +53,7 @@
   --color-line: #ebdcba;
 
   /* Author (headings) and General Sans (text), both by Indian Type Foundry on Fontshare.
-     Eczar carries the Devanagari of the फ़ार्म wordmark and the Sanskrit shlok. */
+     Eczar sets the "Farm Dip" wordmark (like the badge) and the Sanskrit shlok. */
   --font-display: var(--font-author), "Segoe UI", system-ui, sans-serif;
   --font-sans: var(--font-general), "Segoe UI", system-ui, sans-serif;
   --font-deva: var(--font-eczar), "Nirmala UI", "Kohinoor Devanagari", serif;
@@ -118,13 +118,6 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* "Pause motion" (see MotionToggle): stops every looping animation on the page. */
-html[data-still] *,
-html[data-still] *::before,
-html[data-still] *::after {
-  animation-play-state: paused !important;
 }
 
 @layer base {
@@ -325,6 +318,17 @@ html[data-still] *::after {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.975rem;
+  }
+  /* Phones: smaller type and tighter cells so all three columns fit without sideways scrolling. */
+  @media (width < 40rem) {
+    .table-ghee {
+      font-size: 0.8rem;
+      line-height: 1.35;
+    }
+    .table-ghee th,
+    .table-ghee td {
+      padding: 0.6rem 0.45rem;
+    }
   }
   .table-ghee caption {
     text-align: left;

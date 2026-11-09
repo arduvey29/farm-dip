@@ -14,15 +14,15 @@ const rows: [string, string, string][] = [
 
 export function CompareTable() {
   return (
-    <div className="overflow-x-auto rounded-[1.75rem] bg-milk p-2 shadow-[0_1px_0_var(--color-line),0_24px_50px_-34px_rgb(35_27_30/0.4)]">
-      <table className="table-ghee min-w-[36rem]">
+    <div className="overflow-x-auto rounded-[1.5rem] bg-milk p-1.5 shadow-[0_1px_0_var(--color-line),0_24px_50px_-34px_rgb(35_27_30/0.4)]">
+      <table className="table-ghee">
         <caption className="sr-only">Buffalo ghee compared with cow ghee</caption>
         <thead>
           <tr>
-            <th scope="col" className="w-1/4">
+            <th scope="col" className="w-[24%]">
               <span className="sr-only">Attribute</span>
             </th>
-            <th scope="col" className="rounded-t-2xl bg-ghee-100">
+            <th scope="col" className="rounded-t-xl bg-ghee-100">
               Buffalo ghee
             </th>
             <th scope="col">Cow ghee</th>
@@ -32,7 +32,7 @@ export function CompareTable() {
           {rows.map(([label, buffalo, cow], i) => (
             <tr key={label}>
               <th scope="row">{label}</th>
-              <td className={`bg-ghee-100 font-medium ${i === rows.length - 1 ? "rounded-b-2xl" : ""}`}>{buffalo}</td>
+              <td className={`bg-ghee-100 font-medium ${i === rows.length - 1 ? "rounded-b-xl" : ""}`}>{buffalo}</td>
               <td className="text-ink-700">{cow}</td>
             </tr>
           ))}

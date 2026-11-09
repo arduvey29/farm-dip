@@ -25,8 +25,9 @@ const general = localFont({
   variable: "--font-general",
   display: "swap",
 });
-// Eczar only carries the Devanagari of the फ़ार्म wordmark and the Sanskrit shlok.
-const eczar = Eczar({ weight: ["600", "700"], subsets: ["devanagari", "latin"], variable: "--font-eczar", display: "swap", preload: false });
+// Eczar sets the "Farm Dip" wordmark, matching the badge. Only Latin is preloaded; its Devanagari
+// files still load on demand for the Sanskrit shlok beside the pour.
+const eczar = Eczar({ weight: ["600", "700"], subsets: ["latin"], variable: "--font-eczar", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

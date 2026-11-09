@@ -17,34 +17,34 @@ export function SizeCard({ product, variant, eager = false, headingLevel = 3 }: 
   const saving = Math.round(((highest - perLitre) / highest) * 100);
 
   return (
-    <article className="group flex flex-col rounded-[1.75rem] bg-milk p-2.5 shadow-[0_1px_0_var(--color-line),0_24px_50px_-34px_rgb(35_27_30/0.45)]">
-      <Link href={href} className="relative block overflow-hidden rounded-[1.35rem] bg-oat" tabIndex={-1} aria-hidden>
+    <article className="group flex flex-col rounded-[1.25rem] bg-milk p-1.5 sm:rounded-[1.75rem] sm:p-2.5 shadow-[0_1px_0_var(--color-line),0_24px_50px_-34px_rgb(35_27_30/0.45)]">
+      <Link href={href} className="relative block overflow-hidden rounded-[1rem] bg-oat sm:rounded-[1.35rem]" tabIndex={-1} aria-hidden>
         <Image
           src={variant.image}
           alt=""
           width={600}
           height={600}
           loading={eager ? "eager" : "lazy"}
-          sizes="(min-width: 1024px) 380px, (min-width: 640px) 33vw, 90vw"
-          className="aspect-[4/5] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          sizes="(min-width: 1024px) 300px, 48vw"
+          className="aspect-square w-full object-cover sm:aspect-[4/5] transition-transform duration-500 group-hover:scale-[1.03]"
         />
-        {variant.bestValue ? <span className="absolute top-3 left-3 rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold text-ghee-300">Best value</span> : null}
+        {variant.bestValue ? <span className="absolute top-2 left-2 rounded-full bg-ink-900 px-2.5 py-1 text-[0.7rem] font-semibold text-ghee-300 sm:top-3 sm:left-3 sm:px-3 sm:text-xs">Best value</span> : null}
       </Link>
 
-      <div className="flex flex-1 flex-col px-3 pt-5 pb-2">
-        <div className="flex items-baseline justify-between gap-3">
-          <H className="font-display text-3xl leading-none text-ink-900">
+      <div className="flex flex-1 flex-col px-1.5 pt-3 pb-1.5 sm:px-3 sm:pt-5 sm:pb-2">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+          <H className="font-display text-2xl leading-none text-ink-900 sm:text-3xl">
             <Link href={href} className="underline-offset-4 group-hover:underline">
               {variant.label}
               <span className="sr-only"> {product.name}</span>
             </Link>
           </H>
-          <span className="text-sm text-ink-500">{variant.packaging}</span>
+          <span className="text-xs text-ink-500 sm:text-sm">{variant.packaging}</span>
         </div>
-        <div className="mt-auto pt-4">
+        <div className="mt-auto pt-3 sm:pt-4">
           <Price price={variant.price} mrp={variant.mrp} />
-          <p className="text-sm text-ink-700">{formatPrice(perLitre)} per litre</p>
-          {saving > 0 ? <p className="text-sm font-semibold text-pasture-600">Save {saving}% per litre</p> : null}
+          <p className="text-xs text-ink-700 sm:text-sm">{formatPrice(perLitre)} per litre</p>
+          {saving > 0 ? <p className="text-xs font-semibold text-pasture-600 sm:text-sm">Save {saving}% per litre</p> : null}
         </div>
         <QuickAddButton
           line={{

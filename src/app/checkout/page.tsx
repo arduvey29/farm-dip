@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
 export default function CheckoutPage() {
   return (
     <section className="wrap py-10 lg:py-14">
-      <h1 className="mb-8 font-display text-5xl">Checkout</h1>
+      <h1 className="mb-6 font-display text-4xl sm:text-5xl">Checkout</h1>
       <CheckoutForm />
     </section>
   );

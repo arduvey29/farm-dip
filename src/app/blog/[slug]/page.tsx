@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPost, posts, sortedPosts } from "@/data/posts";
 import { getProducts } from "@/data/products";
-import { formatDate } from "@/lib/format";
 import { site } from "@/lib/site";
 import { articleLd, faqLd, graph, pageMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -63,12 +62,6 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
                 <Link href="/about" className="font-semibold text-ink-900 underline underline-offset-4">
                   {site.name} dairy team
                 </Link>
-              </span>
-              <span>
-                Published <time dateTime={post.datePublished}>{formatDate(post.datePublished)}</time>
-              </span>
-              <span>
-                Updated <time dateTime={post.dateModified}>{formatDate(post.dateModified)}</time>
               </span>
               <span>{post.readingMinutes} min read</span>
             </p>

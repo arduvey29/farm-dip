@@ -19,7 +19,7 @@ async function loadAssets() {
       { name: "Author", data: author, weight: 600 as const, style: "normal" as const },
       { name: "General Sans", data: general, weight: 500 as const, style: "normal" as const },
     ],
-    // The badge's wordmark is already outlined, so Devanagari shaping does not depend on Satori.
+    // The badge's lettering is already outlined, so it renders the same in Satori as everywhere else.
     badge: `data:image/svg+xml;base64,${badge.toString("base64")}`,
   };
 }

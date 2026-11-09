@@ -3,7 +3,6 @@ import { mainProduct } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
-import { MotionToggle } from "@/components/layout/MotionToggle";
 import { HeroScene } from "./HeroScene";
 
 export function Hero() {
@@ -51,10 +50,8 @@ export function Hero() {
             <span className="leading-tight">
               <span className="block text-xs text-ghee-300">from</span>
               <span className="block font-display text-2xl">{formatPrice(smallest.price)}</span>
-              <span className="block text-xs text-ghee-300">{smallest.label}</span>
             </span>
           </p>
-          <MotionToggle className="absolute right-1 bottom-1 bg-cream/85 px-3 py-1.5 text-ink-700 backdrop-blur" />
         </div>
       </div>
     </section>

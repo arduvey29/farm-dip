@@ -14,14 +14,18 @@ function resolveSiteUrl() {
 
 export const site = {
   name: "Farm Dip",
-  // The wordmark: "farm" in Devanagari, "dip" in Latin letters.
-  wordmark: "फ़ार्म dip",
+  wordmark: "Farm Dip",
   legalName: "Farm Dip Foods Pvt. Ltd.", // PLACEHOLDER
   tagline: "Pure desi ghee from buffalo milk",
   description:
     "Farm Dip makes pure desi ghee from buffalo milk: rich, creamy and full of aroma, with no preservatives or additives. Made the way we ate it in our childhood. Free cash on delivery across India.",
   // In the brand's own words. Shown on the home and about pages.
   aim: "We make ghee the way we ate it in our childhood: pure, simple, rich and full of goodness. Our aim is to bring that same purity and health to every family's kitchen.",
+  // The ghee's test report (a PDF on Google Drive) and the QR code that opens it.
+  testReport: {
+    url: "https://drive.google.com/file/d/1Le706dJaJqyTn1JhOFLlTmDnt50H_x40/view?usp=sharing",
+    qr: "/images/report/test-report-qr.png",
+  },
   url: resolveSiteUrl(),
   locale: "en_IN",
   language: "en-IN",
@@ -87,28 +91,23 @@ export const mainNav = [
   { label: "How it's made", href: "/how-its-made" },
   { label: "Our story", href: "/about" },
   { label: "Learn", href: "/blog" },
-  { label: "Questions", href: "/faq" },
+  { label: "FAQ", href: "/faq" },
 ] as { label: string; href: string; children?: { label: string; href: string; note: string }[] }[];
 
 export const footerNav = {
-  shop: [
-    { label: "All sizes", href: "/shop" },
-    { label: "500 ml jar", href: "/products/pure-desi-buffalo-ghee?pack=500-ml" },
-    { label: "1 litre jar", href: "/products/pure-desi-buffalo-ghee?pack=1-l" },
-    { label: "5 litre pack", href: "/products/pure-desi-buffalo-ghee?pack=5-l" },
-  ],
   company: [
+    { label: "Shop", href: "/shop" },
     { label: "Our story", href: "/about" },
     { label: "How it's made", href: "/how-its-made" },
-    { label: "Learn about ghee", href: "/blog" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact us", href: "/contact" },
   ],
   help: [
     { label: "Track your order", href: "/track-order" },
-    { label: "Questions and answers", href: "/faq" },
-    { label: "Shipping policy", href: "/policies/shipping" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Shipping", href: "/policies/shipping" },
     { label: "Returns and refunds", href: "/policies/returns" },
-    { label: "Privacy policy", href: "/policies/privacy" },
-    { label: "Terms of service", href: "/policies/terms" },
+    { label: "Privacy", href: "/policies/privacy" },
+    { label: "Terms", href: "/policies/terms" },
   ],
 } as const;

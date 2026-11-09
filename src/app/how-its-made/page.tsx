@@ -9,7 +9,7 @@ import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { QuickAnswer } from "@/components/ui/QuickAnswer";
 import { SectionTitle } from "@/components/ui/Ornament";
-import { ProcessTimeline } from "@/components/story/ProcessTimeline";
+import { GheeJourney } from "@/components/story/GheeJourney";
 import { CompareTable } from "@/components/story/CompareTable";
 import { ChurnScene } from "@/components/story/JourneyScenes";
 import { Pausable } from "@/components/art/Pausable";
@@ -81,17 +81,11 @@ export default function HowItsMadePage() {
         <GheeDrip />
       </section>
 
-      <section className="bg-cream pt-36 pb-20 lg:pt-40 lg:pb-28" aria-labelledby="steps">
-        <div className="wrap">
-          <SectionTitle id="steps" title="The eight steps" lead="From buffalo milk to a strained jar, slowly, the way ghee is made at home." />
-          <div className="mt-12">
-            <ProcessTimeline detailed />
-          </div>
-        </div>
-      </section>
+      {/* The same scroll-driven journey as the home page: one scene per step. */}
+      <GheeJourney id="steps" title="The eight steps, one batch at a time." onProcessPage topSpace="pt-32 lg:pt-36" />
 
       <section className="bg-oat" aria-labelledby="vs">
-        <div className="wrap grid gap-10 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:py-24">
+        <div className="wrap grid gap-8 py-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10 lg:py-20">
           <div>
             <SectionTitle id="vs" title="Buffalo ghee or cow ghee?" size="md" />
             <p className="mt-4 text-lg text-ink-800">Both are good ghee. Buffalo ghee is whiter, thicker and richer, and is the choice for many traditional sweets and fried food.</p>
@@ -103,7 +97,7 @@ export default function HowItsMadePage() {
         </div>
       </section>
 
-      <section className="py-20" aria-labelledby="process-faq">
+      <section className="py-14 lg:py-20" aria-labelledby="process-faq">
         <div className="wrap grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionTitle id="process-faq" title="Questions about how it is made" size="md" />

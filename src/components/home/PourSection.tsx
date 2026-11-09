@@ -70,21 +70,21 @@ export function PourSection() {
   return (
     <section className="pour relative" data-progress="" aria-labelledby="aim">
       <ProgressDriver start={0.95} end={0.2} still={0.78} />
-      <div className="wrap grid items-center gap-12 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:py-28">
-        <div className="mx-auto w-full max-w-sm lg:max-w-md">
+      <div className="wrap grid items-center gap-6 py-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:py-24">
+        <div className="mx-auto w-full max-w-[15rem] sm:max-w-sm lg:max-w-md">
           <PourArt />
         </div>
         <div>
           <h2 id="aim" className="font-display text-4xl leading-[1.04] text-ink-900 sm:text-5xl lg:text-6xl">
             Pure, simple, rich and full of goodness.
           </h2>
-          <blockquote className="mt-6 max-w-xl text-xl leading-relaxed text-ink-700">
+          <blockquote className="mt-4 max-w-xl text-lg leading-relaxed text-ink-700 sm:mt-6 sm:text-xl">
             <p>{site.aim}</p>
           </blockquote>
           <p className="mt-3 text-sm font-medium text-ink-500">The {site.name} family</p>
 
-          <figure className="mt-10 max-w-xl rounded-[2rem] bg-pasture-900 px-8 py-7 text-cream">
-            <p lang="sa" className="font-deva text-5xl leading-tight font-semibold text-ghee-300 sm:text-6xl">
+          <figure className="mt-8 max-w-xl rounded-[1.5rem] bg-pasture-900 px-6 py-5 text-cream sm:mt-10 sm:rounded-[2rem] sm:px-8 sm:py-7">
+            <p lang="sa" className="font-deva text-4xl leading-tight font-semibold text-ghee-300 sm:text-6xl">
               आयुर्वै घृतम्
             </p>
             <figcaption className="mt-3 text-pasture-100">

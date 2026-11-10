@@ -24,6 +24,14 @@ export function MobileMenu() {
     }
   };
 
+  const isItemActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href === "/shop") {
+      return pathname === "/shop" || pathname.startsWith("/products");
+    }
+    return pathname === href || (href !== "/" && pathname.startsWith(href));
+  };
+
   return (
     <>
       <button
@@ -55,7 +63,12 @@ export function MobileMenu() {
               <LogoMark className="h-11 w-auto" />
               <Wordmark className="text-2xl" />
             </Link>
-            <button type="button" onClick={() => ref.current?.close()} className="rounded-full p-2 hover:bg-oat" aria-label="Close menu">
+            <button
+              type="button"
+              onClick={() => ref.current?.close()}
+              className="rounded-full p-2 hover:bg-oat"
+              aria-label="Close menu"
+            >
               <Icon name="close" className="size-6" />
             </button>
           </div>
@@ -66,42 +79,57 @@ export function MobileMenu() {
                 <Link
                   href="/"
                   onClick={handleHomeClick}
-                  className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat"
+                  className={`block rounded-xl px-3 py-3 text-lg font-medium transition-colors ${
+                    pathname === "/"
+                      ? "bg-oat font-semibold text-ink-950"
+                      : "text-ink-800 hover:bg-oat"
+                  }`}
                 >
                   Home
                 </Link>
               </li>
-              {mainNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => ref.current?.close()}
-                    className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children ? (
-                    <ul className="mb-2 ml-3 border-l-2 border-ghee-300 pl-3">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            onClick={() => ref.current?.close()}
-                            className="block rounded-lg px-3 py-2 text-ink-800 hover:bg-oat"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </li>
-              ))}
+              {mainNav.map((item) => {
+                const active = isItemActive(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => ref.current?.close()}
+                      className={`block rounded-xl px-3 py-3 text-lg font-medium transition-colors ${
+                        active
+                          ? "bg-oat font-semibold text-ink-950"
+                          : "text-ink-800 hover:bg-oat"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                    {item.children ? (
+                      <ul className="mb-2 ml-3 border-l-2 border-ghee-300 pl-3">
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={() => ref.current?.close()}
+                              className="block rounded-lg px-3 py-2 text-ink-800 hover:bg-oat"
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </li>
+                );
+              })}
               <li>
                 <Link
                   href="/search"
                   onClick={() => ref.current?.close()}
-                  className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat"
+                  className={`block rounded-xl px-3 py-3 text-lg font-medium transition-colors ${
+                    pathname === "/search"
+                      ? "bg-oat font-semibold text-ink-950"
+                      : "text-ink-800 hover:bg-oat"
+                  }`}
                 >
                   Search
                 </Link>
@@ -110,7 +138,11 @@ export function MobileMenu() {
                 <Link
                   href="/track-order"
                   onClick={() => ref.current?.close()}
-                  className="block rounded-xl px-3 py-3 text-lg font-medium hover:bg-oat"
+                  className={`block rounded-xl px-3 py-3 text-lg font-medium transition-colors ${
+                    pathname === "/track-order"
+                      ? "bg-oat font-semibold text-ink-950"
+                      : "text-ink-800 hover:bg-oat"
+                  }`}
                 >
                   Track your order
                 </Link>
@@ -119,7 +151,7 @@ export function MobileMenu() {
           </nav>
 
           <div className="border-t border-line bg-oat px-5 py-4 text-sm">
-            <a href={`https://wa.me/${site.contact.whatsapp}`} className="flex items-center gap-2 font-semibold" rel="noopener">
+            <a href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-semibold">
               <Icon name="whatsapp" /> WhatsApp {site.contact.phone}
             </a>
           </div>

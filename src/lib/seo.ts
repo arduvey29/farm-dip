@@ -131,7 +131,6 @@ export function organizationLd() {
     },
     hasMerchantReturnPolicy: returnPolicy(),
     identifier: [{ "@type": "PropertyValue", propertyID: "FSSAI", value: site.legal.fssai }],
-    vatID: site.legal.gstin,
     knowsAbout: ["Ghee", "Desi ghee", "Buffalo ghee", "Buffalo milk", "Traditional ghee making"],
     ...(site.social.length ? { sameAs: site.social.map((s) => s.href) } : {}),
   };

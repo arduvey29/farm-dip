@@ -10,6 +10,7 @@ import { SizeCard } from "@/components/product/SizeCard";
 import { GheeJourney } from "@/components/story/GheeJourney";
 import { GheeDrip } from "@/components/art/GheeDrip";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { Icon } from "@/components/ui/Icon";
 import { GheeDropMark, SectionTitle } from "@/components/ui/Ornament";
 import { Stars } from "@/components/ui/Stars";
 
@@ -69,10 +70,33 @@ export default function HomePage() {
             </li>
           ))}
         </ul>
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
           {product.variants.map((v, i) => (
             <SizeCard key={v.id} product={product} variant={v} eager={i < 2} />
           ))}
+
+          {/* 4th tile for phone to complete the 2x2 grid */}
+          <div className="flex sm:hidden flex-col justify-between rounded-[1.25rem] border-2 border-dashed border-line bg-milk/80 p-3 shadow-xs text-center">
+            <div className="my-auto py-2">
+              <span className="mx-auto flex size-9 items-center justify-center rounded-xl bg-ghee-300/70 text-ink-950 mb-2 shadow-xs">
+                <Icon name="whatsapp" className="size-5 text-pasture-900" />
+              </span>
+              <h3 className="font-display text-base font-bold text-ink-950 leading-tight">
+                Need help choosing?
+              </h3>
+              <p className="mt-1 text-[0.72rem] text-ink-600 leading-snug">
+                Ask us for family or gifting size recommendations.
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/${site.contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ink min-h-10 w-full py-2 text-xs font-bold"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 

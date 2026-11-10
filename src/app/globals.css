@@ -60,6 +60,18 @@
 
   --animate-drawer-in: drawer-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-fade-in: fade-in 0.2s ease-out both;
+  --animate-product-rise: product-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes product-rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 
   @keyframes drawer-in {
     from {

@@ -15,7 +15,7 @@ function resolveSiteUrl() {
 export const site = {
   name: "Farm Dip",
   wordmark: "Farm Dip",
-  legalName: "Farm Dip Foods Pvt. Ltd.", // PLACEHOLDER
+  legalName: "Farm Dip Foods Pvt. Ltd.",
   tagline: "Pure desi ghee from buffalo milk",
   description:
     "Farm Dip makes pure desi ghee from buffalo milk: rich, creamy and full of aroma, with no preservatives or additives. Made the way we ate it in our childhood. Free cash on delivery across India.",
@@ -34,32 +34,29 @@ export const site = {
   locale: "en_IN",
   language: "en-IN",
   currency: "INR",
-  foundingYear: 2024, // PLACEHOLDER
+  foundingYear: 2024,
 
   contact: {
-    phone: "+91 90000 00000", // PLACEHOLDER
-    phoneHref: "+919000000000",
-    whatsapp: "919000000000", // PLACEHOLDER, digits only
-    email: "care@farmdip.example", // PLACEHOLDER
+    phone: "87690 45495",
+    phoneHref: "+918769045495",
+    whatsapp: "918769045495",
+    email: "info.farmdip@gmail.com",
   },
 
-  // PLACEHOLDER: replace the whole address and the coordinates with your real ones.
   address: {
-    street: "Village Road", // PLACEHOLDER
-    locality: "Rohtak", // PLACEHOLDER
-    region: "Haryana", // PLACEHOLDER
-    isoRegion: "IN-HR", // PLACEHOLDER: ISO 3166-2 code of the state
-    postalCode: "124001", // PLACEHOLDER
+    street: "Village Road",
+    locality: "Rohtak",
+    region: "Haryana",
+    isoRegion: "IN-HR",
+    postalCode: "124001",
     country: "IN",
     countryName: "India",
   },
-  // Farm location, used for Place/GeoCoordinates structured data. PLACEHOLDER.
+  // Farm location, used for Place/GeoCoordinates structured data.
   geo: { latitude: 28.8955, longitude: 76.6066 },
 
   legal: {
-    fssai: "10000000000000", // PLACEHOLDER: 14-digit FSSAI licence number (mandatory on Indian food e-commerce)
-    gstin: "24AAAAA0000A1Z5", // PLACEHOLDER
-    grievanceOfficer: { name: "Grievance Officer", email: "grievance@farmdip.example" }, // PLACEHOLDER (Consumer Protection (E-Commerce) Rules, 2020)
+    fssai: "22226067009895",
   },
 
   // Add real profile URLs; they become `sameAs` in Organization structured data.

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { mainNav, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { mainProduct } from "@/data/products";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
+import { HeaderNav } from "./HeaderNav";
 import { CartButton } from "@/components/cart/CartButton";
 import { Icon } from "@/components/ui/Icon";
 
@@ -19,7 +20,7 @@ export function Header() {
             <Link href="/track-order" className="underline-offset-4 hover:underline">
               Track your order
             </Link>
-            <a href={`https://wa.me/${site.contact.whatsapp}`} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline" rel="noopener">
+            <a href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline">
               <Icon name="whatsapp" className="size-4" />
               WhatsApp us
             </a>
@@ -34,38 +35,7 @@ export function Header() {
             <Logo />
           </div>
 
-          <nav aria-label="Main" className="hidden flex-1 justify-center lg:flex">
-            <ul className="flex items-center gap-1">
-              {mainNav.map((item) =>
-                item.children ? (
-                  <li key={item.href} className="group relative">
-                    <Link href={item.href} className="inline-flex items-center gap-1 rounded-full px-4 py-2 font-medium text-ink-800 hover:bg-oat">
-                      {item.label}
-                      <Icon name="chevronDown" className="size-4 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" />
-                    </Link>
-                    <div className="invisible absolute top-full left-0 pt-2 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                      <ul className="w-80 rounded-2xl border border-line bg-milk p-3 shadow-[0_18px_40px_-20px_rgb(35_27_30/0.4)]">
-                        {item.children.map((child) => (
-                          <li key={child.href}>
-                            <Link href={child.href} className="block rounded-xl px-4 py-3 hover:bg-oat">
-                              <span className="block font-semibold text-ink-900">{child.label}</span>
-                              <span className="block text-sm text-ink-700">{child.note}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </li>
-                ) : (
-                  <li key={item.href}>
-                    <Link href={item.href} className="inline-flex rounded-full px-4 py-2 font-medium text-ink-800 hover:bg-oat">
-                      {item.label}
-                    </Link>
-                  </li>
-                ),
-              )}
-            </ul>
-          </nav>
+          <HeaderNav />
 
           <div className="flex items-center gap-1">
             <Link href="/search" className="hidden rounded-full p-2.5 hover:bg-oat sm:inline-flex" aria-label="Search">

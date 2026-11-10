@@ -81,8 +81,21 @@ export default function AboutPage() {
           </ul>
         </div>
         <div className="space-y-6">
-          <Image src={asset("/images/farm/buffaloes-at-the-farm.svg")} alt="Buffaloes at the farm" width={1600} height={1000} preload className="w-full rounded-[2rem]" />
-          <Image src={asset("/images/farm/makkhan-churning.svg")} alt="Dahi being churned with a wooden madhani" width={1600} height={1000} className="w-full rounded-[2rem]" />
+          <Image
+            src={asset("/images/farm/buffaloes-at-the-farm.jpg")}
+            alt="Buffaloes at the farm"
+            width={1600}
+            height={1000}
+            preload
+            className="w-full rounded-[2rem] border border-line/60 shadow-md object-cover"
+          />
+          <Image
+            src={asset("/images/farm/makkhan-churning.jpg")}
+            alt="Dahi being churned with a wooden madhani"
+            width={1600}
+            height={1000}
+            className="w-full rounded-[2rem] border border-line/60 shadow-md object-cover"
+          />
         </div>
       </section>
 

@@ -2,81 +2,72 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { graph, ids, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { Icon } from "@/components/ui/Icon";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { ContactForm } from "@/components/forms/ContactForm";
+import { CreativeContactForm } from "@/components/contact/CreativeContactForm";
+import { ContactChannels } from "@/components/contact/ContactChannels";
+import { ContactLocationMap } from "@/components/contact/ContactLocationMap";
 
-const title = `Contact ${site.name}: WhatsApp, Phone and Email`;
-const description = `Talk to ${site.name} about orders, bulk gifting or our ghee. WhatsApp or call ${site.contact.phone}. Based in ${site.address.locality}, ${site.address.region}.`;
+const title = `Contact ${site.name}: WhatsApp, Phone & Direct Support`;
+const description = `Talk directly with ${site.name}. WhatsApp, call ${site.contact.phone}, or send a message. Located in ${site.address.locality}, ${site.address.region}.`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/contact" });
 
 export default function ContactPage() {
-  const { contact, address, legal } = site;
   return (
     <>
-      <div className="wrap pt-5">
+      <div className="wrap pt-3 sm:pt-4">
         <Breadcrumbs items={[{ name: "Contact us", path: "/contact" }]} />
       </div>
-      <section className="wrap grid gap-12 pt-8 pb-20 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <h1 className="font-display text-5xl leading-[1.02] sm:text-6xl">Talk to us</h1>
-          <p className="mt-4 text-lg text-ink-800">WhatsApp is fastest. A real person from our team replies.</p>
 
-          <ul className="mt-8 space-y-5">
-            <li>
-              <a href={`https://wa.me/${contact.whatsapp}`} rel="noopener" className="flex items-center gap-4 rounded-2xl bg-pasture-600 px-5 py-4 font-semibold text-oat hover:opacity-90">
-                <Icon name="whatsapp" className="size-7" />
-                <span>
-                  WhatsApp us
-                  <span className="block text-sm font-normal opacity-90">{contact.phone}</span>
-                </span>
-              </a>
-            </li>
-            <li className="flex gap-4">
-              <Icon name="phone" className="mt-1 size-6 shrink-0 text-ghee-700" />
-              <span>
-                <span className="block font-semibold">Call</span>
-                <a href={`tel:${contact.phoneHref}`} className="underline underline-offset-4">
-                  {contact.phone}
-                </a>
-              </span>
-            </li>
-            <li className="flex gap-4">
-              <Icon name="mail" className="mt-1 size-6 shrink-0 text-ghee-700" />
-              <span>
-                <span className="block font-semibold">Email</span>
-                <a href={`mailto:${contact.email}`} className="underline underline-offset-4">
-                  {contact.email}
-                </a>
-              </span>
-            </li>
-            <li className="flex gap-4">
-              <Icon name="pin" className="mt-1 size-6 shrink-0 text-ghee-700" />
-              <address className="not-italic">
-                <span className="block font-semibold">{site.legalName}</span>
-                {address.street}, {address.locality}, {address.region} {address.postalCode}, {address.countryName}
-              </address>
-            </li>
-          </ul>
+      {/* OPEN EDITORIAL CONTACT SPREAD */}
+      <section className="wrap pt-3 pb-16 sm:pt-5 sm:pb-24">
+        {/* Subtle Minimal Header */}
+        <div className="max-w-xl">
+          <div className="flex items-center gap-2 text-xs font-medium tracking-wide uppercase text-pasture-800">
+            <span className="size-1.5 rounded-full bg-pasture-700" />
+            <span>Customer Care & Farm Support</span>
+            <span className="text-line">•</span>
+            <span className="text-ink-500">Rohtak, Haryana</span>
+          </div>
 
-          <div className="mt-10 rounded-2xl border border-line p-5 text-sm">
-            <p className="font-semibold">Grievance officer</p>
-            <p className="mt-1 text-ink-800">
-              {legal.grievanceOfficer.name},{" "}
-              <a href={`mailto:${legal.grievanceOfficer.email}`} className="underline underline-offset-4">
-                {legal.grievanceOfficer.email}
-              </a>
-              . Complaints are acknowledged within 48 hours.
-            </p>
+          <h1 className="mt-1.5 font-display text-3xl font-semibold leading-tight text-ink-950 sm:text-4xl lg:text-[2.6rem]">
+            Talk to our team.
+          </h1>
+          <p className="mt-2 text-sm leading-relaxed text-ink-600 sm:text-base">
+            Whether you want to track a jar, inquire about our buffalo milk sourcing, or arrange custom bulk orders, a member of our team is ready to assist.
+          </p>
+        </div>
+
+        {/* Dynamic 2-Column Spread: Left Directory + Map / Right Message Form (No boxy cards) */}
+        <div className="mt-9 grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-14 lg:items-start">
+          {/* Left Column: Direct Fast Channels + Compact Location Map */}
+          <div className="space-y-5">
+            <div>
+              <h2 className="mb-2 text-xs font-semibold tracking-wider text-ink-600 uppercase">
+                Direct Channels
+              </h2>
+              <ContactChannels />
+            </div>
+
+            <ContactLocationMap />
+          </div>
+
+          {/* Right Column: Open Stationery-Style Form (Zero boxy card) */}
+          <div className="lg:border-l lg:border-line/70 lg:pl-12">
+            <div className="mb-5">
+              <h2 className="font-display text-2xl font-semibold text-ink-950">
+                Send a message
+              </h2>
+              <p className="mt-0.5 text-xs text-ink-500">
+                We read and respond within one working day.
+              </p>
+            </div>
+
+            <CreativeContactForm />
           </div>
         </div>
-
-        <div className="rounded-3xl border border-line p-6 sm:p-8">
-          <h2 className="mb-6 font-display text-3xl">Send a message</h2>
-          <ContactForm />
-        </div>
       </section>
+
       <JsonLd
         data={graph({
           ...webPageLd({ path: "/contact", name: title, description, type: "ContactPage" }),

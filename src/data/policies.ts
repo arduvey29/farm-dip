@@ -10,7 +10,6 @@ export type Policy = {
   sections: { heading: string; paragraphs: string[] }[];
 };
 
-/* PLACEHOLDER legal copy. Have a lawyer review before launch. */
 export const policies: Policy[] = [
   {
     slug: "shipping",
@@ -49,7 +48,7 @@ export const policies: Policy[] = [
         heading: "Purity & quality guarantee",
         paragraphs: [
           "We take immense pride in the purity of Farm Dip Pure Desi Buffalo Ghee. Every batch is made from 100% natural buffalo milk without any preservatives, additives, or vanaspati.",
-          "If you believe the ghee does not meet authentic quality standards or the product is impure in any way, you can get it tested at an accredited food laboratory and email the test report to us at care@farmdip.example.",
+          `If you believe the ghee does not meet authentic quality standards or the product is impure in any way, you can get it tested at an accredited food laboratory and email the test report to us at ${site.contact.email}.`,
         ],
       },
       {
@@ -108,10 +107,6 @@ export const policies: Policy[] = [
       {
         heading: "Product information",
         paragraphs: ["Natural ghee varies in colour and texture with the season. Images are for illustration. Nutrition values are typical, not guaranteed for every batch."],
-      },
-      {
-        heading: "Grievances",
-        paragraphs: [`Our grievance officer, ${site.legal.grievanceOfficer.name}, can be reached at ${site.legal.grievanceOfficer.email}. We acknowledge complaints within 48 hours and resolve them within one month.`],
       },
     ],
   },

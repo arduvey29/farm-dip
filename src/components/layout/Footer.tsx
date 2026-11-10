@@ -12,7 +12,17 @@ export async function Footer() {
   const year = await currentYear();
   const { address, contact, legal } = site;
   return (
-    <footer className="mt-auto bg-pasture-950 text-pasture-200">
+    <footer className="relative mt-auto overflow-hidden bg-pasture-950 text-pasture-200">
+      {/* Soft Faded Translucent Cream Watermark behind existing footer */}
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none"
+        aria-hidden="true"
+      >
+        <span className="font-deva text-[9.5vw] font-black tracking-tight leading-none text-cream/[0.035] uppercase whitespace-nowrap">
+          FARM DIP
+        </span>
+      </div>
+
       <div className="wrap grid gap-5 py-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] lg:gap-6 lg:py-6">
         {/* Brand & NAP block */}
         <div className="space-y-2 sm:col-span-2 md:col-span-3 lg:col-span-1">
@@ -47,15 +57,19 @@ export async function Footer() {
         <FooterColumn title="Policies" links={footerNav.policies} />
       </div>
 
-      <div className="border-t border-pasture-900 bg-pasture-950/80">
-        <div className="wrap flex flex-col gap-1 py-2.5 text-[0.7rem] text-pasture-400 md:flex-row md:flex-wrap md:justify-between md:gap-x-6">
-          <p>
-            © {year} {site.legalName}. FSSAI Lic. No. {legal.fssai}. GSTIN {legal.gstin}.
+      <div className="relative z-10 border-t border-pasture-900 bg-pasture-950/80">
+        <div className="wrap grid gap-2 py-2.5 text-[0.7rem] text-pasture-400 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] lg:gap-6">
+          <p className="sm:col-span-2 md:col-span-2 lg:col-span-4">
+            © {year} {site.legalName}. FSSAI Lic. No. {legal.fssai}.
           </p>
-          <p>
-            Grievance officer: {legal.grievanceOfficer.name},{" "}
-            <a href={`mailto:${legal.grievanceOfficer.email}`} className="underline underline-offset-2 hover:text-pasture-200">
-              {legal.grievanceOfficer.email}
+          <p className="sm:col-span-2 md:col-span-1 lg:col-span-1">
+            <a
+              href="https://www.logixloops.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#3b82f6] transition-colors hover:text-[#60a5fa] hover:underline whitespace-nowrap"
+            >
+              Developed By logixloops.in
             </a>
           </p>
         </div>

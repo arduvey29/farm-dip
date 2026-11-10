@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { mainProduct } from "@/data/products";
-import { formatPrice, pricePerLitre } from "@/lib/format";
+import { formatPrice } from "@/lib/format";
 import { graph, itemListLd, pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -12,9 +12,6 @@ import { Icon } from "@/components/ui/Icon";
 import { GheeDropMark } from "@/components/ui/Ornament";
 
 const product = mainProduct;
-const perLitre = product.variants.map((v) => pricePerLitre(v.price, v.volumeMl));
-const cheapest = formatPrice(Math.min(...perLitre));
-const dearest = formatPrice(Math.max(...perLitre));
 
 const title = "Buy Pure Buffalo Ghee Online | 500 ml, 1 L & 5 L";
 const description = `Buy Farm Dip pure desi buffalo ghee online | 100% natural with no preservatives or additives. ${product.variants

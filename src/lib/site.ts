@@ -41,6 +41,7 @@ export const site = {
     phoneHref: "+918769045495",
     whatsapp: "918769045495",
     email: "info.farmdip@gmail.com",
+    formspreeEndpoint: "https://formspree.io/f/xqpqzzre",
   },
 
   address: {

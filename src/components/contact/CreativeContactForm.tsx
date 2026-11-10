@@ -26,14 +26,52 @@ export function CreativeContactForm() {
   const [message, setMessage] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const endpoint = site.contact.formspreeEndpoint || "https://formspree.io/f/xqpqzzre";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    const selectedTopic = TOPICS.find((t) => t.id === topic)?.label || topic;
+    const isEmail = contactInfo.includes("@");
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          contact: contactInfo.trim(),
+          ...(isEmail
+            ? { email: contactInfo.trim(), _replyto: contactInfo.trim() }
+            : { phone: contactInfo.trim() }),
+          topic: selectedTopic,
+          orderNumber: orderNumber.trim() || undefined,
+          message: message.trim(),
+          _subject: `New Inquiry (${selectedTopic}) from ${name.trim() || "Customer"} - ${site.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json().catch(() => null);
+        const errMsg =
+          data?.errors?.map((err: { message: string }) => err.message).join(", ") ||
+          "Could not send your message. Please try again or chat with us on WhatsApp.";
+        setErrorMessage(errMsg);
+      }
+    } catch {
+      setErrorMessage("Network error. Please check your connection or send your inquiry via WhatsApp.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 400);
+    }
   };
 
   const handleWhatsAppDirect = () => {
@@ -67,6 +105,7 @@ export function CreativeContactForm() {
             type="button"
             onClick={() => {
               setSubmitted(false);
+              setErrorMessage(null);
               setMessage("");
               setOrderNumber("");
             }}
@@ -91,7 +130,7 @@ export function CreativeContactForm() {
   const selectedTopicObj = TOPICS.find((t) => t.id === topic);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form action={endpoint} method="POST" onSubmit={handleSubmit} className="space-y-5">
       {/* MINIMAL HORIZONTAL PILL SELECTOR */}
       <div>
         <label className="mb-2 block text-xs font-medium text-ink-600 uppercase tracking-wider">
@@ -201,6 +240,21 @@ export function CreativeContactForm() {
           className="w-full border-b border-line bg-transparent py-2 text-sm text-ink-950 placeholder:text-ink-400 focus:border-ink-900 focus:outline-none transition-colors resize-none"
         />
       </div>
+
+      {/* ERROR NOTICE */}
+      {errorMessage && (
+        <div className="animate-fade-in rounded-lg border border-spice/20 bg-spice/5 p-3 text-xs text-spice">
+          <p className="font-medium">{errorMessage}</p>
+          <button
+            type="button"
+            onClick={handleWhatsAppDirect}
+            className="mt-1.5 inline-flex items-center gap-1 font-semibold underline hover:opacity-80"
+          >
+            <Icon name="whatsapp" className="size-3.5" />
+            <span>Send message via WhatsApp instead</span>
+          </button>
+        </div>
+      )}
 
       {/* MINIMAL ACTION BUTTONS */}
       <div className="flex flex-wrap items-center gap-4 pt-2">

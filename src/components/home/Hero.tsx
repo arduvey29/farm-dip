@@ -78,17 +78,17 @@ export function Hero() {
             </Link>
           </div>
 
-          {/* Trust Badges in Clean Micro-Pills with increased size & spacing */}
-          <ul className="mt-8 sm:mt-10 flex flex-wrap gap-2.5 text-xs font-semibold text-ink-800 sm:text-sm">
-            <li className="relative inline-flex items-center gap-2 rounded-full border border-line/90 bg-milk/95 px-4 py-2 shadow-xs">
+          {/* Trust Highlights without capsules */}
+          <ul className="mt-8 sm:mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-medium text-ink-800 sm:text-sm">
+            <li className="inline-flex items-center gap-2">
               <Icon name="leaf" className="size-4 text-pasture-700" />
               <span>No preservatives or additives</span>
             </li>
-            <li className="relative inline-flex items-center gap-2 rounded-full border border-line/90 bg-milk/95 px-4 py-2 shadow-xs">
+            <li className="inline-flex items-center gap-2">
               <Icon name="cash" className="size-4 text-ghee-800" />
               <span>Free cash on delivery</span>
             </li>
-            <li className="relative inline-flex items-center gap-2 rounded-full border border-line/90 bg-milk/95 px-4 py-2 shadow-xs">
+            <li className="inline-flex items-center gap-2">
               <Icon name="truck" className="size-4 text-pasture-700" />
               <span>Ships in {site.commerce.dispatchHours} hours</span>
             </li>

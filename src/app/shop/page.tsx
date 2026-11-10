@@ -16,10 +16,10 @@ const perLitre = product.variants.map((v) => pricePerLitre(v.price, v.volumeMl))
 const cheapest = formatPrice(Math.min(...perLitre));
 const dearest = formatPrice(Math.max(...perLitre));
 
-const title = "Buy Pure Buffalo Ghee Online: 500 ml, 1 L and 5 L";
-const description = `Buy Farm Dip pure desi buffalo ghee online. No preservatives or additives. ${product.variants
+const title = "Buy Pure Buffalo Ghee Online | 500 ml, 1 L & 5 L";
+const description = `Buy Farm Dip pure desi buffalo ghee online | 100% natural with no preservatives or additives. ${product.variants
   .map((v) => `${v.label} ${formatPrice(v.price)}`)
-  .join(", ")}. Free shipping above ₹${site.commerce.freeShippingThreshold}, free COD.`;
+  .join(", ")}. Free cash on delivery nationwide.`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/shop" });
 

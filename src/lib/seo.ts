@@ -21,7 +21,7 @@ type PageMeta = {
 };
 
 // Site-wide social card. Segments with their own opengraph-image file (products, blog posts) override it.
-const defaultOgImage = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name}: pure desi buffalo ghee` };
+const defaultOgImage = { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} | Pure Desi Buffalo Ghee` };
 
 /**
  * Per-page metadata with a canonical URL, en-IN alternate and Open Graph.

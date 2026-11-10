@@ -7,9 +7,9 @@ const USDA = { label: "USDA FoodData Central: nutrient profile of ghee (anhydrou
 export const posts: Post[] = [
   {
     slug: "buffalo-ghee-vs-cow-ghee",
-    title: "Buffalo ghee vs cow ghee: colour, taste, texture and which to use",
+    title: "Buffalo Ghee vs Cow Ghee | Colour, Taste, Texture & Cooking Uses",
     description:
-      "Buffalo ghee is white, thick and rich; cow ghee is yellow and lighter. Here is why they differ, how they compare for cooking, and how to choose.",
+      "Buffalo ghee is white, thick and rich; cow ghee is yellow and lighter | Why they differ, how they compare for cooking, smoke points, and how to choose.",
     quickAnswer:
       "Buffalo ghee is made from buffalo milk, which has roughly twice the fat of cow milk and almost no beta-carotene. So buffalo ghee is creamy white, thicker and richer, and sets firm when cool. Cow ghee is yellow and lighter. Both are pure ghee; buffalo ghee is the classic choice for halwa, mithai, parathas and frying.",
     category: "Buying guide",
@@ -84,9 +84,9 @@ export const posts: Post[] = [
   },
   {
     slug: "benefits-of-pure-buffalo-ghee",
-    title: "Pure desi buffalo ghee: rich taste, danedar texture and nutrition",
+    title: "Pure Desi Buffalo Ghee | Benefits, Danedar Texture & Nutrition",
     description:
-      "Why pure desi buffalo ghee is cherished across India: rich aroma, creamy danedar texture, a high smoke point and the fat-soluble vitamins found in all ghee.",
+      "Why pure desi buffalo ghee is cherished across India | Rich aroma, creamy danedar texture, high smoke point, and natural fat-soluble vitamins.",
     quickAnswer:
       "Pure desi buffalo ghee is made from whole buffalo milk, which is naturally rich in milk fat. That gives it a distinctly rich aroma, a creamy danedar (grainy) texture and a high smoke point, which is why it is a favourite for traditional cooking, tadka and festive sweets.",
     category: "Buying guide",
@@ -146,9 +146,9 @@ export const posts: Post[] = [
   },
   {
     slug: "how-to-check-ghee-purity",
-    title: "How to check ghee purity at home, and what a lab test checks",
+    title: "How to Check Ghee Purity at Home | Lab Test Parameters & FSSAI Tests",
     description:
-      "Home tests for ghee can catch some adulteration but not all. Here are the simple tests FSSAI suggests, their limits, and the lab parameters that prove purity.",
+      "Home tests suggested by FSSAI to check ghee purity | Simple tests, limitations, and key laboratory parameters (RM value, Baudouin) that prove authenticity.",
     quickAnswer:
       "At home, you can melt a spoon of ghee: pure ghee melts quickly and turns dark brown; adulterated ghee melts slowly or stays pale. For vanaspati, FSSAI's DART guide suggests mixing melted ghee with hydrochloric acid and sugar: a crimson colour means added vanaspati. Only a lab test can rule out vegetable fats reliably.",
     category: "Purity",
@@ -229,9 +229,9 @@ export const posts: Post[] = [
   },
   {
     slug: "ghee-smoke-point-cooking",
-    title: "Ghee smoke point: is ghee good for tadka and deep frying?",
+    title: "Ghee Smoke Point | Cooking, Tadka & Deep Frying Guide",
     description:
-      "Ghee's smoke point is around 250°C, higher than butter and many oils. What that means for tadka, roasting and deep frying, with a comparison table.",
+      "Ghee's smoke point is around 250°C (482°F) | Why it outperforms butter and cooking oils for high-heat cooking, tadka, roasting, and deep frying.",
     quickAnswer:
       "Ghee has a smoke point of about 250°C (482°F), much higher than butter at about 150°C, because the milk solids that burn in butter have been removed. That makes ghee well suited to tadka, sautéing, roasting and deep frying.",
     category: "Cooking",
@@ -293,9 +293,9 @@ export const posts: Post[] = [
   },
   {
     slug: "how-to-store-ghee",
-    title: "How to store ghee: shelf life, the fridge, and why texture changes",
+    title: "How to Store Ghee | Shelf Life, Refrigeration & Texture Guide",
     description:
-      "Pure ghee keeps for about 12 months unopened without a fridge. How to store it, why it turns grainy or solid, and how to tell if it has gone bad.",
+      "Pure desi ghee keeps for 12 months without refrigeration | Best storage practices, why texture changes across seasons, and signs of spoilage.",
     quickAnswer:
       "Store ghee in a closed jar in a cool, dark cupboard. Unopened, pure ghee keeps for about 12 months; opened, it keeps for months if you always use a clean, dry spoon. Refrigeration is not needed. Ghee has gone bad if it smells sour or soapy, or shows mould.",
     category: "Storage",

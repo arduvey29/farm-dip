@@ -15,9 +15,9 @@ import { ChurnScene } from "@/components/story/JourneyScenes";
 import { Pausable } from "@/components/art/Pausable";
 import { GheeDrip } from "@/components/art/GheeDrip";
 
-const title = "How Desi Buffalo Ghee Is Made: The Bilona Method in 8 Steps";
+const title = "How Desi Buffalo Ghee Is Made | Traditional Bilona Method in 8 Steps";
 const description =
-  "How Farm Dip ghee is made from full-fat buffalo milk: heated slowly, set into dahi for 8 to 12 hours, churned the bilona way, washed, clarified and strained through muslin. Nothing added.";
+  "How Farm Dip ghee is made from full-fat buffalo milk | Heated slowly, set into dahi for 8 to 12 hours, churned the traditional bilona way, washed, clarified and strained through muslin. 100% natural with nothing added.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/how-its-made" });
 

@@ -12,7 +12,8 @@
     "lint": "eslint",
     "pretypecheck": "node scripts/fetch-fonts.mjs",
     "typecheck": "next typegen && tsc --noEmit",
-    "placeholders": "node scripts/generate-placeholders.mjs"
+    "placeholders": "node scripts/generate-placeholders.mjs",
+    "favicons": "node scripts/build-favicons.mjs"
   },
   "dependencies": {
     "next": "16.4.3",

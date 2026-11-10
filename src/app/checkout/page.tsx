@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/seo";
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Checkout",
-  description: "Enter your delivery details and pay by UPI, card, net banking or free cash on delivery.",
+  title: "Secure Checkout | Cash on Delivery & Online Payment",
+  description: "Enter your delivery details and choose free cash on delivery or instant UPI | Fast dispatch across India within 24 hours.",
   path: "/checkout",
   noindex: true,
 });

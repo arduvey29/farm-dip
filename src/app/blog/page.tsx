@@ -6,8 +6,8 @@ import { graph, itemListLd, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 
-const title = "Learn About Ghee: Buffalo Ghee, Purity, Cooking and Storage Guides";
-const description = "Plain-language guides to ghee: buffalo ghee vs cow ghee, how to test purity at home, smoke point and cooking, and how to store ghee.";
+const title = "Ghee Guides & Knowledge Base | Purity, Cooking & Storage";
+const description = "Expert guides on pure desi ghee | Buffalo vs cow ghee, how to test purity at home, smoke points for cooking and frying, and proper storage tips.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/blog" });
 

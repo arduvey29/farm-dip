@@ -7,8 +7,8 @@ import { pageMetadata } from "@/lib/seo";
 import { SearchClient, type SearchDoc } from "@/components/search/SearchClient";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Search",
-  description: "Search our ghee, guides and answers.",
+  title: "Search | Pure Desi Buffalo Ghee & Guides",
+  description: "Search Farm Dip pure desi buffalo ghee pack sizes, certified lab test results, FAQs, and kitchen cooking guides.",
   path: "/search",
   noindex: true,
 });

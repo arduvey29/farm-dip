@@ -15,11 +15,11 @@ import { GheeDropMark, SectionTitle } from "@/components/ui/Ornament";
 import { Stars } from "@/components/ui/Stars";
 
 const description =
-  "Farm Dip pure desi ghee, made from buffalo milk. Rich, creamy, 100% natural, with no preservatives or additives. 500 ml, 1 L and 5 L. Free cash on delivery across India.";
+  "Farm Dip pure desi ghee made from buffalo milk | Rich, creamy, 100% natural, with no preservatives or additives. 500 ml ₹1,350, 1 L ₹2,210, 5 L ₹9,900. Free cash on delivery across India.";
 
 export const metadata: Metadata = {
-  ...pageMetadata({ title: `${site.name}: Pure Desi Buffalo Ghee, No Preservatives`, description, path: "/" }),
-  title: { absolute: `${site.name}: Pure Desi Buffalo Ghee, No Preservatives` },
+  ...pageMetadata({ title: `${site.name} | Pure Desi Buffalo Ghee | 100% Natural, No Preservatives`, description, path: "/" }),
+  title: { absolute: `${site.name} | Pure Desi Buffalo Ghee | 100% Natural, No Preservatives` },
 };
 
 // The numbers behind a jar, from the brand's own process.

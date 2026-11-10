@@ -6,8 +6,8 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { FaqRevamped } from "@/components/faq/FaqRevamped";
 
-const title = `Frequently Asked Questions | ${site.name} Pure Desi Buffalo Ghee`;
-const description = `Clear, honest answers about ${site.name} pure desi buffalo ghee: authentic bilona churning, nutrition, doorstep delivery across India, lab test verification, and refunds.`;
+const title = "Frequently Asked Questions | Purity, Bilona Process & Delivery";
+const description = `Clear, honest answers about ${site.name} pure desi buffalo ghee | Authentic bilona churning, nutrition, doorstep delivery across India, lab test verification, and refunds.`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/faq" });
 

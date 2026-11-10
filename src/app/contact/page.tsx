@@ -7,8 +7,8 @@ import { CreativeContactForm } from "@/components/contact/CreativeContactForm";
 import { ContactChannels } from "@/components/contact/ContactChannels";
 import { ContactLocationMap } from "@/components/contact/ContactLocationMap";
 
-const title = `Contact ${site.name}: WhatsApp, Phone & Direct Support`;
-const description = `Talk directly with ${site.name}. WhatsApp, call ${site.contact.phone}, or send a message. Located in ${site.address.locality}, ${site.address.region}.`;
+const title = "Contact Us | WhatsApp, Phone & Farm Support";
+const description = `Talk directly with ${site.name} | WhatsApp & call on ${site.contact.phone}, or email ${site.contact.email}. Farm & dispatch based in ${site.address.locality}, ${site.address.region}.`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/contact" });
 

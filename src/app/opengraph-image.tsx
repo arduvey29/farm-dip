@@ -1,7 +1,7 @@
 import { ogContentType, ogSize, renderOg } from "@/lib/og";
 import { site } from "@/lib/site";
 
-export const alt = `${site.name}: pure desi buffalo ghee`;
+export const alt = `${site.name} | Pure Desi Buffalo Ghee`;
 export const size = ogSize;
 export const contentType = ogContentType;
 

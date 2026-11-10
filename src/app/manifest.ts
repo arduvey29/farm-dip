@@ -3,13 +3,13 @@ import { site } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${site.name}: Pure Desi Buffalo Ghee`,
+    name: `${site.name} | Pure Desi Buffalo Ghee`,
     short_name: site.name,
     description: site.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#fff8ec",
-    theme_color: "#4a1410",
+    background_color: "#fff8e8",
+    theme_color: "#0d2216",
     lang: site.language,
     categories: ["food", "shopping"],
     icons: [

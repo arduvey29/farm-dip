@@ -32,7 +32,7 @@ const eczar = Eczar({ weight: ["600", "700"], subsets: ["latin"], variable: "--f
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: Pure Desi Buffalo Ghee, No Preservatives`,
+    default: `${site.name} | Pure Desi Buffalo Ghee | 100% Natural, No Preservatives`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -42,13 +42,28 @@ export const metadata: Metadata = {
   publisher: site.legalName,
   category: "food",
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "apple-touch-icon-precomposed", url: "/apple-touch-icon-precomposed.png" },
+    ],
+  },
   formatDetection: { telephone: false, address: false, email: false },
   openGraph: {
     type: "website",
     siteName: site.name,
     locale: site.locale,
     url: "/",
-    title: `${site.name}: Pure Desi Buffalo Ghee`,
+    title: `${site.name} | Pure Desi Buffalo Ghee`,
     description: site.description,
   },
   twitter: { card: "summary_large_image" },

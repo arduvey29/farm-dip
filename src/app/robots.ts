@@ -3,13 +3,6 @@ import { absoluteUrl } from "@/lib/seo";
 
 const privatePaths = ["/cart", "/checkout", "/search", "/api/"];
 
-/*
-  AI search and answer engines are explicitly allowed so the brand can be cited in
-  ChatGPT, Claude, Perplexity, Gemini and Copilot answers. A crawler that matches a
-  named group ignores the "*" group, so every group repeats the private paths.
-  To opt out of model training only, move GPTBot, ClaudeBot, Google-Extended,
-  Applebot-Extended and CCBot into a group with `disallow: "/"`.
-*/
 const aiCrawlers = [
   "GPTBot",
   "OAI-SearchBot",
@@ -25,6 +18,8 @@ const aiCrawlers = [
   "DuckAssistBot",
   "meta-externalagent",
   "CCBot",
+  "Googlebot",
+  "Bingbot",
 ];
 
 export default function robots(): MetadataRoute.Robots {
@@ -33,6 +28,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/", disallow: privatePaths },
       { userAgent: aiCrawlers, allow: "/", disallow: privatePaths },
     ],
-    sitemap: absoluteUrl("/sitemap.xml"),
+    sitemap: [absoluteUrl("/sitemap.xml"), absoluteUrl("/feeds/google-merchant.xml")],
+    host: absoluteUrl("/"),
   };
 }

@@ -13,8 +13,8 @@ export type Policy = {
 export const policies: Policy[] = [
   {
     slug: "shipping",
-    title: "Shipping policy",
-    description: `Free shipping above ₹${freeShippingThreshold}, dispatch within ${dispatchHours} hours and delivery across India in ${transitDays.min} to ${transitDays.max} days.`,
+    title: "Shipping Policy",
+    description: `Free shipping above ₹${freeShippingThreshold} | Dispatch within ${dispatchHours} hours and delivery across India in ${transitDays.min} to ${transitDays.max} days.`,
     updated: "2026-10-01",
     sections: [
       {
@@ -40,8 +40,8 @@ export const policies: Policy[] = [
   },
   {
     slug: "refund",
-    title: "Refund",
-    description: "Our 7-day purity guarantee and refund policy: if you find any purity or quality issue, share your lab report for a full refund.",
+    title: "Refund Policy",
+    description: "Our 7-day purity guarantee and refund policy | Full refund upon verified independent lab report if any quality issue is found.",
     updated: "2026-11-10",
     sections: [
       {
@@ -68,8 +68,8 @@ export const policies: Policy[] = [
   },
   {
     slug: "privacy",
-    title: "Privacy policy",
-    description: "What personal data we collect, why, and how you can control it.",
+    title: "Privacy Policy",
+    description: "How Farm Dip collects, uses, and protects your personal data | DPDP Act compliant privacy guidelines.",
     updated: "2026-10-01",
     sections: [
       {
@@ -92,8 +92,8 @@ export const policies: Policy[] = [
   },
   {
     slug: "terms",
-    title: "Terms of service",
-    description: "The terms that apply when you use our website and buy from us.",
+    title: "Terms of Service",
+    description: "Terms and conditions governing orders, deliveries, payments, and website use for Farm Dip Foods.",
     updated: "2026-10-01",
     sections: [
       {

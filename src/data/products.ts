@@ -101,9 +101,9 @@ export const products: Product[] = [
     ],
     related: [],
     seo: {
-      title: "Pure Desi Buffalo Ghee: Rich, Creamy, No Preservatives",
+      title: "Pure Desi Buffalo Ghee | Rich, Creamy & 100% Natural",
       description:
-        "Buy Farm Dip pure desi ghee made from buffalo milk. 100% natural, no preservatives or additives. 500 ml ₹1,350, 1 L ₹2,210, 5 L ₹9,900. Free cash on delivery.",
+        "Buy Farm Dip pure desi ghee made from buffalo milk | 100% natural, no preservatives or additives. 500 ml ₹1,350, 1 L ₹2,210, 5 L ₹9,900. Free cash on delivery across India.",
       keywords: ["buffalo ghee", "desi ghee", "pure buffalo ghee online", "buffalo ghee price", "ghee without preservatives", "bhains ka ghee"],
     },
     updatedAt: "2026-11-07",

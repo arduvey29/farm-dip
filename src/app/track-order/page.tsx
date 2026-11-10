@@ -5,8 +5,8 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { TrackOrderForm } from "@/components/forms/TrackOrderForm";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Track Your Order",
-  description: `Track your ${site.name} ghee order with your order number and mobile number.`,
+  title: "Track Your Order | Live Dispatch & Courier Status",
+  description: `Track your ${site.name} ghee order with your order ID and mobile number | Live updates and fast dispatch within 24 hours.`,
   path: "/track-order",
 });
 

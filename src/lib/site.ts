@@ -18,7 +18,7 @@ export const site = {
   legalName: "Farm Dip Foods Pvt. Ltd.",
   tagline: "Pure desi ghee from buffalo milk",
   description:
-    "Farm Dip makes pure desi ghee from buffalo milk: rich, creamy and full of aroma, with no preservatives or additives. Made the way we ate it in our childhood. Free cash on delivery across India.",
+    "Farm Dip makes pure desi ghee from buffalo milk | Rich, creamy and full of aroma, with no preservatives or additives. Made the way we ate it in our childhood. Free cash on delivery across India.",
   // In the brand's own words. Shown on the home and about pages.
   aim: "We make ghee the way we ate it in our childhood: pure, simple, rich and full of goodness. Our aim is to bring that same purity and health to every family's kitchen.",
   // The ghee's test report (a PDF in /public/images/report) and the QR code that opens it.

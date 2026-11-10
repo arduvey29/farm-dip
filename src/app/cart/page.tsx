@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/seo";
 import { CartView } from "@/components/cart/CartView";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Your cart",
-  description: "Review the ghee in your cart, apply a coupon and check out with free cash on delivery.",
+  title: "Shopping Cart | Review Your Order",
+  description: "Review your selected pure desi buffalo ghee jars, calculate shipping, and proceed to checkout with free cash on delivery across India.",
   path: "/cart",
   noindex: true,
 });

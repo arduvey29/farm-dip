@@ -47,7 +47,7 @@ Sources: ${p.sources.map((s) => `${s.label} (${s.href})`).join("; ")}`,
     )
     .join("\n\n");
 
-  const body = `# ${site.name}: full content
+  const body = `# ${site.name} | Complete Content Map
 
 > ${site.description}
 
@@ -59,6 +59,17 @@ ${site.aim}
 
 ## How our ghee is made
 ${processSteps.map((s, i) => `${i + 1}. ${s.name}. ${s.text}`).join("\n")}
+
+## Independent Laboratory Test Certificate Parameters
+- Milk Fat Purity: 99.8% (FSSAI Standard: Min 99.5%) - Result: Passed (100% Pure Buffalo Fat)
+- Baudouin Test (Vanaspati / Dalda): Negative (Standard: Must be Negative) - Result: Passed (Zero Vegetable Oils)
+- Reichert-Meissl (RM) Value: 32.4 (Standard: Min 28.0) - Result: Passed (Authentic Dairy Fat)
+- Moisture Content: 0.18% (Standard: Max 0.5%) - Result: Passed (Optimal Freshness)
+- Free Fatty Acids (FFA as Oleic): 0.28% (Standard: Max 1.4%) - Result: Passed (Low Acidity & Sweet Aroma)
+- Artificial Colours & Preservatives: Nil Detected (Standard: Absent) - Result: Passed (100% Natural)
+
+Official test report PDF: ${absoluteUrl(site.testReport.url)}
+FSSAI Licence Number: ${site.legal.fssai}
 
 ## Questions and answers
 ${faqGroups.map((g) => `### ${g.title}\n${g.items.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n\n")}`).join("\n\n")}

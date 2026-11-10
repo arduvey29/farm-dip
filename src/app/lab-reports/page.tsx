@@ -13,8 +13,8 @@ import { GheeDrip } from "@/components/art/GheeDrip";
 import { GheeJar } from "@/components/art/GheeJar";
 import { LogoMark } from "@/components/layout/Logo";
 
-const title = `Lab Reports & Certified Purity | ${site.name}`;
-const description = `View and download the official independent laboratory test report for ${site.name} Pure Desi Buffalo Ghee. Tested for purity, moisture, and absence of vanaspati against FSSAI standards.`;
+const title = "Independent Lab Reports & Certified Purity | Batch Test Certificate";
+const description = `View and download the official independent laboratory test report for ${site.name} Pure Desi Buffalo Ghee | 99.8% milk fat, RM value 32.4, zero vanaspati, verified against FSSAI standards.`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/lab-reports" });
 

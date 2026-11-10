@@ -10,8 +10,8 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { QuickAnswer } from "@/components/ui/QuickAnswer";
 import { LogoMark } from "@/components/layout/Logo";
 
-const title = `Our Story: ${site.name}, Ghee the Way We Ate It as Children`;
-const description = `${site.name} makes pure desi ghee from buffalo milk, with no preservatives or additives. ${site.aim}`;
+const title = "Our Story | Ghee the Way We Ate It as Children";
+const description = `${site.name} makes pure desi buffalo ghee | 100% natural with no preservatives or additives. ${site.aim}`;
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/about" });
 

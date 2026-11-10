@@ -152,8 +152,8 @@ export default function ShopPage() {
       </section>
 
       {/* CREATIVE SECTION 3: TRANSPARENT PRICE & VALUE LEDGER */}
-      <section className="border-t border-line bg-oat py-14 sm:py-16" aria-labelledby="prices">
-        <div className="wrap grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+      <section className="overflow-x-clip border-t border-line bg-oat py-14 sm:py-16" aria-labelledby="prices">
+        <div className="wrap grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <div className="inline-flex items-center gap-1.5 rounded-full bg-cream px-3 py-1 text-xs font-bold text-ghee-800 shadow-xs">
               <GheeDropMark className="size-3 text-ghee-700" />
@@ -181,7 +181,7 @@ export default function ShopPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-line bg-white p-4 shadow-sm sm:p-6">
+          <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-line bg-white p-3 shadow-xs sm:p-5">
             <PriceTable products={[product]} caption="Farm Dip buffalo ghee prices by pack size" />
           </div>
         </div>

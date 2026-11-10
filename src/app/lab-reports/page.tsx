@@ -316,26 +316,28 @@ export default function LabReportsPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
             {/* Visual Jar + Scannable QR */}
             <div className="flex items-center justify-center gap-4 sm:gap-8">
-              <div className="shrink-0">
+              {/* Jar hidden on mobile phones to make room for large QR code */}
+              <div className="hidden shrink-0 sm:block">
                 <GheeJar id="jar-qr" className="h-56 w-auto sm:h-64 drop-shadow-md" />
               </div>
 
-              <div className="flex flex-col items-center rounded-2xl border-2 border-line bg-oat/60 p-4 text-center shadow-sm">
-                <span className="text-[0.65rem] font-bold tracking-wider text-ink-600 uppercase">
+              {/* Scannable QR: large and prominent on phone */}
+              <div className="flex w-full max-w-[19rem] flex-col items-center rounded-2xl border-2 border-line bg-oat/60 p-4 text-center shadow-sm sm:w-auto sm:p-5">
+                <span className="text-xs font-bold tracking-wider text-ink-600 uppercase">
                   Scan With Phone
                 </span>
-                <div className="mt-2 rounded-xl bg-white p-2.5 shadow-md ring-2 ring-ghee-400/40">
+                <div className="mt-2.5 rounded-2xl bg-white p-3 shadow-md ring-2 ring-ghee-400/40">
                   <Image
                     src={asset(qrImage)}
                     alt="Scan this QR code to view the Farm Dip Lab Report"
-                    width={200}
-                    height={200}
-                    className="size-32 rounded-lg object-contain sm:size-36"
+                    width={240}
+                    height={240}
+                    className="size-48 rounded-xl object-contain sm:size-36 lg:size-40"
                     priority
                   />
                 </div>
-                <span className="mt-2 inline-flex items-center gap-1 text-[0.7rem] font-semibold text-pasture-800">
-                  <Icon name="check" className="size-3 text-pasture-700" />
+                <span className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-semibold text-pasture-800">
+                  <Icon name="check" className="size-3.5 text-pasture-700" />
                   Purity QR Code
                 </span>
               </div>
@@ -404,31 +406,39 @@ export default function LabReportsPage() {
           </div>
 
           <div className="mt-8 overflow-hidden rounded-2xl border border-line bg-milk shadow-sm">
-            <div className="overflow-x-auto p-4 sm:p-6">
-              <table className="w-full text-left text-sm text-ink-800">
+            <div className="w-full overflow-x-auto sm:p-6">
+              <table className="w-full text-left text-xs sm:text-sm text-ink-800">
                 <thead>
-                  <tr className="border-b border-line text-xs font-bold text-ink-500 uppercase tracking-wider">
-                    <th scope="col" className="pb-3 pl-2 sm:pl-3">Test Parameter</th>
-                    <th scope="col" className="pb-3">Standard Limit</th>
-                    <th scope="col" className="pb-3">Observed Value</th>
-                    <th scope="col" className="pb-3 pr-2 text-right sm:pr-3">Status</th>
+                  <tr className="border-b border-line text-[0.68rem] font-bold text-ink-500 uppercase tracking-wider sm:text-xs">
+                    <th scope="col" className="py-2.5 pl-2.5 pr-1 sm:pb-3 sm:pl-3">Test Parameter</th>
+                    <th scope="col" className="py-2.5 px-1 sm:pb-3">Standard Limit</th>
+                    <th scope="col" className="py-2.5 px-1 sm:pb-3">Observed Value</th>
+                    <th scope="col" className="py-2.5 pl-1 pr-2.5 text-right sm:pb-3 sm:pr-3">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-line/60">
                   {labParameters.map((row) => (
                     <tr key={row.parameter} className="transition-colors hover:bg-cream/40">
-                      <td className="py-3.5 pl-2 font-semibold text-ink-900 sm:pl-3">
-                        <div className="flex items-center gap-2">
-                          <GheeDropMark className="size-3 shrink-0 text-ghee-600" />
-                          <span>{row.parameter}</span>
+                      <td className="py-2.5 pl-2.5 pr-1 font-semibold text-ink-900 sm:py-3.5 sm:pl-3">
+                        <div className="flex items-start gap-1.5 sm:items-center sm:gap-2">
+                          <GheeDropMark className="mt-0.5 size-2.5 shrink-0 text-ghee-600 sm:mt-0 sm:size-3" />
+                          <div className="leading-tight">
+                            <span className="text-[0.72rem] font-semibold text-ink-900 sm:text-sm">{row.parameter.split(" (")[0]}</span>
+                            {row.parameter.includes(" (") && (
+                              <span className="text-[0.62rem] text-ink-500 block sm:inline sm:text-xs">
+                                {" (" + row.parameter.split(" (")[1]}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </td>
-                      <td className="py-3.5 text-xs text-ink-600">{row.standard}</td>
-                      <td className="py-3.5 font-mono font-bold text-ink-900">{row.observed}</td>
-                      <td className="py-3.5 pr-2 text-right sm:pr-3">
-                        <span className="inline-flex items-center gap-1 rounded-full bg-pasture-100 px-2.5 py-0.5 text-xs font-bold text-pasture-900">
-                          <Icon name="check" className="size-3 text-pasture-800" />
-                          {row.result}
+                      <td className="py-2.5 px-1 text-[0.68rem] leading-tight text-ink-600 sm:py-3.5 sm:text-xs">{row.standard}</td>
+                      <td className="py-2.5 px-1 font-mono text-[0.72rem] font-bold text-ink-900 sm:py-3.5 sm:text-sm">{row.observed}</td>
+                      <td className="py-2.5 pl-1 pr-2.5 text-right sm:py-3.5 sm:pr-3">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-pasture-100 px-2 py-0.5 text-[0.65rem] font-bold text-pasture-900 sm:px-2.5 sm:text-xs">
+                          <Icon name="check" className="size-2.5 text-pasture-800 shrink-0 sm:size-3" />
+                          <span>Passed</span>
+                          <span className="hidden md:inline">({row.result.replace(/^Passed\s*\(/, "").replace(/\)$/, "")})</span>
                         </span>
                       </td>
                     </tr>

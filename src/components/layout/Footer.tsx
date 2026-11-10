@@ -23,9 +23,9 @@ export async function Footer() {
         </span>
       </div>
 
-      <div className="wrap grid gap-5 py-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] lg:gap-6 lg:py-6">
-        {/* Brand & NAP block */}
-        <div className="space-y-2 sm:col-span-2 md:col-span-3 lg:col-span-1">
+      <div className="wrap grid grid-cols-2 gap-x-5 gap-y-6 py-6 sm:grid-cols-4 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] lg:gap-6 lg:py-6">
+        {/* Brand & NAP block - spans full width on phone & tablet, 1.5fr on desktop */}
+        <div className="col-span-2 space-y-2 sm:col-span-4 lg:col-span-1">
           <Link href="/" className="inline-flex items-center gap-2" aria-label={`${site.name} home`}>
             <LogoMark className="h-7 w-auto shrink-0 sm:h-8" />
             <Wordmark className="text-xl text-cream" />
@@ -51,6 +51,7 @@ export async function Footer() {
           </address>
         </div>
 
+        {/* 2x2 Grid of Links on Mobile: Shop, About, Support, Policies */}
         <FooterColumn title="Shop" links={footerNav.ghee} />
         <FooterColumn title="About" links={footerNav.story} />
         <FooterColumn title="Support" links={footerNav.support} />

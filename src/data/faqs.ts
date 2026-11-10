@@ -1,7 +1,7 @@
 import type { QA } from "./types";
 import { site } from "@/lib/site";
 
-const { freeShippingThreshold, shippingFee, returnWindowDays, transitDays } = site.commerce;
+const { freeShippingThreshold, shippingFee, transitDays } = site.commerce;
 
 export const faqGroups: { id: string; title: string; items: QA[] }[] = [
   {
@@ -66,15 +66,15 @@ export const faqGroups: { id: string; title: string; items: QA[] }[] = [
   },
   {
     id: "returns",
-    title: "Returns and refunds",
+    title: "Refund",
     items: [
       {
-        q: "What if my jar arrives broken or leaking?",
-        a: "Send us a photo of the parcel and jar within 48 hours of delivery by WhatsApp or email. We will ship a free replacement or refund you in full.",
+        q: "How does the purity refund policy work?",
+        a: "If you believe the ghee is impure or does not meet quality standards, you can get it tested at an accredited food laboratory and email the report to us. After proper verification, we will process your full refund within 7 days.",
       },
       {
         q: "Can I return ghee I have opened?",
-        a: `For food safety we cannot accept opened jars back unless there is a quality problem. If you are unhappy with the quality, tell us within ${returnWindowDays} days of delivery and we will make it right.`,
+        a: "For food safety we cannot accept opened jars back unless there is a quality or purity issue. If you believe the ghee is impure, you can get it tested and email us the lab report; after proper verification, we will refund you within 7 days.",
       },
     ],
   },

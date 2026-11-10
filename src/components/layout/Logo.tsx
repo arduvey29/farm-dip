@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { asset } from "@/lib/assets";
 import { site } from "@/lib/site";
 
@@ -18,8 +21,22 @@ export function Wordmark({ className = "" }: { className?: string }) {
 
 export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const light = tone === "light";
+  const pathname = usePathname();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
-    <Link href="/" className="inline-flex items-center gap-2.5" aria-label={`${site.name} home`}>
+    <Link
+      href="/"
+      onClick={handleClick}
+      className="inline-flex items-center gap-2.5"
+      aria-label={`${site.name} home`}
+    >
       <LogoMark className="h-12 w-auto shrink-0 lg:h-14" />
       <span className="flex flex-col leading-none">
         <Wordmark className={`text-[1.6rem] leading-none ${light ? "text-cream" : "text-ink-900"}`} />

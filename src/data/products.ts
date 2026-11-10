@@ -14,9 +14,9 @@ const img = (name: string) => asset(`/images/products/${SLUG}/${name}.svg`);
 // MRPs, SKUs and packaging from the team's product update (syAnasali, 2026-11-07).
 // The MRP shown struck through must match the MRP printed on the pack (Legal Metrology rules).
 const variants: Variant[] = [
-  { id: "500-ml", label: "500 ml", volumeMl: 500, price: 1350, mrp: 1699, sku: "FD-BUF-500", packaging: "Glass jar", inStock: true, image: img("jar") },
-  { id: "1-l", label: "1 L", volumeMl: 1000, price: 2210, mrp: 2799, sku: "FD-BUF-1000", packaging: "Glass jar", inStock: true, image: img("jar-1l") },
-  { id: "5-l", label: "5 L", volumeMl: 5000, price: 9900, mrp: 12499, sku: "FD-BUF-5000", packaging: "Steel dolchi", inStock: true, image: img("dolchi"), bestValue: true },
+  { id: "500-ml", label: "500 ml", volumeMl: 500, price: 1350, mrp: 1699, sku: "FD-BUF-500", packaging: "Jar", inStock: true, image: img("jar") },
+  { id: "1-l", label: "1 L", volumeMl: 1000, price: 2210, mrp: 2799, sku: "FD-BUF-1000", packaging: "Jar", inStock: true, image: img("jar-1l") },
+  { id: "5-l", label: "5 L", volumeMl: 5000, price: 9900, mrp: 12499, sku: "FD-BUF-5000", packaging: "Jar", inStock: true, image: img("dolchi"), bestValue: true },
 ];
 
 export const products: Product[] = [
@@ -52,13 +52,13 @@ export const products: Product[] = [
       { label: "Flavour and aroma", value: "Authentic traditional taste, rich aroma" },
       { label: "Vitamins", value: "Naturally carries the fat-soluble vitamins A, D, E and K" },
       { label: "Shelf life", value: "12 months from packing" },
-      { label: "Packed in", value: "Airtight food-grade glass jars (500 ml, 1 L); food-grade stainless steel dolchi with airtight seal (5 L)" },
+      { label: "Packed in", value: "Airtight food-grade jars with freshness seal (500 ml, 1 L, 5 L)" },
     ],
     images: [
       { src: img("jar"), alt: "Jar of Farm Dip pure desi buffalo ghee with a red cloth tied over the lid, on a banana leaf" },
       { src: img("texture"), alt: "Close view of creamy white buffalo ghee on a wooden spoon" },
-      { src: img("sizes"), alt: "Farm Dip buffalo ghee in 500 ml and 1 litre jars and a 5 litre steel dolchi" },
-      { src: img("dolchi"), alt: "5 litre steel dolchi of Farm Dip buffalo ghee" },
+      { src: img("sizes"), alt: "Farm Dip buffalo ghee in 500 ml, 1 L and 5 L jars" },
+      { src: img("dolchi"), alt: "5 litre jar of Farm Dip buffalo ghee" },
     ],
     variants,
     defaultVariant: "1-l",
@@ -92,7 +92,7 @@ export const products: Product[] = [
       },
       {
         q: "Which pack size should I buy?",
-        a: "The 500 ml jar (₹1,350) suits small families or a first try. The 1 L jar (₹2,210) is the most popular monthly staple. For joint families, the 5 L steel dolchi (₹9,900) costs the least per litre, at ₹1,980.",
+        a: "The 500 ml jar (₹1,350) suits small families or a first try. The 1 L jar (₹2,210) is the most popular monthly staple. For joint families, the 5 L jar (₹9,900) costs the least per litre, at ₹1,980.",
       },
       {
         q: "Is buffalo ghee good for everyday cooking?",

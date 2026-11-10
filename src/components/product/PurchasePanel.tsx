@@ -39,7 +39,7 @@ export function PurchasePanel({ slug, name, variants, defaultVariant, milk }: Pr
   const multi = variants.length > 1;
   const basePerLitre = Math.max(...variants.map((v) => pricePerLitre(v.price, v.volumeMl)));
 
-  // Show the matching image (jar or steel dolchi) when arriving on a ?pack= link.
+  // Show the matching image (e.g. jar) when arriving on a ?pack= link.
   useEffect(() => {
     const v = variants.find((x) => x.id === validUrlPack);
     if (v) window.dispatchEvent(new CustomEvent(VARIANT_EVENT, { detail: v.image }));

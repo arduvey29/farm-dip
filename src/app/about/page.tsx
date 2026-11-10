@@ -27,32 +27,38 @@ const facts = [
 export default function AboutPage() {
   return (
     <>
-      <div className="wrap pt-5">
-        <Breadcrumbs items={[{ name: "Our story", path: "/about" }]} />
-      </div>
-
-      <section className="wrap grid gap-10 pt-8 pb-16 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div>
-          <h1 className="font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">Ghee the way we ate it as children</h1>
-          <div className="mt-6 max-w-2xl">
-            <QuickAnswer label={`Who is ${site.name}?`}>
-              {site.name} makes pure desi ghee from buffalo milk, with no preservatives or additives. {site.aim}
-            </QuickAnswer>
+      <div className="flex min-h-[calc(100svh-6.25rem)] flex-col justify-between lg:h-[calc(100vh-6.75rem)] lg:min-h-[520px]">
+        <div className="flex flex-1 flex-col">
+          <div className="wrap pt-3 sm:pt-4">
+            <Breadcrumbs items={[{ name: "Our story", path: "/about" }]} />
           </div>
-        </div>
-        <LogoMark className="mx-auto h-72 w-auto lg:h-80" />
-      </section>
 
-      <section className="border-y border-line bg-oat py-12" aria-label="Facts about us">
-        <dl className="wrap grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-          {facts.map((f) => (
-            <div key={f.label}>
-              <dt className="text-sm text-ink-700">{f.label}</dt>
-              <dd className="mt-1 text-lg font-semibold">{f.value}</dd>
+          <section className="wrap my-auto grid items-center gap-6 py-4 sm:gap-8 sm:py-6 lg:grid-cols-[1fr_auto] lg:gap-10">
+            <div>
+              <h1 className="font-display text-4xl leading-[1.05] text-ink-950 sm:text-5xl lg:text-[3.25rem] xl:text-[3.75rem]">
+                Ghee the way we ate it as children
+              </h1>
+              <div className="mt-4 max-w-2xl sm:mt-5">
+                <QuickAnswer label={`Who is ${site.name}?`}>
+                  {site.name} makes pure desi ghee from buffalo milk, with no preservatives or additives. {site.aim}
+                </QuickAnswer>
+              </div>
             </div>
-          ))}
-        </dl>
-      </section>
+            <LogoMark className="mx-auto h-48 w-auto shrink-0 drop-shadow-sm sm:h-56 lg:h-64 xl:h-72" />
+          </section>
+        </div>
+
+        <section className="shrink-0 border-y border-line bg-oat py-4 sm:py-5 lg:py-5" aria-label="Facts about us">
+          <dl className="wrap grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+            {facts.map((f) => (
+              <div key={f.label}>
+                <dt className="text-xs text-ink-700 sm:text-sm">{f.label}</dt>
+                <dd className="mt-0.5 text-base font-semibold text-ink-900 sm:mt-1 sm:text-lg">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </div>
 
       {/* PLACEHOLDER copy, written from the brand's own description. Replace with the founders' real story. */}
       <section className="wrap grid gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">
@@ -80,11 +86,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-pasture-950 py-16 text-cream">
+      <section className="border-t border-line bg-cream py-16 text-ink-950">
         <div className="wrap flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-3xl text-cream sm:text-4xl">See how a jar is made, step by step</h2>
-            <p className="mt-2 text-pasture-100">Eight steps, from buffalo milk to a strained jar.</p>
+            <h2 className="font-display text-3xl text-ink-950 sm:text-4xl">See how a jar is made, step by step</h2>
+            <p className="mt-2 text-ink-700">Eight steps, from buffalo milk to a strained jar.</p>
           </div>
           <Link href="/how-its-made" className="btn btn-ink">
             See how it is made

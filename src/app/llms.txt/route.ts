@@ -22,7 +22,7 @@ Key facts:
 - Our aim: ${site.aim}
 - Based in ${address.locality}, ${address.region}, India. Ships across India.
 - Free cash on delivery. Free shipping above ₹${commerce.freeShippingThreshold}, otherwise ₹${commerce.shippingFee}. Dispatch within ${commerce.dispatchHours} hours.
-- ${commerce.returnWindowDays}-day quality promise. Free replacement for jars that arrive broken.
+- 7-day purity guarantee: full refund upon verified independent lab report.
 - FSSAI licence ${site.legal.fssai}. Contact: ${site.contact.phone}, ${site.contact.email}.
 
 ## Products
@@ -34,8 +34,9 @@ ${posts.map((p) => `- [${p.title}](${absoluteUrl(`/blog/${p.slug}`)}): ${p.quick
 ## Company
 - [Our story](${absoluteUrl("/about")}): who we are and why we make ghee the way we ate it as children.
 - [How it's made](${absoluteUrl("/how-its-made")}): the eight steps from buffalo milk to a strained jar.
+- [Lab reports](${absoluteUrl("/lab-reports")}): independent purity testing and laboratory test reports.
 - [All pack sizes and prices](${absoluteUrl("/shop")})
-- [Questions and answers](${absoluteUrl("/faq")}): delivery, payment, returns, storage.
+- [Questions and answers](${absoluteUrl("/faq")}): delivery, payment, refunds, storage.
 - [Contact](${absoluteUrl("/contact")})
 
 ## Policies

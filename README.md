@@ -26,9 +26,9 @@ One ghee in three sizes, at the brand's prices:
 
 | Pack | Price | MRP | Per litre | Packed in |
 | --- | --- | --- | --- | --- |
-| 500 ml | ₹1,350 | ₹1,699 | ₹2,700 | Airtight glass jar |
-| 1 L | ₹2,210 | ₹2,799 | ₹2,210 | Airtight glass jar |
-| 5 L | ₹9,900 | ₹12,499 | ₹1,980 | Stainless steel dolchi |
+| 500 ml | ₹1,350 | ₹1,699 | ₹2,700 | Airtight jar |
+| 1 L | ₹2,210 | ₹2,799 | ₹2,210 | Airtight jar |
+| 5 L | ₹9,900 | ₹12,499 | ₹1,980 | Airtight jar |
 
 About 12 to 14 litres of buffalo milk go into each litre of ghee. Shelf life is 12 months from packing.
 

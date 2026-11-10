@@ -180,7 +180,7 @@ export const posts: Post[] = [
             "Palm test: rub a little ghee on your palm. Pure ghee melts from body heat within a minute.",
             "Starch test: add a few drops of iodine tincture to melted ghee. A blue colour means starch has been added.",
             "Vanaspati test (from FSSAI's DART guide): mix one teaspoon of melted ghee with an equal amount of concentrated hydrochloric acid and a pinch of sugar. A crimson colour suggests added vanaspati. Handle the acid with care.",
-            "Fridge test: melt ghee in a glass jar and refrigerate. Separate layers can indicate other fats were mixed in.",
+            "Fridge test: melt ghee in a jar and refrigerate. Separate layers can indicate other fats were mixed in.",
           ],
         },
         after: [
@@ -297,7 +297,7 @@ export const posts: Post[] = [
     description:
       "Pure ghee keeps for about 12 months unopened without a fridge. How to store it, why it turns grainy or solid, and how to tell if it has gone bad.",
     quickAnswer:
-      "Store ghee in a closed glass or steel container in a cool, dark cupboard. Unopened, pure ghee keeps for about 12 months; opened, it keeps for months if you always use a clean, dry spoon. Refrigeration is not needed. Ghee has gone bad if it smells sour or soapy, or shows mould.",
+      "Store ghee in a closed jar in a cool, dark cupboard. Unopened, pure ghee keeps for about 12 months; opened, it keeps for months if you always use a clean, dry spoon. Refrigeration is not needed. Ghee has gone bad if it smells sour or soapy, or shows mould.",
     category: "Storage",
     cover: asset("/images/blog/how-to-store-ghee.svg"),
     datePublished: "2026-05-18",
@@ -322,7 +322,7 @@ export const posts: Post[] = [
         heading: "How to store ghee",
         list: {
           items: [
-            "Keep it in a glass or steel container with a tight lid.",
+            "Keep it in a jar with a tight lid.",
             "Store it in a cool cupboard away from the stove and sunlight.",
             "Always use a clean, completely dry spoon.",
             "Decant a small jar for daily use and keep the large pack sealed.",

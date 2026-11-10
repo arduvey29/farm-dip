@@ -7,8 +7,8 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
 
-const title = "Ghee Questions and Answers: Buffalo Ghee, Delivery and Returns";
-const description = "Answers about Farm Dip buffalo ghee, what goes into it, delivery times, cash on delivery, returns and how to store ghee.";
+const title = "Ghee Questions and Answers: Buffalo Ghee, Delivery and Refunds";
+const description = "Answers about Farm Dip buffalo ghee, what goes into it, delivery times, cash on delivery, refunds and how to store ghee.";
 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/faq" });
 

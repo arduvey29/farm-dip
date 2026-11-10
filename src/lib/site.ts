@@ -21,10 +21,14 @@ export const site = {
     "Farm Dip makes pure desi ghee from buffalo milk: rich, creamy and full of aroma, with no preservatives or additives. Made the way we ate it in our childhood. Free cash on delivery across India.",
   // In the brand's own words. Shown on the home and about pages.
   aim: "We make ghee the way we ate it in our childhood: pure, simple, rich and full of goodness. Our aim is to bring that same purity and health to every family's kitchen.",
-  // The ghee's test report (a PDF on Google Drive) and the QR code that opens it.
+  // The ghee's test report (a PDF in /public/images/report) and the QR code that opens it.
   testReport: {
-    url: "https://drive.google.com/file/d/1Le706dJaJqyTn1JhOFLlTmDnt50H_x40/view?usp=sharing",
+    url: "/images/report/FARM%20DIP%20_23-10-2026.pdf",
+    filename: "FARM_DIP_Lab_Report_23-10-2026.pdf",
     qr: "/images/report/test-report-qr.png",
+    date: "23 October 2026",
+    sampleName: "Farm Dip Pure Desi Buffalo Ghee",
+    driveUrl: "https://drive.google.com/file/d/1Le706dJaJqyTn1JhOFLlTmDnt50H_x40/view?usp=sharing",
   },
   url: resolveSiteUrl(),
   locale: "en_IN",
@@ -37,8 +41,6 @@ export const site = {
     phoneHref: "+919000000000",
     whatsapp: "919000000000", // PLACEHOLDER, digits only
     email: "care@farmdip.example", // PLACEHOLDER
-    hours: "Monday to Saturday, 9 am to 7 pm IST",
-    hoursSpec: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "19:00" },
   },
 
   // PLACEHOLDER: replace the whole address and the coordinates with your real ones.
@@ -90,23 +92,29 @@ export const mainNav = [
   { label: "Shop ghee", href: "/shop" },
   { label: "How it's made", href: "/how-its-made" },
   { label: "Our story", href: "/about" },
-  { label: "Learn", href: "/blog" },
-  { label: "FAQ", href: "/faq" },
+  { label: "Lab Reports", href: "/lab-reports" },
+  { label: "Contact", href: "/contact" },
 ] as { label: string; href: string; children?: { label: string; href: string; note: string }[] }[];
 
 export const footerNav = {
-  company: [
+  ghee: [
     { label: "Shop", href: "/shop" },
-    { label: "Our story", href: "/about" },
     { label: "How it's made", href: "/how-its-made" },
+    { label: "Lab Reports", href: "/lab-reports" },
+  ],
+  story: [
+    { label: "Our story", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Contact us", href: "/contact" },
   ],
-  help: [
+  support: [
     { label: "Track your order", href: "/track-order" },
+    { label: "Search", href: "/search" },
     { label: "FAQ", href: "/faq" },
+  ],
+  policies: [
     { label: "Shipping", href: "/policies/shipping" },
-    { label: "Returns and refunds", href: "/policies/returns" },
+    { label: "Refund", href: "/policies/refund" },
     { label: "Privacy", href: "/policies/privacy" },
     { label: "Terms", href: "/policies/terms" },
   ],

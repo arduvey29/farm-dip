@@ -38,7 +38,6 @@ const nextConfig: NextConfig = {
       // Pages from the earlier multi-product catalogue.
       { source: "/bilona-process", destination: "/how-its-made", permanent: true },
       { source: "/collections/:slug", destination: "/shop", permanent: true },
-      { source: "/lab-reports", destination: "/how-its-made", permanent: true },
       { source: "/products/a2-gir-cow-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee", permanent: true },
       { source: "/products/desi-buffalo-bilona-ghee", destination: "/products/pure-desi-buffalo-ghee", permanent: true },
       // Per-size product pages and guides from the team's earlier update.
@@ -52,6 +51,7 @@ const nextConfig: NextConfig = {
       { source: "/product/:slug", destination: "/products/:slug", permanent: true },
       { source: "/collection/:slug", destination: "/shop", permanent: true },
       { source: "/pages/about-us", destination: "/about", permanent: true },
+      { source: "/policies/returns", destination: "/policies/refund", permanent: true },
     ];
   },
   turbopack: {

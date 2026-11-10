@@ -57,7 +57,7 @@ export function pageMetadata({ title, description, path, keywords, type = "websi
 export const ids = {
   organization: absoluteUrl("/#organization"),
   website: absoluteUrl("/#website"),
-  returnPolicy: absoluteUrl("/policies/returns#policy"),
+  returnPolicy: absoluteUrl("/policies/refund#policy"),
   farm: absoluteUrl("/about#farm"),
 };
 
@@ -70,7 +70,7 @@ function returnPolicy() {
     merchantReturnDays: site.commerce.returnWindowDays,
     returnMethod: "https://schema.org/ReturnByMail",
     returnFees: "https://schema.org/FreeReturn",
-    url: absoluteUrl("/policies/returns"),
+    url: absoluteUrl("/policies/refund"),
   };
 }
 

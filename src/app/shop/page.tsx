@@ -7,7 +7,6 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { QuickAnswer } from "@/components/ui/QuickAnswer";
 import { SizeCard } from "@/components/product/SizeCard";
-import { TestReport } from "@/components/ui/TestReport";
 import { PriceTable } from "@/components/product/PriceTable";
 
 const product = mainProduct;
@@ -35,11 +34,10 @@ export default function ShopPage() {
           </QuickAnswer>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           {product.variants.map((v, i) => (
             <SizeCard key={v.id} product={product} variant={v} headingLevel={2} eager={i < 3} />
           ))}
-          <TestReport layout="tile" />
         </div>
       </section>
 

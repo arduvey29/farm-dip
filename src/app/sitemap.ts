@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/"), lastModified: catalogueUpdated, changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/shop"), lastModified: catalogueUpdated, changeFrequency: "weekly", priority: 0.9 },
     { url: absoluteUrl("/how-its-made"), lastModified: "2026-11-07", changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/lab-reports"), lastModified: "2026-11-10", changeFrequency: "monthly", priority: 0.7 },
     { url: absoluteUrl("/about"), lastModified: "2026-11-07", changeFrequency: "monthly", priority: 0.6 },
     { url: absoluteUrl("/blog"), lastModified: blogUpdated, changeFrequency: "weekly", priority: 0.7 },
     { url: absoluteUrl("/faq"), lastModified: "2026-10-01", changeFrequency: "monthly", priority: 0.6 },

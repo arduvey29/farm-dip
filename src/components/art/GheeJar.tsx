@@ -1,5 +1,5 @@
 /*
-  A glass jar of creamy white buffalo ghee with a green cloth tied over the lid and the Farm Dip badge as its label.
+  A jar of creamy white buffalo ghee with a green cloth tied over the lid and the Farm Dip badge as its label.
   `fill="scroll"` ties the ghee level to the ghee journey's scroll progress (--sp).
 */
 import { asset } from "@/lib/assets";

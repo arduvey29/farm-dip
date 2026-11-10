@@ -8,7 +8,7 @@ export const VARIANT_EVENT = "pdp:variant-image";
 export function ProductGallery({ images, name }: { images: { src: string; alt: string }[]; name: string }) {
   const [active, setActive] = useState(0);
 
-  // The purchase panel announces the selected pack's image (e.g. jar vs steel dolchi).
+  // The purchase panel announces the selected pack's image (e.g. 500 ml jar vs 5 L jar).
   useEffect(() => {
     const onVariant = (e: Event) => {
       const src = (e as CustomEvent<string>).detail;

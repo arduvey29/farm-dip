@@ -1,6 +1,6 @@
 import { site } from "@/lib/site";
 
-const { freeShippingThreshold, shippingFee, returnWindowDays, dispatchHours, transitDays } = site.commerce;
+const { freeShippingThreshold, shippingFee, dispatchHours, transitDays } = site.commerce;
 
 export type Policy = {
   slug: string;
@@ -35,31 +35,35 @@ export const policies: Policy[] = [
       },
       {
         heading: "Packaging",
-        paragraphs: ["Glass jars are packed in moulded pulp inserts inside double-wall cartons. Steel dolchis are sealed and boxed. If a parcel looks damaged, take a photo before opening it."],
+        paragraphs: ["Jars are packed in moulded pulp inserts inside double-wall cartons with airtight seals. If a parcel looks damaged, take a photo before opening it."],
       },
     ],
   },
   {
-    slug: "returns",
-    title: "Returns and refund policy",
-    description: `Free replacement for broken or leaking jars reported within 48 hours, and a ${returnWindowDays}-day quality promise.`,
-    updated: "2026-10-01",
+    slug: "refund",
+    title: "Refund",
+    description: "Our 7-day purity guarantee and refund policy: if you find any purity or quality issue, share your lab report for a full refund.",
+    updated: "2026-11-10",
     sections: [
       {
-        heading: "Damaged or leaking jars",
-        paragraphs: ["If your jar arrives broken or leaking, send a photo of the parcel and product within 48 hours of delivery. We will send a free replacement or refund you in full, as you prefer."],
+        heading: "Purity & quality guarantee",
+        paragraphs: [
+          "We take immense pride in the purity of Farm Dip Pure Desi Buffalo Ghee. Every batch is made from 100% natural buffalo milk without any preservatives, additives, or vanaspati.",
+          "If you believe the ghee does not meet authentic quality standards or the product is impure in any way, you can get it tested at an accredited food laboratory and email the test report to us at care@farmdip.example.",
+        ],
       },
       {
-        heading: "Quality promise",
-        paragraphs: [`If you are not happy with the quality of our ghee, tell us within ${returnWindowDays} days of delivery. We may ask for the batch number and a photo. We will replace the product or refund you.`],
+        heading: "Verification & 7-day refund",
+        paragraphs: [
+          "Once you email us the laboratory test report along with your order details and jar batch number, our quality team will conduct a thorough review.",
+          "After proper checking and verification of the report, your refund will be processed and credited to your original payment method (or bank account/UPI for cash on delivery) within 7 days.",
+        ],
       },
       {
-        heading: "Opened products",
-        paragraphs: ["For food safety, we cannot resell or accept opened products back except where there is a quality issue covered above."],
-      },
-      {
-        heading: "Refund timelines",
-        paragraphs: ["Refunds to UPI, cards and net banking are processed within 5 to 7 working days of approval. For cash on delivery orders, we refund to your bank account or UPI ID."],
+        heading: "Contact us for refunds",
+        paragraphs: [
+          `To submit a lab report or request a refund, please write to us at ${site.contact.email} or contact our customer support with your order number.`,
+        ],
       },
     ],
   },

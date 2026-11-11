@@ -4,12 +4,46 @@ import { formatPrice } from "@/lib/format";
 import { site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
 import { HeroScene } from "./HeroScene";
+import { HeroVideo } from "./HeroVideo";
 
-export function Hero({ className = "" }: { className?: string } = {}) {
+export function Hero({
+  className = "",
+  padding = "pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20",
+  showVideo = false,
+}: {
+  className?: string;
+  padding?: string;
+  showVideo?: boolean;
+} = {}) {
   const smallest = mainProduct.variants[0];
+
+  if (showVideo) {
+    return (
+      <section className={`relative overflow-hidden ${className}`} aria-label="Farm Dip pure desi ghee video showcase">
+        <div className={`wrap grid items-center justify-items-center gap-8 ${padding} md:grid-cols-2 lg:gap-14`}>
+          {/* Left Side: Video with exact 9:16 aspect ratio */}
+          <div className="flex w-full justify-center">
+            <HeroVideo />
+          </div>
+
+          {/* Right Side: Animated Hero Scene matched in visual size and height with video */}
+          <div className="relative mx-auto w-full max-w-[21rem] sm:max-w-[24rem] lg:max-w-[27rem]">
+            <HeroScene />
+            <p className="absolute top-[6%] right-0 grid size-18 place-items-center rounded-full bg-ink-900 text-center text-cream shadow-md sm:size-20 lg:size-22">
+              <span className="leading-tight">
+                <span className="block text-[0.62rem] text-ghee-300 sm:text-xs">from</span>
+                <span className="block font-display text-lg sm:text-xl lg:text-2xl">{formatPrice(smallest.price)}</span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={`relative overflow-hidden ${className}`} aria-labelledby="hero-title">
-      <div className="wrap grid items-center gap-8 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14 lg:pt-24 lg:pb-20">
+      <div className={`wrap grid items-center gap-8 ${padding} lg:grid-cols-[1.12fr_0.88fr] lg:gap-14`}>
         {/* Left Side: Clean, Left-Aligned with Heritage Eczar Serif Typography & Impactful Spacing */}
         <div className="relative">
           {/* Subtle Geometric Lattice Pattern floating softly behind text without box borders */}

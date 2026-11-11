@@ -107,7 +107,7 @@ export default function HomePage() {
         <GheeDrip />
       </section>
 
-      <Hero />
+      <Hero showVideo />
 
       <GheeJourney />
 

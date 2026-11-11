@@ -7,8 +7,7 @@ import { asset } from "@/lib/assets";
 import { graph, ids, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { QuickAnswer } from "@/components/ui/QuickAnswer";
-import { LogoMark } from "@/components/layout/Logo";
+import { Hero } from "@/components/home/Hero";
 import { PourSection } from "@/components/home/PourSection";
 
 const title = "Our Story | Ghee the Way We Ate It as Children";
@@ -28,38 +27,22 @@ const facts = [
 export default function AboutPage() {
   return (
     <>
-      <div className="flex min-h-[calc(100svh-6.25rem)] flex-col justify-between lg:h-[calc(100vh-6.75rem)] lg:min-h-[520px]">
-        <div className="flex flex-1 flex-col">
-          <div className="wrap pt-3 sm:pt-4">
-            <Breadcrumbs items={[{ name: "Our story", path: "/about" }]} />
-          </div>
-
-          <section className="wrap my-auto grid items-center gap-6 py-4 sm:gap-8 sm:py-6 lg:grid-cols-[1fr_auto] lg:gap-10">
-            <div>
-              <h1 className="font-display text-4xl leading-[1.05] text-ink-950 sm:text-5xl lg:text-[3.25rem] xl:text-[3.75rem]">
-                Ghee the way we ate it as children
-              </h1>
-              <div className="mt-4 max-w-2xl sm:mt-5">
-                <QuickAnswer label={`Who is ${site.name}?`}>
-                  {site.name} makes pure desi ghee from buffalo milk, with no preservatives or additives. {site.aim}
-                </QuickAnswer>
-              </div>
-            </div>
-            <LogoMark className="mx-auto h-48 w-auto shrink-0 drop-shadow-sm sm:h-56 lg:h-64 xl:h-72" />
-          </section>
-        </div>
-
-        <section className="shrink-0 border-y border-line bg-oat py-4 sm:py-5 lg:py-5" aria-label="Facts about us">
-          <dl className="wrap grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
-            {facts.map((f) => (
-              <div key={f.label}>
-                <dt className="text-xs text-ink-700 sm:text-sm">{f.label}</dt>
-                <dd className="mt-0.5 text-base font-semibold text-ink-900 sm:mt-1 sm:text-lg">{f.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+      <div className="wrap pt-3 sm:pt-4">
+        <Breadcrumbs items={[{ name: "Our story", path: "/about" }]} />
       </div>
+
+      <Hero padding="pt-4 pb-10 sm:pt-6 sm:pb-14 lg:pt-8 lg:pb-16" />
+
+      <section className="shrink-0 border-y border-line bg-oat py-4 sm:py-5 lg:py-5" aria-label="Facts about us">
+        <dl className="wrap grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+          {facts.map((f) => (
+            <div key={f.label}>
+              <dt className="text-xs text-ink-700 sm:text-sm">{f.label}</dt>
+              <dd className="mt-0.5 text-base font-semibold text-ink-900 sm:mt-1 sm:text-lg">{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
       {/* PLACEHOLDER copy, written from the brand's own description. Replace with the founders' real story. */}
       <section className="wrap grid gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">

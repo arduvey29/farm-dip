@@ -16,6 +16,7 @@ export function SizeCard({
   headingLevel = 3,
   compact = false,
   className = "",
+  imageClassName = "",
   style,
 }: {
   product: Product;
@@ -24,6 +25,7 @@ export function SizeCard({
   headingLevel?: 2 | 3;
   compact?: boolean;
   className?: string;
+  imageClassName?: string;
   style?: React.CSSProperties;
 }) {
   const href = `/products/${product.slug}?pack=${variant.id}`;
@@ -48,7 +50,7 @@ export function SizeCard({
           loading={eager ? "eager" : "lazy"}
           sizes="(min-width: 1024px) 360px, (min-width: 640px) 48vw, 48vw"
           className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.05] ${
-            compact ? "h-52 sm:h-56 lg:h-60" : "aspect-square sm:aspect-[4/5]"
+            imageClassName || (compact ? "h-52 sm:h-56 lg:h-60" : "aspect-square sm:aspect-[4/5]")
           }`}
         />
         {variant.bestValue ? (
@@ -68,7 +70,7 @@ export function SizeCard({
 
       <div className={`flex flex-1 flex-col ${compact ? "px-1.5 pt-2.5 pb-1 sm:px-2.5 sm:pt-3.5" : "px-1.5 pt-2.5 pb-1 sm:px-3 sm:pt-4 sm:pb-2"}`}>
         <div className="flex items-baseline justify-between gap-1.5">
-          <H className="font-display text-lg font-bold leading-none text-ink-950 sm:text-2xl md:text-[1.85rem]">
+          <H className={`font-display font-bold leading-none text-ink-950 ${compact ? "text-base sm:text-xl lg:text-2xl" : "text-lg sm:text-2xl md:text-[1.85rem]"}`}>
             <Link href={href} className="underline-offset-4 group-hover:underline">
               {variant.label}
               <span className="sr-only"> {product.name}</span>
@@ -104,6 +106,7 @@ export function SizeCard({
           }}
           label={`Add ${variant.label}`}
           productName={product.name}
+          compact={compact}
         />
       </div>
     </article>

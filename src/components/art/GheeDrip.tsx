@@ -2,22 +2,22 @@ import { ProgressDriver } from "./ProgressDriver";
 
 /*
   Molten ghee dripping off the bottom edge of a band. Place it as the last child of a
-  `position: relative` section whose background is the drip colour. The drips grow as the band
-  scrolls up the screen and the longest ones let a drop fall (CSS in globals.css, "Ghee drips").
+  `position: relative` section whose background is the drip colour. The drips grow subtly as the band
+  scrolls up the screen without encroaching on text below (CSS in globals.css, "Ghee drips").
   [x position %, width px, full length px, lets a drop fall]
 */
 const drips: [number, number, number, boolean?][] = [
-  [5, 14, 44],
-  [12, 24, 92, true],
-  [21, 13, 36],
-  [29, 19, 66],
-  [40, 30, 128, true],
-  [49, 13, 40],
-  [58, 21, 80],
-  [68, 15, 50],
-  [77, 27, 108, true],
-  [86, 13, 34],
-  [94, 19, 72],
+  [5, 10, 18],
+  [12, 14, 30, true],
+  [21, 9, 16],
+  [29, 12, 24],
+  [40, 16, 36, true],
+  [49, 9, 17],
+  [58, 13, 26],
+  [68, 10, 20],
+  [77, 15, 32, true],
+  [86, 9, 15],
+  [94, 12, 24],
 ];
 
 export function GheeDrip({ color = "var(--color-ghee-400)" }: { color?: string }) {

@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { QuickAnswer } from "@/components/ui/QuickAnswer";
 import { LogoMark } from "@/components/layout/Logo";
+import { PourSection } from "@/components/home/PourSection";
 
 const title = "Our Story | Ghee the Way We Ate It as Children";
 const description = `${site.name} makes pure desi buffalo ghee | 100% natural with no preservatives or additives. ${site.aim}`;
@@ -99,13 +100,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-cream py-16 text-ink-950">
+      <PourSection className="bg-oat" />
+
+      <section className="bg-ghee-400 py-14 sm:py-16 text-ink-950">
         <div className="wrap flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-3xl text-ink-950 sm:text-4xl">See how a jar is made, step by step</h2>
-            <p className="mt-2 text-ink-700">Eight steps, from buffalo milk to a strained jar.</p>
+            <h2 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">See how a jar is made, step by step</h2>
+            <p className="mt-2 text-base text-ink-800 sm:text-lg">Eight steps, from buffalo milk to a strained jar.</p>
           </div>
-          <Link href="/how-its-made" className="btn btn-ink">
+          <Link href="/how-its-made" className="btn btn-ink min-h-12 px-6 font-bold shadow-sm">
             See how it is made
           </Link>
         </div>

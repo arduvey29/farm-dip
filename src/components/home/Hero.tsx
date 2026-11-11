@@ -5,11 +5,11 @@ import { site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
 import { HeroScene } from "./HeroScene";
 
-export function Hero() {
+export function Hero({ className = "" }: { className?: string } = {}) {
   const smallest = mainProduct.variants[0];
   return (
-    <section className="relative overflow-hidden" aria-labelledby="hero-title">
-      <div className="wrap grid items-center gap-8 pt-6 pb-10 sm:pt-8 sm:pb-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14 lg:pt-10 lg:pb-16">
+    <section className={`relative overflow-hidden ${className}`} aria-labelledby="hero-title">
+      <div className="wrap grid items-center gap-8 pt-16 pb-12 sm:pt-20 sm:pb-16 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14 lg:pt-24 lg:pb-20">
         {/* Left Side: Clean, Left-Aligned with Heritage Eczar Serif Typography & Impactful Spacing */}
         <div className="relative">
           {/* Subtle Geometric Lattice Pattern floating softly behind text without box borders */}
@@ -54,13 +54,6 @@ export function Hero() {
               </svg>
             </span>
           </h1>
-
-          {/* Subtitle with accent line & generous spacing */}
-          <div className="relative mt-7 sm:mt-9 border-l-2 border-ghee-400 pl-4 sm:pl-5">
-            <p className="max-w-2xl text-base font-normal leading-relaxed text-ink-800 sm:text-lg lg:text-[1.18rem]">
-              Full-fat buffalo milk, set into dahi, churned the bilona way and clarified slowly. Rich, creamy and nothing added: no preservatives, no additives.
-            </p>
-          </div>
 
           {/* Action Buttons with larger size & spacing */}
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">

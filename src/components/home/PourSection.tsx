@@ -66,9 +66,9 @@ function PourArt() {
   );
 }
 
-export function PourSection() {
+export function PourSection({ className = "bg-oat" }: { className?: string } = {}) {
   return (
-    <section className="pour relative" data-progress="" aria-labelledby="aim">
+    <section className={`pour relative ${className}`} data-progress="" aria-labelledby="aim">
       <ProgressDriver start={0.95} end={0.2} still={0.78} />
       <div className="wrap grid items-center gap-6 py-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:py-24">
         <div className="mx-auto w-full max-w-[15rem] sm:max-w-sm lg:max-w-md">

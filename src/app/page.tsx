@@ -5,14 +5,13 @@ import { getRatingSummary, reviews } from "@/data/reviews";
 import { site } from "@/lib/site";
 import { graph, itemListLd, pageMetadata, webPageLd } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
-import { PourSection } from "@/components/home/PourSection";
 import { SizeCard } from "@/components/product/SizeCard";
 import { GheeJourney } from "@/components/story/GheeJourney";
 import { GheeDrip } from "@/components/art/GheeDrip";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Icon } from "@/components/ui/Icon";
-import { GheeDropMark, SectionTitle } from "@/components/ui/Ornament";
-import { Stars } from "@/components/ui/Stars";
+import { SectionTitle } from "@/components/ui/Ornament";
+import { HomeReviews } from "@/components/home/HomeReviews";
 
 const description =
   "Farm Dip pure desi ghee made from buffalo milk | Rich, creamy, 100% natural, with no preservatives or additives. 500 ml ₹1,350, 1 L ₹2,210, 5 L ₹9,900. Free cash on delivery across India.";
@@ -30,9 +29,6 @@ const numbers = [
   { value: "12 months", label: "shelf life from the day it is packed" },
 ];
 
-// The brand's four promises, in its own words.
-const promises = ["Pure and 100% natural", "Rich in vitamins", "No preservatives or additives", "For everyday cooking and traditional recipes"];
-
 export default function HomePage() {
   const product = mainProduct;
   const overall = getRatingSummary();
@@ -40,7 +36,63 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero />
+      <section
+        className="wrap flex flex-col justify-center min-h-[calc(100svh-6.25rem)] lg:min-h-[calc(100vh-6.75rem)] py-2 sm:py-3 lg:py-5"
+        aria-labelledby="sizes"
+      >
+        <div className="flex flex-wrap items-baseline justify-between gap-3 sm:gap-6">
+          <SectionTitle
+            id="sizes"
+            font="deva"
+            title={
+              <>
+                <span className="text-ghee-400">One ghee</span>, three sizes.
+              </>
+            }
+            lead="The bigger the pack, the less you pay per litre."
+            titleClassName="text-2xl sm:text-3xl lg:text-[2.65rem] xl:text-5xl"
+            leadClassName="mt-0.5 sm:mt-1 text-xs sm:text-sm lg:text-base text-ink-700"
+          />
+          <Link href={`/products/${product.slug}`} className="link text-xs sm:text-sm font-semibold whitespace-nowrap">
+            Everything about this ghee
+          </Link>
+        </div>
+        <div className="mt-2.5 sm:mt-4 lg:mt-5 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 lg:gap-6 items-stretch">
+          {product.variants.map((v, i) => (
+            <SizeCard
+              key={v.id}
+              product={product}
+              variant={v}
+              eager={i < 2}
+              compact
+              imageClassName="h-24 xs:h-28 sm:h-36 md:h-40 lg:h-44 xl:h-52 object-contain p-2"
+            />
+          ))}
+
+          {/* 4th tile for phone to complete the 2x2 grid */}
+          <div className="flex sm:hidden flex-col justify-between rounded-[1.25rem] border-2 border-dashed border-line bg-milk/80 p-2 shadow-xs text-center">
+            <div className="my-auto py-1">
+              <span className="mx-auto flex size-7 items-center justify-center rounded-lg bg-ghee-300/70 text-ink-950 mb-1 shadow-xs">
+                <Icon name="whatsapp" className="size-4 text-pasture-900" />
+              </span>
+              <h3 className="font-display text-xs font-bold text-ink-950 leading-tight">
+                Need help choosing?
+              </h3>
+              <p className="mt-0.5 text-[0.65rem] text-ink-600 leading-snug">
+                Ask us for family recommendations.
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/${site.contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ink min-h-8 w-full py-1 text-xs font-bold mt-1.5"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Molten-gold band. Its bottom edge drips into the next section as you scroll. */}
       <section aria-label="Farm Dip in numbers" className="relative bg-ghee-400 text-ink-950">
@@ -55,85 +107,11 @@ export default function HomePage() {
         <GheeDrip />
       </section>
 
-      <section className="wrap pt-28 pb-14 lg:pt-36 lg:pb-20" aria-labelledby="sizes">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionTitle id="sizes" title="One ghee, three sizes." lead="The bigger the pack, the less you pay per litre." />
-          <Link href={`/products/${product.slug}`} className="link">
-            Everything about this ghee
-          </Link>
-        </div>
-        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Our promises">
-          {promises.map((p) => (
-            <li key={p} className="inline-flex items-center gap-2 rounded-full border border-line bg-milk px-3 py-1.5 text-xs font-medium text-ink-800 sm:px-4 sm:py-2 sm:text-sm">
-              <GheeDropMark className="h-3.5 w-3 text-ghee-500" />
-              {p}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
-          {product.variants.map((v, i) => (
-            <SizeCard key={v.id} product={product} variant={v} eager={i < 2} />
-          ))}
-
-          {/* 4th tile for phone to complete the 2x2 grid */}
-          <div className="flex sm:hidden flex-col justify-between rounded-[1.25rem] border-2 border-dashed border-line bg-milk/80 p-3 shadow-xs text-center">
-            <div className="my-auto py-2">
-              <span className="mx-auto flex size-9 items-center justify-center rounded-xl bg-ghee-300/70 text-ink-950 mb-2 shadow-xs">
-                <Icon name="whatsapp" className="size-5 text-pasture-900" />
-              </span>
-              <h3 className="font-display text-base font-bold text-ink-950 leading-tight">
-                Need help choosing?
-              </h3>
-              <p className="mt-1 text-[0.72rem] text-ink-600 leading-snug">
-                Ask us for family or gifting size recommendations.
-              </p>
-            </div>
-            <a
-              href={`https://wa.me/${site.contact.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ink min-h-10 w-full py-2 text-xs font-bold"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       <GheeJourney />
 
-      <PourSection />
-
-      <section className="bg-oat" aria-labelledby="reviews">
-        <div className="wrap py-14 lg:py-20">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <SectionTitle id="reviews" title="What families say" size="md" />
-            {overall.count ? (
-              <p className="flex items-center gap-2 text-sm">
-                <Stars rating={overall.average} className="size-4" />
-                <span className="font-semibold">{overall.average.toFixed(1)} out of 5</span>
-                <span className="text-ink-700">from {overall.count} reviews</span>
-              </p>
-            ) : null}
-          </div>
-          {/* A swipeable row on phones, three columns on wider screens. */}
-          <ul className="-mx-4 mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-10 sm:overflow-visible sm:px-0 sm:pb-0">
-            {quotes.map((r) => (
-              <li key={r.id} className="w-[80%] shrink-0 snap-start sm:w-auto">
-                <figure className="flex h-full flex-col border-l-2 border-ghee-400 pl-4">
-                  <Stars rating={r.rating} className="size-4" />
-                  <blockquote className="mt-3 text-sm leading-relaxed text-ink-800 sm:text-base">
-                    &ldquo;{r.body}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-auto pt-4 text-xs font-semibold text-ink-700">
-                    {r.author}, {r.city}
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <HomeReviews quotes={quotes} overall={overall} />
 
       {/* Closing call to action: compact banner matching screenshot. */}
       <section className="bg-ghee-400 text-ink-950" aria-labelledby="bring-home">

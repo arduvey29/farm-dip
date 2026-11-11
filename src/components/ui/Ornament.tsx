@@ -6,21 +6,31 @@ export function SectionTitle({
   tone = "light",
   align = "left",
   size = "lg",
+  font = "display",
+  className = "",
+  titleClassName = "",
+  leadClassName = "",
 }: {
   id?: string;
-  title: string;
+  title: React.ReactNode;
   lead?: string;
   tone?: "light" | "dark";
   align?: "left" | "center";
   size?: "md" | "lg";
+  font?: "display" | "deva";
+  className?: string;
+  titleClassName?: string;
+  leadClassName?: string;
 }) {
   const dark = tone === "dark";
+  const fontClass = font === "deva" ? "font-deva font-bold tracking-tight" : "font-display";
+  const defaultSize = size === "lg" ? "text-3xl sm:text-4xl lg:text-5xl" : "text-2xl sm:text-3xl";
   return (
-    <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <h2 id={id} className={`font-display leading-[1.04] text-balance ${size === "lg" ? "text-4xl sm:text-5xl lg:text-6xl" : "text-3xl sm:text-4xl"} ${dark ? "text-cream" : "text-ink-900"}`}>
+    <div className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}>
+      <h2 id={id} className={`${fontClass} leading-[1.04] text-balance ${titleClassName || defaultSize} ${dark ? "text-cream" : "text-ink-900"}`}>
         {title}
       </h2>
-      {lead ? <p className={`mt-4 max-w-2xl text-lg ${dark ? "text-pasture-100" : "text-ink-700"}`}>{lead}</p> : null}
+      {lead ? <p className={`${leadClassName || "mt-2 sm:mt-3 text-base sm:text-lg"} max-w-2xl ${dark ? "text-pasture-100" : "text-ink-700"}`}>{lead}</p> : null}
     </div>
   );
 }

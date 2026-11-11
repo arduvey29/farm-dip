@@ -5,7 +5,7 @@ import { policies } from "@/data/policies";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = "2026-11-10";
+  const currentDate = "2026-11-11";
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), lastModified: currentDate, changeFrequency: "daily", priority: 1.0 },

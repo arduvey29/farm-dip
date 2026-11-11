@@ -98,11 +98,3 @@ export const faqGroups: { id: string; title: string; items: QA[] }[] = [
   },
 ];
 
-export const homeFaqs: QA[] = [
-  faqGroups[0].items[0],
-  faqGroups[0].items[1],
-  faqGroups[0].items[2],
-  faqGroups[1].items[1],
-  faqGroups[2].items[0],
-  faqGroups[4].items[0],
-];

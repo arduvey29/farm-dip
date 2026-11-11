@@ -147,7 +147,7 @@ export default function HomePage() {
         data={graph(
           webPageLd({
             path: "/",
-            name: `${site.name}: Pure Desi Buffalo Ghee, No Preservatives`,
+            name: `${site.name} | Pure Desi Buffalo Ghee | 100% Natural, No Preservatives`,
             description,
           }),
           itemListLd(

@@ -134,6 +134,9 @@ body {
 }
 
 @layer base {
+  .font-caslon {
+    font-family: var(--font-adobe-caslon), "Adobe Caslon Pro", "Adobe Caslon", "Libre Caslon Text", "Caslon", serif;
+  }
   .font-display {
     font-weight: 600;
     letter-spacing: -0.018em;

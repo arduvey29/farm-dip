@@ -26,8 +26,8 @@ export function Hero({
             <HeroVideo />
           </div>
 
-          {/* Right Side: Animated Hero Scene matched in visual size and height with video */}
-          <div className="relative mx-auto w-full max-w-[21rem] sm:max-w-[24rem] lg:max-w-[27rem]">
+          {/* Right Side: Animated Hero Scene matched in visual size and height with video (hidden on mobile phone view) */}
+          <div className="hidden md:block relative mx-auto w-full max-w-[21rem] sm:max-w-[24rem] lg:max-w-[27rem]">
             <HeroScene />
             <p className="absolute top-[6%] right-0 grid size-18 place-items-center rounded-full bg-ink-900 text-center text-cream shadow-md sm:size-20 lg:size-22">
               <span className="leading-tight">

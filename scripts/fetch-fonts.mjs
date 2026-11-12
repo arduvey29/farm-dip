@@ -47,4 +47,16 @@ for (const { file, query, format } of files) {
   fetched++;
 }
 
-console.log(fetched ? `Fetched ${fetched} font file(s) into src/assets/fonts/fontshare` : "Fonts already present");
+// Adobe Caslon Pro font files for brand wordmark
+const CASLON_OUT = join(process.cwd(), "src/assets/fonts/adobe-caslon");
+mkdirSync(CASLON_OUT, { recursive: true });
+const caslonFiles = ["ACaslonPro-Bold.otf", "ACaslonPro-Semibold.otf", "ACaslonPro-Regular.otf"];
+const caslonBase = "https://raw.githubusercontent.com/bstaats/livestaats/master/design/Adobe%20Caslon%20Pro/Adobe%20Caslon%20Pro%20Font%20Files/";
+for (const f of caslonFiles) {
+  const target = join(CASLON_OUT, f);
+  if (existsSync(target) && !force) continue;
+  writeFileSync(target, await get(caslonBase + encodeURIComponent(f)));
+  fetched++;
+}
+
+console.log(fetched ? `Fetched ${fetched} font file(s)` : "Fonts already present");

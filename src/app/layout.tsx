@@ -27,6 +27,15 @@ const general = localFont({
 });
 // Eczar sets the "Farm Dip" wordmark, matching the badge. Only Latin is preloaded; its Devanagari
 // files still load on demand for the Sanskrit shlok beside the pour.
+const caslon = localFont({
+  src: [
+    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Regular.otf", weight: "400", style: "normal" },
+    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Semibold.otf", weight: "600", style: "normal" },
+    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-caslon",
+  display: "swap",
+});
 const eczar = Eczar({ weight: ["600", "700"], subsets: ["latin"], variable: "--font-eczar", display: "swap" });
 
 export const metadata: Metadata = {
@@ -94,7 +103,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-IN" className={`${author.variable} ${general.variable} ${eczar.variable} h-full antialiased`}>
+    <html lang="en-IN" className={`${author.variable} ${general.variable} ${eczar.variable} ${caslon.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <a href="#main" className="sr-only z-50 rounded-full bg-ghee-500 px-5 py-3 font-semibold text-ink-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
           Skip to content

@@ -33,7 +33,7 @@ const caslon = localFont({
     { path: "../assets/fonts/adobe-caslon/ACaslonPro-Semibold.otf", weight: "600", style: "normal" },
     { path: "../assets/fonts/adobe-caslon/ACaslonPro-Bold.otf", weight: "700", style: "normal" },
   ],
-  variable: "--font-caslon",
+  variable: "--font-adobe-caslon",
   display: "swap",
 });
 const eczar = Eczar({ weight: ["600", "700"], subsets: ["latin"], variable: "--font-eczar", display: "swap" });

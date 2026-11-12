@@ -57,7 +57,7 @@
   --font-display: var(--font-author), "Segoe UI", system-ui, sans-serif;
   --font-sans: var(--font-general), "Segoe UI", system-ui, sans-serif;
   --font-deva: var(--font-eczar), "Nirmala UI", "Kohinoor Devanagari", serif;
-  --font-caslon: var(--font-caslon), "Adobe Caslon Pro", "Adobe Caslon", "Libre Caslon Text", "Caslon", serif;
+  --font-caslon: var(--font-adobe-caslon), "Adobe Caslon Pro", "Adobe Caslon", "Libre Caslon Text", "Caslon", serif;
 
   --animate-drawer-in: drawer-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-fade-in: fade-in 0.2s ease-out both;

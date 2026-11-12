@@ -29,9 +29,9 @@ const general = localFont({
 // files still load on demand for the Sanskrit shlok beside the pour.
 const caslon = localFont({
   src: [
-    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Regular.otf", weight: "400", style: "normal" },
-    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Semibold.otf", weight: "600", style: "normal" },
-    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Bold.otf", weight: "700", style: "normal" },
+    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Semibold.woff2", weight: "600", style: "normal" },
+    { path: "../assets/fonts/adobe-caslon/ACaslonPro-Bold.woff2", weight: "700", style: "normal" },
   ],
   variable: "--font-adobe-caslon",
   display: "swap",

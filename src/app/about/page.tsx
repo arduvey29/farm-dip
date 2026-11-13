@@ -1,14 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { mainProduct } from "@/data/products";
 import { site } from "@/lib/site";
-import { asset } from "@/lib/assets";
 import { graph, ids, pageMetadata, webPageLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Hero } from "@/components/home/Hero";
 import { PourSection } from "@/components/home/PourSection";
+import { FarmSlideshow, type FarmImage } from "@/components/about/FarmSlideshow";
 
 const title = "Our Story | Ghee the Way We Ate It as Children";
 const description = `${site.name} makes pure desi buffalo ghee | 100% natural with no preservatives or additives. ${site.aim}`;
@@ -22,6 +21,22 @@ const facts = [
   { label: "Additives", value: "None" },
   { label: "Packs", value: mainProduct.variants.map((v) => v.label).join(", ") },
   { label: "Based in", value: `${site.address.locality}, ${site.address.region}` },
+];
+
+const firstPlaceholderImages: FarmImage[] = [
+  { src: "/images/farm/c1.jpeg", alt: "Young buffalo calf at the farm" },
+  { src: "/images/farm/c2.jpeg", alt: "Calves resting in the open farm shelter" },
+  { src: "/images/farm/c3.jpeg", alt: "Healthy buffalo at Farm Dip" },
+  { src: "/images/farm/c4.jpeg", alt: "Farm Dip buffaloes grazing peacefully" },
+  { src: "/images/farm/c5.jpeg", alt: "Buffaloes at the farm" },
+  { src: "/images/farm/c6.jpeg", alt: "Farm Dip cattle outdoors" },
+];
+
+const secondPlaceholderImages: FarmImage[] = [
+  { src: "/images/farm/a1.jpeg", alt: "Hand milking fresh milk into a traditional pail" },
+  { src: "/images/farm/a2.jpeg", alt: "Fresh buffalo milk collection at the farm" },
+  { src: "/images/farm/a3.jpeg", alt: "Farm life and traditional dairy care" },
+  { src: "/images/farm/a4.jpeg", alt: "Daily farm routine at Farm Dip" },
 ];
 
 export default function AboutPage() {
@@ -64,21 +79,22 @@ export default function AboutPage() {
             <li>Vanaspati, vegetable oil or any other fat</li>
           </ul>
         </div>
-        <div className="space-y-6">
-          <Image
-            src={asset("/images/farm/buffaloes-at-the-farm.jpg")}
-            alt="Buffaloes at the farm"
-            width={1600}
-            height={1000}
-            preload
-            className="w-full rounded-[2rem] border border-line/60 shadow-md object-cover"
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 items-start">
+          {/* 1st placeholder: c1..c6 */}
+          <FarmSlideshow
+            images={firstPlaceholderImages}
+            interval={4000}
+            delayOffset={0}
+            aspectRatio="aspect-[2/3]"
+            priorityFirst
           />
-          <Image
-            src={asset("/images/farm/makkhan-churning.jpg")}
-            alt="Dahi being churned with a wooden madhani"
-            width={1600}
-            height={1000}
-            className="w-full rounded-[2rem] border border-line/60 shadow-md object-cover"
+
+          {/* 2nd placeholder: a1..a4 */}
+          <FarmSlideshow
+            images={secondPlaceholderImages}
+            interval={4000}
+            delayOffset={2000}
+            aspectRatio="aspect-[2/3]"
           />
         </div>
       </section>

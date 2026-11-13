@@ -60,7 +60,7 @@ export default function AboutPage() {
       </section>
 
       {/* PLACEHOLDER copy, written from the brand's own description. Replace with the founders' real story. */}
-      <section className="wrap grid gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="wrap grid gap-8 py-10 sm:py-14 lg:py-16 lg:grid-cols-[0.8fr_1.2fr] xl:grid-cols-[0.75fr_1.25fr] lg:gap-10 xl:gap-14 items-center">
         <div className="prose-ghee">
           <h2 style={{ marginTop: 0 }}>Why we started</h2>
           <p>
@@ -79,13 +79,13 @@ export default function AboutPage() {
             <li>Vanaspati, vegetable oil or any other fat</li>
           </ul>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 items-start">
+        <div className="grid w-full grid-cols-2 gap-3.5 sm:gap-5 lg:gap-6">
           {/* 1st placeholder: c1..c6 */}
           <FarmSlideshow
             images={firstPlaceholderImages}
             interval={4000}
             delayOffset={0}
-            aspectRatio="aspect-[2/3]"
+            aspectRatio="h-[380px] xs:h-[420px] sm:h-[500px] lg:h-[620px] xl:h-[660px] w-full"
             priorityFirst
           />
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
             images={secondPlaceholderImages}
             interval={4000}
             delayOffset={2000}
-            aspectRatio="aspect-[2/3]"
+            aspectRatio="h-[380px] xs:h-[420px] sm:h-[500px] lg:h-[620px] xl:h-[660px] w-full"
           />
         </div>
       </section>

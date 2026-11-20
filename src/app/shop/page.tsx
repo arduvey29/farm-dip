@@ -26,7 +26,7 @@ const packGuides = [
     badge: "First Try",
     badgeTone: "bg-milk text-ink-800 border border-line",
     price: "₹1,350",
-    rate: "₹2,700 / L",
+    rate: "₹3,100 / L",
     idealFor: "Singles, couples & testing purity",
     description: "Great for trying authentic buffalo ghee on morning rotis and dal. Lasts 2–3 weeks in small kitchens.",
     lasts: "2–3 weeks",
@@ -46,7 +46,7 @@ const packGuides = [
     badge: "Best Value",
     badgeTone: "bg-ink-950 text-ghee-300 shadow-sm",
     price: "₹9,900",
-    rate: "₹1,980 / L (Save 27%)",
+    rate: "₹2,220 / L (Save 28%)",
     idealFor: "Joint families & festive halwa/sweets",
     description: "Lowest price per litre across all sizes. Perfect for halwa, ladoos, festive cooking, and long-term pantry storage.",
     lasts: "2–3 months",
@@ -157,7 +157,7 @@ export default function ShopPage() {
               <span>Transparent Pricing</span>
             </div>
             <h2 id="prices" className="mt-3 font-display text-3xl font-bold text-ink-950 sm:text-4xl">
-              Honest prices, from ₹1,980 to ₹2,700 per litre.
+              Honest prices, from ₹2,220 to ₹3,100 per litre.
             </h2>
             <p className="mt-3 text-base leading-relaxed text-ink-800">
               About 14 litres of full-fat buffalo milk are slow-churned for every single litre of Farm Dip ghee. We believe in clear pricing: the bigger the jar, the less you pay per litre. All taxes are included.

@@ -92,7 +92,7 @@ export const products: Product[] = [
       },
       {
         q: "Which pack size should I buy?",
-        a: "The 500 ml jar (₹1,350) suits small families or a first try. The 1 L jar (₹2,210) is the most popular monthly staple. For joint families, the 5 L jar (₹9,900) costs the least per litre, at ₹1,980.",
+        a: "The 500 ml jar (₹1,350) suits small families or a first try. The 1 L jar (₹2,210) is the most popular monthly staple. For joint families, the 5 L jar (₹9,900) costs the least per litre, at ₹2,220.",
       },
       {
         q: "Is buffalo ghee good for everyday cooking?",

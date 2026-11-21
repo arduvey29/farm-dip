@@ -4,7 +4,6 @@ import { mainProduct } from "@/data/products";
 import { getRatingSummary, reviews } from "@/data/reviews";
 import { site } from "@/lib/site";
 import { graph, itemListLd, pageMetadata, webPageLd } from "@/lib/seo";
-import { Hero } from "@/components/home/Hero";
 import { SizeCard } from "@/components/product/SizeCard";
 import { GheeJourney } from "@/components/story/GheeJourney";
 import { GheeDrip } from "@/components/art/GheeDrip";
@@ -106,8 +105,6 @@ export default function HomePage() {
         </dl>
         <GheeDrip />
       </section>
-
-      <Hero showVideo />
 
       <GheeJourney />
 

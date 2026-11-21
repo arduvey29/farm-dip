@@ -18,7 +18,8 @@
       { "type": "text", "id": "phone_href", "label": "Phone (for calling links)", "info": "With country code, no spaces, for example +918769045495", "default": "+918769045495" },
       { "type": "text", "id": "whatsapp", "label": "WhatsApp number", "info": "Digits only, with country code, for example 918769045495", "default": "918769045495" },
       { "type": "text", "id": "email", "label": "Email", "default": "info.farmdip@gmail.com" },
-      { "type": "text", "id": "fssai", "label": "FSSAI licence number", "default": "22226067009895" }
+      { "type": "text", "id": "fssai", "label": "FSSAI licence number", "default": "22226067009895" },
+      { "type": "text", "id": "area_served", "label": "Areas you serve (for Google)", "info": "Comma separated, for example: Jaipur, Rajasthan. Tells search engines where you sell.", "default": "Jaipur, Rajasthan" }
     ]
   },
   {

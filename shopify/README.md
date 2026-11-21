@@ -46,7 +46,12 @@ Do these in the Shopify admin (the left menu; **Settings** is the gear at the bo
    - If you cannot see "Taxes and duties", you are probably in the Partner Dashboard rather than the store admin, or logged in as staff without the Settings permission. Open the store's admin (`your-store.myshopify.com/admin`) as the owner, or type "taxes" in the admin's search bar at the top.
 4. **Shipping.** Settings > Shipping and delivery > General shipping rates: one zone, India. Add a rate "Standard" of ₹79 with the condition "order price ₹0 to ₹998.99", and a rate "Free shipping" of ₹0 for orders from ₹999. Check the package weight.
 5. **Payments.** Settings > Payments: Shopify Payments is not available in India. Add **Razorpay** (or Cashfree or PayU) as the payment provider; it needs the business PAN, GSTIN, a bank account and a live site with policies. Under "Manual payment methods", add **Cash on Delivery (COD)**. On a development store, test with the "Bogus Gateway".
-6. **Checkout.** Settings > Checkout: customer contact method "Phone number or email"; checkout layout "Three-page"; under "Customize", set the colours to ghee gold `#f5bf47` and ink `#231b1e` and upload the badge (`assets/farm-dip-badge.svg`, or a PNG of it).
+6. **Checkout.** Settings > Checkout: customer contact method "Phone number or email"; shipping address phone "Required". Then **Edit** the active configuration and click the gear icon (top left of the editor):
+   - Checkout layout: Three-page.
+   - Logo: upload `setup/checkout-logo.png` (the header lockup: badge, "Farm Dip", "Pure desi ghee"), left-aligned, about 220 px wide.
+   - Colours: main background `#fffdf8` (milk), order summary background `#f7ecd3` (oat), buttons `#f5bf47` (ghee gold; use ink `#231b1e` if the button text comes out white), accent `#2f6a45` (pasture), errors `#c43a1c` (spice).
+   - Fonts: the site's Author and General Sans can't be used here (custom checkout fonts need Shopify Plus). Pick the closest from Shopify's list: headings Fira Sans (or Source Sans), body DM Sans (or Inter), both bold-ish for headings.
+   Shopify does not allow the theme's code or CSS in checkout on Basic; these editor settings are the full set.
 7. **Policies.** Settings > Policies: paste `setup/policies/refund.html`, `privacy.html`, `terms.html` and `shipping.html` (use the editor's "Show HTML" button).
 8. **Notifications.** Settings > Notifications: set the sender email and add the logo.
 9. **Product.** Products > Import: upload `setup/products.csv`. It creates "Pure Desi Buffalo Ghee" with 500 ml, 1 L and 5 L at ₹1,350 / ₹2,210 / ₹9,900 (MRP ₹1,699 / ₹2,799 / ₹12,499) and the five images. The images load from GitHub, so the repo must be pushed first. Check the weights (they are estimates) and the stock settings after import.
@@ -70,7 +75,8 @@ Do these in the Shopify admin (the left menu; **Settings** is the gear at the bo
     - Home page > Hero: pick the product; optionally upload the video in Content > Files and choose it.
     Then click **Publish**.
 15. **Apps.** Judge.me (reviews, then add its block to the product page), Shiprocket (couriers and tracking; put its tracking page in Header > "Track your order" link), Google & YouTube, Facebook & Instagram.
-16. **Domain and launch.** Settings > Domains > Connect existing domain: an A record to `23.227.38.65` and a CNAME for `www` to `shops.myshopify.com`. Place test orders (online payment and COD), then remove the password in Online Store > Preferences.
+16. **Search (Jaipur and Rajasthan).** Online Store > Preferences: home page title "Pure Desi Buffalo Ghee in Jaipur, Rajasthan | Farm Dip", a meta description naming Jaipur and Rajasthan, and `setup/social-share.png` (1200 x 628) as the social sharing image. Theme settings > Brand and contact > "Areas you serve" feeds `areaServed` in the structured data; the address there comes from Settings > General. After launch, verify farmdip.in in Google Search Console (Domain property, TXT record), submit `sitemap.xml`, import it into Bing Webmaster Tools, and set up a Google Business Profile with the same name, phone and address.
+17. **Domain and launch.** Settings > Domains > Connect existing domain: an A record to `23.227.38.65` and a CNAME for `www` to `shops.myshopify.com`. Place test orders (online payment and COD), then remove the password in Online Store > Preferences.
 
 ## How the pieces map to the Next site
 

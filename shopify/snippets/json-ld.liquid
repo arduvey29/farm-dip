@@ -1,0 +1,64 @@
+{%- comment -%}
+  Structured data: the organisation and website on every page; the product (with its three packs)
+  on product pages. Keep the name, address and phone identical to Google Business Profile.
+{%- endcomment -%}
+{%- capture search_target -%}{{ request.origin }}{{ routes.search_url }}?q={search_term_string}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ request.origin | append: '/#organization' | json }},
+      "name": {{ shop.name | json }},
+      "legalName": {{ settings.legal_name | json }},
+      "url": {{ request.origin | append: routes.root_url | json }},
+      "logo": {{ 'farm-dip-badge.svg' | asset_url | prepend: 'https:' | json }},
+      "email": {{ settings.email | json }},
+      "telephone": {{ settings.phone_href | json }},
+      "address": { "@type": "PostalAddress", "streetAddress": {{ settings.address | json }}, "addressCountry": "IN" }
+      {%- assign socials = '' -%}
+      {%- if settings.social_instagram != blank %}{% assign socials = socials | append: settings.social_instagram | append: '|' %}{% endif -%}
+      {%- if settings.social_facebook != blank %}{% assign socials = socials | append: settings.social_facebook | append: '|' %}{% endif -%}
+      {%- if settings.social_youtube != blank %}{% assign socials = socials | append: settings.social_youtube | append: '|' %}{% endif -%}
+      {%- if socials != '' -%}, "sameAs": {{ socials | split: '|' | json }}{%- endif %}
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ request.origin | append: '/#website' | json }},
+      "name": {{ shop.name | json }},
+      "url": {{ request.origin | append: routes.root_url | json }},
+      "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ search_target | json }},
+        "query-input": "required name=search_term_string"
+      }
+    }
+    {%- if request.page_type == 'product' -%},
+    {
+      "@type": "Product",
+      "@id": {{ request.origin | append: product.url | append: '#product' | json }},
+      "name": {{ product.title | json }},
+      "description": {{ product.description | strip_html | strip | json }},
+      "brand": { "@type": "Brand", "name": {{ shop.name | json }} },
+      {%- if product.featured_image %}"image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},{% endif %}
+      "offers": [
+        {%- for variant in product.variants -%}
+        {
+          "@type": "Offer",
+          "name": {{ variant.title | json }},
+          "sku": {{ variant.sku | json }},
+          "price": {{ variant.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "url": {{ request.origin | append: variant.url | json }},
+          "seller": { "@id": {{ request.origin | append: '/#organization' | json }} }
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+    {%- endif %}
+  ]
+}
+</script>

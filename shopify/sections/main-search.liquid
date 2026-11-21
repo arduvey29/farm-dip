@@ -1,0 +1,31 @@
+{%- comment -%} Search results across products, pages and blog posts. {%- endcomment -%}
+<section class="wrap pt-10 pb-20">
+  <h1 class="font-display text-4xl sm:text-5xl">Search</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search" class="mt-6 flex max-w-2xl items-center rounded-2xl border-2 border-line bg-milk px-4 py-2.5 shadow-sm focus-within:border-ghee-500 focus-within:bg-white">
+    {% render 'icon', name: 'search', class: 'size-5 shrink-0 text-ink-400' %}
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search ghee, recipes, storage..." aria-label="Search" class="ml-3 w-full bg-transparent text-ink-950 placeholder:text-ink-400 focus:outline-none">
+    <button type="submit" class="btn btn-ink ml-2 min-h-10 px-5 text-sm">Search</button>
+  </form>
+
+  {%- if search.performed -%}
+    <p class="mt-6 text-ink-700">{{ search.results_count }} {% if search.results_count == 1 %}result{% else %}results{% endif %} for “{{ search.terms | escape }}”</p>
+    {%- paginate search.results by 12 -%}
+      <ul class="mt-8 grid gap-6 md:grid-cols-2">
+        {%- for item in search.results -%}
+          <li class="rounded-2xl border border-line bg-milk p-5">
+            <p class="text-xs font-semibold tracking-wider text-ink-500 uppercase">
+              {%- case item.object_type -%}{%- when 'product' -%}Product{%- when 'article' -%}Guide{%- else -%}Page{%- endcase -%}
+            </p>
+            <h2 class="mt-1 font-display text-2xl"><a href="{{ item.url }}" class="underline-offset-4 hover:underline">{{ item.title }}</a></h2>
+            <p class="mt-2 line-clamp-2 text-sm text-ink-700">{{ item.content | strip_html | truncate: 160 }}</p>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if paginate.pages > 1 -%}<nav class="mt-10 flex justify-center gap-4" aria-label="Pages">{{ paginate | default_pagination }}</nav>{%- endif -%}
+    {%- endpaginate -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Search results", "tag": "div" }
+{% endschema %}

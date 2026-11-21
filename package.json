@@ -13,7 +13,14 @@
     "pretypecheck": "node scripts/fetch-fonts.mjs",
     "typecheck": "next typegen && tsc --noEmit",
     "placeholders": "node scripts/generate-placeholders.mjs",
-    "favicons": "node scripts/build-favicons.mjs"
+    "favicons": "node scripts/build-favicons.mjs",
+    "theme:build": "node scripts/fetch-fonts.mjs && node scripts/build-theme.mjs",
+    "theme:templates": "node scripts/theme-templates.mjs",
+    "theme:check": "npm run theme:build && shopify theme check --path shopify",
+    "theme:dev": "npm run theme:build && shopify theme dev --path shopify",
+    "theme:push": "npm run theme:build && shopify theme push --path shopify --unpublished",
+    "shopify:setup": "node scripts/shopify-setup.mjs",
+    "theme:upload": "node scripts/shopify-theme-upload.mjs"
   },
   "dependencies": {
     "next": "16.4.3",

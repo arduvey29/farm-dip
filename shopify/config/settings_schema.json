@@ -1,0 +1,57 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Farm Dip",
+    "theme_version": "1.0.0",
+    "theme_author": "LogixLoops",
+    "theme_documentation_url": "https://github.com/arduvey29/farm-dip/blob/main/shopify/README.md",
+    "theme_support_url": "https://www.logixloops.in/"
+  },
+  {
+    "name": "Brand and contact",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo badge", "info": "Leave empty to use the Farm Dip badge that ships with the theme." },
+      { "type": "text", "id": "logo_tagline", "label": "Line under the logo", "default": "Pure desi ghee" },
+      { "type": "text", "id": "legal_name", "label": "Legal name", "default": "Farm Dip Foods Pvt. Ltd." },
+      { "type": "text", "id": "address", "label": "Address (one line)", "default": "Village Road, Rohtak, Haryana 124001" },
+      { "type": "text", "id": "phone", "label": "Phone (as shown)", "default": "87690 45495" },
+      { "type": "text", "id": "phone_href", "label": "Phone (for calling links)", "info": "With country code, no spaces, for example +918769045495", "default": "+918769045495" },
+      { "type": "text", "id": "whatsapp", "label": "WhatsApp number", "info": "Digits only, with country code, for example 918769045495", "default": "918769045495" },
+      { "type": "text", "id": "email", "label": "Email", "default": "info.farmdip@gmail.com" },
+      { "type": "text", "id": "fssai", "label": "FSSAI licence number", "default": "22226067009895" }
+    ]
+  },
+  {
+    "name": "Delivery promises",
+    "settings": [
+      { "type": "text", "id": "announcement", "label": "Announcement bar", "default": "Free cash on delivery across India. Free shipping on orders above ₹999." },
+      { "type": "number", "id": "dispatch_hours", "label": "Ships within (hours)", "default": 24 },
+      { "type": "number", "id": "return_days", "label": "Quality promise (days)", "default": 7 },
+      { "type": "number", "id": "milk_per_litre", "label": "Litres of buffalo milk per litre of ghee", "info": "Used in \"What goes into one pack\" on the product page.", "default": 14 }
+    ]
+  },
+  {
+    "name": "Lab report",
+    "settings": [
+      { "type": "url", "id": "report_url", "label": "Report link (PDF)", "info": "Upload the PDF in Content > Files and paste its link here." },
+      { "type": "text", "id": "report_drive_url", "label": "Google Drive link", "default": "https://drive.google.com/file/d/1Le706dJaJqyTn1JhOFLlTmDnt50H_x40/view?usp=sharing" },
+      { "type": "image_picker", "id": "report_qr", "label": "QR code image", "info": "Leave empty to use the QR code that ships with the theme." },
+      { "type": "text", "id": "report_date", "label": "Sample date", "default": "23 October 2026" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  },
+  {
+    "name": "Credits",
+    "settings": [
+      { "type": "text", "id": "credit_text", "label": "Footer credit", "default": "Developed By logixloops.in" },
+      { "type": "text", "id": "credit_url", "label": "Credit link", "default": "https://www.logixloops.in/" }
+    ]
+  }
+]

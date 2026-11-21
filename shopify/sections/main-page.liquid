@@ -1,0 +1,17 @@
+{%- comment -%} A plain page: title and the text written in Online Store > Pages. {%- endcomment -%}
+<div class="wrap pt-5">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink-700">
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+      <li class="flex items-center gap-2"><a href="{{ routes.root_url }}" class="underline-offset-4 hover:underline">Home</a><span aria-hidden="true" class="text-brass">/</span></li>
+      <li class="flex items-center gap-2"><span aria-current="page" class="text-ink-900">{{ page.title }}</span></li>
+    </ol>
+  </nav>
+</div>
+<section class="wrap pt-8 pb-20">
+  <h1 class="font-display text-4xl leading-[1.04] sm:text-5xl">{{ page.title }}</h1>
+  <div class="prose-ghee rte mt-8">{{ page.content }}</div>
+</section>
+
+{% schema %}
+{ "name": "Page", "tag": "div" }
+{% endschema %}

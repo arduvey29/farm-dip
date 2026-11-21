@@ -1,0 +1,49 @@
+{%- comment -%}
+  The cart's lines, with quantity steppers and a remove link. The links work without JavaScript
+  (Shopify's /cart/change URLs); with it, [data-cart-change] updates the drawer in place.
+  Usage: {% render 'cart-lines', compact: true %}
+{%- endcomment -%}
+<ul class="divide-y divide-line">
+  {%- for item in cart.items -%}
+    {%- assign line = forloop.index -%}
+    <li class="flex gap-4 py-4">
+      <a href="{{ item.url }}" class="shrink-0">
+        {%- if item.image -%}
+          {{ item.image | image_url: width: 192 | image_tag: alt: '', class: 'rounded-xl bg-oat object-cover', width: 72, height: 72, loading: 'eager' }}
+        {%- else -%}
+          <img src="{{ 'ghee-jar.svg' | asset_url }}" alt="" width="72" height="72" class="rounded-xl bg-oat">
+        {%- endif -%}
+      </a>
+      <div class="flex min-w-0 flex-1 flex-col gap-2">
+        <div class="flex justify-between gap-3">
+          <div class="min-w-0">
+            <a href="{{ item.url }}" class="font-semibold leading-snug hover:underline">{{ item.product.title }}</a>
+            {%- unless item.product.has_only_default_variant -%}
+              <p class="text-sm text-ink-700">{{ item.variant.title }}</p>
+            {%- endunless -%}
+          </div>
+          <div class="text-right">
+            <p class="font-bold">{{ item.final_line_price | money_without_currency | remove: '.00' | prepend: '₹' }}</p>
+            {%- if item.variant.compare_at_price > item.variant.price -%}
+              <s class="text-xs text-ink-500">{{ item.variant.compare_at_price | times: item.quantity | money_without_currency | remove: '.00' | prepend: '₹' }}</s>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="inline-flex items-center rounded-full border border-ink-200" role="group" aria-label="Quantity for {{ item.title | escape }}">
+            <a href="{{ routes.cart_change_url }}?line={{ line }}&quantity={{ item.quantity | minus: 1 }}" data-cart-change data-line="{{ line }}" data-qty="{{ item.quantity | minus: 1 }}" class="rounded-full p-2 hover:bg-oat" aria-label="Decrease quantity">
+              {% render 'icon', name: 'minus', class: 'size-4' %}
+            </a>
+            <span class="min-w-8 text-center font-semibold tabular-nums">{{ item.quantity }}</span>
+            <a href="{{ routes.cart_change_url }}?line={{ line }}&quantity={{ item.quantity | plus: 1 }}" data-cart-change data-line="{{ line }}" data-qty="{{ item.quantity | plus: 1 }}" class="rounded-full p-2 hover:bg-oat" aria-label="Increase quantity">
+              {% render 'icon', name: 'plus', class: 'size-4' %}
+            </a>
+          </div>
+          <a href="{{ item.url_to_remove }}" data-cart-change data-line="{{ line }}" data-qty="0" class="inline-flex items-center gap-1 text-sm text-ink-700 underline-offset-4 hover:underline">
+            {% render 'icon', name: 'trash', class: 'size-4' %} Remove
+          </a>
+        </div>
+      </div>
+    </li>
+  {%- endfor -%}
+</ul>

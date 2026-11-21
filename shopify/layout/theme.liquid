@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code | default: 'en' }}-IN" class="h-full antialiased">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff8e8">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="icon" type="image/svg+xml" href="{{ 'farm-dip-emblem.svg' | asset_url }}">
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} | {{ shop.name }}{% endunless -%}
+    </title>
+    {%- if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif %}
+
+    {% render 'meta-tags' %}
+
+    {{ 'Author-Variable.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {{ 'GeneralSans-Variable.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {{ 'farm-dip.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'farm-dip.js' | asset_url }}" type="module" defer></script>
+
+    {{ content_for_header }}
+
+    {% render 'json-ld' %}
+  </head>
+
+  <body class="flex min-h-full flex-col template-{{ template.name }}">
+    <a href="#main" class="sr-only z-50 rounded-full bg-ghee-500 px-5 py-3 font-semibold text-ink-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3">
+      Skip to content
+    </a>
+
+    {% sections 'header-group' %}
+
+    <main id="main" class="flex-1" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {% section 'cart-drawer' %}
+  </body>
+</html>

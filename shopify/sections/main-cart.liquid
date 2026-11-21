@@ -1,0 +1,51 @@
+{%- comment -%} The full cart page. Works without JavaScript through Shopify's cart URLs. {%- endcomment -%}
+{%- liquid
+  assign mrp_total = 0
+  for item in cart.items
+    assign compare = item.variant.compare_at_price | default: item.variant.price
+    assign mrp_total = compare | times: item.quantity | plus: mrp_total
+  endfor
+  assign savings = mrp_total | minus: cart.total_price
+-%}
+<section class="wrap py-10 lg:py-14">
+  <h1 class="font-display text-4xl sm:text-5xl">Your cart</h1>
+  {%- if cart.item_count == 0 -%}
+    <div class="mt-8 max-w-lg">
+      <p class="font-display text-3xl">Your cart is empty</p>
+      <p class="mt-3 text-ink-700">Pick a pack of pure buffalo ghee: 500 ml, 1 litre or the 5 litre pack.</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-gold mt-6">Shop ghee</a>
+    </div>
+  {%- else -%}
+    <div class="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr]">
+      <div>
+        <div class="rounded-2xl bg-oat px-5 py-4">{% render 'free-shipping', threshold: section.settings.free_shipping %}</div>
+        <div class="mt-2">{% render 'cart-lines' %}</div>
+      </div>
+      <aside class="h-fit space-y-4 rounded-3xl border border-line p-6 lg:sticky lg:top-24">
+        <h2 class="text-xl font-semibold">Order summary</h2>
+        <dl class="space-y-2.5">
+          <div class="flex justify-between"><dt class="text-ink-700">MRP total</dt><dd class="tabular-nums">{{ mrp_total | money_without_currency | remove: '.00' | prepend: '₹' }}</dd></div>
+          {%- if savings > 0 -%}
+            <div class="flex justify-between"><dt class="text-ink-700">Discount on MRP</dt><dd class="text-pasture-600 tabular-nums">−{{ savings | money_without_currency | remove: '.00' | prepend: '₹' }}</dd></div>
+          {%- endif -%}
+          <div class="flex justify-between border-t border-line pt-3 text-lg font-bold"><dt>Subtotal</dt><dd class="tabular-nums">{{ cart.total_price | money_without_currency | remove: '.00' | prepend: '₹' }}</dd></div>
+        </dl>
+        <p class="text-xs text-ink-700">Shipping and coupons are calculated at checkout. All prices include taxes. Free cash on delivery.</p>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn btn-gold w-full text-lg">Checkout</button>
+        </form>
+        <p class="flex items-center justify-center gap-2 text-xs text-ink-700">{% render 'icon', name: 'shield', class: 'size-4' %} Payments are encrypted and processed securely.</p>
+      </aside>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "div",
+  "settings": [
+    { "type": "number", "id": "free_shipping", "label": "Free shipping from (₹)", "default": 999 }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Five stars, filled to `rating` (0 to 5, decimals allowed).
+  Usage: {% render 'stars', rating: 4.5, class: 'size-4' %}
+{%- endcomment -%}
+<span class="inline-flex items-center gap-0.5" role="img" aria-label="Rated {{ rating }} out of 5">
+  {%- for i in (0..4) -%}
+    {%- assign fill = rating | minus: i -%}
+    {%- if fill > 1 %}{% assign fill = 1 %}{% endif -%}
+    {%- if fill < 0 %}{% assign fill = 0 %}{% endif -%}
+    {%- assign pct = fill | times: 100 | round -%}
+    <svg viewBox="0 0 24 24" class="{{ class | default: 'size-4' }}" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="star-{{ i }}-{{ pct }}">
+          <stop offset="{{ fill }}" stop-color="var(--color-ghee-500)"/>
+          <stop offset="{{ fill }}" stop-color="var(--color-line)"/>
+        </linearGradient>
+      </defs>
+      <path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9L12 2.8Z" fill="url(#star-{{ i }}-{{ pct }})"/>
+    </svg>
+  {%- endfor -%}
+</span>

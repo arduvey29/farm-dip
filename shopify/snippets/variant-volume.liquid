@@ -1,0 +1,18 @@
+{%- comment -%}
+  Outputs a variant's volume in millilitres. Uses the variant metafield custom.volume_ml when set,
+  otherwise reads it from the option name ("500 ml", "1 L", "5 L").
+  Usage: {% capture ml %}{% render 'variant-volume', variant: variant %}{% endcapture %}
+{%- endcomment -%}
+{%- liquid
+  if variant.metafields.custom.volume_ml != blank
+    echo variant.metafields.custom.volume_ml.value
+  else
+    assign t = variant.title | downcase | remove: ' '
+    assign num = t | remove: 'litres' | remove: 'litre' | remove: 'ml' | remove: 'l' | plus: 0
+    if t contains 'ml'
+      echo num
+    else
+      echo num | times: 1000 | round
+    endif
+  endif
+-%}

@@ -1,0 +1,9 @@
+{%- comment -%}
+  The Farm Dip badge. Uses the logo from theme settings if one is set, otherwise the badge in /assets.
+  Usage: {% render 'logo-mark', class: 'h-12 w-auto' %}
+{%- endcomment -%}
+{%- if settings.logo -%}
+  {{ settings.logo | image_url: width: 240 | image_tag: alt: '', class: class, width: 400, height: 460, loading: 'eager' }}
+{%- else -%}
+  <img src="{{ 'farm-dip-badge.svg' | asset_url }}" alt="" width="400" height="460" class="{{ class }}" loading="eager">
+{%- endif -%}

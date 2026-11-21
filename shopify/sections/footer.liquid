@@ -1,0 +1,103 @@
+{%- comment -%}
+  Footer: badge, name, address and contact, then four link columns. Each column takes a menu from
+  Online Store > Navigation; until one is chosen it shows the site's own links.
+{%- endcomment -%}
+{%- capture col_shop -%}{{ routes.all_products_collection_url }}|Shop
+/pages/how-its-made|How it's made
+/pages/lab-reports|Lab Reports{%- endcapture -%}
+{%- capture col_about -%}/pages/about|Our story
+/blogs/know-your-ghee|Blog
+/pages/contact|Contact us{%- endcapture -%}
+{%- capture col_support -%}/pages/track-order|Track your order
+{{ routes.search_url }}|Search
+/pages/faq|FAQ{%- endcapture -%}
+{%- capture col_policies -%}/policies/shipping-policy|Shipping
+/policies/refund-policy|Refund
+/policies/privacy-policy|Privacy
+/policies/terms-of-service|Terms{%- endcapture -%}
+
+<footer class="relative mt-auto overflow-hidden bg-pasture-950 text-pasture-200">
+  <div class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden select-none" aria-hidden="true">
+    <span class="font-deva text-[9.5vw] font-black tracking-tight leading-none text-cream/[0.035] uppercase whitespace-nowrap">{{ shop.name }}</span>
+  </div>
+
+  <div class="wrap grid grid-cols-2 gap-x-5 gap-y-6 py-6 sm:grid-cols-4 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] lg:gap-6 lg:py-6">
+    <div class="col-span-2 space-y-2 sm:col-span-4 lg:col-span-1">
+      <a href="{{ routes.root_url }}" class="inline-flex items-center gap-2" aria-label="{{ shop.name }} home">
+        {% render 'logo-mark', class: 'h-7 w-auto shrink-0 sm:h-8' %}
+        <span class="font-caslon font-bold whitespace-nowrap text-xl text-cream">{{ shop.name }}</span>
+      </a>
+      {%- comment -%} NAP block: keep identical to Google Business Profile and structured data. {%- endcomment -%}
+      <address class="space-y-1 text-xs not-italic text-pasture-300">
+        <p class="flex items-start gap-1.5">
+          {% render 'icon', name: 'pin', class: 'mt-0.5 size-3.5 shrink-0 text-ghee-400' %}
+          <span>{{ settings.legal_name }}, {{ settings.address }}</span>
+        </p>
+        <p class="flex flex-wrap items-center gap-x-3.5 gap-y-0.5">
+          <a href="tel:{{ settings.phone_href }}" class="inline-flex items-center gap-1 hover:text-ghee-300 hover:underline">
+            {% render 'icon', name: 'phone', class: 'size-3.5 shrink-0 text-ghee-400' %}<span>{{ settings.phone }}</span>
+          </a>
+          <a href="mailto:{{ settings.email }}" class="inline-flex items-center gap-1 hover:text-ghee-300 hover:underline">
+            {% render 'icon', name: 'mail', class: 'size-3.5 shrink-0 text-ghee-400' %}<span>{{ settings.email }}</span>
+          </a>
+        </p>
+      </address>
+    </div>
+
+    {%- assign columns = 'shop,about,support,policies' | split: ',' -%}
+    {%- for key in columns -%}
+      {%- case key -%}
+        {%- when 'shop' -%}{%- assign menu = section.settings.menu_shop -%}{%- assign title = section.settings.title_shop -%}{%- assign rows = col_shop -%}
+        {%- when 'about' -%}{%- assign menu = section.settings.menu_about -%}{%- assign title = section.settings.title_about -%}{%- assign rows = col_about -%}
+        {%- when 'support' -%}{%- assign menu = section.settings.menu_support -%}{%- assign title = section.settings.title_support -%}{%- assign rows = col_support -%}
+        {%- when 'policies' -%}{%- assign menu = section.settings.menu_policies -%}{%- assign title = section.settings.title_policies -%}{%- assign rows = col_policies -%}
+      {%- endcase -%}
+      <nav aria-label="{{ title | escape }}">
+        <h2 class="font-display text-xs font-semibold tracking-wider text-cream uppercase">{{ title }}</h2>
+        <ul class="mt-1.5 space-y-1 text-xs">
+          {%- if menu != blank -%}
+            {%- for link in menu.links -%}
+              <li><a href="{{ link.url }}" class="text-pasture-300 transition-colors hover:text-ghee-300 hover:underline">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            {%- assign lines = rows | strip | newline_to_br | split: '<br />' -%}
+            {%- for row in lines -%}
+              {%- assign parts = row | strip | split: '|' -%}
+              <li><a href="{{ parts[0] }}" class="text-pasture-300 transition-colors hover:text-ghee-300 hover:underline">{{ parts[1] }}</a></li>
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </nav>
+    {%- endfor -%}
+  </div>
+
+  <div class="relative z-10 border-t border-pasture-900 bg-pasture-950/80">
+    <div class="wrap grid gap-2 py-2.5 text-[0.7rem] text-pasture-400 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] lg:gap-6">
+      <p class="sm:col-span-2 md:col-span-2 lg:col-span-4">
+        © {{ 'now' | date: '%Y' }} {{ settings.legal_name }}. FSSAI Lic. No. {{ settings.fssai }}.
+      </p>
+      {%- if settings.credit_text != blank -%}
+        <p class="sm:col-span-2 md:col-span-1 lg:col-span-1">
+          <a href="{{ settings.credit_url }}" target="_blank" rel="noopener noreferrer" class="text-[#3b82f6] transition-colors hover:text-[#60a5fa] hover:underline whitespace-nowrap">{{ settings.credit_text }}</a>
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "mt-auto",
+  "settings": [
+    { "type": "text", "id": "title_shop", "label": "Column 1 title", "default": "Shop" },
+    { "type": "link_list", "id": "menu_shop", "label": "Column 1 menu" },
+    { "type": "text", "id": "title_about", "label": "Column 2 title", "default": "About" },
+    { "type": "link_list", "id": "menu_about", "label": "Column 2 menu" },
+    { "type": "text", "id": "title_support", "label": "Column 3 title", "default": "Support" },
+    { "type": "link_list", "id": "menu_support", "label": "Column 3 menu" },
+    { "type": "text", "id": "title_policies", "label": "Column 4 title", "default": "Policies" },
+    { "type": "link_list", "id": "menu_policies", "label": "Column 4 menu" }
+  ]
+}
+{% endschema %}

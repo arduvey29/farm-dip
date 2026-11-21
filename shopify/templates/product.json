@@ -1,0 +1,292 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {},
+      "blocks": {
+        "fact-1": {
+          "type": "fact",
+          "settings": {
+            "label": "Milk",
+            "value": "Pure buffalo milk"
+          }
+        },
+        "fact-2": {
+          "type": "fact",
+          "settings": {
+            "label": "Ingredients",
+            "value": "Ghee from buffalo milk. Nothing added."
+          }
+        },
+        "fact-3": {
+          "type": "fact",
+          "settings": {
+            "label": "Preservatives and additives",
+            "value": "None"
+          }
+        },
+        "fact-4": {
+          "type": "fact",
+          "settings": {
+            "label": "Milk per litre of ghee",
+            "value": "About 12 to 14 litres"
+          }
+        },
+        "fact-5": {
+          "type": "fact",
+          "settings": {
+            "label": "Texture",
+            "value": "Rich, creamy and danedar. Sets firm in cool weather"
+          }
+        },
+        "fact-6": {
+          "type": "fact",
+          "settings": {
+            "label": "Colour",
+            "value": "Creamy white"
+          }
+        },
+        "fact-7": {
+          "type": "fact",
+          "settings": {
+            "label": "Flavour and aroma",
+            "value": "Authentic traditional taste, rich aroma"
+          }
+        },
+        "fact-8": {
+          "type": "fact",
+          "settings": {
+            "label": "Vitamins",
+            "value": "Naturally carries the fat-soluble vitamins A, D, E and K"
+          }
+        },
+        "fact-9": {
+          "type": "fact",
+          "settings": {
+            "label": "Shelf life",
+            "value": "12 months from packing"
+          }
+        },
+        "fact-10": {
+          "type": "fact",
+          "settings": {
+            "label": "Packed in",
+            "value": "Airtight food-grade jars with freshness seal (500 ml, 1 L, 5 L)"
+          }
+        },
+        "highlight-1": {
+          "type": "highlight",
+          "settings": {
+            "text": "Pure and 100% natural"
+          }
+        },
+        "highlight-2": {
+          "type": "highlight",
+          "settings": {
+            "text": "Made from pure buffalo milk"
+          }
+        },
+        "highlight-3": {
+          "type": "highlight",
+          "settings": {
+            "text": "Rich in vitamins"
+          }
+        },
+        "highlight-4": {
+          "type": "highlight",
+          "settings": {
+            "text": "No preservatives or additives"
+          }
+        },
+        "highlight-5": {
+          "type": "highlight",
+          "settings": {
+            "text": "Perfect for everyday cooking and traditional recipes"
+          }
+        },
+        "use-1": {
+          "type": "use",
+          "settings": {
+            "text": "Everyday cooking and traditional recipes"
+          }
+        },
+        "use-2": {
+          "type": "use",
+          "settings": {
+            "text": "Aromatic tadka for dal, sambar and curries"
+          }
+        },
+        "use-3": {
+          "type": "use",
+          "settings": {
+            "text": "On piping hot rotis, parathas and naan"
+          }
+        },
+        "use-4": {
+          "type": "use",
+          "settings": {
+            "text": "Festive sweets: halwa, ladoo and mithai"
+          }
+        },
+        "use-5": {
+          "type": "use",
+          "settings": {
+            "text": "Deep frying and sautéing, thanks to its high smoke point"
+          }
+        },
+        "use-6": {
+          "type": "use",
+          "settings": {
+            "text": "Diyas and pooja"
+          }
+        },
+        "nutrition-1": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Energy",
+            "value": "900 kcal"
+          }
+        },
+        "nutrition-2": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Total fat",
+            "value": "99.8 g"
+          }
+        },
+        "nutrition-3": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Saturated fat",
+            "value": "68.0 g"
+          }
+        },
+        "nutrition-4": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Monounsaturated fat",
+            "value": "27.5 g"
+          }
+        },
+        "nutrition-5": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Polyunsaturated fat",
+            "value": "3.2 g"
+          }
+        },
+        "nutrition-6": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Trans fat (added)",
+            "value": "0 g"
+          }
+        },
+        "nutrition-7": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Cholesterol",
+            "value": "256 mg"
+          }
+        },
+        "nutrition-8": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Carbohydrate",
+            "value": "0 g"
+          }
+        },
+        "nutrition-9": {
+          "type": "nutrition",
+          "settings": {
+            "label": "Protein",
+            "value": "0 g"
+          }
+        },
+        "faq-1": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes Farm Dip Pure Desi Buffalo Ghee special?",
+            "answer": "<p>Made from pure buffalo milk, it has a rich, creamy texture, authentic taste and delicious flavour that makes every meal special. It is 100% natural with no preservatives or additives.</p>"
+          }
+        },
+        "faq-2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is buffalo ghee white?",
+            "answer": "<p>Buffalo milk carries very little beta-carotene, the pigment that makes cow ghee yellow. So pure buffalo ghee is naturally creamy white. The colour is not a sign of anything added or removed.</p>"
+          }
+        },
+        "faq-3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does Farm Dip ghee have any preservatives or additives?",
+            "answer": "<p>No. It is ghee made from pure buffalo milk and nothing else: no preservatives, no additives, no colour.</p>"
+          }
+        },
+        "faq-4": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is my ghee solid, or grainy?",
+            "answer": "<p>Buffalo ghee sets firm in cool weather and softens in summer, and it is often a mix of the two. The texture changes with temperature and does not change the quality.</p>"
+          }
+        },
+        "faq-5": {
+          "type": "faq",
+          "settings": {
+            "question": "Which pack size should I buy?",
+            "answer": "<p>The 500 ml jar (₹1,350) suits small families or a first try. The 1 L jar (₹2,210) is the most popular monthly staple. For joint families, the 5 L jar (₹9,900) costs the least per litre, at ₹1,980.</p>"
+          }
+        },
+        "faq-6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is buffalo ghee good for everyday cooking?",
+            "answer": "<p>Yes. It is rich and holds up well to high heat, which makes it good for tadka, parathas, puris and frying, and for traditional sweets like halwa and ladoo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "fact-1",
+        "fact-2",
+        "fact-3",
+        "fact-4",
+        "fact-5",
+        "fact-6",
+        "fact-7",
+        "fact-8",
+        "fact-9",
+        "fact-10",
+        "highlight-1",
+        "highlight-2",
+        "highlight-3",
+        "highlight-4",
+        "highlight-5",
+        "use-1",
+        "use-2",
+        "use-3",
+        "use-4",
+        "use-5",
+        "use-6",
+        "nutrition-1",
+        "nutrition-2",
+        "nutrition-3",
+        "nutrition-4",
+        "nutrition-5",
+        "nutrition-6",
+        "nutrition-7",
+        "nutrition-8",
+        "nutrition-9",
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5",
+        "faq-6"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

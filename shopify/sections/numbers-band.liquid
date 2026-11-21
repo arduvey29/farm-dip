@@ -1,0 +1,45 @@
+{%- comment -%} A molten-gold band of big numbers. Its bottom edge drips into the next section as you scroll. {%- endcomment -%}
+<section aria-label="{{ section.settings.label | escape }}" class="relative bg-ghee-400 text-ink-950">
+  <dl class="wrap grid grid-cols-2 gap-x-6 gap-y-7 pt-10 pb-12 lg:grid-cols-4 lg:pt-14 lg:pb-16">
+    {%- for block in section.blocks -%}
+      <div class="flex flex-col-reverse justify-end" {{ block.shopify_attributes }}>
+        <dd class="mt-1.5 max-w-[15rem] text-sm leading-snug text-ink-800 sm:text-[0.95rem]">{{ block.settings.label }}</dd>
+        <dt class="font-display text-[2.4rem] leading-none tracking-tight sm:text-6xl">{{ block.settings.value }}</dt>
+      </div>
+    {%- endfor -%}
+  </dl>
+  {%- if section.settings.drip -%}{% render 'ghee-drip' %}{%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Numbers band",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label for screen readers", "default": "Farm Dip in numbers" },
+    { "type": "checkbox", "id": "drip", "label": "Ghee drips off the bottom edge", "default": true, "info": "The next section needs extra top space for the drips." }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Number",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Number", "default": "12–14 L" },
+        { "type": "text", "id": "label", "label": "Label", "default": "of buffalo milk go into every litre of ghee" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Numbers band",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "12–14 L", "label": "of buffalo milk go into every litre of ghee" } },
+        { "type": "stat", "settings": { "value": "8–12 hrs", "label": "for the milk to set into dahi before churning" } },
+        { "type": "stat", "settings": { "value": "0", "label": "preservatives, additives or colours" } },
+        { "type": "stat", "settings": { "value": "12 months", "label": "shelf life from the day it is packed" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

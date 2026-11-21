@@ -1,5 +1,7 @@
 # Porting Farm Dip to a Shopify (Liquid) theme
 
+> **The theme is built.** It lives in [`shopify/`](shopify/README.md), with the commands and the one-time store setup in [shopify/README.md](shopify/README.md). The table below is how each part of the Next site maps to it.
+
 This Next.js site is the design and content prototype. The plan is to rebuild it as a Shopify Online Store 2.0 theme. This file maps each part of the prototype to its Shopify counterpart, so the port can be done section by section.
 
 The prototype was built with the port in mind:

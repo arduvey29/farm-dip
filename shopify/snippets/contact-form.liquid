@@ -1,0 +1,58 @@
+{%- comment -%}
+  Shopify's contact form, styled like the site's. Messages arrive at the store's sender email
+  (Settings > Notifications) and in the admin's inbox.
+{%- endcomment -%}
+{%- form 'contact', class: 'space-y-5' -%}
+  {%- if form.posted_successfully? -%}
+    <p class="rounded-xl bg-pasture-100 px-4 py-3 text-sm font-semibold text-pasture-900" role="status">Thank you. We have your message and will reply within one working day.</p>
+  {%- endif -%}
+  {%- if form.errors -%}
+    <div class="rounded-xl bg-spice-50 px-4 py-3 text-sm text-spice" role="alert">{{ form.errors | default_errors }}</div>
+  {%- endif -%}
+
+  <fieldset>
+    <legend class="mb-2 block text-xs font-medium text-ink-600 uppercase tracking-wider">Topic</legend>
+    <div class="flex flex-wrap gap-2">
+      {%- assign topics = 'Existing order|truck,Ghee and purity|shield,Bulk and gifting|gift,General query|mail' | split: ',' -%}
+      {%- for t in topics -%}
+        {%- assign parts = t | split: '|' -%}
+        <label class="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-line/80 px-3.5 py-1.5 text-xs font-medium text-ink-700 transition-all hover:border-ink-900 hover:text-ink-950 has-[:checked]:border-ink-950 has-[:checked]:bg-ink-950 has-[:checked]:text-cream has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-ghee-500">
+          <input type="radio" name="contact[topic]" value="{{ parts[0] }}" class="sr-only" {% if forloop.first %}checked{% endif %}>
+          {% render 'icon', name: parts[1], class: 'size-3.5' %}
+          <span>{{ parts[0] }}</span>
+        </label>
+      {%- endfor -%}
+    </div>
+  </fieldset>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="contact-name" class="mb-1 block text-xs font-medium text-ink-700">Your name <span class="text-spice">*</span></label>
+      <input id="contact-name" type="text" name="contact[name]" required autocomplete="name" placeholder="e.g. Rahul Sharma" value="{{ form.name }}" class="w-full border-b border-line bg-transparent py-2 text-sm text-ink-950 placeholder:text-ink-400 focus:border-ink-900 focus:outline-none transition-colors">
+    </div>
+    <div>
+      <label for="contact-phone" class="mb-1 block text-xs font-medium text-ink-700">Mobile number</label>
+      <input id="contact-phone" type="tel" name="contact[phone]" autocomplete="tel" placeholder="{{ settings.phone }}" value="{{ form.phone }}" class="w-full border-b border-line bg-transparent py-2 text-sm text-ink-950 placeholder:text-ink-400 focus:border-ink-900 focus:outline-none transition-colors">
+    </div>
+  </div>
+  <div>
+    <label for="contact-email" class="mb-1 block text-xs font-medium text-ink-700">Email <span class="text-spice">*</span></label>
+    <input id="contact-email" type="email" name="contact[email]" required autocomplete="email" placeholder="name@email.com" value="{{ form.email }}" class="w-full border-b border-line bg-transparent py-2 text-sm text-ink-950 placeholder:text-ink-400 focus:border-ink-900 focus:outline-none transition-colors">
+  </div>
+  <div>
+    <label for="contact-order" class="mb-1 block text-xs font-medium text-ink-700">Order number <span class="text-[0.7rem] text-ink-400 font-normal">(optional)</span></label>
+    <input id="contact-order" type="text" name="contact[order_number]" placeholder="e.g. #1042" class="w-full border-b border-line bg-transparent py-2 text-sm text-ink-950 placeholder:text-ink-400 focus:border-ink-900 focus:outline-none transition-colors">
+  </div>
+  <div>
+    <label for="contact-message" class="mb-1 block text-xs font-medium text-ink-700">Your message <span class="text-spice">*</span></label>
+    <textarea id="contact-message" name="contact[body]" required rows="3" placeholder="Tell us about your order, query, or custom requirements..." class="w-full border-b border-line bg-transparent py-2 text-sm text-ink-950 placeholder:text-ink-400 focus:border-ink-900 focus:outline-none transition-colors resize-none">{{ form.body }}</textarea>
+  </div>
+  <div class="flex flex-wrap items-center gap-4 pt-2">
+    <button type="submit" class="btn btn-ink min-h-10 rounded-full px-7 text-xs font-medium tracking-wide uppercase shadow-xs">
+      <span class="flex items-center gap-1.5"><span>Send message</span>{% render 'icon', name: 'arrowRight', class: 'size-3' %}</span>
+    </button>
+    <a href="https://wa.me/{{ settings.whatsapp }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-medium text-pasture-800 hover:text-pasture-950 hover:underline">
+      {% render 'icon', name: 'whatsapp', class: 'size-3.5 text-pasture-700' %}<span>Or send via WhatsApp</span>
+    </a>
+  </div>
+{%- endform -%}

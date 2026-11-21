@@ -1,0 +1,10 @@
+{%- comment -%}
+  Track order page, carried over from the Next site's page as it is.
+  Edit the text here in the code editor; contact details come from theme settings.
+{%- endcomment -%}
+<div class="wrap pt-5"><nav aria-label="Breadcrumb" class="text-sm text-ink-700 "><ol class="flex flex-wrap items-center gap-x-2 gap-y-1"><li class="flex items-center gap-2"><a class="underline-offset-4 hover:underline" href="{{ routes.root_url }}">Home</a><span aria-hidden="true" class="text-brass">/</span></li><li class="flex items-center gap-2"><span aria-current="page" class="text-ink-900">Track your order</span></li></ol></nav></div>
+<section class="wrap grid gap-10 pt-8 pb-20 lg:grid-cols-2"><div><h1 class="font-display text-5xl leading-[1.02]">Track your order</h1><p class="mt-4 text-lg text-ink-800">Enter the order number from your confirmation SMS or email. Orders ship within 24 hours and usually arrive in 2 to 7 days.</p></div><div class="rounded-3xl border border-line p-6 sm:p-8">{% render 'track-order-links' %}</div></section>
+
+{% schema %}
+{ "name": "Track order page", "tag": "div" }
+{% endschema %}

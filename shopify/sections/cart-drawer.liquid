@@ -1,0 +1,63 @@
+{%- comment -%}
+  The cart drawer. theme.js re-renders [data-cart-body] through the Section Rendering API after every
+  add or change, so this section must keep the id "cart-drawer" (it is rendered from layout/theme.liquid).
+{%- endcomment -%}
+<dialog id="cart-drawer" class="drawer drawer-right" aria-labelledby="cart-title">
+  <div data-cart-body data-count="{{ cart.item_count }}" class="flex h-full flex-col">
+    <div class="flex items-center justify-between border-b border-line px-5 py-4">
+      <h2 id="cart-title" class="font-display text-2xl">
+        Your cart {% if cart.item_count > 0 %}<span class="font-sans text-base text-ink-700">({{ cart.item_count }})</span>{% endif %}
+      </h2>
+      <button type="button" data-close-dialog class="rounded-full p-2 hover:bg-oat" aria-label="Close cart">
+        {% render 'icon', name: 'close', class: 'size-6' %}
+      </button>
+    </div>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="flex flex-1 flex-col items-start justify-center gap-4 px-6">
+        <p class="font-display text-2xl">Your cart is empty</p>
+        <p class="text-ink-700">{{ section.settings.empty_text }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-gold">Shop ghee</a>
+      </div>
+    {%- else -%}
+      {%- liquid
+        assign mrp_total = 0
+        for item in cart.items
+          assign compare = item.variant.compare_at_price | default: item.variant.price
+          assign mrp_total = compare | times: item.quantity | plus: mrp_total
+        endfor
+        assign savings = mrp_total | minus: cart.total_price
+      -%}
+      <div class="border-b border-line bg-oat px-5 py-3">
+        {% render 'free-shipping', threshold: section.settings.free_shipping %}
+      </div>
+      <div class="flex-1 overflow-y-auto px-5">
+        {% render 'cart-lines', compact: true %}
+      </div>
+      <div class="space-y-3 border-t border-line px-5 py-4">
+        {%- if savings > 0 -%}
+          <p class="text-sm font-semibold text-pasture-600">You save {{ savings | money_without_currency | remove: '.00' | prepend: '₹' }} on MRP</p>
+        {%- endif -%}
+        <div class="flex items-baseline justify-between">
+          <span class="text-ink-700">Subtotal</span>
+          <span class="text-xl font-bold">{{ cart.total_price | money_without_currency | remove: '.00' | prepend: '₹' }}</span>
+        </div>
+        <p class="text-xs text-ink-700">{{ section.settings.note }}</p>
+        <a href="{{ routes.root_url }}checkout" class="block rounded-full bg-pasture-900 px-6 py-3.5 text-center font-semibold text-oat hover:bg-pasture-800">Checkout</a>
+        <a href="{{ routes.cart_url }}" class="block text-center text-sm font-medium underline underline-offset-4">View full cart</a>
+      </div>
+    {%- endif -%}
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "class": "contents",
+  "settings": [
+    { "type": "number", "id": "free_shipping", "label": "Free shipping from (₹)", "info": "Match the free-shipping rate in Settings > Shipping and delivery.", "default": 999 },
+    { "type": "text", "id": "empty_text", "label": "Empty cart text", "default": "Pick a pack of pure buffalo ghee: 500 ml, 1 litre or the 5 litre pack." },
+    { "type": "text", "id": "note", "label": "Note under the subtotal", "default": "Shipping and coupons are calculated at checkout. Free cash on delivery." }
+  ]
+}
+{% endschema %}

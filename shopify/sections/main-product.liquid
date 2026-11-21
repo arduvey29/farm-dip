@@ -1,0 +1,332 @@
+{%- comment -%}
+  The product page: gallery, pack-size picker with per-litre prices, quantity, add to cart and buy now,
+  "What goes into one pack", then facts, highlights, the story, nutrition, FAQ and reviews.
+  Facts, highlights, uses, nutrition rows and questions are blocks, so they can be edited in the theme editor.
+{%- endcomment -%}
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+  assign milk_per_litre = settings.milk_per_litre | default: 14
+
+  assign highest = 0
+  for v in product.variants
+    capture v_ml
+      render 'variant-volume', variant: v
+    endcapture
+    assign v_ml = v_ml | strip | plus: 0
+    assign v_pl = v.price | times: 1000 | divided_by: v_ml
+    if v_pl > highest
+      assign highest = v_pl
+    endif
+  endfor
+
+  capture current_ml
+    render 'variant-volume', variant: current
+  endcapture
+  assign current_ml = current_ml | strip | plus: 0
+  assign current_pl = current.price | times: 1000 | divided_by: current_ml
+  assign current_off = 0
+  if current.compare_at_price > current.price
+    assign current_off = current.compare_at_price | minus: current.price | times: 100.0 | divided_by: current.compare_at_price | round
+  endif
+  assign milk_litres = current_ml | times: milk_per_litre | divided_by: 1000.0
+  assign full_cans = milk_litres | divided_by: 5 | floor
+  assign rest = milk_litres | divided_by: 5.0 | minus: full_cans
+
+  assign main_image = current.featured_image | default: product.featured_image
+-%}
+
+<div data-product data-milk-per-litre="{{ milk_per_litre }}">
+  <script type="application/json" data-variants>
+    [
+      {%- for v in product.variants -%}
+        {%- capture v_ml %}{% render 'variant-volume', variant: v %}{% endcapture -%}
+        {
+          "id": {{ v.id }},
+          "title": {{ v.title | json }},
+          "price": {{ v.price }},
+          "compare_at_price": {{ v.compare_at_price | default: 0 }},
+          "available": {{ v.available }},
+          "volume_ml": {{ v_ml | strip | plus: 0 }},
+          "image": {% if v.featured_image %}{{ v.featured_image | image_url: width: 1200 | json }}{% else %}null{% endif %},
+          "image_alt": {{ v.featured_image.alt | default: product.title | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  </script>
+
+  <div class="wrap pt-5">
+    <nav aria-label="Breadcrumb" class="text-sm text-ink-700">
+      <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <li class="flex items-center gap-2"><a href="{{ routes.root_url }}" class="underline-offset-4 hover:underline">Home</a><span aria-hidden="true" class="text-brass">/</span></li>
+        <li class="flex items-center gap-2"><a href="{{ routes.all_products_collection_url }}" class="underline-offset-4 hover:underline">Shop</a><span aria-hidden="true" class="text-brass">/</span></li>
+        <li class="flex items-center gap-2"><span aria-current="page" class="text-ink-900">{{ product.title }}</span></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="wrap grid gap-8 pt-6 pb-14 lg:grid-cols-2 lg:gap-14">
+    {%- comment -%} Gallery {%- endcomment -%}
+    <div class="lg:sticky lg:top-24 lg:self-start">
+      <div class="flex flex-col-reverse gap-3 md:flex-row">
+        {%- if product.images.size > 1 -%}
+          <ul class="scrollbar-none flex gap-3 overflow-x-auto md:w-20 md:flex-col md:overflow-visible" aria-label="{{ product.title | escape }} images">
+            {%- for image in product.images -%}
+              <li class="shrink-0">
+                <button type="button" data-thumb data-src="{{ image | image_url: width: 1200 }}" data-alt="{{ image.alt | default: product.title | escape }}" aria-label="Show image {{ forloop.index }}" aria-current="{% if image.src == main_image.src %}true{% else %}false{% endif %}" class="block overflow-hidden rounded-xl border-2 border-transparent bg-oat hover:border-ink-200 aria-[current=true]:border-ink-900">
+                  {{ image | image_url: width: 160 | image_tag: alt: '', class: 'size-16 object-cover md:size-[4.5rem]', loading: 'lazy' }}
+                </button>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        <div class="flex-1">
+          <div class="overflow-hidden rounded-[2rem] bg-oat">
+            {%- if main_image -%}
+              <img data-main-image src="{{ main_image | image_url: width: 1200 }}" srcset="{{ main_image | image_url: width: 600 }} 600w, {{ main_image | image_url: width: 900 }} 900w, {{ main_image | image_url: width: 1200 }} 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="{{ main_image.alt | default: product.title | escape }}" width="1200" height="1440" fetchpriority="high" class="aspect-[5/6] w-full object-cover">
+            {%- else -%}
+              <img data-main-image src="{{ 'ghee-jar.svg' | asset_url }}" alt="{{ product.title | escape }}" width="1200" height="1200" class="aspect-[5/6] w-full object-cover">
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Purchase panel {%- endcomment -%}
+    <div>
+      {%- if section.settings.badge != blank -%}
+        <p class="mb-3 inline-block bg-spice py-1 pr-5 pl-3 text-xs font-bold text-oat [clip-path:polygon(0_0,100%_0,calc(100%-8px)_50%,100%_100%,0_100%)]">{{ section.settings.badge }}</p>
+      {%- endif -%}
+      <h1 class="font-display text-4xl leading-[1.05] sm:text-5xl">{{ product.title }}</h1>
+      {%- if section.settings.tagline != blank -%}<p class="mt-2 text-lg text-ink-800">{{ section.settings.tagline }}</p>{%- endif -%}
+      {%- if section.settings.summary != blank -%}<p class="mt-5 max-w-prose text-ink-800">{{ section.settings.summary }}</p>{%- endif -%}
+
+      <div class="mt-7 space-y-6">
+        <div>
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span data-price class="text-4xl font-bold tabular-nums">{{ current.price | money_without_currency | remove: '.00' | prepend: '₹' }}</span>
+            <span data-off-wrap class="contents" {% if current_off == 0 %}hidden{% endif %}>
+              <span class="text-ink-700">MRP <s data-mrp>{{ current.compare_at_price | money_without_currency | remove: '.00' | prepend: '₹' }}</s></span>
+              <span data-off class="rounded-full bg-spice-50 px-2.5 py-0.5 text-sm font-bold text-spice">{{ current_off }}% off</span>
+            </span>
+          </div>
+          <p class="mt-1 text-sm text-ink-700">Inclusive of all taxes. <span data-per-litre>{{ current_pl | money_without_currency | remove: '.00' | prepend: '₹' }}</span> per litre.</p>
+        </div>
+
+        {%- unless product.has_only_default_variant -%}
+          <fieldset>
+            <legend class="mb-3 font-semibold">Choose pack size</legend>
+            <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              {%- for v in product.variants -%}
+                {%- capture v_ml %}{% render 'variant-volume', variant: v %}{% endcapture -%}
+                {%- assign v_ml = v_ml | strip | plus: 0 -%}
+                {%- assign v_pl = v.price | times: 1000 | divided_by: v_ml -%}
+                {%- assign saving = highest | minus: v_pl | times: 100.0 | divided_by: highest | round -%}
+                <label class="relative flex cursor-pointer flex-col rounded-2xl border-2 border-line px-3.5 py-3 transition-colors hover:border-ink-200 has-[:checked]:border-ink-900 has-[:checked]:bg-ink-50 has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-ghee-500 {% unless v.available %}opacity-50{% endunless %}">
+                  <input type="radio" name="pack" value="{{ v.id }}" data-variant-input class="sr-only" {% if v.id == current.id %}checked{% endif %} {% unless v.available %}disabled{% endunless %}>
+                  {%- if forloop.last and product.variants.size > 1 -%}<span class="absolute -top-2.5 right-3 rounded-full bg-ghee-500 px-2 text-xs font-bold text-ink-950">Best value</span>{%- endif -%}
+                  <span class="text-lg font-bold">{{ v.title }}</span>
+                  {%- if section.settings.packaging != blank -%}<span class="text-xs text-ink-700">{{ section.settings.packaging }}</span>{%- endif -%}
+                  <span class="mt-1.5 font-semibold">{{ v.price | money_without_currency | remove: '.00' | prepend: '₹' }}</span>
+                  <span class="text-xs text-ink-700">{{ v_pl | money_without_currency | remove: '.00' | prepend: '₹' }}/L{% if saving > 0 %}<span class="font-semibold text-pasture-600"> save {{ saving }}%</span>{% endif %}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+        {%- endunless -%}
+
+        <form method="post" action="{{ routes.cart_add_url }}" data-product-form>
+          <input type="hidden" name="id" value="{{ current.id }}">
+          <div data-cta class="flex flex-wrap items-center gap-3">
+            <div data-qty class="inline-flex items-center rounded-full border border-ink-200" role="group" aria-label="Quantity">
+              <button type="button" data-qty-step="-1" class="rounded-full p-2 hover:bg-oat" aria-label="Decrease quantity">{% render 'icon', name: 'minus', class: 'size-4' %}</button>
+              <input type="number" name="quantity" value="1" min="1" max="20" aria-label="Quantity" class="w-10 appearance-none bg-transparent text-center font-semibold tabular-nums [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]">
+              <button type="button" data-qty-step="1" class="rounded-full p-2 hover:bg-oat" aria-label="Increase quantity">{% render 'icon', name: 'plus', class: 'size-4' %}</button>
+            </div>
+            <button type="submit" data-add-button data-add="Add to cart" data-sold-out="Out of stock" class="btn btn-gold flex-1 aria-busy:opacity-70 disabled:cursor-not-allowed disabled:opacity-50" {% unless current.available %}disabled{% endunless %}>
+              {%- if current.available %}Add to cart{% else %}Out of stock{% endif -%}
+            </button>
+            <button type="submit" data-buy-now data-add-button class="min-h-12 w-full rounded-full bg-pasture-900 px-6 font-semibold text-oat hover:bg-pasture-800 disabled:opacity-50 sm:w-auto sm:flex-1" {% unless current.available %}disabled{% endunless %}>Buy now</button>
+          </div>
+          <p data-form-error class="mt-2 text-sm text-spice" role="alert" hidden></p>
+        </form>
+
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+          <li class="flex items-center gap-2">{% render 'icon', name: 'cash', class: 'size-5 text-ghee-700' %} Free cash on delivery</li>
+          <li class="flex items-center gap-2">{% render 'icon', name: 'truck', class: 'size-5 text-ghee-700' %} Ships within {{ settings.dispatch_hours }} hours</li>
+          <li class="flex items-center gap-2">{% render 'icon', name: 'leaf', class: 'size-5 text-ghee-700' %} No preservatives or additives</li>
+          <li class="flex items-center gap-2">{% render 'icon', name: 'refresh', class: 'size-5 text-ghee-700' %} {{ settings.return_days }}-day quality promise</li>
+        </ul>
+
+        {%- if milk_per_litre > 0 -%}
+          <section class="rounded-[1.5rem] bg-oat p-4 sm:p-5" aria-labelledby="milk-math">
+            <h2 id="milk-math" class="font-display text-xl leading-snug text-ink-900">What goes into one <span data-variant-label>{{ current.title }}</span> pack</h2>
+            <dl class="mt-3 grid grid-cols-3 gap-3 border-y border-line py-3 text-center">
+              <div class="flex flex-col-reverse"><dt class="text-xs text-ink-700">buffalo milk</dt><dd data-milk-litres data-value="{{ milk_litres }}" class="font-display text-2xl text-ink-900 tabular-nums">{{ milk_litres | round }} L</dd></div>
+              <div class="flex flex-col-reverse"><dt class="text-xs text-ink-700">set as dahi</dt><dd class="font-display text-2xl text-ink-900">1 night</dd></div>
+              <div class="flex flex-col-reverse"><dt class="text-xs text-ink-700">churning and slow cooking</dt><dd class="font-display text-2xl text-ink-900">3 to 4 h</dd></div>
+            </dl>
+            <div data-milk-cans class="mt-3 flex flex-wrap gap-0.5" aria-hidden="true">
+              {%- for i in (1..full_cans) -%}<svg viewBox="0 0 16 20" class="h-5 w-4" aria-hidden="true" focusable="false"><path d="M5 2h6v3l2 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8l2-3Z" fill="#fffaf0"/><path d="M5 2h6v3l2 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8l2-3Z" fill="none" stroke="var(--color-ink-700)" stroke-width="1"/><path d="M4 1.5h8" stroke="var(--color-ink-700)" stroke-width="1.4" stroke-linecap="round"/></svg>{%- endfor -%}
+              {%- if rest > 0.05 -%}
+                {%- assign fill_h = rest | times: 10 -%}{%- assign fill_y = 18.5 | minus: fill_h -%}
+                <svg viewBox="0 0 16 20" class="h-5 w-4" aria-hidden="true" focusable="false"><path d="M5 2h6v3l2 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8l2-3Z" fill="#e3cfa6"/><rect x="3.5" y="{{ fill_y }}" width="9" height="{{ fill_h }}" fill="#fffaf0"/><path d="M5 2h6v3l2 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8l2-3Z" fill="none" stroke="var(--color-ink-700)" stroke-width="1"/><path d="M4 1.5h8" stroke="var(--color-ink-700)" stroke-width="1.4" stroke-linecap="round"/></svg>
+              {%- endif -%}
+            </div>
+            <p class="mt-1 text-xs text-ink-700">Each can is 5 litres of milk.</p>
+          </section>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Phones: sticky add-to-cart bar {%- endcomment -%}
+  <div data-sticky-bar aria-hidden="true" class="invisible fixed inset-x-0 bottom-0 z-30 translate-y-full border-t border-line bg-cream/95 px-4 py-3 backdrop-blur transition-[transform,visibility] duration-300 data-[show]:visible data-[show]:translate-y-0 lg:hidden">
+    <form method="post" action="{{ routes.cart_add_url }}" data-product-form class="flex items-center gap-3">
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-sm font-semibold">{{ product.title }}</p>
+        <p class="text-sm"><span data-price class="font-bold">{{ current.price | money_without_currency | remove: '.00' | prepend: '₹' }}</span> <span data-variant-label class="text-ink-700">{{ current.title }}</span></p>
+      </div>
+      <input type="hidden" name="id" value="{{ current.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" data-add-button class="btn btn-gold">Add to cart</button>
+    </form>
+  </div>
+
+  <section class="border-y border-line bg-oat py-14" aria-labelledby="glance">
+    <div class="wrap grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <h2 id="glance" class="font-display text-3xl sm:text-4xl">At a glance</h2>
+        <dl class="mt-6 divide-y divide-line border-y border-line">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'fact' -%}
+              <div class="grid gap-1 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-6" {{ block.shopify_attributes }}>
+                <dt class="font-semibold">{{ block.settings.label }}</dt>
+                <dd class="text-ink-800">{{ block.settings.value }}</dd>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </dl>
+      </div>
+      <div>
+        <h2 class="font-display text-3xl sm:text-4xl">Why families choose it</h2>
+        <ul class="mt-6 space-y-3">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'highlight' -%}
+              <li class="flex gap-3" {{ block.shopify_attributes }}>{% render 'icon', name: 'check', class: 'mt-1 size-5 shrink-0 text-pasture-600' %}<span>{{ block.settings.text }}</span></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap grid gap-12 py-16 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="prose-ghee">
+      <h2 style="margin-top: 0">About this ghee</h2>
+      <div class="rte">{{ product.description }}</div>
+      <h3>How to use it</h3>
+      <ul>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'use' -%}<li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.ingredients != blank -%}<h3>Ingredients</h3><p>{{ section.settings.ingredients }}</p>{%- endif -%}
+      {%- if section.settings.storage != blank -%}<h3>Storage and shelf life</h3><p>{{ section.settings.storage }}</p>{%- endif -%}
+    </div>
+
+    <aside class="space-y-8">
+      <div class="rounded-3xl border border-line p-6">
+        <h2 class="text-xl font-semibold">Nutrition per 100 g</h2>
+        <p class="text-sm text-ink-700">Typical values for pure ghee</p>
+        <table class="table-ghee mt-4">
+          <caption class="sr-only">Nutrition information per 100 grams</caption>
+          <tbody>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'nutrition' -%}
+                <tr {{ block.shopify_attributes }}><th scope="row" class="!font-normal">{{ block.settings.label }}</th><td class="text-right font-semibold">{{ block.settings.value }}</td></tr>
+              {%- endif -%}
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+      <figure class="rounded-[1.75rem] bg-pasture-950 p-7 text-cream">
+        <p class="font-display text-2xl leading-snug">{{ section.settings.aim_heading }}</p>
+        <blockquote class="mt-3 text-pasture-100"><p>{{ section.settings.aim }}</p></blockquote>
+        <figcaption class="mt-3 text-sm text-pasture-200">The {{ shop.name }} family</figcaption>
+      </figure>
+      <a href="/pages/how-its-made" class="flex gap-4 rounded-[1.75rem] border border-line p-6 hover:bg-oat">
+        {% render 'icon', name: 'leaf', class: 'size-8 shrink-0 text-pasture-600' %}
+        <span>
+          <span class="block text-lg font-semibold">See how it is made</span>
+          <span class="text-ink-700">Eight steps, from full-fat buffalo milk to a strained jar, with nothing added.</span>
+        </span>
+      </a>
+    </aside>
+  </section>
+
+  <section class="wrap grid gap-10 pb-16 lg:grid-cols-[0.8fr_1.2fr]" aria-labelledby="pdp-faq">
+    <h2 id="pdp-faq" class="font-display text-3xl sm:text-4xl">{{ section.settings.faq_heading }}</h2>
+    <div class="divide-y divide-line border-y border-line">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq' -%}
+          <details name="pdp-faq" class="group" {{ block.shopify_attributes }}>
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+              <h3 class="text-lg leading-snug font-semibold">{{ block.settings.question }}</h3>
+              <span class="mt-1 shrink-0 rounded-full border border-ink-200 p-1 transition-transform group-open:rotate-45">{% render 'icon', name: 'plus', class: 'size-4' %}</span>
+            </summary>
+            <div class="max-w-[68ch] pb-6 text-ink-800">{{ block.settings.answer }}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- for block in section.blocks -%}
+    {%- if block.type == '@app' -%}
+      <section id="reviews" class="scroll-mt-24 border-t border-line py-16"><div class="wrap">{% render block %}</div></section>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{%- comment -%} Product questions as FAQPage structured data. {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- assign first = true -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq' -%}
+        {%- unless first %},{% endunless -%}{%- assign first = false -%}
+        { "@type": "Question", "name": {{ block.settings.question | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} } }
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product page",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "badge", "label": "Ribbon above the title", "default": "100% natural" },
+    { "type": "text", "id": "tagline", "label": "Line under the title", "default": "Made from pure buffalo milk, the way we ate it as children" },
+    { "type": "textarea", "id": "summary", "label": "Short summary", "default": "Rich, creamy desi ghee made from pure buffalo milk. 100% natural, with no preservatives or additives." },
+    { "type": "text", "id": "packaging", "label": "Packaging label on each size", "default": "Jar" },
+    { "type": "textarea", "id": "ingredients", "label": "Ingredients", "default": "Ghee made from pure buffalo milk. No preservatives, no additives, no colour." },
+    { "type": "textarea", "id": "storage", "label": "Storage and shelf life", "default": "Store in a cool, dry place away from direct sunlight. Always use a clean, dry spoon. No refrigeration needed. Shelf life: 12 months from the date of packing." },
+    { "type": "text", "id": "aim_heading", "label": "Aim card heading", "default": "Pure, simple, rich and full of goodness." },
+    { "type": "textarea", "id": "aim", "label": "Aim card text", "default": "We make ghee the way we ate it in our childhood: pure, simple, rich and full of goodness. Our aim is to bring that same purity and health to every family's kitchen." },
+    { "type": "text", "id": "faq_heading", "label": "Questions heading", "default": "Questions about buffalo ghee" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "fact", "name": "Fact (At a glance)", "settings": [ { "type": "text", "id": "label", "label": "Label" }, { "type": "text", "id": "value", "label": "Value" } ] },
+    { "type": "highlight", "name": "Reason to choose it", "settings": [ { "type": "text", "id": "text", "label": "Text" } ] },
+    { "type": "use", "name": "Way to use it", "settings": [ { "type": "text", "id": "text", "label": "Text" } ] },
+    { "type": "nutrition", "name": "Nutrition row", "settings": [ { "type": "text", "id": "label", "label": "Nutrient" }, { "type": "text", "id": "value", "label": "Per 100 g" } ] },
+    { "type": "faq", "name": "Question", "settings": [ { "type": "text", "id": "question", "label": "Question" }, { "type": "richtext", "id": "answer", "label": "Answer" } ] }
+  ]
+}
+{% endschema %}

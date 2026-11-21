@@ -1,0 +1,103 @@
+/*
+  Theme-only CSS, compiled together with src/app/globals.css by scripts/build-theme.mjs.
+  The font files sit next to farm-dip.css in /assets, so plain relative URLs work.
+  Eczar (Open Font License) is self-hosted from the bold file the site keeps for its wordmark.
+*/
+@font-face {
+  font-family: "Author";
+  src: url("Author-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Author";
+  src: url("Author-VariableItalic.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adobe Caslon Pro";
+  src: url("ACaslonPro-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adobe Caslon Pro";
+  src: url("ACaslonPro-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adobe Caslon Pro";
+  src: url("ACaslonPro-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eczar";
+  src: url("Eczar-Bold.ttf") format("truetype");
+  font-weight: 600 700;
+  font-display: swap;
+}
+
+/* The Next site gets these from next/font; here they name the families above. */
+:root {
+  --font-author: "Author";
+  --font-general: "General Sans";
+  --font-adobe-caslon: "Adobe Caslon Pro";
+  --font-eczar: "Eczar";
+}
+
+/* Policy pages (/policies/...) are rendered by Shopify inside the layout with these classes. */
+.shopify-policy__container {
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 5rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.shopify-policy__title h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.75rem;
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  margin-bottom: 1.5rem;
+}
+.shopify-policy__body h2,
+.shopify-policy__body h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+}
+.shopify-policy__body p,
+.shopify-policy__body ul {
+  margin-top: 1rem;
+}
+.shopify-policy__body ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+/* Shopify's rich-text output (pages, articles, product descriptions). */
+.rte > * + * {
+  margin-top: 1em;
+}
+.rte a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rte img {
+  border-radius: 1rem;
+}

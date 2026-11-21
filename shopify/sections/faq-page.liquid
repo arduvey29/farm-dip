@@ -1,0 +1,130 @@
+{%- comment -%}
+  The FAQ page: a search box, topic filters and every question as an accordion (answers are in the HTML
+  for search engines and work without JavaScript). Each question is a block with a topic.
+{%- endcomment -%}
+{%- liquid
+  assign topics = ''
+  for block in section.blocks
+    assign t = block.settings.topic | strip
+    unless topics contains t
+      assign topics = topics | append: t | append: '|'
+    endunless
+  endfor
+  assign topics = topics | split: '|'
+  assign chips = section.settings.popular | split: ','
+-%}
+<div class="wrap relative pb-24" data-faq>
+  <div class="pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 size-96 rounded-full bg-ghee-300/20 blur-3xl" aria-hidden="true"></div>
+
+  <section class="relative mx-auto max-w-4xl pt-6 pb-10 text-center sm:pt-10 sm:pb-14">
+    <div class="mx-auto mb-6 flex items-center justify-center">
+      <div class="relative size-16 shrink-0 sm:size-20">
+        <svg viewBox="0 0 200 200" class="size-full animate-[spin_24s_linear_infinite]" aria-hidden="true">
+          <defs><path id="faqSealPath" d="M 100, 100 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/></defs>
+          <text font-size="13.5" font-weight="bold" letter-spacing="3.5" fill="var(--color-pasture-800)"><textPath href="#faqSealPath" startOffset="0%">• CLARITY &amp; TRUTH • FARM DIP ANSWERS •</textPath></text>
+        </svg>
+        <div class="absolute inset-0 grid place-items-center">
+          <div class="grid size-9 place-items-center rounded-full bg-ghee-400 text-ink-950 shadow-sm sm:size-10">{% render 'ghee-drop-mark', class: 'size-4 text-ink-950' %}</div>
+        </div>
+      </div>
+    </div>
+    <h1 class="font-display text-4xl leading-[1.04] text-ink-950 sm:text-5xl lg:text-6xl">{{ section.settings.heading }}</h1>
+    <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-ink-700 sm:text-lg">{{ section.settings.lead }}</p>
+
+    <div class="mx-auto mt-8 max-w-2xl">
+      <div class="group relative flex items-center rounded-2xl border-2 border-line bg-milk px-4 py-2.5 shadow-sm transition-all duration-300 focus-within:border-ghee-500 focus-within:bg-white focus-within:shadow-md sm:px-5 sm:py-3.5">
+        {% render 'icon', name: 'search', class: 'size-5 shrink-0 text-ink-400 transition-colors group-focus-within:text-ghee-700' %}
+        <input type="search" data-faq-search placeholder="Search by topic (e.g. 'buffalo milk', 'storage', 'refund')..." aria-label="Search questions" class="ml-3 w-full bg-transparent text-sm text-ink-950 placeholder:text-ink-400 focus:outline-none sm:text-base">
+      </div>
+      {%- if chips.size > 0 -%}
+        <div class="mt-3 flex flex-wrap items-center justify-center gap-1.5 text-xs text-ink-600">
+          <span class="font-semibold text-ink-800">Popular:</span>
+          {%- for chip in chips -%}
+            <button type="button" data-faq-query="{{ chip | strip | escape }}" class="rounded-full bg-oat/70 px-2.5 py-1 text-ink-700 transition-all hover:bg-oat hover:text-ink-950">{{ chip | strip }}</button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  <div class="mx-auto mb-8 max-w-4xl">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div class="scrollbar-none flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+        <button type="button" data-faq-topic="all" data-active class="flex shrink-0 items-center gap-2 rounded-full border border-line/80 bg-milk px-4 py-2 text-xs font-semibold tracking-wide text-ink-700 transition-all duration-200 hover:bg-oat hover:text-ink-950 data-[active]:border-ink-950 data-[active]:bg-ink-950 data-[active]:text-cream sm:text-sm">
+          <span>All questions</span>
+          <span class="rounded-full bg-oat px-1.5 py-0.2 text-[0.68rem] font-bold text-ink-800">{{ section.blocks.size }}</span>
+        </button>
+        {%- for topic in topics -%}
+          {%- if topic != blank -%}
+            <button type="button" data-faq-topic="{{ topic | handleize }}" class="flex shrink-0 items-center gap-2 rounded-full border border-line/80 bg-milk px-4 py-2 text-xs font-semibold tracking-wide text-ink-700 transition-all duration-200 hover:bg-oat hover:text-ink-950 data-[active]:border-ink-950 data-[active]:bg-ink-950 data-[active]:text-cream sm:text-sm">{{ topic }}</button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="flex items-center justify-between gap-4 border-t border-line/60 pt-2 text-xs text-ink-600 sm:border-0 sm:pt-0">
+        <span class="font-medium">Showing <strong data-faq-count class="text-ink-950">{{ section.blocks.size }}</strong> of {{ section.blocks.size }}</span>
+        <button type="button" data-faq-expand class="inline-flex items-center gap-1 font-semibold text-ink-800 underline underline-offset-4 hover:text-ghee-800">Expand all</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-4xl space-y-3.5">
+    {%- for block in section.blocks -%}
+      <details data-faq-item data-topic="{{ block.settings.topic | strip | handleize }}" class="group overflow-hidden rounded-2xl border border-line/80 bg-milk transition-all duration-300 hover:border-ghee-300 hover:bg-white hover:shadow-sm open:border-ghee-400 open:bg-white open:shadow-md open:ring-1 open:ring-ghee-400/30" {{ block.shopify_attributes }} {% if forloop.index <= 2 %}open{% endif %}>
+        <summary class="flex w-full cursor-pointer list-none items-start justify-between gap-4 p-5 text-left sm:p-6 [&::-webkit-details-marker]:hidden">
+          <div class="flex items-start gap-3.5 sm:gap-4">
+            <span class="mt-1 font-mono text-xs font-semibold text-ghee-700/80 sm:text-sm">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <div>
+              <div class="mb-1.5 flex items-center gap-2"><span class="inline-flex items-center gap-1 rounded-full bg-oat/80 px-2 py-0.5 text-[0.65rem] font-bold tracking-wider text-ink-600 uppercase">{{ block.settings.topic }}</span></div>
+              <h2 class="font-display text-lg font-bold leading-snug text-ink-950 transition-colors group-hover:text-ghee-800 sm:text-xl md:text-2xl">{{ block.settings.question }}</h2>
+            </div>
+          </div>
+          <span class="grid size-9 shrink-0 place-items-center rounded-full border border-line bg-oat/60 text-ink-800 transition-all duration-300 group-open:rotate-45 group-open:border-ink-950 group-open:bg-ink-950 group-open:text-cream sm:size-10">{% render 'icon', name: 'plus', class: 'size-4' %}</span>
+        </summary>
+        <div class="border-t border-line/60 px-5 pt-4 pb-6 pl-11 sm:px-6 sm:pt-4 sm:pb-7 sm:pl-14">
+          <div class="max-w-3xl text-base leading-relaxed text-ink-800 sm:text-lg">{{ block.settings.answer }}</div>
+        </div>
+      </details>
+    {%- endfor -%}
+    <div data-faq-empty hidden class="rounded-3xl border-2 border-dashed border-line bg-milk p-10 text-center sm:p-14">
+      <h3 class="font-display text-2xl font-bold text-ink-950">No matching questions found</h3>
+      <p class="mx-auto mt-2 max-w-md text-sm text-ink-700 sm:text-base">Try another word, or ask us directly.</p>
+      <a href="https://wa.me/{{ settings.whatsapp }}" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 rounded-xl border border-line bg-oat px-4 py-2.5 text-sm font-semibold text-ink-900 transition-colors hover:bg-ghee-300">{% render 'icon', name: 'whatsapp', class: 'size-4' %}<span>Ask on WhatsApp</span></a>
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+      { "@type": "Question", "name": {{ block.settings.question | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} } }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything you wondered, answered." },
+    { "type": "textarea", "id": "lead", "label": "Text", "default": "Clear, honest facts on our buffalo milk sourcing, traditional bilona churning, doorstep delivery and lab-tested purity." },
+    { "type": "text", "id": "popular", "label": "Popular searches", "info": "Separate with commas.", "default": "buffalo milk, storage, delivery, refund" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "topic", "label": "Topic", "default": "About our ghee" },
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "FAQ" }]
+}
+{% endschema %}

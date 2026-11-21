@@ -1,0 +1,93 @@
+{%- comment -%}
+  Scroll-driven story of one batch, in the brand's eight steps. The stage stays in place (beside the
+  steps on wide screens, above them on phones) while the scenes change; a line of ghee runs down the
+  steps as you go. Driven by driveJourney() in farm-dip.js through the .journey class.
+  The eight illustrated scenes are fixed (snippets/journey-scenes.liquid), so keep eight steps in order.
+{%- endcomment -%}
+{%- liquid
+  assign product = section.settings.product | default: all_products['pure-desi-buffalo-ghee']
+  assign shop_url = product.url | default: routes.all_products_collection_url
+-%}
+<section class="journey relative bg-pasture-950 text-cream" data-step="0" aria-labelledby="journey-{{ section.id }}">
+  <div class="wrap {% if section.settings.after_drip %}pt-32 lg:pt-36{% else %}pt-16 lg:pt-24{% endif %}">
+    <div class="grid gap-4 lg:grid-cols-2 lg:items-end lg:gap-6">
+      <div class="max-w-3xl">
+        <h2 id="journey-{{ section.id }}" class="font-display leading-[1.04] text-balance text-3xl sm:text-4xl lg:text-5xl text-cream">{{ section.settings.title }}</h2>
+      </div>
+      <p class="max-w-xl text-pasture-100 sm:text-lg">{{ section.settings.lead }}</p>
+    </div>
+  </div>
+
+  <div class="wrap grid pb-12 lg:grid-cols-[1fr_minmax(0,27rem)] lg:gap-x-16 lg:pt-14 lg:pb-20">
+    <div data-stage class="sticky top-16 z-10 -mx-4 bg-pasture-950 px-4 pt-6 pb-4 sm:-mx-6 sm:px-6 lg:top-[calc(50vh-min(18rem,36vh))] lg:order-2 lg:mx-0 lg:self-start lg:bg-transparent lg:p-0">
+      <div class="relative mx-auto h-[42svh] max-w-xl lg:aspect-[4/5] lg:h-auto lg:max-h-[72vh] lg:max-w-[min(27rem,57.6vh)]">
+        <div class="journey-sky relative size-full overflow-hidden rounded-[2rem]">
+          {% render 'journey-scenes' %}
+        </div>
+        {%- for block in section.blocks -%}
+          {%- assign i = forloop.index0 -%}
+          <p data-i="{{ i }}" {% if i == 0 %}data-active{% endif %} aria-hidden="true" class="fact pointer-events-none absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-cream py-2 pr-4 pl-2.5 text-sm font-semibold text-ink-900 shadow-[0_10px_24px_-12px_rgb(0_0_0/0.5)]">
+            <span class="grid size-7 place-items-center rounded-full bg-ghee-400 font-display text-xs">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            {{ block.settings.fact }}
+          </p>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <ol class="relative mt-4 lg:order-1 lg:mt-0">
+      <span class="absolute top-0 bottom-0 left-[1.4rem] w-[3px] rounded-full bg-pasture-800" aria-hidden="true"></span>
+      <span class="journey-fill absolute top-0 bottom-0 left-[1.4rem] w-[3px] rounded-full bg-ghee-400" aria-hidden="true"></span>
+      {%- for block in section.blocks -%}
+        {%- assign i = forloop.index0 -%}
+        <li data-beat class="relative min-h-[40svh] pt-6 pl-16 lg:min-h-[52vh] lg:pt-0" {{ block.shopify_attributes }}>
+          <div class="sticky top-[calc(4rem+3.25rem+42svh)] lg:top-[calc(50vh-6rem)]">
+            <span data-i="{{ i }}" {% if i == 0 %}data-active{% endif %} aria-hidden="true" class="bead absolute top-0 -left-16 grid size-12 place-items-center rounded-full bg-pasture-800 font-display text-base text-pasture-100">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <h3 class="font-display text-2xl leading-tight text-cream sm:text-[2rem]">
+              <span class="sr-only">Step {{ forloop.index }}: </span>{{ block.settings.name }}
+            </h3>
+            <p class="mt-2 max-w-md text-pasture-100 sm:mt-3 sm:text-lg">{{ block.settings.text }}</p>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+
+  <div class="wrap flex flex-wrap items-center gap-3 pb-16 lg:pb-24">
+    <a href="{{ shop_url }}" class="btn btn-gold text-lg">Shop ghee</a>
+    {%- if section.settings.show_process_link -%}
+      <a href="/pages/how-its-made" class="btn btn-line text-cream">The process in detail</a>
+    {%- endif -%}
+    <span class="ml-2 inline-flex items-center gap-2 text-sm text-pasture-200">
+      {% render 'ghee-drop-mark', class: 'h-4 w-3.5 text-ghee-400' %}
+      {{ section.settings.promise }}
+    </span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ghee journey",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "From Rani to your kitchen, in eight steps." },
+    { "type": "textarea", "id": "lead", "label": "Text", "default": "Full-fat buffalo milk, a slow flame, a night to set, a wooden madhani and a muslin cloth. No shortcuts. Scroll to follow one batch." },
+    { "type": "product", "id": "product", "label": "Product for the \"Shop ghee\" button" },
+    { "type": "checkbox", "id": "show_process_link", "label": "Show \"The process in detail\" button", "default": true },
+    { "type": "checkbox", "id": "after_drip", "label": "Extra top space (when a dripping band sits above)", "default": false },
+    { "type": "text", "id": "promise", "label": "Promise beside the buttons", "default": "No preservatives, no additives, ever" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Step heading" },
+        { "type": "textarea", "id": "text", "label": "Step text" },
+        { "type": "text", "id": "fact", "label": "Fact on the picture" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Ghee journey" }]
+}
+{% endschema %}

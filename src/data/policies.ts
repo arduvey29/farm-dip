@@ -19,7 +19,7 @@ export const policies: Policy[] = [
     sections: [
       {
         heading: "Where we deliver",
-        paragraphs: ["We deliver to most serviceable pincodes in India. Enter your pincode on a product page to check delivery to your address."],
+        paragraphs: ["We deliver to most serviceable pincodes in India. If we cannot reach your pincode, we will call or WhatsApp you before dispatch."],
       },
       {
         heading: "Shipping charges",

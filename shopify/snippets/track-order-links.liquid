@@ -1,0 +1,11 @@
+{%- comment -%}
+  On Shopify, customers follow their order from the link in their confirmation email or from their
+  account. If you use Shiprocket, set its tracking page as the header's "Track your order" link.
+{%- endcomment -%}
+<div class="space-y-4">
+  <p class="text-ink-800">Your confirmation email and SMS have a link that shows where your order is. You can also see every order in your account.</p>
+  <a href="{{ routes.account_url }}" class="btn btn-ink w-full">See my orders</a>
+  <a href="https://wa.me/{{ settings.whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-line w-full">
+    {% render 'icon', name: 'whatsapp', class: 'size-5' %} Ask on WhatsApp
+  </a>
+</div>

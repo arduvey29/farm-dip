@@ -1,0 +1,32 @@
+{%- layout none -%}
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ shop.name }} gift card</title>
+    {{ 'farm-dip.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    {{ content_for_header }}
+  </head>
+  <body class="grid min-h-svh place-items-center bg-cream p-6">
+    <main class="w-full max-w-md rounded-[2rem] bg-milk p-8 text-center shadow-md">
+      <img src="{{ 'farm-dip-badge.svg' | asset_url }}" alt="" width="400" height="460" class="mx-auto h-20 w-auto">
+      <h1 class="mt-4 font-display text-3xl">{{ shop.name }} gift card</h1>
+      <p class="mt-2 font-display text-5xl text-ghee-700">{{ gift_card.balance | money_without_currency | remove: '.00' | prepend: '₹' }}</p>
+      {%- if gift_card.expired or gift_card.enabled == false -%}
+        <p class="mt-3 font-semibold text-spice">This gift card can no longer be used.</p>
+      {%- endif -%}
+      <p class="mt-6 text-sm text-ink-700">Your code</p>
+      <p class="mt-1 rounded-xl bg-oat px-4 py-3 font-mono text-lg font-bold tracking-wider">{{ gift_card.code | format_code }}</p>
+      <div id="QrCode" class="mx-auto mt-6 w-fit" data-identifier="{{ gift_card.qr_identifier }}"></div>
+      <a href="{{ shop.url }}" class="btn btn-gold mt-8 w-full">Shop ghee</a>
+    </main>
+    <script>
+      window.addEventListener("load", function () {
+        var el = document.getElementById("QrCode");
+        if (window.QRCode && el) new QRCode(el, { text: el.dataset.identifier, width: 140, height: 140 });
+      });
+    </script>
+  </body>
+</html>

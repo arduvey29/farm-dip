@@ -1,0 +1,89 @@
+{%- comment -%}
+  "One ghee, three sizes": one card per pack size of the chosen product, plus a WhatsApp help tile on
+  phones to complete the 2x2 grid. Fills the first screen on the home page.
+{%- endcomment -%}
+{%- liquid
+  assign product = section.settings.product | default: all_products['pure-desi-buffalo-ghee']
+  assign whatsapp = 'https://wa.me/' | append: settings.whatsapp
+-%}
+<section class="wrap flex flex-col justify-center {% if section.settings.full_screen %}min-h-[calc(100svh-6.25rem)] lg:min-h-[calc(100vh-6.75rem)]{% endif %} py-2 sm:py-3 lg:py-5" aria-labelledby="sizes-{{ section.id }}">
+  <div class="flex flex-wrap items-baseline justify-between gap-3 sm:gap-6">
+    <div class="max-w-3xl">
+      <h2 id="sizes-{{ section.id }}" class="font-deva font-bold tracking-tight leading-[1.04] text-balance text-2xl sm:text-3xl lg:text-[2.65rem] xl:text-5xl text-ink-900">
+        <span class="text-ghee-400">{{ section.settings.heading_accent }}</span>{{ section.settings.heading }}
+      </h2>
+      {%- if section.settings.lead != blank -%}
+        <p class="mt-0.5 sm:mt-1 text-xs sm:text-sm lg:text-base text-ink-700 max-w-2xl">{{ section.settings.lead }}</p>
+      {%- endif -%}
+    </div>
+    {%- if product != blank -%}
+      <a href="{{ product.url }}" class="link text-xs sm:text-sm font-semibold whitespace-nowrap">{{ section.settings.link_text }}</a>
+    {%- endif -%}
+  </div>
+
+  {%- if product != blank -%}
+    <div class="mt-2.5 sm:mt-4 lg:mt-5 grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 lg:gap-6 items-stretch">
+      {%- for variant in product.variants -%}
+        {%- liquid
+          case forloop.index
+            when 1
+              assign badge = section.settings.badge_1
+              assign style = 'light'
+            when 2
+              assign badge = section.settings.badge_2
+              assign style = 'green'
+            else
+              assign badge = section.settings.badge_3
+              assign style = 'ink'
+          endcase
+          assign eager = false
+          if forloop.index < 3
+            assign eager = true
+          endif
+        -%}
+        {% render 'size-card', product: product, variant: variant, badge: badge, badge_style: style, packaging: section.settings.packaging, compact: true, eager: eager, image_class: 'h-24 xs:h-28 sm:h-36 md:h-40 lg:h-44 xl:h-52 object-contain p-2' %}
+      {%- endfor -%}
+
+      {%- if section.settings.show_help -%}
+        <div class="flex sm:hidden flex-col justify-between rounded-[1.25rem] border-2 border-dashed border-line bg-milk/80 p-2 shadow-xs text-center">
+          <div class="my-auto py-1">
+            <span class="mx-auto flex size-7 items-center justify-center rounded-lg bg-ghee-300/70 text-ink-950 mb-1 shadow-xs">
+              {% render 'icon', name: 'whatsapp', class: 'size-4 text-pasture-900' %}
+            </span>
+            <h3 class="font-display text-xs font-bold text-ink-950 leading-tight">{{ section.settings.help_title }}</h3>
+            <p class="mt-0.5 text-[0.65rem] text-ink-600 leading-snug">{{ section.settings.help_text }}</p>
+          </div>
+          <a href="{{ whatsapp }}" target="_blank" rel="noopener noreferrer" class="btn btn-ink min-h-8 w-full py-1 text-xs font-bold mt-1.5">{{ section.settings.help_button }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- else -%}
+    <p class="mt-6 rounded-2xl border-2 border-dashed border-line bg-milk p-6 text-ink-700">Choose the ghee product for this section in the theme editor.</p>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Pack sizes",
+  "tag": "div",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product", "info": "Each size (variant) becomes a card." },
+    { "type": "text", "id": "heading_accent", "label": "Heading, gold part", "default": "One ghee" },
+    { "type": "text", "id": "heading", "label": "Heading, rest", "default": ", three sizes." },
+    { "type": "text", "id": "lead", "label": "Line under the heading", "default": "The bigger the pack, the less you pay per litre." },
+    { "type": "text", "id": "link_text", "label": "Product link text", "default": "Everything about this ghee" },
+    { "type": "checkbox", "id": "full_screen", "label": "Fill the first screen", "default": true },
+    { "type": "header", "content": "Cards" },
+    { "type": "text", "id": "packaging", "label": "Packaging label", "default": "Jar" },
+    { "type": "text", "id": "badge_1", "label": "Badge on the first size", "default": "Daily size" },
+    { "type": "text", "id": "badge_2", "label": "Badge on the second size", "default": "Most popular" },
+    { "type": "text", "id": "badge_3", "label": "Badge on the third size", "default": "Best value" },
+    { "type": "header", "content": "Help tile (phones only)" },
+    { "type": "checkbox", "id": "show_help", "label": "Show the WhatsApp help tile", "default": true },
+    { "type": "text", "id": "help_title", "label": "Title", "default": "Need help choosing?" },
+    { "type": "text", "id": "help_text", "label": "Text", "default": "Ask us for family recommendations." },
+    { "type": "text", "id": "help_button", "label": "Button", "default": "Chat on WhatsApp" }
+  ],
+  "presets": [{ "name": "Pack sizes" }]
+}
+{% endschema %}

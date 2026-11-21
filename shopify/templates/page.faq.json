@@ -1,0 +1,168 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq-page",
+      "settings": {},
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "topic": "About our ghee",
+            "question": "What is Farm Dip ghee made from?",
+            "answer": "<p>Pure buffalo milk, and nothing else. There are no preservatives, no additives and no colour. We make it the way we ate ghee in our childhood: pure, simple and rich.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "topic": "About our ghee",
+            "question": "Why is buffalo ghee white and not yellow?",
+            "answer": "<p>Cow milk carries beta-carotene from the fodder, which makes cow ghee yellow. Buffalo milk has almost none, so pure buffalo ghee is naturally creamy white. The colour is not a sign of anything added or removed.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "topic": "About our ghee",
+            "question": "What is the difference between buffalo ghee and cow ghee?",
+            "answer": "<p>Buffalo milk has roughly twice the fat of cow milk, so buffalo ghee is thicker, creamier and richer, and sets firm when cool. Cow ghee is yellow, lighter and often grainy. Buffalo ghee is the favourite for halwa, ladoo, mithai, parathas and frying.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "topic": "About our ghee",
+            "question": "Is Farm Dip ghee good for everyday cooking?",
+            "answer": "<p>Yes. It holds up well to high heat, so it is good for tadka, rotis, parathas and frying, and for traditional recipes and sweets.</p>"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "topic": "About our ghee",
+            "question": "Is ghee lactose-free?",
+            "answer": "<p>Ghee is almost pure milk fat and contains only trace amounts of lactose and milk protein, so many people with lactose intolerance tolerate it well. It is not certified lactose-free, so if you have a milk allergy, check with your doctor first.</p>"
+          }
+        },
+        "question-6": {
+          "type": "question",
+          "settings": {
+            "topic": "About our ghee",
+            "question": "Why does the texture of my ghee change?",
+            "answer": "<p>Ghee changes with temperature. It is soft or liquid in summer, firm in winter and often grainy in between. Buffalo ghee sets firmer than cow ghee. None of this changes its quality.</p>"
+          }
+        },
+        "question-7": {
+          "type": "question",
+          "settings": {
+            "topic": "Orders and delivery",
+            "question": "Do you deliver across India?",
+            "answer": "<p>Yes. We deliver to most serviceable pincodes in India. Enter your pincode on any product page to see the estimated delivery date.</p>"
+          }
+        },
+        "question-8": {
+          "type": "question",
+          "settings": {
+            "topic": "Orders and delivery",
+            "question": "How long does delivery take?",
+            "answer": "<p>We dispatch within 24 hours on working days. Delivery usually takes 2 to 4 days to metro cities and 4 to 7 days elsewhere.</p>"
+          }
+        },
+        "question-9": {
+          "type": "question",
+          "settings": {
+            "topic": "Orders and delivery",
+            "question": "How much does shipping cost?",
+            "answer": "<p>Shipping is free on orders above ₹999. Below that, a flat ₹79 is added at checkout.</p>"
+          }
+        },
+        "question-10": {
+          "type": "question",
+          "settings": {
+            "topic": "Orders and delivery",
+            "question": "Do you ship outside India?",
+            "answer": "<p>Not yet. Leave your email on our contact page and we will let you know when international shipping starts.</p>"
+          }
+        },
+        "question-11": {
+          "type": "question",
+          "settings": {
+            "topic": "Payments",
+            "question": "Is cash on delivery available?",
+            "answer": "<p>Yes. Cash on delivery is free across India, with no extra charge.</p>"
+          }
+        },
+        "question-12": {
+          "type": "question",
+          "settings": {
+            "topic": "Payments",
+            "question": "Which payment methods do you accept?",
+            "answer": "<p>UPI, debit and credit cards, net banking, popular wallets and cash on delivery.</p>"
+          }
+        },
+        "question-13": {
+          "type": "question",
+          "settings": {
+            "topic": "Refund",
+            "question": "How does the purity refund policy work?",
+            "answer": "<p>If you believe the ghee is impure or does not meet quality standards, you can get it tested at an accredited food laboratory and email the report to us. After proper verification, we will process your full refund within 7 days.</p>"
+          }
+        },
+        "question-14": {
+          "type": "question",
+          "settings": {
+            "topic": "Refund",
+            "question": "Can I return ghee I have opened?",
+            "answer": "<p>For food safety we cannot accept opened jars back unless there is a quality or purity issue. If you believe the ghee is impure, you can get it tested and email us the lab report; after proper verification, we will refund you within 7 days.</p>"
+          }
+        },
+        "question-15": {
+          "type": "question",
+          "settings": {
+            "topic": "Storage and use",
+            "question": "Does ghee need to be refrigerated?",
+            "answer": "<p>No. Keep ghee in a cool, dry cupboard away from sunlight, with the lid closed. Refrigeration makes it hard but does no harm.</p>"
+          }
+        },
+        "question-16": {
+          "type": "question",
+          "settings": {
+            "topic": "Storage and use",
+            "question": "How long does ghee last after opening?",
+            "answer": "<p>Pure ghee keeps for months after opening if you always use a clean, dry spoon. Water or food particles in the jar are what make ghee spoil.</p>"
+          }
+        },
+        "question-17": {
+          "type": "question",
+          "settings": {
+            "topic": "Storage and use",
+            "question": "Can I use ghee for deep frying?",
+            "answer": "<p>Yes. Ghee has a smoke point of around 250°C, higher than butter and many refined oils, so it handles deep frying and tadka well.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5",
+        "question-6",
+        "question-7",
+        "question-8",
+        "question-9",
+        "question-10",
+        "question-11",
+        "question-12",
+        "question-13",
+        "question-14",
+        "question-15",
+        "question-16",
+        "question-17"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

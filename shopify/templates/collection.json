@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    },
+    "guide": {
+      "type": "page-shop-guide",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "guide"
+  ]
+}

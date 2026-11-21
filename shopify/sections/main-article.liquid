@@ -1,0 +1,53 @@
+{%- comment -%} One blog post. {%- endcomment -%}
+<div class="wrap pt-5">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink-700">
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+      <li class="flex items-center gap-2"><a href="{{ routes.root_url }}" class="underline-offset-4 hover:underline">Home</a><span aria-hidden="true" class="text-brass">/</span></li>
+      <li class="flex items-center gap-2"><a href="{{ blog.url }}" class="underline-offset-4 hover:underline">{{ blog.title }}</a><span aria-hidden="true" class="text-brass">/</span></li>
+      <li class="flex items-center gap-2"><span aria-current="page" class="text-ink-900">{{ article.title }}</span></li>
+    </ol>
+  </nav>
+</div>
+
+<article class="wrap pt-8 pb-20">
+  <header class="max-w-3xl">
+    {%- if article.tags.size > 0 -%}<p class="text-sm font-medium text-ghee-700">{{ article.tags.first }}</p>{%- endif -%}
+    <h1 class="mt-2 font-display text-4xl leading-[1.05] sm:text-5xl">{{ article.title }}</h1>
+    <p class="mt-5 text-sm text-ink-700">By the <a href="/pages/about" class="font-semibold text-ink-900 underline underline-offset-4">{{ shop.name }} dairy team</a></p>
+  </header>
+  {%- if article.image -%}
+    <div class="mt-8 overflow-hidden rounded-[2rem] bg-oat">
+      {{ article.image | image_url: width: 1600 | image_tag: alt: article.image.alt, class: 'aspect-[1200/630] w-full object-cover', loading: 'eager', sizes: '100vw' }}
+    </div>
+  {%- endif -%}
+  <div class="prose-ghee rte mt-10">{{ article.content }}</div>
+
+  <aside class="mt-14 flex max-w-3xl flex-col items-start gap-4 rounded-[1.75rem] bg-pasture-950 p-7 text-cream sm:flex-row sm:items-center sm:justify-between">
+    <p class="font-display text-2xl leading-snug">{{ section.settings.cta_heading }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn btn-gold shrink-0">Shop ghee</a>
+  </aside>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ article.title | json }},
+  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+  "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+  {%- if article.image %}"image": {{ article.image | image_url: width: 1200 | prepend: 'https:' | json }},{% endif %}
+  "author": { "@type": "Organization", "name": {{ shop.name | json }} },
+  "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} },
+  "mainEntityOfPage": {{ request.origin | append: article.url | json }}
+}
+</script>
+
+{% schema %}
+{
+  "name": "Blog post",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "cta_heading", "label": "Box at the end", "default": "Pure buffalo ghee, made the bilona way." }
+  ]
+}
+{% endschema %}

@@ -44,3 +44,8 @@ next-env.d.ts
 # Fontshare fonts (ITF Free Font License): self-hosting is allowed, redistributing the files is not.
 # scripts/fetch-fonts.mjs downloads them at install and build time.
 /src/assets/fonts/fontshare/
+
+# Shopify theme: Fontshare fonts are copied in by scripts/build-theme.mjs; never commit them (ITF Free Font License).
+/shopify/assets/Author-*.woff2
+/shopify/assets/GeneralSans-*.woff2
+/farm-dip-theme.zip

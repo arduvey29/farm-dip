@@ -1,0 +1,156 @@
+{%- comment -%}
+  Announcement bar, sticky header (logo, main menu, search, cart, "Shop ghee") and the phone menu drawer.
+  The menu comes from Online Store > Navigation; until one is chosen, the site's own links are shown.
+{%- endcomment -%}
+{%- liquid
+  assign menu = section.settings.menu
+  assign whatsapp = 'https://wa.me/' | append: settings.whatsapp
+  assign shop_url = section.settings.shop_link | default: routes.all_products_collection_url
+-%}
+
+{%- capture fallback_links -%}
+{{ routes.all_products_collection_url }}|Shop ghee
+/pages/how-its-made|How it's made
+/pages/about|Our story
+/pages/lab-reports|Lab Reports
+/pages/contact|Contact
+{%- endcapture -%}
+{%- assign fallback = fallback_links | strip | newline_to_br | split: '<br />' -%}
+
+<div class="bg-ink-900 text-cream">
+  <div class="wrap flex min-h-9 items-center justify-between gap-4 py-1.5 text-[0.8125rem]">
+    <p class="flex items-center gap-2">
+      {% render 'icon', name: 'cash', class: 'size-4 shrink-0 text-ghee-300' %}
+      {{ settings.announcement }}
+    </p>
+    <div class="hidden shrink-0 items-center gap-5 md:flex">
+      <a href="{{ section.settings.track_link | default: '/pages/track-order' }}" class="underline-offset-4 hover:underline">Track your order</a>
+      <a href="{{ whatsapp }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 underline-offset-4 hover:underline">
+        {% render 'icon', name: 'whatsapp', class: 'size-4' %}
+        WhatsApp us
+      </a>
+    </div>
+  </div>
+</div>
+
+<header class="sticky top-0 z-40 border-b border-line bg-cream/90 backdrop-blur-md">
+  <div class="wrap flex h-16 items-center gap-3 lg:h-[4.5rem]">
+    <button type="button" data-open-dialog="menu-drawer" class="-ml-2 rounded-full p-2.5 hover:bg-oat lg:hidden" aria-label="Open menu" aria-haspopup="dialog">
+      {% render 'icon', name: 'menu', class: 'size-6' %}
+    </button>
+
+    <div class="flex flex-1 justify-center lg:flex-none lg:justify-start">
+      <a href="{{ routes.root_url }}" class="inline-flex items-center gap-2.5" aria-label="{{ shop.name }} home">
+        {% render 'logo-mark', class: 'h-12 w-auto shrink-0 lg:h-14' %}
+        <span class="flex flex-col leading-none">
+          <span class="font-caslon font-bold whitespace-nowrap text-[1.6rem] leading-none text-ink-900">{{ shop.name }}</span>
+          <span class="font-sans mt-1 text-[0.78rem] leading-none font-medium text-ink-500">{{ settings.logo_tagline }}</span>
+        </span>
+      </a>
+    </div>
+
+    <nav aria-label="Main" class="hidden flex-1 justify-center lg:flex">
+      <ul class="flex items-center gap-1">
+        {%- if menu != blank -%}
+          {%- for link in menu.links -%}
+            {%- assign active = false -%}
+            {%- if link.active or link.child_active %}{% assign active = true %}{% endif -%}
+            <li>
+              <a href="{{ link.url }}" {% if active %}aria-current="page"{% endif %} class="relative inline-flex items-center rounded-full px-4 py-2 text-[0.95rem] font-medium transition-all duration-200 {% if active %}bg-oat font-semibold text-ink-950 shadow-xs{% else %}text-ink-800 hover:bg-oat/70 hover:text-ink-950{% endif %}">
+                <span>{{ link.title }}</span>
+                {%- if active -%}<span class="absolute -bottom-1.5 left-4 right-4 h-[2.5px] rounded-full bg-gradient-to-r from-ghee-300 via-ghee-500 to-ghee-300 shadow-[0_2px_8px_rgba(235,168,38,0.7)]" aria-hidden="true"></span>{%- endif -%}
+              </a>
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for row in fallback -%}
+            {%- assign parts = row | strip | split: '|' -%}
+            {%- assign active = false -%}
+            {%- if request.path == parts[0] or request.path contains parts[0] and parts[0] != '/' %}{% assign active = true %}{% endif -%}
+            {%- if parts[0] == routes.all_products_collection_url and request.page_type == 'product' %}{% assign active = true %}{% endif -%}
+            <li>
+              <a href="{{ parts[0] }}" {% if active %}aria-current="page"{% endif %} class="relative inline-flex items-center rounded-full px-4 py-2 text-[0.95rem] font-medium transition-all duration-200 {% if active %}bg-oat font-semibold text-ink-950 shadow-xs{% else %}text-ink-800 hover:bg-oat/70 hover:text-ink-950{% endif %}">
+                <span>{{ parts[1] }}</span>
+                {%- if active -%}<span class="absolute -bottom-1.5 left-4 right-4 h-[2.5px] rounded-full bg-gradient-to-r from-ghee-300 via-ghee-500 to-ghee-300 shadow-[0_2px_8px_rgba(235,168,38,0.7)]" aria-hidden="true"></span>{%- endif -%}
+              </a>
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1">
+      <a href="{{ routes.search_url }}" class="hidden rounded-full p-2.5 hover:bg-oat sm:inline-flex" aria-label="Search">
+        {% render 'icon', name: 'search', class: 'size-6' %}
+      </a>
+      <a href="{{ routes.cart_url }}" data-open-dialog="cart-drawer" data-cart-target class="relative -mr-2 rounded-full p-2.5 hover:bg-oat" aria-label="Open cart" aria-haspopup="dialog">
+        {% render 'icon', name: 'cart', class: 'size-6' %}
+        <span data-cart-count class="absolute top-1 right-0.5 grid min-w-5 place-items-center rounded-full bg-ghee-500 px-1 text-xs leading-5 font-bold text-ink-950" {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+      <a href="{{ shop_url }}" class="btn btn-ink ml-2 hidden min-h-11 px-5 lg:inline-flex">Shop ghee</a>
+    </div>
+  </div>
+</header>
+
+<dialog id="menu-drawer" class="drawer drawer-left" aria-label="Menu">
+  <div class="flex h-full flex-col">
+    <div class="flex items-center justify-between border-b border-line px-5 py-4">
+      <a href="{{ routes.root_url }}" class="inline-flex items-center gap-2" aria-label="{{ shop.name }} home">
+        {% render 'logo-mark', class: 'h-11 w-auto' %}
+        <span class="font-caslon font-bold whitespace-nowrap text-2xl">{{ shop.name }}</span>
+      </a>
+      <button type="button" data-close-dialog class="rounded-full p-2 hover:bg-oat" aria-label="Close menu">
+        {% render 'icon', name: 'close', class: 'size-6' %}
+      </button>
+    </div>
+
+    <nav aria-label="Mobile" class="flex-1 overflow-y-auto px-3 py-4">
+      <ul class="space-y-1">
+        <li>
+          <a href="{{ routes.root_url }}" class="block rounded-xl px-3 py-3 text-lg font-medium transition-colors {% if request.page_type == 'index' %}bg-oat font-semibold text-ink-950{% else %}text-ink-800 hover:bg-oat{% endif %}">Home</a>
+        </li>
+        {%- if menu != blank -%}
+          {%- for link in menu.links -%}
+            <li>
+              <a href="{{ link.url }}" class="block rounded-xl px-3 py-3 text-lg font-medium transition-colors {% if link.active or link.child_active %}bg-oat font-semibold text-ink-950{% else %}text-ink-800 hover:bg-oat{% endif %}">{{ link.title }}</a>
+              {%- if link.links.size > 0 -%}
+                <ul class="mb-2 ml-3 border-l-2 border-ghee-300 pl-3">
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}" class="block rounded-lg px-3 py-2 text-ink-800 hover:bg-oat">{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for row in fallback -%}
+            {%- assign parts = row | strip | split: '|' -%}
+            <li>
+              <a href="{{ parts[0] }}" class="block rounded-xl px-3 py-3 text-lg font-medium transition-colors {% if request.path == parts[0] %}bg-oat font-semibold text-ink-950{% else %}text-ink-800 hover:bg-oat{% endif %}">{{ parts[1] }}</a>
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+        <li><a href="{{ routes.search_url }}" class="block rounded-xl px-3 py-3 text-lg font-medium text-ink-800 transition-colors hover:bg-oat">Search</a></li>
+        <li><a href="{{ section.settings.track_link | default: '/pages/track-order' }}" class="block rounded-xl px-3 py-3 text-lg font-medium text-ink-800 transition-colors hover:bg-oat">Track your order</a></li>
+      </ul>
+    </nav>
+
+    <div class="border-t border-line bg-oat px-5 py-4 text-sm">
+      <a href="{{ whatsapp }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 font-semibold">
+        {% render 'icon', name: 'whatsapp' %} WhatsApp {{ settings.phone }}
+      </a>
+    </div>
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "contents",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Main menu", "info": "Leave empty to show: Shop ghee, How it's made, Our story, Lab Reports, Contact." },
+    { "type": "url", "id": "shop_link", "label": "\"Shop ghee\" button link" },
+    { "type": "url", "id": "track_link", "label": "\"Track your order\" link", "info": "For example your Shiprocket tracking page. Leave empty for /pages/track-order." }
+  ]
+}
+{% endschema %}

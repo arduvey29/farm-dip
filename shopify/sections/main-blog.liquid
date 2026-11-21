@@ -1,0 +1,51 @@
+{%- comment -%} The blog: guides about ghee, as cards. {%- endcomment -%}
+<div class="wrap pt-5">
+  <nav aria-label="Breadcrumb" class="text-sm text-ink-700">
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+      <li class="flex items-center gap-2"><a href="{{ routes.root_url }}" class="underline-offset-4 hover:underline">Home</a><span aria-hidden="true" class="text-brass">/</span></li>
+      <li class="flex items-center gap-2"><span aria-current="page" class="text-ink-900">{{ blog.title }}</span></li>
+    </ol>
+  </nav>
+</div>
+
+<section class="wrap pt-8 pb-20">
+  <h1 class="font-display text-5xl leading-[1.02] sm:text-6xl">{{ section.settings.heading | default: blog.title }}</h1>
+  {%- if section.settings.lead != blank -%}<p class="mt-4 max-w-2xl text-lg text-ink-800">{{ section.settings.lead }}</p>{%- endif -%}
+
+  {%- paginate blog.articles by 12 -%}
+    <ul class="mt-12 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      {%- for article in blog.articles -%}
+        <li>
+          <article class="group">
+            <a href="{{ article.url }}" tabindex="-1" aria-hidden="true" class="block overflow-hidden rounded-[1.5rem] bg-oat">
+              {%- if article.image -%}
+                {{ article.image | image_url: width: 900 | image_tag: alt: '', class: 'aspect-[1200/630] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]', loading: 'lazy', sizes: '(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw' }}
+              {%- else -%}
+                <div class="grid aspect-[1200/630] place-items-center bg-pasture-950">{% render 'logo-mark', class: 'h-24 w-auto' %}</div>
+              {%- endif -%}
+            </a>
+            {%- if article.tags.size > 0 -%}<p class="mt-4 text-sm font-medium text-ghee-700">{{ article.tags.first }}</p>{%- endif -%}
+            <h2 class="mt-1 font-display text-2xl leading-snug text-ink-900">
+              <a href="{{ article.url }}" class="underline-offset-4 group-hover:underline">{{ article.title }}</a>
+            </h2>
+            <p class="mt-2 line-clamp-3 text-ink-700">{{ article.excerpt_or_content | strip_html | truncate: 180 }}</p>
+          </article>
+        </li>
+      {%- else -%}
+        <li class="text-ink-700">Guides are on their way.</li>
+      {%- endfor -%}
+    </ul>
+    {%- if paginate.pages > 1 -%}<nav class="mt-12 flex justify-center gap-4" aria-label="Pages">{{ paginate | default_pagination }}</nav>{%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Know your ghee" },
+    { "type": "text", "id": "lead", "label": "Text", "default": "Plain answers about buffalo ghee: how to choose it, store it, cook with it and check it is pure." }
+  ]
+}
+{% endschema %}

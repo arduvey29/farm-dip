@@ -44,12 +44,6 @@
         "stat-4"
       ]
     },
-    "hero": {
-      "type": "hero",
-      "settings": {
-        "layout": "video"
-      }
-    },
     "journey": {
       "type": "ghee-journey",
       "settings": {},
@@ -176,7 +170,6 @@
   "order": [
     "sizes",
     "numbers",
-    "hero",
     "journey",
     "reviews",
     "cta"

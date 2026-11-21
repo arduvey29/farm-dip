@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    // The Shopify theme is plain browser JavaScript, not Next.js; the compiled asset is generated.
+    "shopify/**",
     "next-env.d.ts",
   ]),
 ]);

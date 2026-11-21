@@ -61,7 +61,6 @@ write("index", {
         ([value, label]) => ({ value, label }),
       ),
     },
-    hero: { type: "hero", settings: { layout: "video" } },
     journey: { type: "ghee-journey", settings: {}, ...blocks(processSteps, "step", (s) => ({ name: s.name, text: s.text, fact: s.fact })) },
     reviews: {
       type: "home-reviews",
@@ -70,7 +69,7 @@ write("index", {
     },
     cta: { type: "cta-band", settings: {} },
   },
-  order: ["sizes", "numbers", "hero", "journey", "reviews", "cta"],
+  order: ["sizes", "numbers", "journey", "reviews", "cta"],
 });
 
 /* ---------- Product ---------- */
